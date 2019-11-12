@@ -9,12 +9,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Редактировать транспорт</title>
+    <c:if test="${empty transport.number}">
+        <title>Добавить транспорт</title>
+    </c:if>
+    <c:if test="${!empty transport.number}">
+        <title>Редактировать транспорт</title>
+    </c:if>
 </head>
 <body>
-<c:url value="/edit" var="var"/>
+<c:if test="${empty transport.number}">
+    <c:url value="/add" var="var"/>
+</c:if>
+<c:if test="${!empty transport.number}">
+    <c:url value="/edit" var="var"/>
+</c:if>
 <form action="${var}" method="POST">
-    <input type="hidden" name="id" value="${transport.id}">
+    <c:if test="${!empty transport.number}">
+        <input type="hidden" name="id" value="${transport.id}">
+    </c:if>
     <label for="number">Номер а/м</label>
     <input type="text" name="number" id="number">
     <label for="vin">VIN</label>
@@ -26,12 +38,18 @@
         </c:forEach>
 
     </select>
-    <%--<input type="hidden" name="model" value="${(transportsystem.model.TransportModel)transport.model}">--%>
     <label for="producedyear">Год выпуска</label>
     <input type="text" name="producedyear" id="producedyear">
     <label for="startupdate">Ввод в эксплуатацию</label>
-    <input type="hidden" name="startupdate" id="startupdate" value="${transport.getStartUpDate()}">
-    <input type="submit" value="Редактировать">
+    <c:if test="${!empty transport.number}">
+        <input type="hidden" name="startupdate" id="startupdate" value="${transport.startupdate}">
+    </c:if>
+    <c:if test="${empty transport.number}">
+        <input type="submit" value="Добавить">
+    </c:if>
+    <c:if test="${!empty transport.number}">
+        <input type="submit" value="Редактировать">
+    </c:if>
 </form>
 </body>
 </html>

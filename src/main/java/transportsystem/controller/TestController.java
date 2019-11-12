@@ -51,4 +51,24 @@ public class TestController {
         transportService.edit(transport);
         return modelAndView;
     }
+
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public ModelAndView addPage()
+    {
+        List<TransportModel> transportmodels = transportService.getAllTransportModels();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("editPage");
+        modelAndView.addObject("transportmodels", transportmodels);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public ModelAndView addTransport(@ModelAttribute("transport") Transport transport)
+    {
+        ModelAndView modelAndView = new ModelAndView();
+        List<TransportModel> transportmodels = transportService.getAllTransportModels();
+        modelAndView.setViewName("redirect:/");
+        transportService.add(transport);
+        return modelAndView;
+    }
 }

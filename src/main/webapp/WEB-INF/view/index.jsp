@@ -20,9 +20,9 @@
         <tr>
             <td>${transport.number}</td>
             <td>${transport.vin}</td>
-            <td>${transportmodels.get(transport.getTransportModelId()).getName()}</td>
-            <td>${transport.getProducedYear()}</td>
-            <td>${transport.getStartUpDate()}</td>
+            <td>${transportmodels.get(transport.transportmodelid).getName()}</td>
+            <td>${transport.producedyear}</td>
+            <td>${transport.startupdate}</td>
             <td>
                 <a href="/edit/${transport.id}">edit</a>
                 <a href="/delete/${transport.id}">delete</a>
