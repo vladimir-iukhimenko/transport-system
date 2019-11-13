@@ -1,5 +1,7 @@
 package transportsystem.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import transportsystem.dao.TransportDAO;
 import transportsystem.model.Transport;
 import transportsystem.model.TransportModel;
@@ -9,8 +11,15 @@ import java.util.*;
 /**
  * Created by Владимир on 10.11.2019.
  */
+@Service
 public class TransportService {
-    private TransportDAO TransportDAO = new TransportDAO();
+    private TransportDAO TransportDAO;
+
+    @Autowired
+    public void setTransportDAO(TransportDAO transportdao)
+    {
+        this.TransportDAO = transportdao;
+    }
 
     public List<Transport> getAllTransports()
     {

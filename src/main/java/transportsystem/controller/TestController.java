@@ -1,5 +1,6 @@
 package transportsystem.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -10,7 +11,14 @@ import java.util.*;
 
 @Controller
 public class TestController {
-    private TransportService transportService = new TransportService();
+
+    private TransportService transportService;
+
+    @Autowired
+    public void setTransportService(TransportService transportservice)
+    {
+        this.transportService = transportservice;
+    }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView startPage() {
@@ -69,6 +77,16 @@ public class TestController {
         List<TransportModel> transportmodels = transportService.getAllTransportModels();
         modelAndView.setViewName("redirect:/");
         transportService.add(transport);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public ModelAndView deleteTransport(@PathVariable("id") Integer id)
+    {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:/");
+        Transport transport = transportService.getTransportById(id);
+        transportService.delete(transport);
         return modelAndView;
     }
 }

@@ -1,5 +1,6 @@
 package transportsystem.dao;
 
+import org.springframework.stereotype.Repository;
 import transportsystem.model.Engine;
 import transportsystem.model.Transport;
 import transportsystem.model.TransportModel;
@@ -11,6 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Created by Владимир on 09.11.2019.
  */
+@Repository
 public class TransportDAO{
     private static Map<Integer,Transport> transports = new HashMap<>();
     private static Map<Integer,TransportModel> transportmodels = new HashMap<>();
