@@ -28,9 +28,9 @@
         <input type="hidden" name="id" value="${transport.id}">
     </c:if>
     <label for="number">Номер а/м</label>
-    <input type="text" name="number" id="number">
+    <input type="text" name="number" id="number" value="${transport.number}">
     <label for="vin">VIN</label>
-    <input type="text" name="vin" id="vin">
+    <input type="text" name="vin" id="vin" value ="${transport.vin}">
     <label for="modelid">Модель</label>
     <select id="modelid" name="transportmodelid">
         <c:forEach var="transportmodel" items="${transportmodels}">
@@ -39,7 +39,7 @@
 
     </select>
     <label for="producedyear">Год выпуска</label>
-    <input type="text" name="producedyear" id="producedyear">
+    <input type="text" name="producedyear" id="producedyear" value="${transport.producedyear}">
     <label for="startupdate">Ввод в эксплуатацию</label>
     <c:if test="${!empty transport.number}">
         <input type="hidden" name="startupdate" id="startupdate" value="${transport.startupdate}">
