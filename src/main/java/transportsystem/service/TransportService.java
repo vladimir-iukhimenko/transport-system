@@ -2,6 +2,7 @@ package transportsystem.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import transportsystem.dao.TransportDAO;
 import transportsystem.model.Transport;
 import transportsystem.model.TransportModel;
@@ -21,11 +22,13 @@ public class TransportService {
         this.TransportDAO = transportdao;
     }
 
+    @Transactional
     public List<Transport> getAllTransports()
     {
         return TransportDAO.getAllTransports();
     }
 
+    @Transactional
     public List<TransportModel> getAllTransportModels() { return TransportDAO.getAllTransportModels();}
 
     public void add(Transport transport)

@@ -1,43 +1,56 @@
 package transportsystem.model;
 
 import java.time.LocalDate;
-import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
+import javax.persistence.*;
 
+@Entity
+@Table(name="transports")
 public class Transport {
+
+	@Id
+	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+
+	@Column(name="number")
 	private String number;
+
+    @Column(name="vin")
 	private String vin;
+
+    @Column(name="transportmodelid")
 	private Integer transportmodelid;
-	private ArrayList<TransportDocument> documents;
+
+	//private ArrayList<TransportDocument> documents;
+
+    @Column(name="producedyear")
 	private Integer producedyear;
+
+    @Column(name="startupdate")
 	private LocalDate startupdate;
+
+    @Column(name="writeoffdate")
 	private LocalDate writeoffdate;
-	private static final AtomicInteger AUTO_ID = new AtomicInteger(0);
 	
-	public Transport(String number, String vin, Integer transportmodelid, Integer producedyear, String startupdate, Integer id)
+	public Transport(String number, String vin, Integer transportmodelid, Integer producedyear, String startupdate)
 	{
 		this.number = number;
 		this.vin = vin;
 		this.transportmodelid = transportmodelid;
 		this.producedyear = producedyear;
 		this.startupdate = LocalDate.parse(startupdate);
-        this.id = id;
+        //this.id = id;
 	}
 
 	public Transport(String number,String vin,Integer transportmodelid,Integer producedyear)
 	{
-		this(number,vin,transportmodelid,producedyear,LocalDate.now().toString(),AUTO_ID.getAndIncrement());
+		this(number,vin,transportmodelid,producedyear,LocalDate.now().toString());
 	}
 
-	public Transport(String number,String vin,Integer transportmodelid,Integer producedyear,String startupdate)
-	{
-		this(number,vin,transportmodelid,producedyear,startupdate,AUTO_ID.getAndIncrement());
-	}
 
     public Transport(String number,String vin,Integer transportmodelid)
     {
-        this(number,vin,transportmodelid,LocalDate.now().getYear(),LocalDate.now().toString(),AUTO_ID.getAndIncrement());
+        this(number,vin,transportmodelid,LocalDate.now().getYear(),LocalDate.now().toString());
     }
 
 	public Transport()
