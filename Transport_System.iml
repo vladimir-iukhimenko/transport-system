@@ -34,5 +34,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-web:5.2.0.RELEASE" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:javax.servlet-api:4.0.1" level="project" />
     <orderEntry type="library" name="Maven: jstl:jstl:1.2" level="project" />
+    <orderEntry type="library" name="Maven: com.microsoft.sqlserver:mssql-jdbc:7.4.1.jre8" level="project" />
   </component>
 </module>
