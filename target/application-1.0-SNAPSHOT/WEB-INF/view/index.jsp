@@ -20,7 +20,7 @@
         <tr>
             <td>${transport.number}</td>
             <td>${transport.vin}</td>
-            <td>${transportmodels.get(transport.transportmodelid).getName()}</td>
+            <td>${transportmodels.get((transport.transportmodelid)-1).getName()}</td>
             <td>${transport.producedyear}</td>
             <td>${transport.startupdate}</td>
             <td>
