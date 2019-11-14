@@ -31,7 +31,6 @@
             <version>5.2.0.RELEASE</version>
         </dependency>
 
-
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -49,8 +48,19 @@
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
             <version>7.4.1.jre8</version>
+<<<<<<< HEAD
         </dependency>
 
+=======
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.1-901-1.jdbc4</version>
+        </dependency>
+>>>>>>> cd3cc959a44e779727f26a8b98a35747510d3092
     </dependencies>
 
 </project>
