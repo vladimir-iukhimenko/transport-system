@@ -1,5 +1,7 @@
 package transportsystem.model;
 
+import net.bytebuddy.asm.Advice;
+
 import java.time.LocalDate;
 
 public class TransportDocument extends Document {
@@ -13,5 +15,11 @@ public class TransportDocument extends Document {
 		this.issueddate = issueddate;
 		this.expiredate = expiredate;
 	}
-	
+
+	public TransportDocument(){}
+
+	public LocalDate getExpiredate() {return this.expiredate;}
+
+	public void setExpiredate(String expiredate) {this.expiredate = LocalDate.parse(expiredate);}
+
 }

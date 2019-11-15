@@ -8,14 +8,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Engine {
 
     @Id
-    @Column(name-"id")
+    @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-    @Column=(name="name")
+    @Column(name="name")
 	private String name;
 
-    @Column=(name="volume")
+    @Column(name="volume")
 	private Double volume;
 
     @Column(name="fuel")
@@ -31,6 +31,6 @@ public class Engine {
 	public String getFuel() {return this.fuel;}
     public Integer getId() {return this.id;}
     public void setName(String name) {this.name = name;}
-    public void setVolume(String volume) {this.volume = volume;}
+    public void setVolume(Double volume) {this.volume = volume;}
     public void setFuel(String fuel) {this.fuel = fuel;}
 }

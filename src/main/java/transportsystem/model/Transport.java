@@ -55,6 +55,7 @@ public class Transport {
 	public Transport()
 	{this("","",null);}
 
+
 	public String getNumber() {return this.number;}
 	public String getVin() {return this.vin;}
 	public Integer getProducedyear() {return this.producedyear;}
@@ -65,7 +66,13 @@ public class Transport {
     public void setNumber(String number) {this.number = number;}
     public void setVin(String vin) {this.vin = vin;}
     public void setProducedyear(Integer producedyear) {this.producedyear = producedyear;}
-    public void setStartupdate(String startupdate) {this.startupdate = LocalDate.parse(startupdate);}
+    public void setStartupdate(String startupdate) {
+        if (startupdate.equals("")) {
+            this.startupdate = LocalDate.now();
+            return;
+        }
+        this.startupdate = LocalDate.parse(startupdate);
+    }
     public void setWriteoffdate(LocalDate writeoffdate) {}
     public void setId(Integer id) {this.id = id;}
     public void setTransportmodelid(Integer transportmodelid) {this.transportmodelid = transportmodelid;}
