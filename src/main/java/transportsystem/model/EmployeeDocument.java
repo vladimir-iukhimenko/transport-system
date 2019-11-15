@@ -5,16 +5,13 @@ import java.time.LocalDate;
 public class EmployeeDocument extends Document{
 	private Integer employeeid;
 	
-	public EmployeeDocument(String documenttype, int series, int number, String issuedby, LocalDate issueddate, Integer employeeid) {
+	public EmployeeDocument(String documenttype, int number, String issuedby) {
 		this.documenttype = documenttype;
-		this.series = series;
 		this.number = number;
 		this.issuedby = issuedby;
-		this.issueddate = issueddate;
-		this.employeeid = employeeid;
 	}
 
-	public EmployeeDocument() {}
+	public EmployeeDocument() {this("",0,"");}
 
 	public Integer getEmployeeid() {return this.employeeid;}
 
