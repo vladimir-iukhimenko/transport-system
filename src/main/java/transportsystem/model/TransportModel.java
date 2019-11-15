@@ -42,6 +42,7 @@ public class TransportModel {
     public TransportModel() {
         this("","","",0,0,"");
     }
+
 	public String getName() {return this.name;}
 	public String getColor() {return this.color;}
 	public String getProducer() {return this.producer;}

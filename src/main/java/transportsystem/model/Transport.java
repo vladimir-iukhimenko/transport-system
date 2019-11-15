@@ -39,7 +39,6 @@ public class Transport {
 		this.transportmodelid = transportmodelid;
 		this.producedyear = producedyear;
 		this.startupdate = LocalDate.parse(startupdate);
-        //this.id = id;
 	}
 
 	public Transport(String number,String vin,Integer transportmodelid,Integer producedyear)

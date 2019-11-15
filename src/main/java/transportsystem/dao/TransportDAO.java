@@ -24,23 +24,28 @@ public class TransportDAO {
     }
 
     public void add(Transport transport) {
-        transports.put(transport.getId(), transport);
+        Session session = sessionFactory.getCurrentSession();
+        session.persist(transport);
     }
 
     public void delete(Transport transport) {
-        transports.remove(transport.getId());
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(transport);
     }
 
     public Transport getTransportById(int id) {
-        return transports.get(id);
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(Transport.class,id);
     }
 
     public TransportModel getTransportModelById(int id) {
-        return transportmodels.get(id);
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(TransportModel.class,id);
     }
 
     public void edit(Transport transport) {
-        transports.put(transport.getId(), transport);
+        Session session = sessionFactory.getCurrentSession();
+        session.update(transport);
     }
 
     @SuppressWarnings("unchecked")

@@ -31,25 +31,30 @@ public class TransportService {
     @Transactional
     public List<TransportModel> getAllTransportModels() { return TransportDAO.getAllTransportModels();}
 
+    @Transactional
     public void add(Transport transport)
     {
         TransportDAO.add(transport);
     }
 
+    @Transactional
     public void delete(Transport transport)
     {
         TransportDAO.delete(transport);
     }
 
+    @Transactional
     public void edit(Transport transport)
     {
         TransportDAO.edit(transport);
     }
 
+    @Transactional
     public Transport getTransportById(int id)
     {
         return TransportDAO.getTransportById(id);
     }
 
+    @Transactional
     public TransportModel getTransportModelById(int id) {return TransportDAO.getTransportModelById(id);}
 }
