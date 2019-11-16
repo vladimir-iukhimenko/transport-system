@@ -29,5 +29,7 @@ public class Nomenclature {
 	public void setWidth(Double width) {this.width = width;}
     public void setHeight(Double height) {this.height = height;}
     public void setWeight(Double weight) {this.weight = weight;}
-    public void setComment(String comment) {this.comment.append(LocalDateTime.now().toString() + comment + "\r\n");}
+    public void setComment(String comment) {
+        this.comment.append(LocalDateTime.now().toString() + " " + comment + "\r\n");
+    }
 }
