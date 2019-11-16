@@ -1,13 +1,30 @@
 package transportsystem.model;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "nomenclatures")
 public class Nomenclature {
-	private Integer id;
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(name = "length")
 	private Double length;
+
+    @Column(name = "width")
 	private Double width;
+
+    @Column(name = "height")
 	private Double height;
+
+    @Column(name = "weight")
 	private Double weight;
+
+    @Column(name = "comment")
 	private StringBuilder comment;
 	public Nomenclature(Double length, Double width, Double height, Double weight) {
 		this.length = length;

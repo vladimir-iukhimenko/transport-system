@@ -1,17 +1,42 @@
 package transportsystem.model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "employees")
 public class Employee {
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+
+    @Column(name = "surname")
 	private String surname;
+
+    @Column(name = "name")
 	private String name;
+
+    @Column(name = "patronymic")
 	private String patronymic;
+
+    @Column(name = "department")
 	private String department;
+
+    @Column(name = "position")
 	private String position;
+
+    @Column(name = "address")
 	private String address;
+
+    @Column(name = "telephonenumber")
 	private Integer telephonenumber;
+
+    @Column(name = "dateofreceipt")
 	private LocalDate dateofreceipt;
+
+    @Column(name = "dateofdismissal")
 	private LocalDate dateofdismissal;
 	
 	public Employee(String surname, String name, String department, String position, String dateofreceipt) {

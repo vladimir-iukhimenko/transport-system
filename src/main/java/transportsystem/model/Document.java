@@ -1,7 +1,9 @@
 package transportsystem.model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@MappedSuperclass
 public abstract class Document {
     protected Integer id;
 	protected String documenttype;

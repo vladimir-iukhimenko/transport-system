@@ -1,11 +1,29 @@
 package transportsystem.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "goods")
 public class Goods {
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+
+    @Column(name = "nomenclatureid")
 	private Integer nomenclatureid;
+
+    @Column(name = "amount")
 	private Integer amount;
+
+    @Column(name = "length")
 	private Double length;
+
+    @Column(name = "height")
 	private Double height;
+
+    @Column(name = "weight")
 	private Double weight;
 	
 	public Goods(Integer nomenclatureid, Integer amount, Double length, Double height, Double weight) {

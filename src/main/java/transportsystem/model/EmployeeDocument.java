@@ -1,8 +1,15 @@
 package transportsystem.model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "employeedocuments")
 public class EmployeeDocument extends Document{
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer employeeid;
 	
 	public EmployeeDocument(String documenttype, int number, String issuedby) {

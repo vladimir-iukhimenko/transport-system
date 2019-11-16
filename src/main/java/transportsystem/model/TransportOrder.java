@@ -1,21 +1,52 @@
 package transportsystem.model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "transportorders")
 public class TransportOrder {
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+
+    @Column(name = "goodsid")
 	private Integer goodsid;
+
+    @Column(name = "orderdate")
 	private LocalDate orderdate;
+
+    @Column(name = "transportpresentingdate")
 	private LocalDate transportpresentingdate;
+
+    @Column(name = "transportid")
 	private Integer transportid;
+
+    @Column(name = "loadingplace")
 	private String loadingplace;
+
+    @Column(name = "unloadingplace")
 	private String unloadingplace;
+
+    @Column(name = "placemethod")
 	private String placemethod;
+
+    @Column(name = "responsibleemployeeid")
 	private Integer responsibleemployeeid;
+
+    @Column(name = "telephonenumber")
 	private Integer telephonenumber;
+
+    @Column(name = "customeremployeeid")
 	private Integer customeremployeeid;
+
+    @Column(name = "comment")
 	private StringBuilder comment;
+
+    @Column(name = "declinereason")
 	private String declinereason;
 	
 	public TransportOrder(Integer goodsid, String orderdate, String transportpresentingdate, Integer transportid, String loadingplace,
