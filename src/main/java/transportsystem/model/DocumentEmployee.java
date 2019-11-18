@@ -5,18 +5,18 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "employeedocuments")
-public class EmployeeDocument extends Document{
+public class DocumentEmployee extends Document{
 
-
+	@Column(name="employeeid")
 	private Integer employeeid;
 	
-	public EmployeeDocument(String documenttype, int number, String issuedby) {
+	public DocumentEmployee(String documenttype, int number, String issuedby) {
 		this.documenttype = documenttype;
 		this.number = number;
 		this.issuedby = issuedby;
 	}
 
-	public EmployeeDocument() {this("",0,"");}
+	public DocumentEmployee() {this("",0,"");}
 
 	public Integer getEmployeeid() {return this.employeeid;}
 

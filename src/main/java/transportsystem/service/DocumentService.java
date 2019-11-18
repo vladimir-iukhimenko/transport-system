@@ -21,10 +21,13 @@ public class DocumentService {
     }
 
     @Transactional
-    public List<Document> getAllDocuments()
+    public List<Document> getAllTransportDocuments()
     {
-        return documentDAO.getAllDocuments();
+        return documentDAO.getAllTransportDocuments();
     }
+
+    @Transactional
+    public List<Document> getAllEmployeeDocuments() {return documentDAO.getAllEmployeeDocuments();}
 
     @Transactional
     public void add(Document document)

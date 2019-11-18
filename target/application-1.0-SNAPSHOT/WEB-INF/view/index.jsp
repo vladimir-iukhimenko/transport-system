@@ -34,5 +34,8 @@
 <h2>Добавить</h2>
 <c:url value="/add" var="add"/>
 <a href="${add}">Add</a>
+<h3></h3>
+<c:url value="/transportdocs" var="transportdocs"/>
+<a href="${transportdocs}">Транспортные документы</a>
 </body>
 </html>

@@ -40,8 +40,13 @@ public class DocumentDAO {
         session.update(document);
     }
 
-    public List<Document> getAllDocuments() {
+    public List<Document> getAllEmployeeDocuments() {
         Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("from Document").list();
+        return session.createQuery("from DocumentEmployee").list();
+    }
+
+    public List<Document> getAllTransportDocuments() {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createQuery("from DocumentTransport").list();
     }
 }

@@ -6,18 +6,18 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "transportdocuments")
-public class TransportDocument extends Document {
+public class DocumentTransport extends Document {
 
     @Column(name = "expiredate")
     private LocalDate expiredate;
 	
-	public TransportDocument(String documenttype, Integer number, String issuedby) {
+	public DocumentTransport(String documenttype, Integer number, String issuedby) {
 		this.documenttype = documenttype;
 		this.number = number;
 		this.issuedby = issuedby;
 	}
 
-	public TransportDocument(){this("",0,"");}
+	public DocumentTransport(){this("",0,"");}
 
 	public LocalDate getExpiredate() {return this.expiredate;}
 

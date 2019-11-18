@@ -10,14 +10,24 @@ public abstract class Document {
 	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Integer id;
+
+    @Column(name="documenttype")
 	protected String documenttype;
+
+    @Column(name="series")
 	protected Integer series;
+
+    @Column(name="number")
 	protected Integer number;
+
+    @Column(name="issuedby")
 	protected String issuedby;
+
+    @Column(name="issueddate")
 	protected LocalDate issueddate;
 	
-	public Integer getId() {return this.getId();}
-    public String getDocumentyype() {return this.documenttype;}
+	public Integer getId() {return this.id;}
+    public String getDocumenttype() {return this.documenttype;}
 	public Integer getSeries() {return this.series;}
 	public Integer getNumber() {return this.number;}
 	public String getIssuedby() {return this.issuedby;}
