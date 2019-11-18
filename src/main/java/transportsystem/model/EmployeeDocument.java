@@ -7,9 +7,7 @@ import java.time.LocalDate;
 @Table(name = "employeedocuments")
 public class EmployeeDocument extends Document{
 
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private Integer employeeid;
 	
 	public EmployeeDocument(String documenttype, int number, String issuedby) {

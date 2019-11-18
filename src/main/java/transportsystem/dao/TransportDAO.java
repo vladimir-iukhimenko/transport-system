@@ -13,8 +13,6 @@ import java.util.*;
  */
 @Repository
 public class TransportDAO {
-    private static Map<Integer, Transport> transports = new HashMap<>();
-    private static Map<Integer, TransportModel> transportmodels = new HashMap<>();
 
     private SessionFactory sessionFactory;
 
@@ -46,6 +44,7 @@ public class TransportDAO {
     public void edit(Transport transport) {
         Session session = sessionFactory.getCurrentSession();
         session.update(transport);
+
     }
 
     @SuppressWarnings("unchecked")

@@ -5,6 +5,10 @@ import java.time.LocalDate;
 
 @MappedSuperclass
 public abstract class Document {
+
+	@Id
+	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Integer id;
 	protected String documenttype;
 	protected Integer series;

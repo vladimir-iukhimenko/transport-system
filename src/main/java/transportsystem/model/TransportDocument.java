@@ -7,9 +7,8 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "transportdocuments")
 public class TransportDocument extends Document {
-	@Id
+
     @Column(name = "expiredate")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private LocalDate expiredate;
 	
 	public TransportDocument(String documenttype, Integer number, String issuedby) {

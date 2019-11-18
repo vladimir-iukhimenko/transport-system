@@ -10,7 +10,7 @@ import transportsystem.service.TransportService;
 import java.util.*;
 
 @Controller
-public class TestController {
+public class TransportController {
 
     private TransportService transportService;
 
