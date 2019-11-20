@@ -21,24 +21,25 @@ public class DocumentController {
         this.documentService = documentService;
     }
 
-    public ModelAndView listdocuments(List<Document> documents)
+    public ModelAndView listdocuments(List<Document> documents,String type)
     {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("documents");
         modelAndView.addObject("documents", documents);
+        modelAndView.addObject("type",type);
         return modelAndView;
     }
 
     @RequestMapping(value = "/transportdocs", method = RequestMethod.GET)
     public ModelAndView listtransportdocuments() {
         List<Document> transportdocuments = documentService.getAllTransportDocuments();
-        return listdocuments(transportdocuments);
+        return listdocuments(transportdocuments,"DocumentTransport");
     }
 
     @RequestMapping(value = "/employeedocs", method = RequestMethod.GET)
     public ModelAndView listemployeedocuments() {
         List<Document> employeedocuments = documentService.getAllEmployeeDocuments();
-        return listdocuments(employeedocuments);
+        return listdocuments(employeedocuments, "DocumentEmployee");
     }
 
     @RequestMapping(value = "/addtransportdoc", method = RequestMethod.GET)
@@ -72,6 +73,16 @@ public class DocumentController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/employeedocs");
         documentService.add(document);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/editdocument/{id}", method = RequestMethod.GET)
+    public ModelAndView editDocument(@PathVariable("id") Integer id)
+    {
+        Document document = documentService.getDocumentById(id);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("editordocuments");
+        modelAndView.addObject("document",document);
         return modelAndView;
     }
 }

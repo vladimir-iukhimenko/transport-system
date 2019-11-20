@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import transportsystem.model.Document;
+import transportsystem.model.DocumentTransport;
 
 import java.util.List;
 

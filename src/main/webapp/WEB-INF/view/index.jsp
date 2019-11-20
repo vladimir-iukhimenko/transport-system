@@ -37,5 +37,7 @@
 <h3></h3>
 <c:url value="/transportdocs" var="transportdocs"/>
 <a href="${transportdocs}">Транспортные документы</a>
+<c:url value="/employeedocs" var="employeedocs"/>
+<a href="${employeedocs}">Документы сотрудников</a>
 </body>
 </html>
