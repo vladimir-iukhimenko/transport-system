@@ -21,7 +21,7 @@ public class DocumentController {
         this.documentService = documentService;
     }
 
-    public ModelAndView listdocuments(List<Document> documents,String type)
+    public ModelAndView listDocuments(List<Document> documents,String type)
     {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("documents");
@@ -31,27 +31,28 @@ public class DocumentController {
     }
 
     @RequestMapping(value = "/transportdocs", method = RequestMethod.GET)
-    public ModelAndView listtransportdocuments() {
+    public ModelAndView listDocumentTransports() {
         List<Document> transportdocuments = documentService.getAllTransportDocuments();
-        return listdocuments(transportdocuments,"DocumentTransport");
+        return listDocuments(transportdocuments,"DocumentTransport");
     }
 
     @RequestMapping(value = "/employeedocs", method = RequestMethod.GET)
-    public ModelAndView listemployeedocuments() {
+    public ModelAndView listDocumentEmployees() {
         List<Document> employeedocuments = documentService.getAllEmployeeDocuments();
-        return listdocuments(employeedocuments, "DocumentEmployee");
+        return listDocuments(employeedocuments, "DocumentEmployee");
     }
 
     @RequestMapping(value = "/addtransportdoc", method = RequestMethod.GET)
-    public ModelAndView addtransportdocument()
+    public ModelAndView addDocumentTransport()
     {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("editordocuments");
+        modelAndView.addObject("type","DocumentTransport");
         return modelAndView;
     }
 
     @RequestMapping(value = "/addtransportdoc", method = RequestMethod.POST)
-    public ModelAndView addTransportdocument(@ModelAttribute("document") DocumentTransport document)
+    public ModelAndView addDocumentTransport(@ModelAttribute("document") DocumentTransport document)
     {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/transportdocs");
@@ -60,15 +61,16 @@ public class DocumentController {
     }
 
     @RequestMapping(value = "/addemployeedoc", method = RequestMethod.GET)
-    public ModelAndView addemployeedocument()
+    public ModelAndView addDocumentEmployee()
     {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("editordocuments");
+        modelAndView.addObject("type","DocumentEmployee");
         return modelAndView;
     }
 
     @RequestMapping(value = "/addemployeedoc", method = RequestMethod.POST)
-    public ModelAndView addEmployeedocument(@ModelAttribute("document") DocumentEmployee document)
+    public ModelAndView addDocumentEmployee(@ModelAttribute("document") DocumentEmployee document)
     {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/employeedocs");
@@ -76,13 +78,63 @@ public class DocumentController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/editdocument/{id}", method = RequestMethod.GET)
-    public ModelAndView editDocument(@PathVariable("id") Integer id)
+    @RequestMapping(value = "/edittransportdoc/{id}", method = RequestMethod.GET)
+    public ModelAndView editDocumentTransport(@PathVariable("id") Integer id)
     {
-        Document document = documentService.getDocumentById(id);
+        Document document = documentService.getDocumentTransportById(id);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("editordocuments");
         modelAndView.addObject("document",document);
+        modelAndView.addObject("type","DocumentTransport");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/edittransportdoc", method = RequestMethod.POST)
+    public ModelAndView editDocumentTransport(@ModelAttribute("document") DocumentTransport document)
+    {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:/transportdocs");
+        documentService.edit(document);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/editemployeedoc/{id}", method = RequestMethod.GET)
+    public ModelAndView editDocumentEmployee(@PathVariable("id") Integer id)
+    {
+        Document document = documentService.getDocumentEmployeeById(id);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("editordocuments");
+        modelAndView.addObject("document",document);
+        modelAndView.addObject("type","DocumentEmployee");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/editemployeedoc", method = RequestMethod.POST)
+    public ModelAndView editDocumentEmployee(@ModelAttribute("document") DocumentEmployee document)
+    {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:/employeedocs");
+        documentService.edit(document);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/deletetransportdoc/{id}", method = RequestMethod.GET)
+    public ModelAndView deleteDocumentTransport(@PathVariable("id") Integer id)
+    {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:/");
+        Document document = documentService.getDocumentTransportById(id);
+        documentService.delete(document);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/deleteemployeedoc/{id}", method = RequestMethod.GET)
+    public ModelAndView deleteDocumentEmployee(@PathVariable("id") Integer id)
+    {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:/");
+        Document document = documentService.getDocumentEmployeeById(id);
+        documentService.delete(document);
         return modelAndView;
     }
 }

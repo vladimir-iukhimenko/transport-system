@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import transportsystem.dao.DocumentDAO;
 import transportsystem.model.Document;
 
+import javax.print.Doc;
 import java.util.List;
 
 /**
@@ -48,9 +49,13 @@ public class DocumentService {
     }
 
     @Transactional
-    public Document getDocumentById(int id)
+    public Document getDocumentTransportById(Integer id)
     {
-        return documentDAO.getDocumentById(id);
+        return documentDAO.getDocumentTransportById(id);
     }
 
+    @Transactional
+    public Document getDocumentEmployeeById(Integer id) {
+        return documentDAO.getDocumentEmployeeById(id);
+    }
 }

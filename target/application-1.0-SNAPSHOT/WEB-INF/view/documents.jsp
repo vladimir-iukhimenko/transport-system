@@ -49,8 +49,13 @@
                 <td>${document.employeeid}</td>
             </c:if>
             <td>
-                <a href="/editdocument/${document.id}">edit</a>
-                <a href="/deletedocument/${document.id}">delete</a>
+                <c:if test="${fn:contains(inst,'DocumentTransport')}">
+                    <a href="/edittransportdoc/${document.id}">edit</a>
+                    <a href="/deletetransportdoc/${document.id}">delete</a>
+                </c:if>
+                <c:if test="${fn:contains(inst,'DocumentEmployee')}">
+                    <a href="/editemployeedoc/${document.id}">edit</a>
+                    <a href="/deleteemployeedoc/${document.id}">delete</a>
             </td>
         </tr>
     </c:forEach>

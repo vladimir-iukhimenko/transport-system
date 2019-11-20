@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import transportsystem.model.Document;
+import transportsystem.model.DocumentEmployee;
 import transportsystem.model.DocumentTransport;
 
 import java.util.List;
@@ -31,9 +32,14 @@ public class DocumentDAO {
         session.delete(document);
     }
 
-    public Document getDocumentById(int id) {
+    public Document getDocumentTransportById(Integer id) {
         Session session = sessionFactory.getCurrentSession();
-        return session.get(Document.class,id);
+        return session.get(DocumentTransport.class,id);
+    }
+
+    public Document getDocumentEmployeeById(Integer id) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(DocumentEmployee.class,id);
     }
 
     public void edit(Document document) {
