@@ -35,31 +35,32 @@
     <c:if test="${!empty document.documenttype}">
         <input type="hidden" name="id" value="${document.id}">
     </c:if>
-    <label for="documenttype">Тип документа</label>
-        <input type="text" name="documenttype" id="documenttype" value="${document.documenttype}">
-    <label for="series">Серия</label>
-        <input type="text" name="series" id="series" value ="${document.series}">
-    <label for="number">Номер</label>
-        <input type="number" name="number" id="number" value ="${document.number}">
-    <label for="issuedby">Выпущено</label>
-        <input type="text" name="issuedby" id="issuedby" value="${document.issuedby}">
-    <label for="issueddate">Дата выпуска</label>
-        <input type="date" name="issueddate" id="issueddate" value="${document.issueddate}">
+    <p><label for="documenttype">Тип документа</label>
+        <input type="text" name="documenttype" id="documenttype" value="${document.documenttype}"></p>
+    <p><label for="series">Серия</label>
+        <input type="text" name="series" id="series" value ="${document.series}"></p>
+    <p><label for="number">Номер</label>
+        <input type="number" name="number" id="number" value ="${document.number}"></p>
+    <p><label for="issuedby">Выпущено</label>
+        <input type="text" name="issuedby" id="issuedby" value="${document.issuedby}"></p>
+    <p><label for="issueddate">Дата выпуска</label>
+        <input type="date" name="issueddate" id="issueddate" value="${document.issueddate}"></p>
 <c:if test="${fn:contains(type,'DocumentTransport')}">
-    <label for="expiredate">Дата истечения</label>
-        <input type="date" name="expiredate" id="expiredate" value="${document.expiredate}">
+    <p><label for="expiredate">Дата истечения</label>
+        <input type="date" name="expiredate" id="expiredate" value="${document.expiredate}"></p>
     </c:if>
 <c:if test="${fn:contains(type,'DocumentEmployee')}">
-    <label for="employeeid">Сотрудник</label>
-    <input type="text" name="employeeid" id="employeeid" value="${document.employeeid}">
+    <p><label for="employeeid">Сотрудник</label>
+    <input type="text" name="employeeid" id="employeeid" value="${document.employeeid}"></p>
 </c:if>
 
     <c:if test="${empty document.documenttype}">
-        <input type="submit" value="Добавить">
+    <p><input type="submit" value="Добавить"></p>
     </c:if>
     <c:if test="${!empty document.documenttype}">
-        <input type="submit" value="Редактировать">
+    <p> <input type="submit" value="Редактировать"></p>
     </c:if>
 </form>
+<p><a href="/">На главную</a></p>
 </body>
 </html>

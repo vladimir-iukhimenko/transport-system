@@ -27,29 +27,30 @@
     <c:if test="${!empty transport.number}">
         <input type="hidden" name="id" value="${transport.id}">
     </c:if>
-    <label for="number">Номер а/м</label>
-    <input type="text" name="number" id="number" value="${transport.number}">
-    <label for="vin">VIN</label>
-    <input type="text" name="vin" id="vin" value ="${transport.vin}">
-    <label for="modelid">Модель</label>
-    <select id="modelid" name="transportmodelid">
+    <p> <label for="number">Номер а/м</label>
+    <input type="text" name="number" id="number" value="${transport.number}"></p>
+    <p><label for="vin">VIN</label>
+    <input type="text" name="vin" id="vin" value ="${transport.vin}"></p>
+    <p><label for="modelid">Модель</label>
+    <select id="modelid" name="transportmodelid"></p>
         <c:forEach var="transportmodel" items="${transportmodels}">
-            <option value="${transportmodel.id}">${transportmodel.name}</option>
+            <p><option value="${transportmodel.id}">${transportmodel.name}</option></p>
         </c:forEach>
 
     </select>
-    <label for="producedyear">Год выпуска</label>
-    <input type="text" name="producedyear" id="producedyear" value="${transport.producedyear}">
+    <p><label for="producedyear">Год выпуска</label>
+    <input type="text" name="producedyear" id="producedyear" value="${transport.producedyear}"></p>
     <label for="startupdate">Ввод в эксплуатацию</label>
     <c:if test="${!empty transport.number}">
         <input type="hidden" name="startupdate" id="startupdate" value="${transport.startupdate}">
     </c:if>
     <c:if test="${empty transport.number}">
-        <input type="submit" value="Добавить">
+    <p><input type="submit" value="Добавить"></p>
     </c:if>
     <c:if test="${!empty transport.number}">
-        <input type="submit" value="Редактировать">
+    <p><input type="submit" value="Редактировать"></p>
     </c:if>
 </form>
+<p><a href="/">На главную</a></p>
 </body>
 </html>
