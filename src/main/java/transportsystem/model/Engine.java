@@ -1,24 +1,33 @@
 package transportsystem.model;
 
 import javax.persistence.*;
-import java.util.concurrent.atomic.AtomicInteger;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name="engine")
 public class Engine {
 
     @Id
-    @Column(name="id")
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Getter
+	@Setter
 	private Integer id;
 
-    @Column(name="name")
+    @Column
+    @Getter
+    @Setter
 	private String name;
 
-    @Column(name="volume")
+    @Column
+    @Getter
+    @Setter
 	private Double volume;
 
-    @Column(name="fuel")
+    @Column
+    @Getter
+    @Setter
 	private String fuel;
 	
 	public Engine(String name, Double volume, String fuel) {
@@ -26,11 +35,5 @@ public class Engine {
 		this.volume = volume;
 		this.fuel = fuel;
 	}
-	public String getName() {return this.name;}
-	public Double getVolume() {return this.volume;}
-	public String getFuel() {return this.fuel;}
-    public Integer getId() {return this.id;}
-    public void setName(String name) {this.name = name;}
-    public void setVolume(Double volume) {this.volume = volume;}
-    public void setFuel(String fuel) {this.fuel = fuel;}
+	public Engine () {}
 }

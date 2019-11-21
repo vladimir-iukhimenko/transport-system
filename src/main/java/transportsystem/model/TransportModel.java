@@ -1,33 +1,56 @@
 package transportsystem.model;
 
 import javax.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.Set;
 
 @Entity
-@Table(name="transportmodelid")
+@Table(name="transportmodel")
 public class TransportModel {
 
     @Id
-    @Column(name="id")
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter
+    @Setter
 	private Integer id;
 
-    @Column(name="name")
+    @Column
+    @Getter
+    @Setter
 	private String name;
 
-    @Column(name="color")
+    @Column
+    @Getter
+    @Setter
 	private String color;
 
-    @Column(name="producer")
+    @Column
+    @Getter
+    @Setter
 	private String producer;
 
-    @Column(name="maxweight")
+    @Column
+    @Getter
+    @Setter
 	private Integer maxweight;
 
-    @Column(name="engineid")
+    @Column
+    @Getter
+    @Setter
 	private Integer engineid;
 
-    @Column(name="enginepower")
+    @Column
+    @Getter
+    @Setter
 	private String enginepower;
+
+    @Getter
+    @Setter
+    @OneToMany(mappedBy = "transportmodel", fetch = FetchType.EAGER)
+    private Set<Transport> transports;
 	
 	public TransportModel(String name, String color, String producer, Integer maxweight, Integer engineid, String enginepower)
     {
@@ -43,18 +66,4 @@ public class TransportModel {
         this("","","",0,0,"");
     }
 
-	public String getName() {return this.name;}
-	public String getColor() {return this.color;}
-	public String getProducer() {return this.producer;}
-	public Integer getMaxweight() {return this.maxweight;}
-	public String getEnginepower() {return this.enginepower;}
-	public Integer getId() {return this.id;}
-	public Integer getEngineid() {return this.engineid;}
-    public void setName(String name) {this.name = name;}
-    public void setColor(String color) {this.color = color;}
-    public void setProducer(String producer) {this.producer = producer;}
-    public void setMaxweight(Integer maxweight) {this.maxweight = maxweight;}
-    public void setEnginepower(String enginepower) {this.enginepower = enginepower;}
-    public void setId(Integer id) {this.id = id;}
-    public void setEngineid(Integer id) {this.engineid = engineid;}
 }

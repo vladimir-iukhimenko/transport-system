@@ -3,13 +3,22 @@ package transportsystem.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "transportdocuments")
 public class DocumentTransport extends Document {
 
-    @Column(name = "expiredate")
+    @Column
+    @Getter
     private LocalDate expiredate;
+
+    @Getter
+    @Setter
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "transportid")
+    private Transport transport;
 	
 	public DocumentTransport(String documenttype, Integer number, String issuedby) {
 		this.documenttype = documenttype;
@@ -18,8 +27,6 @@ public class DocumentTransport extends Document {
 	}
 
 	public DocumentTransport(){this("",0,"");}
-
-	public LocalDate getExpiredate() {return this.expiredate;}
 
 	public void setExpiredate(String expiredate) {this.expiredate = LocalDate.parse(expiredate);}
 

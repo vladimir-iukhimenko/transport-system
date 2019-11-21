@@ -40,10 +40,8 @@
     </select>
     <p><label for="producedyear">Год выпуска</label>
     <input type="text" name="producedyear" id="producedyear" value="${transport.producedyear}"></p>
-    <label for="startupdate">Ввод в эксплуатацию</label>
-    <c:if test="${!empty transport.number}">
-        <input type="hidden" name="startupdate" id="startupdate" value="${transport.startupdate}">
-    </c:if>
+    <p><label for="startupdate">Ввод в эксплуатацию</label>
+    <input type="date" name="startupdate" id="startupdate" value="${transport.startupdate}"></p>
     <c:if test="${empty transport.number}">
     <p><input type="submit" value="Добавить"></p>
     </c:if>

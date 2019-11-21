@@ -1,29 +1,43 @@
 package transportsystem.model;
 
 import javax.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "goods")
 public class Goods {
 
     @Id
-    @Column(name = "id")
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter
+    @Setter
 	private Integer id;
 
-    @Column(name = "nomenclatureid")
+    @Column
+    @Getter
+    @Setter
 	private Integer nomenclatureid;
 
     @Column(name = "amount")
+    @Getter
+    @Setter
 	private Integer amount;
 
     @Column(name = "length")
+    @Getter
+    @Setter
 	private Double length;
 
     @Column(name = "height")
+    @Getter
+    @Setter
 	private Double height;
 
     @Column(name = "weight")
+    @Getter
+    @Setter
 	private Double weight;
 	
 	public Goods(Integer nomenclatureid, Integer amount, Double length, Double height, Double weight) {
@@ -36,16 +50,4 @@ public class Goods {
 
     public Goods() {this(0,0,0.0,0.0,0.0);}
 
-    public Integer getId() {return this.id;}
-    public Integer getNomenclatureid() {return this.nomenclatureid;}
-    public Integer getAmount() {return this.amount;}
-    public Double getLength() {return this.length;}
-    public Double getHeight() {return this.height;}
-    public Double getWeight() {return this.weight;}
-    public void setId(Integer id) {this.id = id;}
-    public void setNomenclatureid(Integer nomenclatureid) {this.nomenclatureid = nomenclatureid;}
-    public void setAmount(Integer amount) {this.amount = amount;}
-    public void setLength(Double length) {this.length = length;}
-    public void setHeight(Double height) {this.height = height;}
-    public void setWeight(Double weight) {this.weight = weight;}
 }

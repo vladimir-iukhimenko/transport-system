@@ -1,13 +1,16 @@
 package transportsystem.model;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "employeedocuments")
 public class DocumentEmployee extends Document{
 
-	@Column(name="employeeid")
+	@Column
+	@Getter
+	@Setter
 	private Integer employeeid;
 	
 	public DocumentEmployee(String documenttype, int number, String issuedby) {
@@ -18,8 +21,4 @@ public class DocumentEmployee extends Document{
 
 	public DocumentEmployee() {this("",0,"");}
 
-	public Integer getEmployeeid() {return this.employeeid;}
-
-    public void setEmployeeid(Integer id) {this.employeeid = id;}
-	
 }

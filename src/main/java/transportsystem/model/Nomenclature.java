@@ -2,30 +2,43 @@ package transportsystem.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "nomenclatures")
 public class Nomenclature {
 
     @Id
-    @Column(name = "id")
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter
+    @Setter
     private Integer id;
 
-    @Column(name = "length")
+    @Column
+    @Getter
+    @Setter
 	private Double length;
 
-    @Column(name = "width")
+    @Column
+    @Getter
+    @Setter
 	private Double width;
 
-    @Column(name = "height")
+    @Column
+    @Getter
+    @Setter
 	private Double height;
 
-    @Column(name = "weight")
+    @Column
+    @Getter
+    @Setter
 	private Double weight;
 
-    @Column(name = "comment")
+    @Column
 	private StringBuilder comment;
+
 	public Nomenclature(Double length, Double width, Double height, Double weight) {
 		this.length = length;
 		this.width = width;
@@ -35,17 +48,8 @@ public class Nomenclature {
 
 	public Nomenclature() {this(0.0,0.0,0.0,0.0);}
 
-	public Integer getId() {return this.id;}
-	public Double getLength() {return this.length;}
-	public Double getWidth() {return this.width;}
-	public Double getHeight() {return this.height;}
-	public Double getWeight() {return this.weight;}
+
 	public String getComment() {return this.comment.toString();}
-    public void setId(Integer id) {this.id = id;}
-    public void setLength(Double length) {this.length = length;}
-	public void setWidth(Double width) {this.width = width;}
-    public void setHeight(Double height) {this.height = height;}
-    public void setWeight(Double weight) {this.weight = weight;}
     public void setComment(String comment) {
         this.comment.append(LocalDateTime.now().toString() + " " + comment + "\r\n");
     }

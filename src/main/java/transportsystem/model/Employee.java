@@ -2,41 +2,61 @@ package transportsystem.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "employees")
 public class Employee {
 
     @Id
-    @Column(name = "id")
+    @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter
+    @Setter
 	private Integer id;
 
-    @Column(name = "surname")
+    @Column
+    @Getter
+    @Setter
 	private String surname;
 
-    @Column(name = "name")
+    @Column
+    @Getter
+    @Setter
 	private String name;
 
-    @Column(name = "patronymic")
+    @Column
+    @Getter
+    @Setter
 	private String patronymic;
 
-    @Column(name = "department")
+    @Column
+    @Getter
+    @Setter
 	private String department;
 
-    @Column(name = "position")
+    @Column
+    @Getter
+    @Setter
 	private String position;
 
-    @Column(name = "address")
+    @Column
+    @Getter
+    @Setter
 	private String address;
 
-    @Column(name = "telephonenumber")
+    @Column
+    @Getter
+    @Setter
 	private Integer telephonenumber;
 
-    @Column(name = "dateofreceipt")
-	private LocalDate dateofreceipt;
+    @Column
+    @Getter
+    private LocalDate dateofreceipt;
 
-    @Column(name = "dateofdismissal")
+    @Column
+    @Getter
 	private LocalDate dateofdismissal;
 	
 	public Employee(String surname, String name, String department, String position, String dateofreceipt) {
@@ -49,24 +69,7 @@ public class Employee {
 
     public Employee() {this("","","","",LocalDate.now().toString());}
 
-	public String getSurname() {return this.surname;}
-	public String getName() {return this.name;}
-	public String getPatronymic() {return this.patronymic;}
-	public String getDepartment() {return this.department;}
-	public String getPosition() {return this.position;}
-	public String getAddress() {return this.address;}
-	public Integer getTelephonenumber() {return this.telephonenumber;}
-	public LocalDate getDateOfReceipt() {return this.dateofreceipt;}
-	public LocalDate getDatedfdismissal() {return this.dateofdismissal;}
-    public Integer getId() {return this.id;}
-    public void setId(Integer id) {this.id = id;}
-    public void setSurname(String surname) {this.surname = name;}
-    public void setName(String name) {this.name = name;}
-    public void setPatronymic(String patronymic) {this.patronymic = patronymic;}
-    public void setDepartment(String department) {this.department = department;}
-    public void setPosition(String position) {this.position = position;}
-    public void setAddress(String address) {this.address = address;}
-    public void setTelephonenumber(Integer telephonenumber) {this.telephonenumber = telephonenumber;}
+
     public void setDateofreceipt(String dateofreceipt) {this.dateofdismissal = LocalDate.parse(dateofreceipt);}
     public void setDateofdismissal(String dateofdismissal) {this.dateofdismissal = LocalDate.parse(dateofdismissal);}
 
