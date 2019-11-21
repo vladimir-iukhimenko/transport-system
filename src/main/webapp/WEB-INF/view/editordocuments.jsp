@@ -14,7 +14,7 @@
     <c:if test="${empty document.documenttype}">
         <title>Добавить документ</title>
     </c:if>
-    <<c:if test="${!empty document.documenttype}">
+    <c:if test="${!empty document.documenttype}">
         <title>Редактировать документ</title>
     </c:if>
 </head>
@@ -26,13 +26,13 @@
     <c:url value="/addemployeedoc" var="var"/>
 </c:if>
 <c:if test="${!empty document.documenttype && fn:contains(type,'DocumentTransport')}">
-    <c:url value="/editemployeedoc" var="var"/>
+    <c:url value="/edittransportdoc" var="var"/>
 </c:if>
 <c:if test="${!empty document.documenttype && fn:contains(type,'DocumentEmployee')}">
     <c:url value="/editemployeedoc" var="var"/>
 </c:if>
 <form action="${var}" method="POST">
-    <<c:if test="${!empty document.documenttype}">
+    <c:if test="${!empty document.documenttype}">
         <input type="hidden" name="id" value="${document.id}">
     </c:if>
     <label for="documenttype">Тип документа</label>
@@ -40,14 +40,14 @@
     <label for="series">Серия</label>
         <input type="text" name="series" id="series" value ="${document.series}">
     <label for="number">Номер</label>
-        <input type="text" name="number" id="number" value ="${document.number}">
+        <input type="number" name="number" id="number" value ="${document.number}">
     <label for="issuedby">Выпущено</label>
         <input type="text" name="issuedby" id="issuedby" value="${document.issuedby}">
     <label for="issueddate">Дата выпуска</label>
-        <input type="text" name="issueddate" id="issueddate" value="${document.issueddate}">
+        <input type="date" name="issueddate" id="issueddate" value="${document.issueddate}">
 <c:if test="${fn:contains(type,'DocumentTransport')}">
     <label for="expiredate">Дата истечения</label>
-        <input type="text" name="expiredate" id="expiredate" value="${document.expiredate}">
+        <input type="date" name="expiredate" id="expiredate" value="${document.expiredate}">
     </c:if>
 <c:if test="${fn:contains(type,'DocumentEmployee')}">
     <label for="employeeid">Сотрудник</label>
@@ -57,7 +57,7 @@
     <c:if test="${empty document.documenttype}">
         <input type="submit" value="Добавить">
     </c:if>
-    <<c:if test="${!empty document.documenttype}">
+    <c:if test="${!empty document.documenttype}">
         <input type="submit" value="Редактировать">
     </c:if>
 </form>

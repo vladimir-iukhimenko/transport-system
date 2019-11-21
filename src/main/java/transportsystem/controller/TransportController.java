@@ -20,71 +20,71 @@ public class TransportController {
         this.transportService = transportservice;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView startPage() {
+    @RequestMapping(value="/",method = RequestMethod.GET)
+    public ModelAndView startpage() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("index");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/transports", method = RequestMethod.GET)
+    public ModelAndView listTransports() {
         List<Transport> transports = transportService.getAllTransports();
         List<TransportModel> transportmodels = transportService.getAllTransportModels();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("index");
+        modelAndView.setViewName("transports");
         modelAndView.addObject("transports",transports);
         modelAndView.addObject("transportmodels",transportmodels);
         return modelAndView;
     }
 
-    @RequestMapping(value = "/about", method = RequestMethod.GET)
-    public ModelAndView aboutPage() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("about");
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/edittransport/{id}", method = RequestMethod.GET)
     public ModelAndView editPage(@PathVariable("id") Integer id)
     {
         Transport transport = transportService.getTransportById(id);
         List<TransportModel> transportmodels = transportService.getAllTransportModels();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("editPage");
+        modelAndView.setViewName("editortransports");
         modelAndView.addObject("transport",transport);
         modelAndView.addObject("transportmodels", transportmodels);
         return modelAndView;
     }
 
-    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    @RequestMapping(value = "/edittransport", method = RequestMethod.POST)
     public ModelAndView editTransport(@ModelAttribute("transport") Transport transport)
     {
         ModelAndView modelAndView = new ModelAndView();
         List<TransportModel> transportmodels = transportService.getAllTransportModels();
-        modelAndView.setViewName("redirect:/");
+        modelAndView.setViewName("redirect:/transports");
         transportService.edit(transport);
         return modelAndView;
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    @RequestMapping(value = "/addtransport", method = RequestMethod.GET)
     public ModelAndView addPage()
     {
         List<TransportModel> transportmodels = transportService.getAllTransportModels();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("editPage");
+        modelAndView.setViewName("editortransports");
         modelAndView.addObject("transportmodels", transportmodels);
         return modelAndView;
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/addtransport", method = RequestMethod.POST)
     public ModelAndView addTransport(@ModelAttribute("transport") Transport transport)
     {
         ModelAndView modelAndView = new ModelAndView();
         List<TransportModel> transportmodels = transportService.getAllTransportModels();
-        modelAndView.setViewName("redirect:/");
+        modelAndView.setViewName("redirect:/transports");
         transportService.add(transport);
         return modelAndView;
     }
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/deletetransport/{id}", method = RequestMethod.GET)
     public ModelAndView deleteTransport(@PathVariable("id") Integer id)
     {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/");
+        modelAndView.setViewName("redirect:/transports");
         Transport transport = transportService.getTransportById(id);
         transportService.delete(transport);
         return modelAndView;

@@ -56,6 +56,7 @@
                 <c:if test="${fn:contains(inst,'DocumentEmployee')}">
                     <a href="/editemployeedoc/${document.id}">edit</a>
                     <a href="/deleteemployeedoc/${document.id}">delete</a>
+                </c:if>
             </td>
         </tr>
     </c:forEach>
@@ -68,3 +69,4 @@
     <c:url value="/addemployeedoc" var="add"/>
 </c:if>
 <a href="${add}">Добавить</a>
+<p><a href="/">На главную</a></p>

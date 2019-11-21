@@ -122,7 +122,7 @@ public class DocumentController {
     public ModelAndView deleteDocumentTransport(@PathVariable("id") Integer id)
     {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/");
+        modelAndView.setViewName("redirect:/transportdocs");
         Document document = documentService.getDocumentTransportById(id);
         documentService.delete(document);
         return modelAndView;
@@ -132,7 +132,7 @@ public class DocumentController {
     public ModelAndView deleteDocumentEmployee(@PathVariable("id") Integer id)
     {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/");
+        modelAndView.setViewName("redirect:/employeedocs");
         Document document = documentService.getDocumentEmployeeById(id);
         documentService.delete(document);
         return modelAndView;
