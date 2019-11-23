@@ -20,7 +20,7 @@
         <tr>
             <td>${transport.number}</td>
             <td>${transport.vin}</td>
-            <td>${transportmodels.get((transport.transportmodel.id)-1).getName()}</td>
+            <td>${transport.transportmodel.name}</td>
             <td>${transport.producedyear}</td>
             <td>${transport.startupdate}</td>
             <td>
@@ -33,4 +33,5 @@
 
 <c:url value="/addtransport" var="add"/>
 <a href="${add}">Добавить транспорт</a>
+<a href="/transportmodels">Модели транспорта</a>
 <p><a href="/">На главную</a></p>

@@ -38,6 +38,26 @@ public class TransportController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/transportmodels", method = RequestMethod.GET)
+    public ModelAndView listTransportModels() {
+        List<TransportModel> transportmodels = transportService.getAllTransportModels();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("transportmodels");
+        modelAndView.addObject("transportmodels",transportmodels);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/boundedtransports/{id}", method = RequestMethod.GET)
+    public ModelAndView listBoundedTransports(@PathVariable("id") Integer id)
+    {
+        TransportModel transportmodel = transportService.getTransportModelById(id);
+        List<Transport> transports = transportmodel.getTransports();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("transports");
+        modelAndView.addObject("transports", transports);
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/edittransport/{id}", method = RequestMethod.GET)
     public ModelAndView editPage(@PathVariable("id") Integer id)
     {
@@ -51,10 +71,10 @@ public class TransportController {
     }
 
     @RequestMapping(value = "/edittransport", method = RequestMethod.POST)
-    public ModelAndView editTransport(@ModelAttribute("transport") Transport transport)
+    public ModelAndView editTransport(@ModelAttribute("transport") Transport transport, @RequestParam("transportmodelid") int id)
     {
         ModelAndView modelAndView = new ModelAndView();
-        List<TransportModel> transportmodels = transportService.getAllTransportModels();
+        transport.setTransportmodel(transportService.getTransportModelById(id));
         modelAndView.setViewName("redirect:/transports");
         transportService.edit(transport);
         return modelAndView;
@@ -71,10 +91,10 @@ public class TransportController {
     }
 
     @RequestMapping(value = "/addtransport", method = RequestMethod.POST)
-    public ModelAndView addTransport(@ModelAttribute("transport") Transport transport)
+    public ModelAndView addTransport(@ModelAttribute("transport") Transport transport,@RequestParam("transportmodelid") int id)
     {
         ModelAndView modelAndView = new ModelAndView();
-        List<TransportModel> transportmodels = transportService.getAllTransportModels();
+        transport.setTransportmodel(transportService.getTransportModelById(id));
         modelAndView.setViewName("redirect:/transports");
         transportService.add(transport);
         return modelAndView;

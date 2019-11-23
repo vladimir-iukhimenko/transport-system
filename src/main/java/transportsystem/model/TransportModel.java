@@ -3,8 +3,7 @@ package transportsystem.model;
 import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name="transportmodel")
@@ -50,7 +49,7 @@ public class TransportModel {
     @Getter
     @Setter
     @OneToMany(mappedBy = "transportmodel", fetch = FetchType.EAGER)
-    private Set<Transport> transports;
+    private List<Transport> transports;
 	
 	public TransportModel(String name, String color, String producer, Integer maxweight, Integer engineid, String enginepower)
     {

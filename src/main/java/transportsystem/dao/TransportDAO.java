@@ -23,7 +23,7 @@ public class TransportDAO {
 
     public void add(Transport transport) {
         Session session = sessionFactory.getCurrentSession();
-        session.persist(transport);
+        session.save(transport);
     }
 
     public void delete(Transport transport) {

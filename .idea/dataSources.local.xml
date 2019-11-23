@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="SQL Server (Microsoft) - transportsystem@localhost" uuid="c0b94cdb-2443-4015-8a72-f02dcd3cb495">
+    <data-source name="SQL Server (Microsoft) - transportsystem@DESKTOP-HEBGA12" uuid="c0b94cdb-2443-4015-8a72-f02dcd3cb495">
       <secret-storage>master_key</secret-storage>
       <domain-auth>true</domain-auth>
       <schema-pattern>master.*</schema-pattern>
