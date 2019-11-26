@@ -31,7 +31,6 @@
     </c:forEach>
 </table>
 
-<c:url value="/addtransport" var="add"/>
-<a href="${add}">Добавить транспорт</a>
-<a href="/transportmodels">Модели транспорта</a>
+<p><a href="/addtransport">Добавить транспорт</a></p>
+<p><a href="/transportmodels">Модели транспортных средств</a></p>
 <p><a href="/">На главную</a></p>

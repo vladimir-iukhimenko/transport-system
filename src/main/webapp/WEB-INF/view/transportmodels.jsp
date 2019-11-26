@@ -15,6 +15,8 @@
         <th>Максимальнвй вес</th>
         <th>Двигатель</th>
         <th>Мощность двигателя</th>
+        <th>Имеющиеся автомобили в гараже</th>
+        <th>Действия</th>
     </tr>
     <c:forEach var="transportmodel" items="${transportmodels}">
         <tr>
@@ -25,12 +27,17 @@
             <td>${transportmodel.engine.name}</td>
             <td>${transportmodel.enginepower}</td>
             <td>
-                <a href="/boundedtransports/${transportmodel.id}">Транспортные средства</a>
+                <a href="/boundedtransports/${transportmodel.id}">Показать</a>
+            </td>
+            <td>
+                <a href="/edittransportmodel/${transportmodel.id}">Редактировать</a>
+                <a href="/deletetransportmodel/${transportmodel.id}">Удалить</a>
             </td>
         </tr>
     </c:forEach>
 </table>
 
-<c:url value="/addtransportmodel" var="addmodel"/>
-<a href="${addmodel}">Добавить модель транспорта</a>
+
+<p><a href="/addtransportmodel">Добавить модель транспорта</a></p>
+<p><a href="/engines">Показать все двигатели</a></p>
 <p><a href="/">На главную</a></p>

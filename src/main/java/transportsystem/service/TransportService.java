@@ -66,7 +66,7 @@ public class TransportService {
     }
 
     @Transactional
-    public void editTransporModel(TransportModel transportModel)
+    public void editTransportModel(TransportModel transportModel)
     {
         TransportDAO.editTransportModel(transportModel);
     }

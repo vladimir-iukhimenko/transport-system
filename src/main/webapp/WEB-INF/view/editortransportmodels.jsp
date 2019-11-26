@@ -24,22 +24,23 @@
     <c:url value="/edittransportmodel" var="var"/>
 </c:if>
 <form action="${var}" method="POST">
-    <c:if test="${!empty transport.number}">
+    <c:if test="${!empty transportmodel.name}">
         <input type="hidden" name="id" value="${transportmodel.id}">
     </c:if>
-    <p> <label for="number">Наименование модели</label>
-        <input type="text" name="number" id="number" value="${transportmodel.name}"></p>
-    <p><label for="vin">Цвет</label>
-        <input type="text" name="vin" id="vin" value ="${transportmodel.color}"></p>
-    <p><label for="modelid">Производитель</label>
-        <input type="text" name="vin" id="vin" value ="${transportmodel.color}"></p>
+    <p> <label for="name">Наименование модели</label>
+        <input type="text" name="name" id="name" value="${transportmodel.name}"></p>
+    <p><label for="color">Цвет</label>
+        <input type="text" name="color" id="color" value ="${transportmodel.color}"></p>
+    <p><label for="producer">Производитель</label>
+        <input type="text" name="producer" id="producer" value ="${transportmodel.producer}"></p>
     <p><label for="maxweight">Максимальный вес</label>
         <input type="text" name="maxweight" id="maxweight" value ="${transportmodel.maxweight}"></p>
-        <%--<select id="engineid" name="engineid"></p>
+    <p><label for="engineid">Двигатель</label>
+    <select id="engineid" name="engineid"></p>
     <c:forEach var="engine" items="${engines}">
         <p><option value="${engine.id}">${engine.name}</option></p>
     </c:forEach>
-    </select>--%>
+    </select>
     <p><label for="enginepower">Мощность двигателя</label>
         <input type="text" name="enginepower" id="enginepower" value="${transportmodel.enginepower}"></p>
     <c:if test="${empty transportmodel.name}">

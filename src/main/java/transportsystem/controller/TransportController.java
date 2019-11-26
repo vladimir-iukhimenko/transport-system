@@ -50,7 +50,7 @@ public class TransportController {
     }
 
     @RequestMapping(value = "/boundedtransports/{id}", method = RequestMethod.GET)
-    public ModelAndView listBoundedTransports(@PathVariable("id") Integer id)
+    public ModelAndView listBoundedTransports(@PathVariable("id") int id)
     {
         TransportModel transportmodel = transportService.getTransportModelById(id);
         List<Transport> transports = transportmodel.getTransports();
@@ -66,6 +66,17 @@ public class TransportController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("engines");
         modelAndView.addObject("engines", engines);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/boundedtransportmodels/{id}", method = RequestMethod.GET)
+    public ModelAndView listBoundedTransportModels(@PathVariable("id") int id)
+    {
+        Engine engine = transportService.getEngineById(id);
+        List<TransportModel> transportModels = engine.getTransportmodels();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("transportmodels");
+        modelAndView.addObject("transportmodels", transportModels);
         return modelAndView;
     }
 
@@ -125,6 +136,8 @@ public class TransportController {
     public ModelAndView addTransportModel()
     {
         ModelAndView modelAndView = new ModelAndView();
+        List<Engine> engines = transportService.getAllEngines();
+        modelAndView.addObject("engines", engines);
         modelAndView.setViewName("editortransportmodels");
         return modelAndView;
     }
@@ -157,7 +170,7 @@ public class TransportController {
         ModelAndView modelAndView = new ModelAndView();
         transportModel.setEngine(transportService.getEngineById(id));
         modelAndView.setViewName("redirect:/transportmodels");
-        transportService.editTransporModel(transportModel);
+        transportService.editTransportModel(transportModel);
         return modelAndView;
     }
 
