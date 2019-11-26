@@ -2,8 +2,10 @@ package transportsystem.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import transportsystem.model.Engine;
 import transportsystem.model.Transport;
 import transportsystem.model.TransportModel;
 import transportsystem.service.TransportService;
@@ -58,8 +60,17 @@ public class TransportController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/engines", method = RequestMethod.GET)
+    public ModelAndView listEngines() {
+        List<Engine> engines = transportService.getAllEngines();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("engines");
+        modelAndView.addObject("engines", engines);
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/edittransport/{id}", method = RequestMethod.GET)
-    public ModelAndView editPage(@PathVariable("id") Integer id)
+    public ModelAndView editTransport(@PathVariable("id") Integer id)
     {
         Transport transport = transportService.getTransportById(id);
         List<TransportModel> transportmodels = transportService.getAllTransportModels();
@@ -76,12 +87,12 @@ public class TransportController {
         ModelAndView modelAndView = new ModelAndView();
         transport.setTransportmodel(transportService.getTransportModelById(id));
         modelAndView.setViewName("redirect:/transports");
-        transportService.edit(transport);
+        transportService.editTransport(transport);
         return modelAndView;
     }
 
     @RequestMapping(value = "/addtransport", method = RequestMethod.GET)
-    public ModelAndView addPage()
+    public ModelAndView addTransport()
     {
         List<TransportModel> transportmodels = transportService.getAllTransportModels();
         ModelAndView modelAndView = new ModelAndView();
@@ -96,17 +107,113 @@ public class TransportController {
         ModelAndView modelAndView = new ModelAndView();
         transport.setTransportmodel(transportService.getTransportModelById(id));
         modelAndView.setViewName("redirect:/transports");
-        transportService.add(transport);
+        transportService.addTransport(transport);
         return modelAndView;
     }
 
     @RequestMapping(value = "/deletetransport/{id}", method = RequestMethod.GET)
-    public ModelAndView deleteTransport(@PathVariable("id") Integer id)
+    public ModelAndView deleteTransport(@PathVariable("id") int id)
     {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/transports");
         Transport transport = transportService.getTransportById(id);
-        transportService.delete(transport);
+        transportService.deleteTransport(transport);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/addtransportmodel", method = RequestMethod.GET)
+    public ModelAndView addTransportModel()
+    {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("editortransportmodels");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/addtransportmodel", method = RequestMethod.POST)
+    public ModelAndView addTransportModel(@ModelAttribute("transportmodel") TransportModel transportmodel, @RequestParam("engineid") int id)
+    {
+        ModelAndView modelAndView = new ModelAndView();
+        transportmodel.setEngine(transportService.getEngineById(id));
+        modelAndView.setViewName("redirect:/transportmodels");
+        transportService.addTransportModel(transportmodel);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/edittransportmodel/{id}", method = RequestMethod.GET)
+    public ModelAndView editTransportModel(@PathVariable("id") int id)
+    {
+        TransportModel transportModel = transportService.getTransportModelById(id);
+        List<Engine> engines = transportService.getAllEngines();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/editortransportmodels");
+        modelAndView.addObject("transportmodel",transportModel);
+        modelAndView.addObject("engines", engines);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/edittransportmodel", method = RequestMethod.POST)
+    public ModelAndView editTransportModel(@ModelAttribute("transportmodel") TransportModel transportModel, @RequestParam("engineid") int id)
+    {
+        ModelAndView modelAndView = new ModelAndView();
+        transportModel.setEngine(transportService.getEngineById(id));
+        modelAndView.setViewName("redirect:/transportmodels");
+        transportService.editTransporModel(transportModel);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/deletetransportmodel/{id}", method = RequestMethod.GET)
+    public ModelAndView deleteTransportModel(@PathVariable("id") int id)
+    {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:/transportmodels");
+        TransportModel transportModel = transportService.getTransportModelById(id);
+        transportService.deleteTransportModel(transportModel);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/addengine", method = RequestMethod.GET)
+    public ModelAndView addEngine()
+    {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("editorengines");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/addengine", method = RequestMethod.POST)
+    public ModelAndView addEngine(@ModelAttribute("engine") Engine engine)
+    {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:/engines");
+        transportService.addEngine(engine);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/editengine/{id}", method = RequestMethod.GET)
+    public ModelAndView editEngine(@PathVariable("id") int id)
+    {
+        Engine engine = transportService.getEngineById(id);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/editorengines");
+        modelAndView.addObject("engine", engine);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/editengine", method = RequestMethod.POST)
+    public ModelAndView editEngine(@ModelAttribute("engine") Engine engine)
+    {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:/engines");
+        transportService.editEngine(engine);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/deleteengine/{id}", method = RequestMethod.GET)
+    public ModelAndView deleteEngine(@PathVariable("id") int id)
+    {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:/engines");
+        Engine engine = transportService.getEngineById(id);
+        transportService.deleteEngine(engine);
         return modelAndView;
     }
 }

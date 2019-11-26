@@ -22,7 +22,7 @@
             <td>${transportmodel.color}</td>
             <td>${transportmodel.producer}</td>
             <td>${transportmodel.maxweight}</td>
-            <td>${transportmodel.engineid}</td>
+            <td>${transportmodel.engine.name}</td>
             <td>${transportmodel.enginepower}</td>
             <td>
                 <a href="/boundedtransports/${transportmodel.id}">Транспортные средства</a>

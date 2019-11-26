@@ -36,10 +36,11 @@ public class TransportModel {
     @Setter
 	private Integer maxweight;
 
-    @Column
     @Getter
     @Setter
-	private Integer engineid;
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "engineid")
+	private Engine engine;
 
     @Column
     @Getter
@@ -51,18 +52,17 @@ public class TransportModel {
     @OneToMany(mappedBy = "transportmodel", fetch = FetchType.EAGER)
     private List<Transport> transports;
 	
-	public TransportModel(String name, String color, String producer, Integer maxweight, Integer engineid, String enginepower)
+	public TransportModel(String name, String color, String producer, Integer maxweight, String enginepower)
     {
 		this.name = name;
 		this.color = color;
 		this.producer = producer;
 		this.maxweight = maxweight;
-		this.engineid = engineid;
 		this.enginepower = enginepower;
 	}
 
     public TransportModel() {
-        this("","","",0,0,"");
+        this("","","",0,"");
     }
 
 }

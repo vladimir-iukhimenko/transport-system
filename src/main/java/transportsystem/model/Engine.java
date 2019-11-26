@@ -4,6 +4,8 @@ import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name="engine")
 public class Engine {
@@ -29,6 +31,11 @@ public class Engine {
     @Getter
     @Setter
 	private String fuel;
+
+    @Getter
+    @Setter
+    @OneToMany(mappedBy = "engine", fetch = FetchType.EAGER)
+    private List<TransportModel> transportmodels;
 	
 	public Engine(String name, Double volume, String fuel) {
 		this.name = name;

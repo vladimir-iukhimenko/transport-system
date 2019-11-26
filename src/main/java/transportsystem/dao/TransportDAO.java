@@ -4,6 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import transportsystem.model.Engine;
 import transportsystem.model.Transport;
 import transportsystem.model.TransportModel;
 import java.util.*;
@@ -21,14 +22,20 @@ public class TransportDAO {
         this.sessionFactory = sessionFactory;
     }
 
-    public void add(Transport transport) {
+    public void addTransport(Transport transport) {
         Session session = sessionFactory.getCurrentSession();
         session.save(transport);
     }
 
-    public void delete(Transport transport) {
+    public void deleteTransport(Transport transport) {
         Session session = sessionFactory.getCurrentSession();
         session.delete(transport);
+    }
+
+    public void editTransport(Transport transport) {
+        Session session = sessionFactory.getCurrentSession();
+        session.update(transport);
+
     }
 
     public Transport getTransportById(int id) {
@@ -36,15 +43,44 @@ public class TransportDAO {
         return session.get(Transport.class,id);
     }
 
+    public void addTransportModel(TransportModel transportModel) {
+        Session session = sessionFactory.getCurrentSession();
+        session.save(transportModel);
+    }
+
+    public void deleteTransportModel(TransportModel transportModel) {
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(transportModel);
+    }
+
+    public void editTransportModel(TransportModel transportModel) {
+        Session session = sessionFactory.getCurrentSession();
+        session.update(transportModel);
+    }
+
     public TransportModel getTransportModelById(int id) {
         Session session = sessionFactory.getCurrentSession();
         return session.get(TransportModel.class,id);
     }
 
-    public void edit(Transport transport) {
+    public void addEngine(Engine engine) {
         Session session = sessionFactory.getCurrentSession();
-        session.update(transport);
+        session.save(engine);
+    }
 
+    public void deleteEngine(Engine engine) {
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(engine);
+    }
+
+    public void editEngine(Engine engine) {
+        Session session = sessionFactory.getCurrentSession();
+        session.update(engine);
+    }
+
+    public Engine getEngineById(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(Engine.class,id);
     }
 
     @SuppressWarnings("unchecked")
@@ -57,5 +93,11 @@ public class TransportDAO {
     public List<TransportModel> getAllTransportModels() {
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery("from TransportModel").list();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Engine> getAllEngines() {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createQuery("from Engine").list();
     }
 }
