@@ -43,25 +43,6 @@ public class TransportDAO {
         return session.get(Transport.class,id);
     }
 
-    public void addTransportModel(TransportModel transportModel) {
-        Session session = sessionFactory.getCurrentSession();
-        session.save(transportModel);
-    }
-
-    public void deleteTransportModel(TransportModel transportModel) {
-        Session session = sessionFactory.getCurrentSession();
-        session.delete(transportModel);
-    }
-
-    public void editTransportModel(TransportModel transportModel) {
-        Session session = sessionFactory.getCurrentSession();
-        session.update(transportModel);
-    }
-
-    public TransportModel getTransportModelById(int id) {
-        Session session = sessionFactory.getCurrentSession();
-        return session.get(TransportModel.class,id);
-    }
 
     public void addEngine(Engine engine) {
         Session session = sessionFactory.getCurrentSession();
@@ -89,11 +70,6 @@ public class TransportDAO {
         return session.createQuery("from Transport").list();
     }
 
-    @SuppressWarnings("unchecked")
-    public List<TransportModel> getAllTransportModels() {
-        Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("from TransportModel").list();
-    }
 
     @SuppressWarnings("unchecked")
     public List<Engine> getAllEngines() {

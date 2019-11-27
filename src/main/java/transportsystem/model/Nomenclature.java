@@ -2,6 +2,8 @@ package transportsystem.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,6 +40,11 @@ public class Nomenclature {
 
     @Column
 	private StringBuilder comment;
+
+    @Getter
+    @Setter
+    @OneToMany(mappedBy = "nomenclature", fetch = FetchType.EAGER)
+    private List<Goods> goods;
 
 	public Nomenclature(Double length, Double width, Double height, Double weight) {
 		this.length = length;

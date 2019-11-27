@@ -54,33 +54,6 @@ public class TransportService {
     }
 
     @Transactional
-    public void addTransportModel(TransportModel transportModel)
-    {
-        TransportDAO.addTransportModel(transportModel);
-    }
-
-    @Transactional
-    public void deleteTransportModel(TransportModel transportModel)
-    {
-        TransportDAO.deleteTransportModel(transportModel);
-    }
-
-    @Transactional
-    public void editTransportModel(TransportModel transportModel)
-    {
-        TransportDAO.editTransportModel(transportModel);
-    }
-
-    @Transactional
-    public TransportModel getTransportModelById(int id)
-    {
-        return TransportDAO.getTransportModelById(id);
-    }
-
-    @Transactional
-    public List<TransportModel> getAllTransportModels() { return TransportDAO.getAllTransportModels();}
-
-    @Transactional
     public void addEngine(Engine engine)
     {
         TransportDAO.addEngine(engine);

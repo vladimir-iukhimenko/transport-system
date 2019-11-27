@@ -15,10 +15,12 @@ public class Goods {
     @Setter
 	private Integer id;
 
-    @Column
+
     @Getter
     @Setter
-	private Integer nomenclatureid;
+    @ManyToOne(optional = false,cascade = CascadeType.ALL)
+    @JoinColumn(name = "nomenclatureid")
+	private Nomenclature nomenclature;
 
     @Column(name = "amount")
     @Getter
@@ -40,14 +42,13 @@ public class Goods {
     @Setter
 	private Double weight;
 	
-	public Goods(Integer nomenclatureid, Integer amount, Double length, Double height, Double weight) {
-		this.nomenclatureid = nomenclatureid;
+	public Goods(Integer amount, Double length, Double height, Double weight) {
 		this.amount = amount;
 		this.length = length;
 		this.height = height;
         this.weight = weight;
 	}
 
-    public Goods() {this(0,0,0.0,0.0,0.0);}
+    public Goods() {this(0,0.0,0.0,0.0);}
 
 }
