@@ -18,10 +18,10 @@
 </head>
 <body>
 <c:if test="${empty engine.name}">
-    <c:url value="/addengine" var="var"/>
+    <c:url value="/engines/add" var="var"/>
 </c:if>
 <c:if test="${!empty engine.name}">
-    <c:url value="/editengine" var="var"/>
+    <c:url value="/engines/edit" var="var"/>
 </c:if>
 <form action="${var}" method="POST">
     <c:if test="${!empty engine.name}">

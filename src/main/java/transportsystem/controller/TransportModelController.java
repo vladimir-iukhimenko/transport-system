@@ -7,8 +7,8 @@ import org.springframework.web.servlet.ModelAndView;
 import transportsystem.model.Engine;
 import transportsystem.model.Transport;
 import transportsystem.model.TransportModel;
+import transportsystem.service.EngineService;
 import transportsystem.service.TransportModelService;
-
 import java.util.List;
 
 /**
@@ -18,9 +18,16 @@ import java.util.List;
 public class TransportModelController {
     private TransportModelService transportModelService;
 
+    private EngineService engineService;
+
     @Autowired
     public void setTransportModelService(TransportModelService transportModelService) {
         this.transportModelService = transportModelService;
+    }
+
+    @Autowired
+    public void setEngineService(EngineService engineService) {
+        this.engineService = engineService;
     }
 
     @RequestMapping(value = "/transportmodels", method = RequestMethod.GET)
@@ -47,7 +54,7 @@ public class TransportModelController {
     public ModelAndView addTransportModel()
     {
         ModelAndView modelAndView = new ModelAndView();
-        List<Engine> engines = transportService.getAllEngines();
+        List<Engine> engines = engineService.getAllEngines();
         modelAndView.addObject("engines", engines);
         modelAndView.setViewName("editortransportmodels");
         return modelAndView;
@@ -57,17 +64,17 @@ public class TransportModelController {
     public ModelAndView addTransportModel(@ModelAttribute("transportmodel") TransportModel transportmodel, @RequestParam("engineid") int id)
     {
         ModelAndView modelAndView = new ModelAndView();
-        transportmodel.setEngine(transportService.getEngineById(id));
+        transportmodel.setEngine(engineService.getEngineById(id));
         modelAndView.setViewName("redirect:/transportmodels");
-        transportService.addTransportModel(transportmodel);
+        transportModelService.addTransportModel(transportmodel);
         return modelAndView;
     }
 
     @RequestMapping(value = "/edittransportmodel/{id}", method = RequestMethod.GET)
     public ModelAndView editTransportModel(@PathVariable("id") int id)
     {
-        TransportModel transportModel = transportService.getTransportModelById(id);
-        List<Engine> engines = transportService.getAllEngines();
+        TransportModel transportModel = transportModelService.getTransportModelById(id);
+        List<Engine> engines = engineService.getAllEngines();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/editortransportmodels");
         modelAndView.addObject("transportmodel",transportModel);
@@ -79,9 +86,9 @@ public class TransportModelController {
     public ModelAndView editTransportModel(@ModelAttribute("transportmodel") TransportModel transportModel, @RequestParam("engineid") int id)
     {
         ModelAndView modelAndView = new ModelAndView();
-        transportModel.setEngine(transportService.getEngineById(id));
+        transportModel.setEngine(engineService.getEngineById(id));
         modelAndView.setViewName("redirect:/transportmodels");
-        transportService.editTransportModel(transportModel);
+        transportModelService.editTransportModel(transportModel);
         return modelAndView;
     }
 
@@ -90,8 +97,8 @@ public class TransportModelController {
     {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/transportmodels");
-        TransportModel transportModel = transportService.getTransportModelById(id);
-        transportService.deleteTransportModel(transportModel);
+        TransportModel transportModel = transportModelService.getTransportModelById(id);
+        transportModelService.deleteTransportModel(transportModel);
         return modelAndView;
     }
 

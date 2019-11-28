@@ -24,13 +24,13 @@
             <td>${transport.producedyear}</td>
             <td>${transport.startupdate}</td>
             <td>
-                <a href="/edittransport/${transport.id}">edit</a>
-                <a href="/deletetransport/${transport.id}">delete</a>
+                <a href="/transport/edit/${transport.id}">Редактировать</a>
+                <a href="/transport/delete/${transport.id}">Удалить</a>
             </td>
         </tr>
     </c:forEach>
 </table>
 
-<p><a href="/addtransport">Добавить транспорт</a></p>
+<p><a href="/transport/add">Добавить транспорт</a></p>
 <p><a href="/transportmodels">Модели транспортных средств</a></p>
 <p><a href="/">На главную</a></p>

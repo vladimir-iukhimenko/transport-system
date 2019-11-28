@@ -24,13 +24,13 @@
                 <a href="/boundedtransportmodels/${engine.id}">Показать</a>
             </td>
             <td>
-                <a href="/editengine/${engine.id}">Редактировать</a>
-                <a href="/deleteengine/${engine.id}">Удалить</a>
+                <a href="/engines/edit/${engine.id}">Редактировать</a>
+                <a href="/engines/delete/${engine.id}">Удалить</a>
             </td>
         </tr>
     </c:forEach>
 </table>
 
 
-<p><a href="/addengine">Добавить двигатель</a></p>
+<p><a href="/engines/add">Добавить двигатель</a></p>
 <p><a href="/">На главную</a></p>

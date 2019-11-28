@@ -53,28 +53,5 @@ public class TransportService {
         return TransportDAO.getAllTransports();
     }
 
-    @Transactional
-    public void addEngine(Engine engine)
-    {
-        TransportDAO.addEngine(engine);
-    }
-
-    @Transactional
-    public void deleteEngine(Engine engine)
-    {
-        TransportDAO.deleteEngine(engine);
-    }
-
-    @Transactional
-    public void editEngine(Engine engine)
-    {
-        TransportDAO.editEngine(engine);
-    }
-
-    @Transactional
-    public Engine getEngineById(int id) {return TransportDAO.getEngineById(id);}
-
-    @Transactional
-    public List<Engine> getAllEngines() {return TransportDAO.getAllEngines();}
 
 }

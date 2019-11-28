@@ -2,10 +2,8 @@ package transportsystem.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import transportsystem.model.Engine;
 import transportsystem.model.Transport;
 import transportsystem.model.TransportModel;
 import transportsystem.service.TransportModelService;
@@ -46,25 +44,6 @@ public class TransportController {
     }
 
 
-    @RequestMapping(value = "/engines", method = RequestMethod.GET)
-    public ModelAndView listEngines() {
-        List<Engine> engines = transportService.getAllEngines();
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("engines");
-        modelAndView.addObject("engines", engines);
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/boundedtransportmodels/{id}", method = RequestMethod.GET)
-    public ModelAndView listBoundedTransportModels(@PathVariable("id") int id)
-    {
-        Engine engine = transportService.getEngineById(id);
-        List<TransportModel> transportModels = engine.getTransportmodels();
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("transportmodels");
-        modelAndView.addObject("transportmodels", transportModels);
-        return modelAndView;
-    }
 
     @RequestMapping(value = "/transports/edit/{id}", method = RequestMethod.GET)
     public ModelAndView editTransport(@PathVariable("id") Integer id)
@@ -115,52 +94,6 @@ public class TransportController {
         modelAndView.setViewName("redirect:/transports");
         Transport transport = transportService.getTransportById(id);
         transportService.deleteTransport(transport);
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/addengine", method = RequestMethod.GET)
-    public ModelAndView addEngine()
-    {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("editorengines");
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/addengine", method = RequestMethod.POST)
-    public ModelAndView addEngine(@ModelAttribute("engine") Engine engine)
-    {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/engines");
-        transportService.addEngine(engine);
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/editengine/{id}", method = RequestMethod.GET)
-    public ModelAndView editEngine(@PathVariable("id") int id)
-    {
-        Engine engine = transportService.getEngineById(id);
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/editorengines");
-        modelAndView.addObject("engine", engine);
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/editengine", method = RequestMethod.POST)
-    public ModelAndView editEngine(@ModelAttribute("engine") Engine engine)
-    {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/engines");
-        transportService.editEngine(engine);
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/deleteengine/{id}", method = RequestMethod.GET)
-    public ModelAndView deleteEngine(@PathVariable("id") int id)
-    {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/engines");
-        Engine engine = transportService.getEngineById(id);
-        transportService.deleteEngine(engine);
         return modelAndView;
     }
 }

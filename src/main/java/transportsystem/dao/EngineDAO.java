@@ -4,44 +4,43 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import transportsystem.model.Goods;
+import transportsystem.model.Engine;
 
 import java.util.List;
 
 /**
- * Created by DZCKJS0 on 27.11.2019.
+ * Created by DZCKJS0 on 28.11.2019.
  */
 @Repository
-public class GoodsDAO {
-
+public class EngineDAO {
     private SessionFactory sessionFactory;
 
     @Autowired
     public void setSessionFactory(SessionFactory sessionFactory) {this.sessionFactory = sessionFactory;}
 
-    public void add(Goods goods) {
+    public void addEngine(Engine engine) {
         Session session = sessionFactory.getCurrentSession();
-        session.persist(goods);
+        session.save(engine);
     }
 
-    public void delete(Goods goods) {
+    public void deleteEngine(Engine engine) {
         Session session = sessionFactory.getCurrentSession();
-        session.delete(goods);
+        session.delete(engine);
     }
 
-    public void edit(Goods goods) {
+    public void editEngine(Engine engine) {
         Session session = sessionFactory.getCurrentSession();
-        session.update(goods);
+        session.update(engine);
     }
 
-    public Goods getGoodsById(Integer id) {
+    public Engine getEngineById(int id) {
         Session session = sessionFactory.getCurrentSession();
-        return session.get(Goods.class,id);
+        return session.get(Engine.class,id);
     }
 
     @SuppressWarnings("unchecked")
-    public List<Goods> getAllGoods() {
+    public List<Engine> getAllEngines() {
         Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("from Goods").list();
+        return session.createQuery("from Engine").list();
     }
 }
