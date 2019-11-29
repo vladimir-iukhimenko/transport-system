@@ -69,8 +69,8 @@ public class GoodsController {
     {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/goods");
-        Goods employee = goodsService.getGoodsById(id);
-        goodsService.delete(employee);
+        Goods goods = goodsService.getGoodsById(id);
+        goodsService.delete(goods);
         return modelAndView;
     }
 }

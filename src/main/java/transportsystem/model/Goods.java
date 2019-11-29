@@ -22,22 +22,22 @@ public class Goods {
     @JoinColumn(name = "nomenclatureid")
 	private Nomenclature nomenclature;
 
-    @Column(name = "amount")
+    @Column
     @Getter
     @Setter
 	private Integer amount;
 
-    @Column(name = "length")
+    @Column
     @Getter
     @Setter
 	private Double length;
 
-    @Column(name = "height")
+    @Column
     @Getter
     @Setter
 	private Double height;
 
-    @Column(name = "weight")
+    @Column
     @Getter
     @Setter
 	private Double weight;
