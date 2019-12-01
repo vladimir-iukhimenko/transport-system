@@ -17,7 +17,6 @@ public class Goods {
 
 
     @Getter
-    @Setter
     @ManyToOne(optional = false,cascade = CascadeType.ALL)
     @JoinColumn(name = "nomenclatureid")
 	private Nomenclature nomenclature;
@@ -50,5 +49,10 @@ public class Goods {
 	}
 
     public Goods() {this(0,0.0,0.0,0.0);}
+
+    public void addNomenclature(Nomenclature nomenclature) {
+        this.nomenclature = nomenclature;
+        nomenclature.getGoods().add(this);
+    }
 
 }

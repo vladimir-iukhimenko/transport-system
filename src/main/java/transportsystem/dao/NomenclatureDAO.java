@@ -36,7 +36,7 @@ public class NomenclatureDAO {
 
     public Nomenclature getNomenclatureById(int id) {
         Session session = sessionFactory.getCurrentSession();
-        session.get(Nomenclature.class,id);
+        return session.get(Nomenclature.class,id);
     }
 
     @SuppressWarnings("unchecked")

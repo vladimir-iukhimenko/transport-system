@@ -42,7 +42,6 @@ public class Nomenclature {
 	private StringBuilder comment;
 
     @Getter
-    @Setter
     @OneToMany(mappedBy = "nomenclature", fetch = FetchType.EAGER)
     private List<Goods> goods;
 

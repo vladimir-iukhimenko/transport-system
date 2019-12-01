@@ -37,7 +37,6 @@ public class TransportModel {
 	private Integer maxweight;
 
     @Getter
-    @Setter
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "engineid")
 	private Engine engine;
@@ -48,7 +47,6 @@ public class TransportModel {
 	private String enginepower;
 
     @Getter
-    @Setter
     @OneToMany(mappedBy = "transportmodel", fetch = FetchType.EAGER)
     private List<Transport> transports;
 	
@@ -63,6 +61,11 @@ public class TransportModel {
 
     public TransportModel() {
         this("","","",0,"");
+    }
+
+    public void addEngine(Engine engine) {
+        this.engine = engine;
+        engine.getTransportmodels().add(this);
     }
 
 }

@@ -57,17 +57,17 @@ public class TransportController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/transport/edit", method = RequestMethod.POST)
+    @RequestMapping(value = "/transports/edit", method = RequestMethod.POST)
     public ModelAndView editTransport(@ModelAttribute("transport") Transport transport, @RequestParam("transportmodelid") int id)
     {
         ModelAndView modelAndView = new ModelAndView();
-        transport.setTransportmodel(transportModelService.getTransportModelById(id));
+        transport.addTransportmodel(transportModelService.getTransportModelById(id));
         modelAndView.setViewName("redirect:/transports");
         transportService.editTransport(transport);
         return modelAndView;
     }
 
-    @RequestMapping(value = "/transport/add", method = RequestMethod.GET)
+    @RequestMapping(value = "/transports/add", method = RequestMethod.GET)
     public ModelAndView addTransport()
     {
         List<TransportModel> transportmodels = transportModelService.getAllTransportModels();
@@ -77,17 +77,17 @@ public class TransportController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/transport/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/transports/add", method = RequestMethod.POST)
     public ModelAndView addTransport(@ModelAttribute("transport") Transport transport,@RequestParam("transportmodelid") int id)
     {
         ModelAndView modelAndView = new ModelAndView();
-        transport.setTransportmodel(transportModelService.getTransportModelById(id));
+        transport.addTransportmodel(transportModelService.getTransportModelById(id));
         modelAndView.setViewName("redirect:/transports");
         transportService.addTransport(transport);
         return modelAndView;
     }
 
-    @RequestMapping(value = "/transport/delete/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/transports/delete/{id}", method = RequestMethod.GET)
     public ModelAndView deleteTransport(@PathVariable("id") int id)
     {
         ModelAndView modelAndView = new ModelAndView();

@@ -24,8 +24,8 @@
             <td>${transport.producedyear}</td>
             <td>${transport.startupdate}</td>
             <td>
-                <a href="/transport/edit/${transport.id}">Редактировать</a>
-                <a href="/transport/delete/${transport.id}">Удалить</a>
+                <a href="/transports/edit/${transport.id}">Редактировать</a>
+                <a href="/transports/delete/${transport.id}">Удалить</a>
             </td>
         </tr>
     </c:forEach>

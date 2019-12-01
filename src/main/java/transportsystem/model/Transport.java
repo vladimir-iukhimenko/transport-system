@@ -28,7 +28,6 @@ public class Transport {
 	private String vin;
 
     @Getter
-    @Setter
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "transportmodelid")
 	private TransportModel transportmodel;
@@ -77,5 +76,10 @@ public class Transport {
 
     public void setStartupdate(String startupdate) {
         this.startupdate = LocalDate.parse(startupdate);
+    }
+
+    public void addTransportmodel(TransportModel transportModel) {
+        this.transportmodel = transportModel;
+        transportModel.getTransports().add(this);
     }
 }

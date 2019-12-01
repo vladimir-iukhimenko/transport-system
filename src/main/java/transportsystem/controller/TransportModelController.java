@@ -64,7 +64,7 @@ public class TransportModelController {
     public ModelAndView addTransportModel(@ModelAttribute("transportmodel") TransportModel transportmodel, @RequestParam("engineid") int id)
     {
         ModelAndView modelAndView = new ModelAndView();
-        transportmodel.setEngine(engineService.getEngineById(id));
+        transportmodel.addEngine(engineService.getEngineById(id));
         modelAndView.setViewName("redirect:/transportmodels");
         transportModelService.addTransportModel(transportmodel);
         return modelAndView;
@@ -86,7 +86,7 @@ public class TransportModelController {
     public ModelAndView editTransportModel(@ModelAttribute("transportmodel") TransportModel transportModel, @RequestParam("engineid") int id)
     {
         ModelAndView modelAndView = new ModelAndView();
-        transportModel.setEngine(engineService.getEngineById(id));
+        transportModel.addEngine(engineService.getEngineById(id));
         modelAndView.setViewName("redirect:/transportmodels");
         transportModelService.editTransportModel(transportModel);
         return modelAndView;
