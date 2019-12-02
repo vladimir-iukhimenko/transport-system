@@ -15,11 +15,15 @@ public class Goods {
     @Setter
 	private Integer id;
 
-
     @Getter
     @ManyToOne(optional = false,cascade = CascadeType.ALL)
     @JoinColumn(name = "nomenclatureid")
 	private Nomenclature nomenclature;
+
+    @Column
+    @Getter
+    @Setter
+    private String name;
 
     @Column
     @Getter

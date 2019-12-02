@@ -20,6 +20,11 @@ public class Nomenclature {
     @Column
     @Getter
     @Setter
+    private String number;
+
+    @Column
+    @Getter
+    @Setter
 	private Double length;
 
     @Column

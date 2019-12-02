@@ -34,7 +34,7 @@ public class TransportModelController {
     public ModelAndView listTransportModels() {
         List<TransportModel> transportmodels = transportModelService.getAllTransportModels();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("transportmodels");
+        modelAndView.setViewName("transportmodels/transportmodels");
         modelAndView.addObject("transportmodels",transportmodels);
         return modelAndView;
     }
@@ -45,7 +45,7 @@ public class TransportModelController {
         TransportModel transportmodel = transportModelService.getTransportModelById(id);
         List<Transport> transports = transportmodel.getTransports();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("transports");
+        modelAndView.setViewName("transports/transports");
         modelAndView.addObject("transports", transports);
         return modelAndView;
     }
@@ -56,7 +56,7 @@ public class TransportModelController {
         ModelAndView modelAndView = new ModelAndView();
         List<Engine> engines = engineService.getAllEngines();
         modelAndView.addObject("engines", engines);
-        modelAndView.setViewName("editortransportmodels");
+        modelAndView.setViewName("transportmodels/editortransportmodels");
         return modelAndView;
     }
 
@@ -76,7 +76,7 @@ public class TransportModelController {
         TransportModel transportModel = transportModelService.getTransportModelById(id);
         List<Engine> engines = engineService.getAllEngines();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/editortransportmodels");
+        modelAndView.setViewName("transportmodels/editortransportmodels");
         modelAndView.addObject("transportmodel",transportModel);
         modelAndView.addObject("engines", engines);
         return modelAndView;

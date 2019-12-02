@@ -24,7 +24,7 @@ public class DocumentController {
     public ModelAndView listDocuments(List<Document> documents,String type)
     {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("documents");
+        modelAndView.setViewName("documents/documents");
         modelAndView.addObject("documents", documents);
         modelAndView.addObject("type",type);
         return modelAndView;
@@ -46,7 +46,7 @@ public class DocumentController {
     public ModelAndView addDocumentTransport()
     {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("editordocuments");
+        modelAndView.setViewName("documents/editordocuments");
         modelAndView.addObject("type","DocumentTransport");
         return modelAndView;
     }
@@ -64,7 +64,7 @@ public class DocumentController {
     public ModelAndView addDocumentEmployee()
     {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("editordocuments");
+        modelAndView.setViewName("documents/editordocuments");
         modelAndView.addObject("type","DocumentEmployee");
         return modelAndView;
     }
@@ -83,7 +83,7 @@ public class DocumentController {
     {
         Document document = documentService.getDocumentTransportById(id);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("editordocuments");
+        modelAndView.setViewName("documents/editordocuments");
         modelAndView.addObject("document",document);
         modelAndView.addObject("type","DocumentTransport");
         return modelAndView;
@@ -103,7 +103,7 @@ public class DocumentController {
     {
         Document document = documentService.getDocumentEmployeeById(id);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("editordocuments");
+        modelAndView.setViewName("documents/editordocuments");
         modelAndView.addObject("document",document);
         modelAndView.addObject("type","DocumentEmployee");
         return modelAndView;

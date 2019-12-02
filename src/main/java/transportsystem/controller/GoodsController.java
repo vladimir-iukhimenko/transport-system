@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import transportsystem.model.Goods;
+import transportsystem.model.Nomenclature;
 import transportsystem.service.GoodsService;
 import java.util.List;
 /**
@@ -24,7 +25,7 @@ public class GoodsController {
     public ModelAndView listGoods() {
         List<Goods> listGoods = goodsService.getAllGoods();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("goods");
+        modelAndView.setViewName("goods/goods");
         modelAndView.addObject("goods",listGoods);
         return modelAndView;
     }
@@ -32,7 +33,9 @@ public class GoodsController {
     @RequestMapping(value = "/goods/add", method = RequestMethod.GET)
     public ModelAndView addGoods() {
         ModelAndView modelAndView = new ModelAndView();
+        ???
         modelAndView.setViewName("editorgoods");
+        modelAndView.addObject("nomenclatures", nomenclatures);
         return modelAndView;
     }
 

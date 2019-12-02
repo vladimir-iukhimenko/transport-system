@@ -25,7 +25,7 @@ public class EmployeeController {
     public ModelAndView listEmployees() {
         List<Employee> listEmployees = employeeService.getAllEmployees();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("employees");
+        modelAndView.setViewName("employees/employees");
         modelAndView.addObject("employees",listEmployees);
         return modelAndView;
     }
@@ -33,7 +33,7 @@ public class EmployeeController {
     @RequestMapping(value = "/employees/add", method = RequestMethod.GET)
     public ModelAndView addEmployee() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("editoremployees");
+        modelAndView.setViewName("employees/editoremployees");
         return modelAndView;
     }
 
@@ -51,7 +51,7 @@ public class EmployeeController {
     {
         Employee employee = employeeService.getEmployeeById(id);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("editoremployees");
+        modelAndView.setViewName("employees/editoremployees");
         modelAndView.addObject("employee", employee);
         return modelAndView;
     }
