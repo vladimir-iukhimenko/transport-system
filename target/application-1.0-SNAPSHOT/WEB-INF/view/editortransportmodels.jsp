@@ -18,10 +18,10 @@
 </head>
 <body>
 <c:if test="${empty transportmodel.name}">
-    <c:url value="/addtransportmodel" var="var"/>
+    <c:url value="/transportmodels/add" var="var"/>
 </c:if>
 <c:if test="${!empty transportmodel.name}">
-    <c:url value="/edittransportmodel" var="var"/>
+    <c:url value="/transportmodels/edit" var="var"/>
 </c:if>
 <form action="${var}" method="POST">
     <c:if test="${!empty transportmodel.name}">

@@ -20,16 +20,16 @@
 </head>
 <body>
 <c:if test="${empty document.documenttype && fn:contains(type,'DocumentTransport')}">
-    <c:url value="/addtransportdoc" var="var"/>
+    <c:url value="/transportdocs/add" var="var"/>
 </c:if>
 <c:if test="${empty document.documenttype && fn:contains(type,'DocumentEmployee')}">
-    <c:url value="/addemployeedoc" var="var"/>
+    <c:url value="/employeedocs/add" var="var"/>
 </c:if>
 <c:if test="${!empty document.documenttype && fn:contains(type,'DocumentTransport')}">
-    <c:url value="/edittransportdoc" var="var"/>
+    <c:url value="/transportdocs/edit" var="var"/>
 </c:if>
 <c:if test="${!empty document.documenttype && fn:contains(type,'DocumentEmployee')}">
-    <c:url value="/editemployeedoc" var="var"/>
+    <c:url value="/employeedocs/edit" var="var"/>
 </c:if>
 <form action="${var}" method="POST">
     <c:if test="${!empty document.documenttype}">
@@ -53,7 +53,6 @@
     <p><label for="employeeid">Сотрудник</label>
     <input type="text" name="employeeid" id="employeeid" value="${document.employeeid}"></p>
 </c:if>
-
     <c:if test="${empty document.documenttype}">
     <p><input type="submit" value="Добавить"></p>
     </c:if>

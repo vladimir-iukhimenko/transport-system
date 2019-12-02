@@ -50,7 +50,7 @@ public class TransportModelController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/addtransportmodel", method = RequestMethod.GET)
+    @RequestMapping(value = "/transportmodels/add", method = RequestMethod.GET)
     public ModelAndView addTransportModel()
     {
         ModelAndView modelAndView = new ModelAndView();
@@ -60,7 +60,7 @@ public class TransportModelController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/addtransportmodel", method = RequestMethod.POST)
+    @RequestMapping(value = "/transportmodels/add", method = RequestMethod.POST)
     public ModelAndView addTransportModel(@ModelAttribute("transportmodel") TransportModel transportmodel, @RequestParam("engineid") int id)
     {
         ModelAndView modelAndView = new ModelAndView();
@@ -70,7 +70,7 @@ public class TransportModelController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/edittransportmodel/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/transportmodels/edit/{id}", method = RequestMethod.GET)
     public ModelAndView editTransportModel(@PathVariable("id") int id)
     {
         TransportModel transportModel = transportModelService.getTransportModelById(id);
@@ -82,7 +82,7 @@ public class TransportModelController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/edittransportmodel", method = RequestMethod.POST)
+    @RequestMapping(value = "/transportmodels/edit", method = RequestMethod.POST)
     public ModelAndView editTransportModel(@ModelAttribute("transportmodel") TransportModel transportModel, @RequestParam("engineid") int id)
     {
         ModelAndView modelAndView = new ModelAndView();
@@ -92,7 +92,7 @@ public class TransportModelController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/deletetransportmodel/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/transportmodels/delete/{id}", method = RequestMethod.GET)
     public ModelAndView deleteTransportModel(@PathVariable("id") int id)
     {
         ModelAndView modelAndView = new ModelAndView();

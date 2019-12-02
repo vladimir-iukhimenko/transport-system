@@ -30,14 +30,14 @@
                 <a href="/boundedtransports/${transportmodel.id}">Показать</a>
             </td>
             <td>
-                <a href="/edittransportmodel/${transportmodel.id}">Редактировать</a>
-                <a href="/deletetransportmodel/${transportmodel.id}">Удалить</a>
+                <a href="/transportmodels/edit/${transportmodel.id}">Редактировать</a>
+                <a href="/transportmodels/delete/${transportmodel.id}">Удалить</a>
             </td>
         </tr>
     </c:forEach>
 </table>
 
 
-<p><a href="/addtransportmodel">Добавить модель транспорта</a></p>
+<p><a href="/transportmodels/add">Добавить модель транспорта</a></p>
 <p><a href="/engines">Показать все двигатели</a></p>
 <p><a href="/">На главную</a></p>

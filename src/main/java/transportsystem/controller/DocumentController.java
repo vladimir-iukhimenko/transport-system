@@ -42,7 +42,7 @@ public class DocumentController {
         return listDocuments(employeedocuments, "DocumentEmployee");
     }
 
-    @RequestMapping(value = "/addtransportdoc", method = RequestMethod.GET)
+    @RequestMapping(value = "/transportdocs/add", method = RequestMethod.GET)
     public ModelAndView addDocumentTransport()
     {
         ModelAndView modelAndView = new ModelAndView();
@@ -51,7 +51,7 @@ public class DocumentController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/addtransportdoc", method = RequestMethod.POST)
+    @RequestMapping(value = "/transportdocs/add", method = RequestMethod.POST)
     public ModelAndView addDocumentTransport(@ModelAttribute("document") DocumentTransport document)
     {
         ModelAndView modelAndView = new ModelAndView();
@@ -60,7 +60,7 @@ public class DocumentController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/addemployeedoc", method = RequestMethod.GET)
+    @RequestMapping(value = "/employeedocs/add", method = RequestMethod.GET)
     public ModelAndView addDocumentEmployee()
     {
         ModelAndView modelAndView = new ModelAndView();
@@ -69,7 +69,7 @@ public class DocumentController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/addemployeedoc", method = RequestMethod.POST)
+    @RequestMapping(value = "/employeedocs/add", method = RequestMethod.POST)
     public ModelAndView addDocumentEmployee(@ModelAttribute("document") DocumentEmployee document)
     {
         ModelAndView modelAndView = new ModelAndView();
@@ -78,7 +78,7 @@ public class DocumentController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/edittransportdoc/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/transportdocs/edit/{id}", method = RequestMethod.GET)
     public ModelAndView editDocumentTransport(@PathVariable("id") Integer id)
     {
         Document document = documentService.getDocumentTransportById(id);
@@ -89,7 +89,7 @@ public class DocumentController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/edittransportdoc", method = RequestMethod.POST)
+    @RequestMapping(value = "/transportdocs/edit", method = RequestMethod.POST)
     public ModelAndView editDocumentTransport(@ModelAttribute("document") DocumentTransport document)
     {
         ModelAndView modelAndView = new ModelAndView();
@@ -98,7 +98,7 @@ public class DocumentController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/editemployeedoc/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/employeedocs/edit/{id}", method = RequestMethod.GET)
     public ModelAndView editDocumentEmployee(@PathVariable("id") Integer id)
     {
         Document document = documentService.getDocumentEmployeeById(id);
@@ -109,7 +109,7 @@ public class DocumentController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/editemployeedoc", method = RequestMethod.POST)
+    @RequestMapping(value = "/employeedocs/edit", method = RequestMethod.POST)
     public ModelAndView editDocumentEmployee(@ModelAttribute("document") DocumentEmployee document)
     {
         ModelAndView modelAndView = new ModelAndView();
@@ -118,7 +118,7 @@ public class DocumentController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/deletetransportdoc/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/transportdocs/delete/{id}", method = RequestMethod.GET)
     public ModelAndView deleteDocumentTransport(@PathVariable("id") Integer id)
     {
         ModelAndView modelAndView = new ModelAndView();
@@ -128,7 +128,7 @@ public class DocumentController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/deleteemployeedoc/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/employeedocs/delete/{id}", method = RequestMethod.GET)
     public ModelAndView deleteDocumentEmployee(@PathVariable("id") Integer id)
     {
         ModelAndView modelAndView = new ModelAndView();

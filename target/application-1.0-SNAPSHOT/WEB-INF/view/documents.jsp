@@ -50,12 +50,12 @@
             </c:if>
             <td>
                 <c:if test="${fn:contains(inst,'DocumentTransport')}">
-                    <a href="/edittransportdoc/${document.id}">edit</a>
-                    <a href="/deletetransportdoc/${document.id}">delete</a>
+                    <a href="/transportdocs/edit/${document.id}">edit</a>
+                    <a href="/transportdocs/delete/${document.id}">delete</a>
                 </c:if>
                 <c:if test="${fn:contains(inst,'DocumentEmployee')}">
-                    <a href="/editemployeedoc/${document.id}">edit</a>
-                    <a href="/deleteemployeedoc/${document.id}">delete</a>
+                    <a href="/employeedocs/edit/${document.id}">edit</a>
+                    <a href="/employeedocs/delete/${document.id}">delete</a>
                 </c:if>
             </td>
         </tr>
@@ -63,10 +63,10 @@
 </table>
 
 <c:if test="${fn:contains(inst,'DocumentTransport')}">
-    <c:url value="/addtransportdoc" var="add"/>
+    <c:url value="/transportdocs/add" var="add"/>
 </c:if>
 <c:if test="${fn:contains(inst,'DocumentEmployee')}">
-    <c:url value="/addemployeedoc" var="add"/>
+    <c:url value="/employeedocs/add" var="add"/>
 </c:if>
 <a href="${add}">Добавить</a>
 <p><a href="/">На главную</a></p>
