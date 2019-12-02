@@ -24,7 +24,7 @@ public class DocumentDAO {
 
     public void add(Document document) {
         Session session = sessionFactory.getCurrentSession();
-        session.persist(document);
+        session.save(document);
     }
 
     public void delete(Document document) {

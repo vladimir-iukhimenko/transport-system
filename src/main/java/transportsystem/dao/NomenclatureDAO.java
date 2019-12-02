@@ -21,7 +21,7 @@ public class NomenclatureDAO {
 
     public void add(Nomenclature nomenclature) {
         Session session = sessionFactory.getCurrentSession();
-        session.persist(nomenclature);
+        session.save(nomenclature);
     }
 
     public void delete(Nomenclature nomenclature) {

@@ -26,7 +26,7 @@ public class NomenclatureController {
     public ModelAndView listNomenclatures() {
         List<Nomenclature> listNomenclatures = nomenclatureService.getAllNomenclatures();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("nomenclatures");
+        modelAndView.setViewName("nomenclatures/nomenclatures");
         modelAndView.addObject("nomenclatures",listNomenclatures);
         return modelAndView;
     }
@@ -34,7 +34,7 @@ public class NomenclatureController {
     @RequestMapping(value = "/nomenclatures/add", method = RequestMethod.GET)
     public ModelAndView addNomenclature() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("editornomenclature");
+        modelAndView.setViewName("nomenclatures/editornomenclatures");
         return modelAndView;
     }
 
@@ -52,7 +52,7 @@ public class NomenclatureController {
     {
         Nomenclature nomenclature = nomenclatureService.getNomenclatureById(id);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("editornomenclatures");
+        modelAndView.setViewName("nomenclatures/editornomenclatures");
         modelAndView.addObject("nomenclature", nomenclature);
         return modelAndView;
     }

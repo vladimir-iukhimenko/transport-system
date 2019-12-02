@@ -21,7 +21,7 @@ public class GoodsDAO {
 
     public void add(Goods goods) {
         Session session = sessionFactory.getCurrentSession();
-        session.persist(goods);
+        session.save(goods);
     }
 
     public void delete(Goods goods) {

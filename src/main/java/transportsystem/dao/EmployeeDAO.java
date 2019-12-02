@@ -21,7 +21,7 @@ public class EmployeeDAO {
     public void add(Employee employee)
     {
         Session session = sessionFactory.getCurrentSession();
-        session.persist(employee);
+        session.save(employee);
     }
 
     public void delete(Employee employee)

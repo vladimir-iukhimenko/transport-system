@@ -15,5 +15,13 @@
 <c:url value="/employeedocs" var="employeedocs"/>
 <a href="${employeedocs}">Документы сотрудников</a>
 </p>
+<p>
+    <c:url value="/goods" var="goods"/>
+    <a href="${goods}">Товары</a>
+</p>
+<p>
+    <c:url value="/nomenclatures" var="nomenclatures"/>
+    <a href="${nomenclatures}">Номенклатуры</a>
+</p>
 </body>
 </html>

@@ -43,7 +43,7 @@ public class Nomenclature {
 	private Double weight;
 
     @Column
-	private StringBuilder comment;
+	private StringBuilder comment = new StringBuilder("");
 
     @Getter
     @OneToMany(mappedBy = "nomenclature", fetch = FetchType.EAGER)

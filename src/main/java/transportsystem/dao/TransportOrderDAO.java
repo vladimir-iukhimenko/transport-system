@@ -20,7 +20,7 @@ public class TransportOrderDAO {
 
     public void addTransportOrder(TransportOrder transportorder) {
         Session session = sessionfactory.getCurrentSession();
-        session.persist(transportorder);
+        session.save(transportorder);
     }
 
     public void deleteTransportOrder(TransportOrder transportorder) {
