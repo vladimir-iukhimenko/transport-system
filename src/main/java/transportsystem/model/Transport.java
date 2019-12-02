@@ -33,7 +33,6 @@ public class Transport {
 	private TransportModel transportmodel;
 
 	@Getter
-    @Setter
     @OneToMany(mappedBy = "transport",fetch = FetchType.EAGER)
     private Set<DocumentTransport> documents;
 
@@ -50,6 +49,10 @@ public class Transport {
     @Getter
     @Setter
 	private LocalDate writeoffdate;
+
+    @Getter
+    @OneToMany(mappedBy = "transport", fetch = FetchType.EAGER)
+    private Set<TransportOrder> transportorders;
 	
 	public Transport(String number, String vin, Integer producedyear, String startupdate)
 	{

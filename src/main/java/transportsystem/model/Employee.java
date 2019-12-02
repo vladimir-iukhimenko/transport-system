@@ -2,6 +2,8 @@ package transportsystem.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -58,6 +60,18 @@ public class Employee {
     @Column
     @Getter
 	private LocalDate dateofdismissal;
+
+    @Getter
+    @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
+    private Set<DocumentEmployee> employeedocuments;
+
+    @Getter
+    @OneToMany(mappedBy = "employeeresponsible", fetch = FetchType.EAGER)
+    private Set<TransportOrder> transportordersresponsible;
+
+    @Getter
+    @OneToMany(mappedBy = "employeecustomer", fetch = FetchType.EAGER)
+    private Set<TransportOrder> transportordercustomer;
 	
 	public Employee(String surname, String name, String department, String position, String dateofreceipt) {
 		this.surname = surname;

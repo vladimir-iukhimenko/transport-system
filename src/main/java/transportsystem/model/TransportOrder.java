@@ -3,6 +3,8 @@ package transportsystem.model;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Set;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,10 +19,9 @@ public class TransportOrder {
     @Setter
 	private Integer id;
 
-    @Column
     @Getter
-    @Setter
-	private Integer goodsid;
+    @OneToMany(mappedBy = "transportorder", fetch = FetchType.EAGER)
+	private Set<Goods> goods;
 
     @Column
     @Getter
@@ -30,10 +31,10 @@ public class TransportOrder {
     @Getter
 	private LocalDate transportpresentingdate;
 
-    @Column
     @Getter
-    @Setter
-	private Integer transportid;
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "transportid")
+	private Transport transport;
 
     @Column
     @Getter
@@ -50,20 +51,20 @@ public class TransportOrder {
     @Setter
 	private String placemethod;
 
-    @Column
     @Getter
-    @Setter
-	private Integer responsibleemployeeid;
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "responsibleemployeeid")
+	private Employee employeeresponsible;
 
     @Column
     @Getter
     @Setter
 	private Integer telephonenumber;
 
-    @Column
     @Getter
-    @Setter
-	private Integer customeremployeeid;
+    @ManyToOne(optional = false,cascade = CascadeType.ALL)
+    @JoinColumn(name = "customeremployeeid")
+	private Employee employeecustomer;
 
     @Column
 	private StringBuilder comment;
@@ -91,10 +92,27 @@ public class TransportOrder {
                             0,"","","",0,0,0);}
 
     public String getComment() {return this.comment.toString();}
+
     public void setOrderdate(String orderdate) {this.orderdate = LocalDate.parse(orderdate);}
+
     public void setTransportpresentingdate(String transportpresentingdate) {this.transportpresentingdate = LocalDate.parse(transportpresentingdate);}
+
     public void setComment(String comment) {
         this.comment.append(LocalDateTime.now().toString() + " " + comment + "\r\n");
     }
 
+    public void addTransport(Transport transport) {
+        this.transport = transport;
+        transport.getTransportorders().add(transport);
+    }
+
+    public void addEmployeeresponsible (Employee employee) {
+        this.employeeresponsible = employee;
+        employee.getTransportordersresponsible().add(this);
+    }
+
+    public void addEmployeecustomer (Employee employee) {
+        this.employeecustomer = employee;
+        employee.getTransportordercustomer().add(this);
+    }
 }

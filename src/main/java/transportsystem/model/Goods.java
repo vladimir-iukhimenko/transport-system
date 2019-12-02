@@ -40,6 +40,11 @@ public class Goods {
     @Getter
     @Setter
 	private Double weight;
+
+    @Getter
+    @ManyToOne(optional = true, cascade = CascadeType.ALL)
+    @JoinColumn(name = "transportorderid")
+    private TransportOrder transportorder;
 	
 	public Goods(Integer amount, Double length, Double height, Double weight) {
 		this.amount = amount;
@@ -53,6 +58,11 @@ public class Goods {
     public void addNomenclature(Nomenclature nomenclature) {
         this.nomenclature = nomenclature;
         nomenclature.getGoods().add(this);
+    }
+
+    public void addTransportorder(TransportOrder transportorder) {
+        this.transportorder = transportorder;
+        transportorder.getGoods().add(this);
     }
 
 }

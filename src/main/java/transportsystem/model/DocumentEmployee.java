@@ -8,10 +8,10 @@ import lombok.Setter;
 @Table(name = "employeedocuments")
 public class DocumentEmployee extends Document{
 
-	@Column
 	@Getter
-	@Setter
-	private Integer employeeid;
+	@ManyToOne(optional = false, cascade = CascadeType.ALL)
+	@JoinColumn(name = "employeeid")
+	private Employee employee;
 	
 	public DocumentEmployee(String documenttype, int number, String issuedby) {
 		this.documenttype = documenttype;
@@ -20,5 +20,10 @@ public class DocumentEmployee extends Document{
 	}
 
 	public DocumentEmployee() {this("",0,"");}
+
+    public void addEmployee(Employee employee) {
+        this.employee = employee;
+        employee.getEmployeedocuments().add(this);
+    }
 
 }
