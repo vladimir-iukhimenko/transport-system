@@ -6,7 +6,6 @@ import org.springframework.transaction.annotation.Transactional;
 import transportsystem.dao.DocumentDAO;
 import transportsystem.model.Document;
 
-import javax.print.Doc;
 import java.util.List;
 
 /**

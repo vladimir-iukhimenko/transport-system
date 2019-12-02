@@ -3,7 +3,6 @@ package transportsystem.model;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
-
 import lombok.Getter;
 import lombok.Setter;
 

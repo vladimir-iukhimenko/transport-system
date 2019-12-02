@@ -2,7 +2,6 @@ package transportsystem.model;
 
 import javax.persistence.*;
 import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 @Table(name = "employeedocuments")

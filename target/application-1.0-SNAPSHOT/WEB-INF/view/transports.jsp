@@ -31,6 +31,6 @@
     </c:forEach>
 </table>
 
-<p><a href="/transport/add">Добавить транспорт</a></p>
+<p><a href="/transports/add">Добавить транспорт</a></p>
 <p><a href="/transportmodels">Модели транспортных средств</a></p>
 <p><a href="/">На главную</a></p>

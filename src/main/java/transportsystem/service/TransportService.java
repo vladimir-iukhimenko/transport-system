@@ -4,11 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import transportsystem.dao.TransportDAO;
-import transportsystem.model.Engine;
 import transportsystem.model.Transport;
-import transportsystem.model.TransportModel;
 
-import java.util.*;
+import java.util.List;
 
 /**
  * Created by Владимир on 10.11.2019.

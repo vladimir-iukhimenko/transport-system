@@ -3,7 +3,7 @@ package transportsystem.model;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -21,7 +21,7 @@ public class TransportOrder {
 
     @Getter
     @OneToMany(mappedBy = "transportorder", fetch = FetchType.EAGER)
-	private Set<Goods> goods;
+	private List<Goods> goods;
 
     @Column
     @Getter
@@ -74,22 +74,17 @@ public class TransportOrder {
     @Setter
 	private String declinereason;
 	
-	public TransportOrder(Integer goodsid, String orderdate, String transportpresentingdate, Integer transportid, String loadingplace,
-						String unloadingplace, String placemethod, Integer responsibleemployeeid, Integer telephonenumber, Integer customeremployeeid) {
-		this.goodsid = goodsid;
+	public TransportOrder(String orderdate, String transportpresentingdate, String loadingplace,
+						String unloadingplace, String placemethod, Integer telephonenumber) {
 		this.orderdate = LocalDate.parse(orderdate);
 		this.transportpresentingdate = LocalDate.parse(transportpresentingdate);
-		this.transportid = transportid;
 		this.loadingplace = loadingplace;
 		this.unloadingplace = unloadingplace;
 		this.placemethod = placemethod;
-		this.responsibleemployeeid = responsibleemployeeid;
 		this.telephonenumber = telephonenumber;
-		this.customeremployeeid = customeremployeeid;
 	}
 
-    public TransportOrder() {this(0,LocalDate.now().toString(),LocalDate.now().plusDays(7).toString(),
-                            0,"","","",0,0,0);}
+    public TransportOrder() {this(LocalDate.now().toString(),LocalDate.now().plusDays(7).toString(),"","","",0);}
 
     public String getComment() {return this.comment.toString();}
 
@@ -103,7 +98,7 @@ public class TransportOrder {
 
     public void addTransport(Transport transport) {
         this.transport = transport;
-        transport.getTransportorders().add(transport);
+        transport.getTransportorders().add(this);
     }
 
     public void addEmployeeresponsible (Employee employee) {

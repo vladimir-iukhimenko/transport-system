@@ -2,10 +2,11 @@ package transportsystem.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Set;
+import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Table(name = "employees")
@@ -62,16 +63,19 @@ public class Employee {
 	private LocalDate dateofdismissal;
 
     @Getter
-    @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
-    private Set<DocumentEmployee> employeedocuments;
+    @org.hibernate.annotations.LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "employee")
+    private List<DocumentEmployee> employeedocuments;
 
     @Getter
-    @OneToMany(mappedBy = "employeeresponsible", fetch = FetchType.EAGER)
-    private Set<TransportOrder> transportordersresponsible;
+    @org.hibernate.annotations.LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "employeeresponsible")
+    private List<TransportOrder> transportordersresponsible;
 
     @Getter
-    @OneToMany(mappedBy = "employeecustomer", fetch = FetchType.EAGER)
-    private Set<TransportOrder> transportordercustomer;
+    @org.hibernate.annotations.LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "employeecustomer")
+    private List<TransportOrder> transportordercustomer;
 	
 	public Employee(String surname, String name, String department, String position, String dateofreceipt) {
 		this.surname = surname;

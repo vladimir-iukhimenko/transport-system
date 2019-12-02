@@ -47,11 +47,13 @@ public class DocumentDAO {
         session.update(document);
     }
 
+    @SuppressWarnings("unchecked")
     public List<Document> getAllEmployeeDocuments() {
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery("from DocumentEmployee").list();
     }
 
+    @SuppressWarnings("unchecked")
     public List<Document> getAllTransportDocuments() {
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery("from DocumentTransport").list();

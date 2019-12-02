@@ -1,10 +1,11 @@
 package transportsystem.model;
 
 import java.time.LocalDate;
-import java.util.Set;
+import java.util.List;
 import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Table(name="transports")
@@ -33,8 +34,9 @@ public class Transport {
 	private TransportModel transportmodel;
 
 	@Getter
-    @OneToMany(mappedBy = "transport",fetch = FetchType.EAGER)
-    private Set<DocumentTransport> documents;
+    @org.hibernate.annotations.LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "transport")
+    private List<DocumentTransport> documents;
 
     @Column
     @Getter
@@ -51,8 +53,9 @@ public class Transport {
 	private LocalDate writeoffdate;
 
     @Getter
-    @OneToMany(mappedBy = "transport", fetch = FetchType.EAGER)
-    private Set<TransportOrder> transportorders;
+    @org.hibernate.annotations.LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "transport")
+    private List<TransportOrder> transportorders;
 	
 	public Transport(String number, String vin, Integer producedyear, String startupdate)
 	{
