@@ -20,14 +20,6 @@ public class DocumentTransport extends Document {
     @JoinColumn(name = "transportid")
     private Transport transport;
 	
-	public DocumentTransport(String documenttype, Integer number, String issuedby) {
-		this.documenttype = documenttype;
-		this.number = number;
-		this.issuedby = issuedby;
-	}
-
-	public DocumentTransport(){this("",0,"");}
-
 	public void setExpiredate(String expiredate) {this.expiredate = LocalDate.parse(expiredate);}
 
 }

@@ -77,18 +77,7 @@ public class Employee {
     @OneToMany(mappedBy = "employeecustomer")
     private List<TransportOrder> transportordercustomer;
 	
-	public Employee(String surname, String name, String department, String position, String dateofreceipt) {
-		this.surname = surname;
-		this.name = name;
-		this.department = department;
-		this.position = position;
-		this.dateofreceipt = LocalDate.parse(dateofreceipt);
-	}
-
-    public Employee() {this("","","","",LocalDate.now().toString());}
-
-
-    public void setDateofreceipt(String dateofreceipt) {this.dateofdismissal = LocalDate.parse(dateofreceipt);}
+	public void setDateofreceipt(String dateofreceipt) {this.dateofdismissal = LocalDate.parse(dateofreceipt);}
     public void setDateofdismissal(String dateofdismissal) {this.dateofdismissal = LocalDate.parse(dateofdismissal);}
 
 }

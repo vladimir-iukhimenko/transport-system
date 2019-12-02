@@ -46,16 +46,7 @@ public class Goods {
     @JoinColumn(name = "transportorderid")
     private TransportOrder transportorder;
 	
-	public Goods(Integer amount, Double length, Double height, Double weight) {
-		this.amount = amount;
-		this.length = length;
-		this.height = height;
-        this.weight = weight;
-	}
-
-    public Goods() {this(0,0.0,0.0,0.0);}
-
-    public void addNomenclature(Nomenclature nomenclature) {
+	public void addNomenclature(Nomenclature nomenclature) {
         this.nomenclature = nomenclature;
         nomenclature.getGoods().add(this);
     }

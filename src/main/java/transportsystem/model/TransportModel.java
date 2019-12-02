@@ -49,19 +49,7 @@ public class TransportModel {
     @Getter
     @OneToMany(mappedBy = "transportmodel", fetch = FetchType.EAGER)
     private List<Transport> transports;
-	
-	public TransportModel(String name, String color, String producer, Integer maxweight, String enginepower)
-    {
-		this.name = name;
-		this.color = color;
-		this.producer = producer;
-		this.maxweight = maxweight;
-		this.enginepower = enginepower;
-	}
 
-    public TransportModel() {
-        this("","","",0,"");
-    }
 
     public void addEngine(Engine engine) {
         this.engine = engine;

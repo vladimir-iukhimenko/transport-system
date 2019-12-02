@@ -35,11 +35,5 @@ public class Engine {
     @Setter
     @OneToMany(mappedBy = "engine", fetch = FetchType.EAGER)
     private List<TransportModel> transportmodels;
-	
-	public Engine(String name, Double volume, String fuel) {
-		this.name = name;
-		this.volume = volume;
-		this.fuel = fuel;
-	}
-	public Engine () {}
+
 }

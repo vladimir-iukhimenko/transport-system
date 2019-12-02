@@ -44,16 +44,6 @@ public class Nomenclature {
     @OneToMany(mappedBy = "nomenclature", fetch = FetchType.EAGER)
     private List<Goods> goods;
 
-	public Nomenclature(Double length, Double width, Double height, Double weight) {
-		this.length = length;
-		this.width = width;
-		this.height = height;
-		this.weight = weight;
-	}
-
-	public Nomenclature() {this(0.0,0.0,0.0,0.0);}
-
-
 	public String getComment() {return this.comment.toString();}
     public void setComment(String comment) {
         this.comment.append(LocalDateTime.now().toString() + " " + comment + "\r\n");

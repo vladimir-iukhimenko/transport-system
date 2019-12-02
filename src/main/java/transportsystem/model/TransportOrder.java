@@ -73,18 +73,6 @@ public class TransportOrder {
     @Getter
     @Setter
 	private String declinereason;
-	
-	public TransportOrder(String orderdate, String transportpresentingdate, String loadingplace,
-						String unloadingplace, String placemethod, Integer telephonenumber) {
-		this.orderdate = LocalDate.parse(orderdate);
-		this.transportpresentingdate = LocalDate.parse(transportpresentingdate);
-		this.loadingplace = loadingplace;
-		this.unloadingplace = unloadingplace;
-		this.placemethod = placemethod;
-		this.telephonenumber = telephonenumber;
-	}
-
-    public TransportOrder() {this(LocalDate.now().toString(),LocalDate.now().plusDays(7).toString(),"","","",0);}
 
     public String getComment() {return this.comment.toString();}
 

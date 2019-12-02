@@ -12,15 +12,7 @@ public class DocumentEmployee extends Document{
 	@JoinColumn(name = "employeeid")
 	private Employee employee;
 	
-	public DocumentEmployee(String documenttype, int number, String issuedby) {
-		this.documenttype = documenttype;
-		this.number = number;
-		this.issuedby = issuedby;
-	}
-
-	public DocumentEmployee() {this("",0,"");}
-
-    public void addEmployee(Employee employee) {
+	public void addEmployee(Employee employee) {
         this.employee = employee;
         employee.getEmployeedocuments().add(this);
     }
