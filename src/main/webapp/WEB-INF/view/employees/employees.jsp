@@ -26,6 +26,7 @@
         <th>Номер телефона</th>
         <th>Дата приема</th>
         <th>Дата увольнения</th>
+        <th>Действия</th>
     </tr>
     <c:forEach var="employee" items="${employees}">
         <tr>
@@ -41,10 +42,15 @@
             <td>
                 <a href="/employees/edit/${employee.id}">Редактировать</a>
                 <a href="/employees/delete/${employee.id}">Удалить</a>
+                <a href="/employees/boundeddocuments/${employee.id}">Документы сотрудника</a>
             </td>
         </tr>
     </c:forEach>
 </table>
-
+<p>
+    <c:url value="/employeedocs" var="employeedocs"/>
+    <a href="${employeedocs}">Документы сотрудников</a>
+</p>
+<p>
 <a href="/employees/add">Добавить</a>
 <p><a href="/">На главную</a></p>

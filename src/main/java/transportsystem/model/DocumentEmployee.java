@@ -8,7 +8,7 @@ import lombok.Getter;
 public class DocumentEmployee extends Document{
 
 	@Getter
-	@ManyToOne(optional = false, cascade = CascadeType.ALL)
+	@ManyToOne(optional = false)
 	@JoinColumn(name = "employeeid")
 	private Employee employee;
 	

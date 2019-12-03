@@ -19,8 +19,11 @@
     </c:if>
 </head>
 <body>
+<h2>Документ <c:if test="${!empty employee.id}">
+    ${employee.name} ${employee.surname}
+            </c:if>
+</h2>
 
-<h2>Документ</h2>
 <table>
     <tr>
         <th>Тип документа</th>
@@ -46,7 +49,7 @@
                 <td>${document.expiredate}</td>
             </c:if>
             <c:if test="${fn:contains(inst,'DocumentEmployee')}">
-                <td>${document.employeeid}</td>
+                <td>${document.employee.name} ${document.employee.surname}</td>
             </c:if>
             <td>
                 <c:if test="${fn:contains(inst,'DocumentTransport')}">

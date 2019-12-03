@@ -48,10 +48,20 @@
 <c:if test="${fn:contains(type,'DocumentTransport')}">
     <p><label for="expiredate">Дата истечения</label>
         <input type="date" name="expiredate" id="expiredate" value="${document.expiredate}"></p>
+    <p><label for="transport">Транспорт</label>
+        <select id="transport" name="transportid"></p>
+    <c:forEach var="transport" items="${transports}">
+        <p><option value="${transport.id}">${transport.number}</option></p>
+    </c:forEach>
+    </select>
     </c:if>
 <c:if test="${fn:contains(type,'DocumentEmployee')}">
-    <p><label for="employeeid">Сотрудник</label>
-    <input type="text" name="employeeid" id="employeeid" value="${document.employeeid}"></p>
+    <p><label for="employee">Сотрудник</label>
+        <select id="employee" name="employeeid"></p>
+    <c:forEach var="employee" items="${employees}">
+        <p><option value="${employee.id}">${employee.name} ${employee.surname}</option></p>
+    </c:forEach>
+    </select>
 </c:if>
     <c:if test="${empty document.documenttype}">
     <p><input type="submit" value="Добавить"></p>

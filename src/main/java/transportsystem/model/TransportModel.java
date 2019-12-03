@@ -47,7 +47,7 @@ public class TransportModel {
 	private String enginepower;
 
     @Getter
-    @OneToMany(mappedBy = "transportmodel", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "transportmodel", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Transport> transports;
 
 

@@ -7,19 +7,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import transportsystem.model.Document;
-import transportsystem.model.DocumentEmployee;
-import transportsystem.model.DocumentTransport;
+import transportsystem.model.*;
 import transportsystem.service.DocumentService;
+import transportsystem.service.EmployeeService;
+import transportsystem.service.TransportService;
+
 import java.util.*;
 @Controller
 public class DocumentController {
     private DocumentService documentService;
+    private TransportService transportService;
+    private EmployeeService employeeService;
 
     @Autowired
     public void setDocumentService(DocumentService documentService) {
         this.documentService = documentService;
     }
+
+    @Autowired
+    public void setTransportService(TransportService transportService) {this.transportService = transportService;}
+
+    @Autowired
+    public void setEmployeeService(EmployeeService employeeService) {this.employeeService = employeeService;}
 
     public ModelAndView listDocuments(List<Document> documents,String type)
     {
@@ -42,19 +51,35 @@ public class DocumentController {
         return listDocuments(employeedocuments, "DocumentEmployee");
     }
 
+    @RequestMapping(value = "/employees/boundeddocuments/{id}", method = RequestMethod.GET)
+    public ModelAndView listBoundedEmployeeDocuments(@PathVariable("id") int id)
+    {
+        Employee employee = employeeService.getEmployeeById(id);
+        List<DocumentEmployee> documents = employee.getEmployeedocuments();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("documents/documents");
+        modelAndView.addObject("documents", documents);
+        modelAndView.addObject("employee", employee);
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/transportdocs/add", method = RequestMethod.GET)
     public ModelAndView addDocumentTransport()
     {
         ModelAndView modelAndView = new ModelAndView();
+        List<Transport> transports = transportService.getAllTransports();
         modelAndView.setViewName("documents/editordocuments");
         modelAndView.addObject("type","DocumentTransport");
+        modelAndView.addObject("transports",transports);
         return modelAndView;
     }
 
     @RequestMapping(value = "/transportdocs/add", method = RequestMethod.POST)
-    public ModelAndView addDocumentTransport(@ModelAttribute("document") DocumentTransport document)
+    public ModelAndView addDocumentTransport(@ModelAttribute("document") DocumentTransport document, @RequestParam("transportid") int id)
     {
         ModelAndView modelAndView = new ModelAndView();
+        Transport transport = transportService.getTransportById(id);
+        document.addTransport(transport);
         modelAndView.setViewName("redirect:/transportdocs");
         documentService.add(document);
         return modelAndView;
@@ -64,15 +89,19 @@ public class DocumentController {
     public ModelAndView addDocumentEmployee()
     {
         ModelAndView modelAndView = new ModelAndView();
+        List<Employee> employees = employeeService.getAllEmployees();
         modelAndView.setViewName("documents/editordocuments");
         modelAndView.addObject("type","DocumentEmployee");
+        modelAndView.addObject("employees",employees);
         return modelAndView;
     }
 
     @RequestMapping(value = "/employeedocs/add", method = RequestMethod.POST)
-    public ModelAndView addDocumentEmployee(@ModelAttribute("document") DocumentEmployee document)
+    public ModelAndView addDocumentEmployee(@ModelAttribute("document") DocumentEmployee document, @RequestParam("employeeid") int id)
     {
         ModelAndView modelAndView = new ModelAndView();
+        Employee employee = employeeService.getEmployeeById(id);
+        document.addEmployee(employee);
         modelAndView.setViewName("redirect:/employeedocs");
         documentService.add(document);
         return modelAndView;
@@ -82,17 +111,21 @@ public class DocumentController {
     public ModelAndView editDocumentTransport(@PathVariable("id") Integer id)
     {
         Document document = documentService.getDocumentTransportById(id);
+        List<Transport> transports = transportService.getAllTransports();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("documents/editordocuments");
         modelAndView.addObject("document",document);
         modelAndView.addObject("type","DocumentTransport");
+        modelAndView.addObject("transports",transports);
         return modelAndView;
     }
 
     @RequestMapping(value = "/transportdocs/edit", method = RequestMethod.POST)
-    public ModelAndView editDocumentTransport(@ModelAttribute("document") DocumentTransport document)
+    public ModelAndView editDocumentTransport(@ModelAttribute("document") DocumentTransport document, @RequestParam("transportid") int id)
     {
         ModelAndView modelAndView = new ModelAndView();
+        Transport transport = transportService.getTransportById(id);
+        document.addTransport(transport);
         modelAndView.setViewName("redirect:/transportdocs");
         documentService.edit(document);
         return modelAndView;
@@ -102,17 +135,21 @@ public class DocumentController {
     public ModelAndView editDocumentEmployee(@PathVariable("id") Integer id)
     {
         Document document = documentService.getDocumentEmployeeById(id);
+        List<Employee> employees = employeeService.getAllEmployees();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("documents/editordocuments");
         modelAndView.addObject("document",document);
         modelAndView.addObject("type","DocumentEmployee");
+        modelAndView.addObject("employees",employees);
         return modelAndView;
     }
 
     @RequestMapping(value = "/employeedocs/edit", method = RequestMethod.POST)
-    public ModelAndView editDocumentEmployee(@ModelAttribute("document") DocumentEmployee document)
+    public ModelAndView editDocumentEmployee(@ModelAttribute("document") DocumentEmployee document, @RequestParam("employeeid") int id)
     {
         ModelAndView modelAndView = new ModelAndView();
+        Employee employee = employeeService.getEmployeeById(id);
+        document.addEmployee(employee);
         modelAndView.setViewName("redirect:/employeedocs");
         documentService.edit(document);
         return modelAndView;

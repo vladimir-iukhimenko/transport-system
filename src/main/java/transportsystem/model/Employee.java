@@ -64,20 +64,25 @@ public class Employee {
 
     @Getter
     @org.hibernate.annotations.LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "employee")
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
     private List<DocumentEmployee> employeedocuments;
 
     @Getter
     @org.hibernate.annotations.LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "employeeresponsible")
+    @OneToMany(mappedBy = "employeeresponsible", cascade = CascadeType.ALL)
     private List<TransportOrder> transportordersresponsible;
 
     @Getter
     @org.hibernate.annotations.LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "employeecustomer")
+    @OneToMany(mappedBy = "employeecustomer", cascade = CascadeType.ALL)
     private List<TransportOrder> transportordercustomer;
 	
-	public void setDateofreceipt(String dateofreceipt) {this.dateofdismissal = LocalDate.parse(dateofreceipt);}
-    public void setDateofdismissal(String dateofdismissal) {this.dateofdismissal = LocalDate.parse(dateofdismissal);}
+	public void setDateofreceipt(String dateofreceipt) {this.dateofreceipt = LocalDate.parse(dateofreceipt);}
+    public void setDateofdismissal(String dateofdismissal) {
+        if (dateofdismissal.equals("")) {
+            this.dateofdismissal = null;
+            return;
+        }
+        this.dateofdismissal = LocalDate.parse(dateofdismissal);}
 
 }

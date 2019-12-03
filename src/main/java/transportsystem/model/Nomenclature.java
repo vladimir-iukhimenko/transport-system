@@ -46,7 +46,7 @@ public class Nomenclature {
 	private StringBuilder comment = new StringBuilder("");
 
     @Getter
-    @OneToMany(mappedBy = "nomenclature", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "nomenclature", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Goods> goods;
 
 	public String getComment() {return this.comment.toString();}

@@ -18,14 +18,14 @@
     </c:if>
 </head>
 <body>
-<c:if test="${!empty employee.surname}">
+<c:if test="${!empty employee.id}">
     <c:url value="/employees/edit" var="var"/>
 </c:if>
-<c:if test="${empty employee.surname}">
+<c:if test="${empty employee.id}">
     <c:url value="/employees/add" var="var"/>
 </c:if>
 <form action="${var}" method="POST">
-    <c:if test="${!empty employee.surname}">
+    <c:if test="${!empty employee.id}">
         <input type="hidden" name="id" value="${employee.id}">
     </c:if>
     <p><label for="surname">Фамилия</label>
@@ -45,7 +45,7 @@
     <p><label for="dateofreceipt">Дата приема</label>
         <input type="date" name="dateofreceipt" id="dateofreceipt" value="${employee.dateofreceipt}"></p>
     <p><label for="dateofdismissal">Дата увольнения</label>
-        <input type="text" name="dateofdismissal" id="dateofdismissal" value="${employee.dateofdismissal}"></p>
+        <input type="date" name="dateofdismissal" id="dateofdismissal" value="${employee.dateofdismissal}"></p>
 
     <c:if test="${empty employee.surname}">
         <p><input type="submit" value="Добавить"></p>

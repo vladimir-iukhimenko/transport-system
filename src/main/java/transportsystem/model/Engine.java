@@ -33,7 +33,7 @@ public class Engine {
 
     @Getter
     @Setter
-    @OneToMany(mappedBy = "engine", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "engine", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<TransportModel> transportmodels;
 
 }

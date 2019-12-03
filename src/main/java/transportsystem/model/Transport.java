@@ -29,14 +29,14 @@ public class Transport {
 	private String vin;
 
     @Getter
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "transportmodelid")
 	private TransportModel transportmodel;
 
 	@Getter
     @org.hibernate.annotations.LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "transport")
-    private List<DocumentTransport> documents;
+    @OneToMany(mappedBy = "transport", cascade = CascadeType.ALL)
+    private List<DocumentTransport> transportdocuments;
 
     @Column
     @Getter
@@ -56,7 +56,6 @@ public class Transport {
     @org.hibernate.annotations.LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "transport")
     private List<TransportOrder> transportorders;
-
 
     public void setStartupdate(String startupdate) {
         this.startupdate = LocalDate.parse(startupdate);

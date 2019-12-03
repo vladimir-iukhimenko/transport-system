@@ -52,7 +52,7 @@ public class TransportOrder {
 	private String placemethod;
 
     @Getter
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "responsibleemployeeid")
 	private Employee employeeresponsible;
 
@@ -62,7 +62,7 @@ public class TransportOrder {
 	private Integer telephonenumber;
 
     @Getter
-    @ManyToOne(optional = false,cascade = CascadeType.ALL)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "customeremployeeid")
 	private Employee employeecustomer;
 

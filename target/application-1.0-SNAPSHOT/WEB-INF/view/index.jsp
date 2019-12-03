@@ -11,17 +11,17 @@
 <c:url value="/transportdocs" var="transportdocs"/>
 <a href="${transportdocs}">Транспортные документы</a>
 </p>
-<p>
-<c:url value="/employeedocs" var="employeedocs"/>
-<a href="${employeedocs}">Документы сотрудников</a>
-</p>
-<p>
+
     <c:url value="/goods" var="goods"/>
     <a href="${goods}">Товары</a>
 </p>
 <p>
     <c:url value="/nomenclatures" var="nomenclatures"/>
     <a href="${nomenclatures}">Номенклатуры</a>
+</p>
+<p>
+    <c:url value="/employees" var="employees"/>
+    <a href="${employees}">Сотрудники</a>
 </p>
 </body>
 </html>

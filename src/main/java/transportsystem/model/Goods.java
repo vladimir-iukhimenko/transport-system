@@ -46,7 +46,7 @@ public class Goods {
 	private Double weight;
 
     @Getter
-    @ManyToOne(optional = true, cascade = CascadeType.ALL)
+    @ManyToOne(optional = true)
     @JoinColumn(name = "transportorderid")
     private TransportOrder transportorder;
 	
