@@ -2,13 +2,14 @@ package transportsystem.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import transportsystem.model.Employee;
+import transportsystem.model.Transport;
 import transportsystem.model.TransportOrder;
+import transportsystem.service.EmployeeService;
 import transportsystem.service.TransportOrderService;
+import transportsystem.service.TransportService;
 
 import java.util.List;
 
@@ -18,10 +19,22 @@ import java.util.List;
 @Controller
 public class TransportOrderController {
     private TransportOrderService transportOrderService;
+    private EmployeeService employeeService;
+    private TransportService transportService;
 
     @Autowired
     public void setTransportOrderService(TransportOrderService transportOrderService) {
         this.transportOrderService = transportOrderService;
+    }
+
+    @Autowired
+    public void setEmployeeService(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
+
+    @Autowired
+    public void setTransportService(TransportService transportService) {
+        this.transportService = transportService;
     }
 
     @RequestMapping(value = "/transportorders", method = RequestMethod.GET)
@@ -29,7 +42,7 @@ public class TransportOrderController {
     {
         List<TransportOrder> transportOrders = transportOrderService.getAllTransportOrders();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("transportorders");
+        modelAndView.setViewName("transportorders/transportorders");
         modelAndView.addObject("transportorders", transportOrders);
         return modelAndView;
     }
@@ -38,14 +51,27 @@ public class TransportOrderController {
     public ModelAndView addTransportOrder()
     {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("editortransportorders");
+        List<Employee> employees = employeeService.getAllEmployees();
+        List<Transport> transports = transportService.getAllTransports();
+        modelAndView.setViewName("transportorders/editortransportorders");
+        modelAndView.addObject("employees",employees);
+        modelAndView.addObject("transports",transports);
         return modelAndView;
     }
 
     @RequestMapping(value = "/transportorders/add", method = RequestMethod.POST)
-    public ModelAndView addTransportOrder(@ModelAttribute("transportorder") TransportOrder transportOrder)
+    public ModelAndView addTransportOrder(@ModelAttribute("transportorder") TransportOrder transportOrder,
+                                          @RequestParam("employeeresponsible") int employeeresponsibleid,
+                                          @RequestParam("employeecustomer") int employeecustomerid,
+                                          @RequestParam("transport") int transportid)
     {
         ModelAndView modelAndView = new ModelAndView();
+        Employee employeeresponsible = employeeService.getEmployeeById(employeeresponsibleid);
+        Employee employeecustomer = employeeService.getEmployeeById(employeecustomerid);
+        Transport transport = transportService.getTransportById(transportid);
+        transportOrder.addEmployeeresponsible(employeeresponsible);
+        transportOrder.addEmployeecustomer(employeecustomer);
+        transportOrder.addTransport(transport);
         modelAndView.setViewName("redirect:/transportorders");
         transportOrderService.addTransportOrder(transportOrder);
         return modelAndView;
@@ -55,16 +81,29 @@ public class TransportOrderController {
     public ModelAndView editTransportOrder(@PathVariable("id") int id)
     {
         ModelAndView modelAndView = new ModelAndView();
+        List<Employee> employees = employeeService.getAllEmployees();
+        List<Transport> transports = transportService.getAllTransports();
         TransportOrder transportOrder = transportOrderService.getTransportOrderById(id);
-        modelAndView.setViewName("editortransportorders");
+        modelAndView.setViewName("transportorders/editortransportorders");
         modelAndView.addObject("transportorder", transportOrder);
+        modelAndView.addObject("employees",employees);
+        modelAndView.addObject("transports",transports);
         return modelAndView;
     }
 
     @RequestMapping(value = "/transportorders/edit", method = RequestMethod.POST)
-    public ModelAndView editTransportOrder(@ModelAttribute("transportorder") TransportOrder transportOrder)
+    public ModelAndView editTransportOrder(@ModelAttribute("transportorder") TransportOrder transportOrder,
+                                           @RequestParam("employeeresponsible") int employeeresponsibleid,
+                                           @RequestParam("employeecustomer") int employeecustomerid,
+                                           @RequestParam("transport") int transportid)
     {
         ModelAndView modelAndView = new ModelAndView();
+        Employee employeeresponsible = employeeService.getEmployeeById(employeeresponsibleid);
+        Employee employeecustomer = employeeService.getEmployeeById(employeecustomerid);
+        Transport transport = transportService.getTransportById(transportid);
+        transportOrder.addEmployeeresponsible(employeeresponsible);
+        transportOrder.addEmployeecustomer(employeecustomer);
+        transportOrder.addTransport(transport);
         modelAndView.setViewName("redirect:/transportorders");
         transportOrderService.editTransportOrder(transportOrder);
         return modelAndView;

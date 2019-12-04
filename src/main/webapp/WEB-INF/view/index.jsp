@@ -23,5 +23,9 @@
     <c:url value="/employees" var="employees"/>
     <a href="${employees}">Сотрудники</a>
 </p>
+<p>
+    <c:url value="/transportorders" var="transportorders"/>
+    <a href="${transportorders}">Транспортные заказы</a>
+</p>
 </body>
 </html>

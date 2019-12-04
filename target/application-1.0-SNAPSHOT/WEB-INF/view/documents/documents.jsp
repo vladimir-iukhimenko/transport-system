@@ -21,7 +21,8 @@
 <body>
 <h2>Документ <c:if test="${!empty employee.id}">
     ${employee.name} ${employee.surname}
-</c:if></h2>
+            </c:if>
+</h2>
 
 <table>
     <tr>

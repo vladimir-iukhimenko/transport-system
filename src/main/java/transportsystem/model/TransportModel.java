@@ -37,7 +37,7 @@ public class TransportModel {
 	private Integer maxweight;
 
     @Getter
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "engineid")
 	private Engine engine;
 

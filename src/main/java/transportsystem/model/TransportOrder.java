@@ -19,6 +19,12 @@ public class TransportOrder {
     @Setter
 	private Integer id;
 
+    @Column
+    @Getter
+    @Setter
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer ordernumber;
+
     @Getter
     @OneToMany(mappedBy = "transportorder", fetch = FetchType.EAGER)
 	private List<Goods> goods;
@@ -32,7 +38,7 @@ public class TransportOrder {
 	private LocalDate transportpresentingdate;
 
     @Getter
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "transportid")
 	private Transport transport;
 
@@ -67,7 +73,7 @@ public class TransportOrder {
 	private Employee employeecustomer;
 
     @Column
-	private StringBuilder comment;
+	private StringBuilder comment = new StringBuilder("");
 
     @Column
     @Getter
@@ -76,7 +82,7 @@ public class TransportOrder {
 
     public String getComment() {return this.comment.toString();}
 
-    public void setOrderdate(String orderdate) {this.orderdate = LocalDate.parse(orderdate);}
+    public void setOrderdate() {this.orderdate = LocalDate.now();}
 
     public void setTransportpresentingdate(String transportpresentingdate) {this.transportpresentingdate = LocalDate.parse(transportpresentingdate);}
 
