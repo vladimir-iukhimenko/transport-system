@@ -72,6 +72,7 @@ public class TransportOrderController {
         transportOrder.addEmployeeresponsible(employeeresponsible);
         transportOrder.addEmployeecustomer(employeecustomer);
         transportOrder.addTransport(transport);
+        transportOrder.setOrdernumber();
         modelAndView.setViewName("redirect:/transportorders");
         transportOrderService.addTransportOrder(transportOrder);
         return modelAndView;
@@ -105,6 +106,7 @@ public class TransportOrderController {
         transportOrder.addEmployeecustomer(employeecustomer);
         transportOrder.addTransport(transport);
         modelAndView.setViewName("redirect:/transportorders");
+        System.out.println(transportOrder.getOrdernumber());
         transportOrderService.editTransportOrder(transportOrder);
         return modelAndView;
     }

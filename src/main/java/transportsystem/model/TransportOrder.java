@@ -7,23 +7,23 @@ import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
+import transportsystem.generators.TransportOrderGenerator;
 
 @Entity
 @Table(name = "transportorders")
 public class TransportOrder {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "num_gen")
+    @SequenceGenerator(name = "num_gen", sequenceName = "num_gen", allocationSize = 1)
     @Column
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     @Setter
 	private Integer id;
 
     @Column
     @Getter
-    @Setter
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer ordernumber;
+    private String ordernumber;
 
     @Getter
     @OneToMany(mappedBy = "transportorder", fetch = FetchType.EAGER)
@@ -31,7 +31,7 @@ public class TransportOrder {
 
     @Column
     @Getter
-	private LocalDate orderdate;
+	private LocalDate orderdate = LocalDate.now();
 
     @Column
     @Getter
@@ -82,7 +82,7 @@ public class TransportOrder {
 
     public String getComment() {return this.comment.toString();}
 
-    public void setOrderdate() {this.orderdate = LocalDate.now();}
+    public void setOrdernumber() {this.ordernumber = TransportOrderGenerator.generator();}
 
     public void setTransportpresentingdate(String transportpresentingdate) {this.transportpresentingdate = LocalDate.parse(transportpresentingdate);}
 

@@ -25,7 +25,8 @@
 </c:if>
 <form action="${var}" method="POST">
     <c:if test="${!empty transportorder.id}">
-        <input type="hidden" name="id" value="${transport.id}">
+        <input type="hidden" name="id" value="${transportorder.id}">
+        <input type="hidden" name="ordernumber" value="${transportorder.ordernumber}">
     </c:if>
     <p> <label for="transportpresentingdate">Дата исполнения</label>
         <input type="date" name="transportpresentingdate" id="transportpresentingdate" value="${transportorder.transportpresentingdate}"></p>
@@ -48,7 +49,7 @@
             </c:forEach>
         </select>
     <p><label for="telephonenumber">Контактный номер телефона</label>
-        <input type="text" name="telephonenumber" id="telephonenumber" value="${transportorder.telephonenumber}"></p>
+        <input type="number" name="telephonenumber" id="telephonenumber" value="${transportorder.telephonenumber}"></p>
     <p><label for="employeecustomer">Заказчик</label>
         <select id="employeecustomer" name="employeecustomer"></p>
             <c:forEach var="employee" items="${employees}">
