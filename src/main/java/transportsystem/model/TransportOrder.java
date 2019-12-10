@@ -23,6 +23,7 @@ public class TransportOrder {
 
     @Column
     @Getter
+    @Setter
     private String ordernumber;
 
     @Getter
@@ -31,7 +32,7 @@ public class TransportOrder {
 
     @Column
     @Getter
-	private LocalDate orderdate = LocalDate.now();
+	private LocalDate orderdate;
 
     @Column
     @Getter
@@ -84,7 +85,11 @@ public class TransportOrder {
 
     public void setOrdernumber() {this.ordernumber = TransportOrderGenerator.generator();}
 
+    public void setOrderdate(String orderdate) {this.orderdate = LocalDate.parse(orderdate);}
+
     public void setTransportpresentingdate(String transportpresentingdate) {this.transportpresentingdate = LocalDate.parse(transportpresentingdate);}
+
+    public void addOrderdate() {this.orderdate = LocalDate.now();}
 
     public void setComment(String comment) {
         this.comment.append(LocalDateTime.now().toString() + " " + comment + "\r\n");

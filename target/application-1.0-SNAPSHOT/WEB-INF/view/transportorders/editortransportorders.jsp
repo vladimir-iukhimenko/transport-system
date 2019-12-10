@@ -27,6 +27,7 @@
     <c:if test="${!empty transportorder.id}">
         <input type="hidden" name="id" value="${transportorder.id}">
         <input type="hidden" name="ordernumber" value="${transportorder.ordernumber}">
+        <input type="hidden" name="orderdate" value="${transportorder.orderdate}">
     </c:if>
     <p> <label for="transportpresentingdate">Дата исполнения</label>
         <input type="date" name="transportpresentingdate" id="transportpresentingdate" value="${transportorder.transportpresentingdate}"></p>
