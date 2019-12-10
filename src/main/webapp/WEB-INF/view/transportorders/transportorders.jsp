@@ -5,7 +5,6 @@
     <title>Транспортные заказы</title>
 </head>
 <body>
-
 <h2>Транспортные заказы</h2>
 <table>
     <tr>
@@ -33,7 +32,7 @@
             <td>${transportorder.employeeresponsible.name} ${transportorder.employeeresponsible.surname}</td>
             <td>${transportorder.telephonenumber}</td>
             <td>${transportorder.employeecustomer.name} ${transportorder.employeecustomer.surname}</td>
-            <td>${transportorder.comment}</td>
+            <td><textarea readonly="readonly">${transportorder.comment}</textarea></td>
             <td>
                 <a href="/transportorders/edit/${transportorder.id}">Редактировать</a>
                 <a href="/transportorders/delete/${transportorder.id}">Удалить</a>

@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-
 import lombok.Getter;
 import lombok.Setter;
 import transportsystem.generators.TransportOrderGenerator;
@@ -21,7 +20,7 @@ public class TransportOrder {
     @Setter
 	private Integer id;
 
-    @Column
+    @Column(nullable = false)
     @Getter
     @Setter
     private String ordernumber;
@@ -30,11 +29,11 @@ public class TransportOrder {
     @OneToMany(mappedBy = "transportorder", fetch = FetchType.EAGER)
 	private List<Goods> goods;
 
-    @Column
+    @Column(nullable = false)
     @Getter
 	private LocalDate orderdate;
 
-    @Column
+    @Column(nullable = false)
     @Getter
 	private LocalDate transportpresentingdate;
 
@@ -43,17 +42,17 @@ public class TransportOrder {
     @JoinColumn(name = "transportid")
 	private Transport transport;
 
-    @Column
+    @Column(nullable = false)
     @Getter
     @Setter
 	private String loadingplace;
 
-    @Column
+    @Column(nullable = false)
     @Getter
     @Setter
 	private String unloadingplace;
 
-    @Column
+    @Column(nullable = false)
     @Getter
     @Setter
 	private String placemethod;
@@ -63,7 +62,7 @@ public class TransportOrder {
     @JoinColumn(name = "responsibleemployeeid")
 	private Employee employeeresponsible;
 
-    @Column
+    @Column(nullable = false)
     @Getter
     @Setter
 	private Integer telephonenumber;

@@ -23,7 +23,7 @@
             <td>${nomenclature.width}</td>
             <td>${nomenclature.height}</td>
             <td>${nomenclature.weight}</td>
-            <td>${nomenclature.comment}</td>
+            <td>${nomenclature.comments}</td>
             <td>
                 <a href="/nomenclatures/edit/${nomenclature.id}">Редактировать</a>
                 <a href="/nomenclatures/delete/${nomenclature.id}">Удалить</a>
