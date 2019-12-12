@@ -23,7 +23,12 @@
             <td>${nomenclature.width}</td>
             <td>${nomenclature.height}</td>
             <td>${nomenclature.weight}</td>
-            <td>${nomenclature.comments}</td>
+            <c:forEach var="comment" items="${nomenclature.comments.getAllComments()}">
+                <tr>
+                    <td>${comment}</td>
+                </tr>
+
+            </c:forEach>
             <td>
                 <a href="/nomenclatures/edit/${nomenclature.id}">Редактировать</a>
                 <a href="/nomenclatures/delete/${nomenclature.id}">Удалить</a>

@@ -44,4 +44,5 @@ public class NomenclatureDAO {
         Session session = sessionFactory.getCurrentSession();
         return session.createQuery("from Nomenclature").list();
     }
+
 }

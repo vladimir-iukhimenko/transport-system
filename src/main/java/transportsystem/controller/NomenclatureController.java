@@ -2,11 +2,9 @@ package transportsystem.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import transportsystem.embeddable.Comment;
 import transportsystem.model.Nomenclature;
 import transportsystem.service.NomenclatureService;
 
@@ -39,9 +37,12 @@ public class NomenclatureController {
     }
 
     @RequestMapping(value = "/nomenclatures/add", method = RequestMethod.POST)
-    public ModelAndView addNomenclature(@ModelAttribute("nomenclature") Nomenclature nomenclature)
+    public ModelAndView addNomenclature(@ModelAttribute("nomenclature") Nomenclature nomenclature, @RequestParam("comment") String comment)
     {
         ModelAndView modelAndView = new ModelAndView();
+        Comment comments = new Comment();
+        comments.addComment(comment);
+        nomenclature.setComments(comments);
         modelAndView.setViewName("redirect:/nomenclatures");
         nomenclatureService.add(nomenclature);
         return modelAndView;
@@ -58,9 +59,14 @@ public class NomenclatureController {
     }
 
     @RequestMapping(value = "/nomenclatures/edit", method = RequestMethod.POST)
-    public ModelAndView editNomenclature(@ModelAttribute("nomenclature") Nomenclature nomenclature)
+    public ModelAndView editNomenclature(@ModelAttribute("nomenclature") Nomenclature nomenclature,
+                                         @RequestParam("comment") String comment,
+                                         @RequestParam("id") int id)
     {
         ModelAndView modelAndView = new ModelAndView();
+        Comment comments = nomenclatureService.getNomenclatureById(id).getComments();
+        comments.addComment(comment);
+        nomenclature.setComments(comments);
         modelAndView.setViewName("redirect:/nomenclatures");
         nomenclatureService.edit(nomenclature);
         return modelAndView;

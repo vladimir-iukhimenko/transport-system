@@ -38,7 +38,7 @@
     <p><label for="weight">Вес</label>
         <input type="text" name="weight" id="weight" value ="${nomenclature.weight}"></p>
     <p><label for="comment">Комментарий</label>
-        <input type="text" name="comment" id="comment" value ="${nomenclature.comment}"></p>
+        <input type="text" name="comment" id="comment"></p>
     <c:if test="${empty nomenclature.id}">
         <p><input type="submit" value="Добавить"></p>
     </c:if>

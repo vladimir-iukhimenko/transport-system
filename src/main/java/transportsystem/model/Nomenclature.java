@@ -1,7 +1,6 @@
 package transportsystem.model;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
@@ -43,22 +42,12 @@ public class Nomenclature {
     @Setter
 	private Double weight;
 
-    //@Column
-	//private StringBuilder comment = new StringBuilder("");
-
+    @Getter
+    @Setter
     private Comment comments;
 
     @Getter
     @OneToMany(mappedBy = "nomenclature", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Goods> goods;
 
-	//public String getComment() {return this.comment.toString();}
-
-    public List<String> getComments() {return this.comments.getAllComments();}
-
-    public void setComments(String comments) {this.comments.addComment(comments);}
-
-    //public void setComment(String comment) {
-     //   this.comment.append(LocalDateTime.now().toString() + " " + comment + "\r\n");
-    //}
 }
