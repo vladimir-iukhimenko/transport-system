@@ -58,7 +58,7 @@
             </c:forEach>
         </select>
     <p><label for="comment">Комментарий</label>
-        <input type="text" name="comment" id="comment" value="${transportorder.comment}"></p>
+        <input type="text" name="comment" id="comment"></p>
     <c:if test="${empty transportorder.id}">
         <p><input type="submit" value="Добавить"></p>
     </c:if>

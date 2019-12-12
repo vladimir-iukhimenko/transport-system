@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
+import transportsystem.embeddable.Comment;
 import transportsystem.generators.TransportOrderGenerator;
 
 @Entity
@@ -72,15 +73,14 @@ public class TransportOrder {
     @JoinColumn(name = "customeremployeeid")
 	private Employee employeecustomer;
 
-    @Column
-	private StringBuilder comment = new StringBuilder("");
+    @Getter
+    @Setter
+    private Comment comments;
 
     @Column
     @Getter
     @Setter
 	private String declinereason;
-
-    public String getComment() {return this.comment.toString();}
 
     public void setOrdernumber() {this.ordernumber = TransportOrderGenerator.generator();}
 
@@ -89,10 +89,6 @@ public class TransportOrder {
     public void setTransportpresentingdate(String transportpresentingdate) {this.transportpresentingdate = LocalDate.parse(transportpresentingdate);}
 
     public void addOrderdate() {this.orderdate = LocalDate.now();}
-
-    public void setComment(String comment) {
-        this.comment.append(LocalDateTime.now().toString() + " " + comment + "\r\n");
-    }
 
     public void addTransport(Transport transport) {
         this.transport = transport;

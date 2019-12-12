@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import transportsystem.embeddable.Comment;
 import transportsystem.model.Employee;
 import transportsystem.model.Transport;
 import transportsystem.model.TransportOrder;
@@ -63,12 +64,16 @@ public class TransportOrderController {
     public ModelAndView addTransportOrder(@ModelAttribute("transportorder") TransportOrder transportOrder,
                                           @RequestParam("employeeresponsible") int employeeresponsibleid,
                                           @RequestParam("employeecustomer") int employeecustomerid,
-                                          @RequestParam("transport") int transportid)
+                                          @RequestParam("transport") int transportid,
+                                          @RequestParam("comment") String comment)
     {
         ModelAndView modelAndView = new ModelAndView();
         Employee employeeresponsible = employeeService.getEmployeeById(employeeresponsibleid);
         Employee employeecustomer = employeeService.getEmployeeById(employeecustomerid);
         Transport transport = transportService.getTransportById(transportid);
+        Comment comments = new Comment();
+        comments.addComment(comment);
+        transportOrder.setComments(comments);
         transportOrder.addEmployeeresponsible(employeeresponsible);
         transportOrder.addEmployeecustomer(employeecustomer);
         transportOrder.addTransport(transport);
@@ -97,7 +102,9 @@ public class TransportOrderController {
     public ModelAndView editTransportOrder(@ModelAttribute("transportorder") TransportOrder transportOrder,
                                            @RequestParam("employeeresponsible") int employeeresponsibleid,
                                            @RequestParam("employeecustomer") int employeecustomerid,
-                                           @RequestParam("transport") int transportid)
+                                           @RequestParam("transport") int transportid,
+                                           @RequestParam("comment") String comment,
+                                           @RequestParam("id") int id)
     {
         ModelAndView modelAndView = new ModelAndView();
         Employee employeeresponsible = employeeService.getEmployeeById(employeeresponsibleid);
@@ -106,6 +113,9 @@ public class TransportOrderController {
         transportOrder.addEmployeeresponsible(employeeresponsible);
         transportOrder.addEmployeecustomer(employeecustomer);
         transportOrder.addTransport(transport);
+        Comment comments = transportOrderService.getTransportOrderById(id).getComments();
+        comments.addComment(comment);
+        transportOrder.setComments(comments);
         modelAndView.setViewName("redirect:/transportorders");
         transportOrderService.editTransportOrder(transportOrder);
         return modelAndView;

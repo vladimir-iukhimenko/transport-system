@@ -32,7 +32,11 @@
             <td>${transportorder.employeeresponsible.name} ${transportorder.employeeresponsible.surname}</td>
             <td>${transportorder.telephonenumber}</td>
             <td>${transportorder.employeecustomer.name} ${transportorder.employeecustomer.surname}</td>
-            <td><textarea readonly="readonly">${transportorder.comment}</textarea></td>
+            <c:forEach var="comment" items="${transportorder.comments.getAllComments()}">
+            <tr>
+                <td>${comment}</td>
+            </tr>
+            </c:forEach>
             <td>
                 <a href="/transportorders/edit/${transportorder.id}">Редактировать</a>
                 <a href="/transportorders/delete/${transportorder.id}">Удалить</a>
