@@ -3,6 +3,7 @@ package transportsystem.config;
 /**
  * Created by DZCKJS0 on 14.11.2019.
  */
+import org.apache.lucene.util.Version;
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -13,7 +14,6 @@ import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
 import javax.sql.DataSource;
 import java.util.Properties;
 
@@ -34,6 +34,10 @@ public class HibernateConfig {
         properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
         properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
         properties.put("hibernate.id.new_generator_mappings", environment.getRequiredProperty("hibernate.id.new_generator_mappings"));
+        properties.put("hibernate.search.default.directory_provider", environment.getRequiredProperty("hibernate.search.default.directory_provider"));
+        //properties.put("hibernate.search.default.indexBase", environment.getRequiredProperty("hibernate.search.default.indexBase"));
+        //properties.put("hibernate.search.default.locking_strategy", environment.getRequiredProperty("hibernate.search.default.locking_strategy"));
+        //properties.put("hibernate.search.lucene_version",environment.getRequiredProperty("hibernate.search.lucene_version"));
         return properties;
     }
 

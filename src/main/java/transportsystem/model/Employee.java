@@ -7,8 +7,11 @@ import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.search.annotations.*;
+import org.hibernate.search.annotations.Index;
 
 @Entity
+@Indexed
 @Table(name = "employees")
 public class Employee {
 
@@ -22,16 +25,19 @@ public class Employee {
     @Column
     @Getter
     @Setter
+    @Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
 	private String surname;
 
     @Column
     @Getter
     @Setter
+    @Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
 	private String name;
 
     @Column
     @Getter
     @Setter
+    @Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
 	private String patronymic;
 
     @Column
@@ -42,6 +48,7 @@ public class Employee {
     @Column
     @Getter
     @Setter
+    @Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
 	private String position;
 
     @Column
