@@ -3,6 +3,11 @@ package transportsystem.model;
 import java.time.LocalDate;
 import java.util.List;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -21,11 +26,13 @@ public class Transport {
 	@Column
     @Getter
     @Setter
+    @NotBlank(message = "Number is required!")
 	private String number;
 
     @Column
     @Getter
     @Setter
+    @NotBlank(message = "VIN is required!")
 	private String vin;
 
     @Getter
@@ -41,10 +48,12 @@ public class Transport {
     @Column
     @Getter
     @Setter
+    @NotNull(message = "Year is required!")
 	private Integer producedyear;
 
     @Column
     @Getter
+    @Past(message = "Date is required!")
 	private LocalDate startupdate;
 
     @Column

@@ -2,12 +2,16 @@ package transportsystem.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import transportsystem.model.Transport;
 import transportsystem.model.TransportModel;
 import transportsystem.service.TransportModelService;
 import transportsystem.service.TransportService;
+
+import javax.validation.Valid;
 import java.util.*;
 
 @Controller
@@ -78,8 +82,18 @@ public class TransportController {
     }
 
     @RequestMapping(value = "/transports/add", method = RequestMethod.POST)
-    public ModelAndView addTransport(@ModelAttribute("transport") Transport transport,@RequestParam("transportmodelid") int id)
+    public ModelAndView addTransport(@Valid @ModelAttribute("transport") Transport transport, Errors errors, @RequestParam("transportmodelid") int id)
     {
+        if (errors.hasErrors()) {
+            ModelAndView modelAndView = new ModelAndView();
+            List<ObjectError> errorslist = errors.getAllErrors();
+            for (ObjectError oe: errorslist) System.out.println(oe.getDefaultMessage());
+            modelAndView.addObject("errors", errors);
+            modelAndView.setViewName("transports/editortransports");
+            List<TransportModel> transportmodels = transportModelService.getAllTransportModels();
+            modelAndView.addObject("transportmodels", transportmodels);
+            return modelAndView;
+        }
         ModelAndView modelAndView = new ModelAndView();
         transport.addTransportmodel(transportModelService.getTransportModelById(id));
         modelAndView.setViewName("redirect:/transports");

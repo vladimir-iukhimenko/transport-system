@@ -58,6 +58,9 @@
           <element id="library" level="project" name="Maven: org.jboss.jdeparser:jdeparser:2.0.2.Final" />
           <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-dbcp:9.0.22" />
           <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-juli:9.0.22" />
+          <element id="library" level="project" name="Maven: org.hibernate.validator:hibernate-validator:6.1.0.Final" />
+          <element id="library" level="project" name="Maven: jakarta.validation:jakarta.validation-api:2.0.2" />
+          <element id="library" level="project" name="Maven: javax.validation:validation-api:2.0.1.Final" />
         </element>
       </element>
       <element id="directory" name="META-INF">
