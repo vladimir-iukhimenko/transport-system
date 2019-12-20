@@ -3,9 +3,13 @@ package transportsystem.model;
 import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.search.annotations.*;
+import org.hibernate.search.annotations.Index;
+
 import java.util.List;
 
 @Entity
+@Indexed
 @Table(name="transportmodel")
 public class TransportModel {
 
@@ -19,16 +23,19 @@ public class TransportModel {
     @Column
     @Getter
     @Setter
+    @Field(index= Index.YES, analyze= Analyze.YES, store= Store.NO)
 	private String name;
 
     @Column
     @Getter
     @Setter
+    @Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
 	private String color;
 
     @Column
     @Getter
     @Setter
+    @Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
 	private String producer;
 
     @Column

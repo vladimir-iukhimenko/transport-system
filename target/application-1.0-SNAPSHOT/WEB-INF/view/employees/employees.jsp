@@ -27,6 +27,12 @@
         <th>Дата приема</th>
         <th>Дата увольнения</th>
         <th>Действия</th>
+        <th> <form action="/search?q=${query}" method="GET">
+            <input type="hidden" name="context" value="${requestScope['javax.servlet.forward.servlet_path']}">
+            <input type="search" name="query" id="search">
+            <input type="submit" value="Поиск">
+            </form>
+        </th>
     </tr>
     <c:forEach var="employee" items="${employees}">
         <tr>

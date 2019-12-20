@@ -6,10 +6,13 @@ import java.time.LocalDateTime;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.search.annotations.*;
+import org.hibernate.search.annotations.Index;
 import transportsystem.embeddable.Comment;
 import transportsystem.generators.TransportOrderGenerator;
 
 @Entity
+@Indexed
 @Table(name = "transportorders")
 public class TransportOrder {
 
@@ -24,6 +27,7 @@ public class TransportOrder {
     @Column(nullable = false)
     @Getter
     @Setter
+    @Field(index= Index.YES, analyze= Analyze.YES, store= Store.NO)
     private String ordernumber;
 
     @Getter

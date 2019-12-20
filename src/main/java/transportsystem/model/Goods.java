@@ -3,8 +3,11 @@ package transportsystem.model;
 import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.search.annotations.*;
+import org.hibernate.search.annotations.Index;
 
 @Entity
+@Indexed
 @Table(name = "goods")
 public class Goods {
 
@@ -23,6 +26,7 @@ public class Goods {
     @Column
     @Getter
     @Setter
+    @Field(index= Index.YES, analyze= Analyze.YES, store= Store.NO)
     private String name;
 
     @Column

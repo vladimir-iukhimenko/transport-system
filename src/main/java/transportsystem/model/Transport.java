@@ -4,15 +4,17 @@ import java.time.LocalDate;
 import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.search.annotations.*;
+import org.hibernate.search.annotations.Index;
 
 @Entity
+@Indexed
 @Table(name="transports")
 public class Transport {
 
@@ -26,12 +28,14 @@ public class Transport {
 	@Column
     @Getter
     @Setter
+    @Field(index= Index.YES, analyze= Analyze.YES, store= Store.NO)
     @NotBlank(message = "Number is required!")
 	private String number;
 
     @Column
     @Getter
     @Setter
+    @Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
     @NotBlank(message = "VIN is required!")
 	private String vin;
 
@@ -49,6 +53,7 @@ public class Transport {
     @Getter
     @Setter
     @NotNull(message = "Year is required!")
+    @Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
 	private Integer producedyear;
 
     @Column

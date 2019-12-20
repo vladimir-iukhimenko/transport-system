@@ -4,9 +4,12 @@ import javax.persistence.*;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.search.annotations.*;
+import org.hibernate.search.annotations.Index;
 import transportsystem.embeddable.Comment;
 
 @Entity
+@Indexed
 @Table(name = "nomenclatures")
 public class Nomenclature {
 
@@ -20,6 +23,7 @@ public class Nomenclature {
     @Column
     @Getter
     @Setter
+    @Field(index= Index.YES, analyze= Analyze.YES, store= Store.NO)
     private String number;
 
     @Column
