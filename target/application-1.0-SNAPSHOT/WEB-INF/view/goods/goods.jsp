@@ -16,6 +16,12 @@
         <th>Высота</th>
         <th>Вес</th>
         <th>Действия</th>
+        <th> <form action="/search?q=${query}" method="GET">
+            <input type="hidden" name="context" value="goods">
+            <input type="search" name="query" id="search">
+            <input type="submit" value="Поиск">
+        </form>
+        </th>
     </tr>
     <c:forEach var="good" items="${goods}">
         <tr>

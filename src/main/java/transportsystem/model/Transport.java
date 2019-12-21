@@ -12,6 +12,7 @@ import lombok.Setter;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.search.annotations.*;
 import org.hibernate.search.annotations.Index;
+import org.hibernate.search.bridge.builtin.IntegerBridge;
 
 @Entity
 @Indexed
@@ -54,6 +55,7 @@ public class Transport {
     @Setter
     @NotNull(message = "Year is required!")
     @Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
+    @FieldBridge(impl = IntegerBridge.class)
 	private Integer producedyear;
 
     @Column

@@ -15,6 +15,12 @@
         <th>Высота</th>
         <th>Вес</th>
         <th>Комментарий</th>
+        <th> <form action="/search?q=${query}" method="GET">
+            <input type="hidden" name="context" value="nomenclatures">
+            <input type="search" name="query" id="search">
+            <input type="submit" value="Поиск">
+        </form>
+        </th>
     </tr>
     <c:forEach var="nomenclature" items="${nomenclatures}">
         <tr>

@@ -21,38 +21,37 @@ public class SearchController {
     public ModelAndView search(@RequestParam("query") String query, @RequestParam("context") String context)
     {
         ModelAndView modelAndView = new ModelAndView();
-        if(context.equals("/employees")){
+        if(context.equals("employees")){
             List listemployees = searchService.searchEmployee(query);
             modelAndView.addObject("employees",listemployees);
-            modelAndView.setViewName("employees/employees");
         }
 
-        if(context.equals("/transports")){
+        if(context.equals("transports")){
             List listtransports = searchService.searchTransport(query);
             modelAndView.addObject("transports",listtransports);
         }
 
-        if(context.equals("/transportmodels")){
+        if(context.equals("transportmodels")){
             List listtransportmodels = searchService.searchTransportModel(query);
             modelAndView.addObject("transportmodels",listtransportmodels);
         }
 
-        if(context.equals("/goods")){
+        if(context.equals("goods")){
             List listgoods = searchService.searchGoods(query);
             modelAndView.addObject("goods",listgoods);
         }
 
-        if(context.equals("/nomenclatures")){
+        if(context.equals("nomenclatures")){
             List listnomenclatures = searchService.searchNomenclature(query);
             modelAndView.addObject("nomenclatures",listnomenclatures);
         }
 
-        if(context.equals("/transportorders")){
+        if(context.equals("transportorders")){
             List listtransportorders = searchService.searchTransportOrder(query);
             modelAndView.addObject("transportorders",listtransportorders);
         }
 
-        //modelAndView.setViewName(context + "/" + context);
+        modelAndView.setViewName(context + "/" + context);
         return modelAndView;
     }
 

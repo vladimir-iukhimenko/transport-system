@@ -15,6 +15,12 @@
         <th>Год выпуска</th>
         <th>Ввод в эксплуатацию</th>
         <th>Действия</th>
+        <th> <form action="/search?q=${query}" method="GET">
+            <input type="hidden" name="context" value="transports">
+            <input type="search" name="query" id="search">
+            <input type="submit" value="Поиск">
+        </form>
+        </th>
     </tr>
     <c:forEach var="transport" items="${transports}">
         <tr>

@@ -19,6 +19,12 @@
         <th>Заказчик</th>
         <th>Комментарии</th>
         <th>Действия</th>
+        <th> <form action="/search?q=${query}" method="GET">
+            <input type="hidden" name="context" value="transportorders">
+            <input type="search" name="query" id="search">
+            <input type="submit" value="Поиск">
+        </form>
+        </th>
 
     </tr>
     <c:forEach var="transportorder" items="${transportorders}">

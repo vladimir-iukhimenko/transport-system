@@ -17,6 +17,12 @@
         <th>Мощность двигателя</th>
         <th>Имеющиеся автомобили в гараже</th>
         <th>Действия</th>
+        <th> <form action="/search?q=${query}" method="GET">
+            <input type="hidden" name="context" value="transportmodels">
+            <input type="search" name="query" id="search">
+            <input type="submit" value="Поиск">
+        </form>
+        </th>
     </tr>
     <c:forEach var="transportmodel" items="${transportmodels}">
         <tr>
