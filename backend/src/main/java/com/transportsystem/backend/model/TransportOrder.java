@@ -2,10 +2,10 @@ package com.transportsystem.backend.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
-import lombok.Getter;
-import lombok.Setter;
+
+import com.transportsystem.backend.converter.CommentConverter;
+import lombok.*;
 import org.hibernate.search.annotations.*;
 import org.hibernate.search.annotations.Index;
 import com.transportsystem.backend.embeddable.Comment;
@@ -79,20 +79,26 @@ public class TransportOrder {
 
     @Getter
     @Setter
+    @Column
+    @Convert(converter = CommentConverter.class)
     private Comment comments;
+
+    //TODO: initializer for Comment object. Rework?
+    {this.comments = new Comment();}
 
     @Column
     @Getter
     @Setter
 	private String declinereason;
 
-    public void setOrdernumber() {this.ordernumber = TransportOrderGenerator.generator();}
+    public void addOrdernumber() {this.ordernumber = TransportOrderGenerator.generator();}
+
+    @PrePersist
+    public void addOrderdate() {this.orderdate = LocalDate.now();}
 
     public void setOrderdate(String orderdate) {this.orderdate = LocalDate.parse(orderdate);}
 
     public void setTransportpresentingdate(String transportpresentingdate) {this.transportpresentingdate = LocalDate.parse(transportpresentingdate);}
-
-    public void addOrderdate() {this.orderdate = LocalDate.now();}
 
     public void addTransport(Transport transport) {
         this.transport = transport;
@@ -108,4 +114,5 @@ public class TransportOrder {
         this.employeecustomer = employee;
         employee.getTransportordercustomer().add(this);
     }
+
 }

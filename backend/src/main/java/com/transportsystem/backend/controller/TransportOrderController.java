@@ -71,14 +71,12 @@ public class TransportOrderController {
         Employee employeeresponsible = employeeService.getEmployeeById(employeeresponsibleid);
         Employee employeecustomer = employeeService.getEmployeeById(employeecustomerid);
         Transport transport = transportService.getTransportById(transportid);
-        Comment comments = new Comment();
-        comments.addComment(comment);
-        transportOrder.setComments(comments);
+        // TODO: instance initializer in TransportOrder is necessary. Rework?
+        transportOrder.getComments().addComment(comment);
         transportOrder.addEmployeeresponsible(employeeresponsible);
         transportOrder.addEmployeecustomer(employeecustomer);
         transportOrder.addTransport(transport);
-        transportOrder.setOrdernumber();
-        transportOrder.addOrderdate();
+        transportOrder.addOrdernumber();
         modelAndView.setViewName("redirect:/transportorders");
         transportOrderService.addTransportOrder(transportOrder);
         return modelAndView;
