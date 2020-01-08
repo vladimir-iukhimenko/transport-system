@@ -30,7 +30,10 @@ public class TransportController {
     @Autowired
     public void setTransportModelService(TransportModelService transportModelService) {this.transportModelService = transportModelService;}
 
-    @RequestMapping(value="/",method = RequestMethod.GET)
+    @RequestMapping(value="/login", method = RequestMethod.GET)
+    public String loginpage(Model model) {return "login";}
+
+    @RequestMapping(value="/", method = RequestMethod.GET)
     public String startpage(Model model) {
         return "index";
     }
