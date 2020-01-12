@@ -1,6 +1,8 @@
 package com.transportsystem.backend.model;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 import com.transportsystem.backend.model.TransportModel;
@@ -36,6 +38,7 @@ public class Engine {
     @Getter
     @Setter
     @OneToMany(mappedBy = "engine", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<TransportModel> transportmodels;
 
 }

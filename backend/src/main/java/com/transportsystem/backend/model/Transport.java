@@ -7,6 +7,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -43,11 +45,13 @@ public class Transport {
     @Getter
     @ManyToOne(optional = false)
     @JoinColumn(name = "transportmodelid")
+    @JsonBackReference
 	private TransportModel transportmodel;
 
 	@Getter
     @org.hibernate.annotations.LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "transport", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<DocumentTransport> transportdocuments;
 
     @Column
@@ -71,6 +75,7 @@ public class Transport {
     @Getter
     @org.hibernate.annotations.LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "transport")
+    @JsonIgnore
     private List<TransportOrder> transportorders;
 
     public void setStartupdate(String startupdate) {

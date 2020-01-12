@@ -2,6 +2,7 @@ package com.transportsystem.backend.controller;
 
 import com.transportsystem.backend.model.Engine;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import com.transportsystem.backend.model.TransportModel;
@@ -10,7 +11,8 @@ import com.transportsystem.backend.service.EngineService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping(path = "/api", produces = "application/json")
+@CrossOrigin(origins = {"http://localhost:8080"})
 public class EngineRESTController {
 
     private EngineService engineService;
@@ -18,19 +20,19 @@ public class EngineRESTController {
     @Autowired
     public void setEngineService(EngineService engineService) {this.engineService = engineService;}
 
-    @RequestMapping(value = "/engines", method = RequestMethod.GET)
-    public List<Engine> listEngines() {
+    @GetMapping("/engines")
+    public List<Engine> readAllEngines() {
         List<Engine> engines = engineService.getAllEngines();
         return engines;
     }
 
-    @RequestMapping(value = "/engines/{id}", method = RequestMethod.GET)
-    public Engine getEngine(@PathVariable("id") int id) {
+    @GetMapping("/engines/{id}")
+    public Engine readEngine(@PathVariable("id") int id) {
         Engine engine = engineService.getEngineById(id);
         return engine;
     }
-
-    @RequestMapping(value = "/engines/add", method = RequestMethod.GET)
+    //TODO: What to do with this?
+    @GetMapping("/engines/add")
     public ModelAndView addEngine()
     {
         ModelAndView modelAndView = new ModelAndView();
@@ -38,7 +40,7 @@ public class EngineRESTController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/engines/add", method = RequestMethod.POST)
+    @PostMapping("/engines/add")
     public ModelAndView addEngine(@ModelAttribute("engine") Engine engine)
     {
         ModelAndView modelAndView = new ModelAndView();
@@ -47,7 +49,7 @@ public class EngineRESTController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/engines/edit/{id}", method = RequestMethod.GET)
+    @GetMapping("/engines/edit/{id}")
     public ModelAndView editEngine(@PathVariable("id") int id)
     {
         Engine engine = engineService.getEngineById(id);
@@ -57,7 +59,7 @@ public class EngineRESTController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/engines/edit", method = RequestMethod.POST)
+    @PostMapping("/engines/edit")
     public ModelAndView editEngine(@ModelAttribute("engine") Engine engine)
     {
         ModelAndView modelAndView = new ModelAndView();
@@ -66,17 +68,16 @@ public class EngineRESTController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/engines/delete/{id}", method = RequestMethod.GET)
-    public ModelAndView deleteEngine(@PathVariable("id") int id)
+    @DeleteMapping("/engines/delete/{id}")
+    public ResponseEntity<Void> deleteEngine(@PathVariable("id") int id)
     {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/engines");
         Engine engine = engineService.getEngineById(id);
+        if(engine == null) return ResponseEntity.notFound().build();
         engineService.deleteEngine(engine);
-        return modelAndView;
+        return ResponseEntity.noContent().build();
     }
 
-    @RequestMapping(value = "/boundedtransportmodels/{id}", method = RequestMethod.GET)
+    @GetMapping("/boundedtransportmodels/{id}")
     public ModelAndView listBoundedTransportModels(@PathVariable("id") int id)
     {
         Engine engine = engineService.getEngineById(id);

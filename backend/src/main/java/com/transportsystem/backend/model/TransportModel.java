@@ -1,6 +1,9 @@
 package com.transportsystem.backend.model;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.search.annotations.*;
@@ -46,6 +49,7 @@ public class TransportModel {
     @Getter
     @ManyToOne(optional = false)
     @JoinColumn(name = "engineid")
+    @JsonBackReference
 	private Engine engine;
 
     @Column
@@ -55,6 +59,7 @@ public class TransportModel {
 
     @Getter
     @OneToMany(mappedBy = "transportmodel", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Transport> transports;
 
 
