@@ -1,18 +1,15 @@
 <template>
   <div class="container">
-    <MainApp />
+    <router-view />
   </div>
 </template>
 
 <script>
-import MainApp from "./components/MainApp";
+
 
 export default {
-  name: 'app',
-  components: {
-    MainApp,
-  }
-}
+  name: 'app'
+};
 </script>
 
 <style>

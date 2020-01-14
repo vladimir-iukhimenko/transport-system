@@ -2,6 +2,7 @@ package com.transportsystem.backend.controller;
 
 import com.transportsystem.backend.model.Engine;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,45 +28,23 @@ public class EngineRESTController {
     }
 
     @GetMapping("/engines/{id}")
-    public Engine readEngine(@PathVariable("id") int id) {
+    public Engine readEngine(@PathVariable int id) {
         Engine engine = engineService.getEngineById(id);
         return engine;
     }
-    //TODO: What to do with this?
-    @GetMapping("/engines/add")
-    public ModelAndView addEngine()
-    {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("engines/editorengines");
-        return modelAndView;
-    }
 
-    @PostMapping("/engines/add")
-    public ModelAndView addEngine(@ModelAttribute("engine") Engine engine)
+    @PostMapping("/engines/create")
+    public ResponseEntity<Void> createEngine(@RequestBody Engine engine)
     {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/engines");
         engineService.addEngine(engine);
-        return modelAndView;
+        return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/engines/edit/{id}")
-    public ModelAndView editEngine(@PathVariable("id") int id)
+    @PutMapping("/engines/update/{id}")
+    public ResponseEntity<Engine> updateEngine(@PathVariable int id, @RequestBody Engine engine)
     {
-        Engine engine = engineService.getEngineById(id);
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("engines/editorengines");
-        modelAndView.addObject("engine", engine);
-        return modelAndView;
-    }
-
-    @PostMapping("/engines/edit")
-    public ModelAndView editEngine(@ModelAttribute("engine") Engine engine)
-    {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/engines");
         engineService.editEngine(engine);
-        return modelAndView;
+        return new ResponseEntity<>(engine, HttpStatus.OK);
     }
 
     @DeleteMapping("/engines/delete/{id}")

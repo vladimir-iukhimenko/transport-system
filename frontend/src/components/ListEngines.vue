@@ -24,7 +24,7 @@
                 <a href="/boundedtransportmodels/">Показать</a>
             </td>
             <td>
-                <a href="/engines/edit/">Редактировать</a>
+                <button class="btn btn-success" v-on:click="editEngineClicked(engine.id)">Редактировать</button>
             </td>
             <td>
                 <button class="btn btn-warning" v-on:click="deleteEngineClicked(engine.id)">Удалить</button>
@@ -32,6 +32,9 @@
         </tr>
         </tbody>
     </table>
+        <div class="row">
+            <button class="btn btn btn-success" v-on:click="addEngineClicked()">Добавить двигатель</button>
+        </div>
     </div>
     </div>
 </template>
@@ -55,11 +58,16 @@
             },
             deleteEngineClicked(id){
                 EngineDataService.deleteEngine(id)
-                .then(response=> {
-                    response.status;
+                .then(()=> {
                     this.message = `Двигатель удален!`;
                     this.refreshEngines();
                 });
+            },
+            editEngineClicked(id){
+                this.$router.push(`/engines/${id}`)
+            },
+            addEngineClicked(){
+                this.$router.push(`/engines/add`)
             }
         },
         created() {
