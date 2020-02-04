@@ -1,10 +1,14 @@
 package com.transportsystem.backend.model;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 
 @Entity
 @Table(name = "employeedocuments")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Integer.class)
 public class DocumentEmployee extends Document{
 
 	@Getter

@@ -1,30 +1,71 @@
 package com.transportsystem.backend.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.transportsystem.backend.model.TransportModel;
+import com.transportsystem.backend.service.EngineService;
+import com.transportsystem.backend.service.JsonService;
 import com.transportsystem.backend.service.TransportModelService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api", produces = "application/json")
+@CrossOrigin(origins = "*")
 public class TransportModelRESTController {
     private TransportModelService transportModelService;
+    private EngineService engineService;
+    private JsonService jsonService;
 
     @Autowired
     public void setTransportModelService(TransportModelService transportModelService) {
         this.transportModelService = transportModelService;
     }
 
+    @Autowired
+    public void setEngineService(EngineService engineService) {
+        this.engineService = engineService;
+    }
+
+    @Autowired
+    public void setJsonService(JsonService jsonService) {this.jsonService = jsonService;}
+
     @GetMapping("/transportmodels")
-    public List<TransportModel> listTransportModels() {
+    public List<TransportModel> readAllTransportModels() {
         List<TransportModel> transportmodels = transportModelService.getAllTransportModels();
         return transportmodels;
     }
 
+    @GetMapping("/transportmodels/{id}")
+    public TransportModel readTransportModel(@PathVariable int id) {
+        TransportModel transportModel = transportModelService.getTransportModelById(id);
+        return transportModel;
+    }
+
+    @PostMapping("/transportmodels/add")
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public TransportModel createTransportModel(@RequestBody String data) throws JsonProcessingException {
+        TransportModel transportModel = jsonService.getObjectMapper().readValue(data,TransportModel.class);
+        transportModel.addEngine(engineService.getEngineById(jsonService.getValueFromJson(data,"engineid").asInt()));
+        transportModelService.addTransportModel(transportModel);
+        return transportModel;
+    }
+
+    @PutMapping("/transportmodels/edit")
+    @ResponseStatus(code = HttpStatus.OK)
+    public TransportModel updateTransportModel(@RequestBody String data) throws JsonProcessingException {
+        TransportModel transportModel = jsonService.getObjectMapper().readValue(data,TransportModel.class);
+        transportModel.addEngine(engineService.getEngineById(jsonService.getValueFromJson(data,"engineid").asInt()));
+        transportModelService.editTransportModel(transportModel);
+        return transportModel;
+    }
+
+    @DeleteMapping("/transportmodels/delete/{id}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    public void deleteTransportModel(@PathVariable int id) {
+        TransportModel transportModel = transportModelService.getTransportModelById(id);
+        transportModelService.deleteTransportModel(transportModel);
+    }
 }

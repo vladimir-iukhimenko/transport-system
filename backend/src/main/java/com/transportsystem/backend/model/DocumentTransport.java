@@ -3,11 +3,15 @@ package com.transportsystem.backend.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Table(name = "transportdocuments")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Integer.class)
 public class DocumentTransport extends Document {
 
     @Column

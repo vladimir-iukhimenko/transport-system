@@ -4,6 +4,8 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.transportsystem.backend.converter.CommentConverter;
 import lombok.*;
 import org.hibernate.search.annotations.*;
@@ -14,6 +16,7 @@ import com.transportsystem.backend.generators.TransportOrderGenerator;
 @Entity
 @Indexed
 @Table(name = "transportorders")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Integer.class)
 public class TransportOrder {
 
     @Id

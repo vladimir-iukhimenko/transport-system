@@ -4,6 +4,8 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -13,6 +15,7 @@ import org.hibernate.search.annotations.Index;
 @Entity
 @Indexed
 @Table(name = "employees")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Integer.class)
 public class Employee {
 
     @Id

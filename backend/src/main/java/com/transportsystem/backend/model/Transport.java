@@ -2,13 +2,13 @@ package com.transportsystem.backend.model;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -19,6 +19,7 @@ import org.hibernate.search.bridge.builtin.IntegerBridge;
 @Entity
 @Indexed
 @Table(name="transports")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Integer.class)
 public class Transport {
 
 	@Id
@@ -51,7 +52,6 @@ public class Transport {
 	@Getter
     @org.hibernate.annotations.LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "transport", cascade = CascadeType.ALL)
-    @JsonIgnore
     private List<DocumentTransport> transportdocuments;
 
     @Column
@@ -82,6 +82,7 @@ public class Transport {
         this.startupdate = LocalDate.parse(startupdate);
     }
 
+    //TODO: Replacing transport to other transportmodel needs to delete from previous transportmodel
     public void addTransportmodel(TransportModel transportModel) {
         this.transportmodel = transportModel;
         transportModel.getTransports().add(this);

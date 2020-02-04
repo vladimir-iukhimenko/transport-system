@@ -40,7 +40,7 @@
 </template>
 
 <script>
-    import EngineDataService from "../service/EngineDataService";
+    import RestAPIService from "../service/RestAPIService";
     export default {
         name: "ListEngines",
         data() {
@@ -51,13 +51,13 @@
         },
         methods: {
             refreshEngines(){
-                EngineDataService.getAllEngines()
+                RestAPIService.readAll("engines")
                 .then(response=>{
                     this.engines = response.data;
                 });
             },
             deleteEngineClicked(id){
-                EngineDataService.deleteEngine(id)
+                RestAPIService.delete(id,"engines")
                 .then(()=> {
                     this.message = `Двигатель удален!`;
                     this.refreshEngines();

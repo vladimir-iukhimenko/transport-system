@@ -1,6 +1,8 @@
 package com.transportsystem.backend.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.transportsystem.backend.model.Engine;
+import com.transportsystem.backend.service.JsonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,13 +15,17 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api", produces = "application/json")
-@CrossOrigin(origins = {"http://localhost:8080"})
+@CrossOrigin(origins = "*")
 public class EngineRESTController {
 
     private EngineService engineService;
+    private JsonService jsonService;
 
     @Autowired
     public void setEngineService(EngineService engineService) {this.engineService = engineService;}
+
+    @Autowired
+    public void setJsonService(JsonService jsonService) {this.jsonService = jsonService;}
 
     @GetMapping("/engines")
     public List<Engine> readAllEngines() {
@@ -33,21 +39,24 @@ public class EngineRESTController {
         return engine;
     }
 
-    @PostMapping("/engines/create")
-    public ResponseEntity<Void> createEngine(@RequestBody Engine engine)
-    {
+    @PostMapping(value = "/engines/add",consumes = "application/json")
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public Engine createEngine(@RequestBody String data) throws JsonProcessingException {
+        Engine engine = jsonService.getObjectMapper().readValue(data,Engine.class);
         engineService.addEngine(engine);
-        return ResponseEntity.noContent().build();
+        return engine;
     }
 
-    @PutMapping("/engines/update/{id}")
-    public ResponseEntity<Engine> updateEngine(@PathVariable int id, @RequestBody Engine engine)
-    {
+    @PutMapping(value = "/engines/edit/",consumes = "application/json")
+    @ResponseStatus(code = HttpStatus.OK)
+    public Engine updateEngine(@RequestBody String data) throws JsonProcessingException {
+        Engine engine = jsonService.getObjectMapper().readValue(data,Engine.class);
         engineService.editEngine(engine);
-        return new ResponseEntity<>(engine, HttpStatus.OK);
+        return engine;
     }
 
     @DeleteMapping("/engines/delete/{id}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
     public ResponseEntity<Void> deleteEngine(@PathVariable("id") int id)
     {
         Engine engine = engineService.getEngineById(id);

@@ -1,6 +1,9 @@
 package com.transportsystem.backend.model;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.search.annotations.*;
@@ -9,6 +12,7 @@ import org.hibernate.search.annotations.Index;
 @Entity
 @Indexed
 @Table(name = "goods")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Integer.class)
 public class Goods {
 
     @Id
@@ -53,7 +57,8 @@ public class Goods {
     @ManyToOne(optional = true)
     @JoinColumn(name = "transportorderid")
     private TransportOrder transportorder;
-	
+
+    //TODO: Replacing goods to other nomenclature has to deleting goods from previous nomenclature
 	public void addNomenclature(Nomenclature nomenclature) {
         this.nomenclature = nomenclature;
         nomenclature.getGoods().add(this);
