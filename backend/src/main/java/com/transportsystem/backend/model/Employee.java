@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.Setter;
@@ -75,16 +77,19 @@ public class Employee {
     @Getter
     @org.hibernate.annotations.LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<DocumentEmployee> employeedocuments;
 
     @Getter
     @org.hibernate.annotations.LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "employeeresponsible", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<TransportOrder> transportordersresponsible;
 
     @Getter
     @org.hibernate.annotations.LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "employeecustomer", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<TransportOrder> transportordercustomer;
 	
 	public void setDateofreceipt(String dateofreceipt) {this.dateofreceipt = LocalDate.parse(dateofreceipt);}

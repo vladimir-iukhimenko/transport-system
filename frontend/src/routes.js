@@ -9,27 +9,32 @@ const router = new Router({
         {
             path: "/",
             name: "Home",
-            component: () => import("./components/MainApp")
+            component: () => import("./views/MainPage")
         },
         {
             path: "/transports",
             name: "Transports",
-            component: () => import("./components/ListTransports")
+            component: () => import("./views/ListTransports")
         },
         {
-            path: "/transports/:id",
+            path: "/transports/add",
+            name: "New Transport Model",
+            component: () => import("./views/CreateTransport")
+        },
+        {
+            path: "/transports/:modelId",
             name: "New Transport",
             component: () => import("./components/Transport")
         },
         {
-            path: "/transports/edit/:id",
+            path: "/transports/edit/:transportId:modelId",
             name: "Edit Transport",
             component: () => import("./components/Transport")
         },
         {
             path: "/engines",
             name: "Engines",
-            component: () => import("./components/ListEngines")
+            component: () => import("./views/Engines")
         },
         {
             path: "/engines/:id",
@@ -40,6 +45,14 @@ const router = new Router({
             path: "/engines/add",
             name: "New Engine Addition",
             component: () => import("./components/Engine")
+        },
+        {
+            path: "/employees",
+            component: () => import("./components/ListEmployees")
+        },
+        {
+            path: "/transportdocs",
+            component: () => import("./views/TransportDocs")
         }
     ]
 });

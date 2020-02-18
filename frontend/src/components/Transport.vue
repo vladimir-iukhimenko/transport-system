@@ -66,17 +66,19 @@
             return{
                 transport: [],
                 errors: [],
-                transportmodel: [],
             };
         },
         computed: {
-            id() {
-                return this.$route.params.id;
+            transportId() {
+                return this.$route.params.transportId;
             },
+            modelId() {
+                return this.$route.params.modelId;
+            }
         },
         methods: {
             getTransportDetails() {
-                RestAPIService.retrieve(this.id, "transports").then(resource => {
+                RestAPIService.retrieve(this.transportId, "transports").then(resource => {
                     this.transport = resource.data;
                 });
             },
@@ -85,10 +87,10 @@
                 this.errors=[];
                 if (this.transport.id) {
                     RestAPIService.update("transports",{
-                        id: this.id,
+                        id: this.transportId,
                         number: this.transport.number,
                         vin: this.transport.vin,
-                        transportmodelid: this.transportmodel.id,
+                        transportmodelid: this.modelId,
                         producedyear: this.transport.producedyear,
                         startupdate: this.transport.startupdate,
                         writeoffdate: this.transport.writeoffdate,
@@ -100,7 +102,7 @@
                     RestAPIService.create("transports",{
                         number: this.transport.number,
                         vin: this.transport.vin,
-                        transportmodelid: this.id,
+                        transportmodelid: this.modelId,
                         producedyear: this.transport.producedyear,
                         startupdate: this.transport.startupdate,
                         writeoffdate: this.transport.writeoffdate,

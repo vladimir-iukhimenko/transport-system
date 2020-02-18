@@ -26,8 +26,8 @@
                                  :fields="transport_fields">
                         <template v-slot:cell(actions)="{rowSelected}">
                             <template v-if="rowSelected">
-                                <b-button class="btn btn-warning" size="sm" v-on:click="editTransportClicked(selected.id)">Редактировать</b-button>
-                                <b-button class="btn btn-danger" size="sm" v-on:click="deleteTransportClicked(selected.id)">Удалить</b-button>
+                                <b-button class="btn btn-warning" size="sm" v-on:click="editTransportClicked(transportSelected.id,transportModelIdSelected)">Редактировать</b-button>
+                                <b-button class="btn btn-danger" size="sm" v-on:click="deleteTransportClicked(transportSelected.id)">Удалить</b-button>
                             </template>
                             <template v-else>
                                 <b-button size="sm" disabled>Редактировать</b-button>
@@ -43,11 +43,11 @@
             <p>
                 Selected Rows:<br>
 
-                {{selected}}
+                {{transportSelected}}
 
                 Selected Element:<br>
 
-                {{idSelected}}
+                {{transportModelIdSelected}}
             </p>
         </div>
     </div>
@@ -118,8 +118,8 @@
                 ],
                 transportmodels: [],
                 message: null,
-                selected: null,
-                idSelected: '',
+                transportSelected: null,
+                transportModelIdSelected: null,
             };
         },
         methods: {
@@ -136,19 +136,19 @@
                         this.refreshTransports();
                     });
             },
-            editTransportClicked(id){
-                this.$router.push(`/transports/edit/${id}`)
+            editTransportClicked(transportId,transportModelId){
+                this.$router.push({name: 'Edit Transport', params:{transportId:transportId, modelId:transportModelId}})
             },
             addTransportClicked(id){
                 this.$router.push(`/transports/${id}`)
             },
             onRowSelected(items,id) {
-                if (items === this.selected) this.selected = null;
-                else this.selected = items;
-                if(id !== this.idSelected && this.idSelected !== '' && this.$refs[`${this.idSelected}`] !== undefined) {
-                    this.$refs[`${this.idSelected}`].clearSelected();
+                if (items === this.transportSelected) this.transportSelected = null;
+                else this.transportSelected = items;
+                if(id !== this.transportModelIdSelected && this.transportModelIdSelected !== '' && this.$refs[`${this.transportModelIdSelected}`] !== undefined) {
+                    this.$refs[`${this.transportModelIdSelected}`].clearSelected();
                 }
-                this.idSelected = id;
+                this.transportModelIdSelected = id;
             },
         },
         created() {
