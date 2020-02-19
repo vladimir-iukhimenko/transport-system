@@ -51,6 +51,7 @@
             </b-form-group>
             <b-button variant="primary" type="submit">Добавить</b-button>
         </b-form>
+        <p>{{transportmodel}}</p>
     </div>
 </template>
 
@@ -62,7 +63,7 @@
         components: {NavigationBar},
         data() {
             return {
-                transportmodel:[],
+                transportmodel: [],
             }
         },
         methods: {
@@ -74,7 +75,7 @@
                         color: this.transportmodel.color,
                         maxweight: this.transportmodel.maxweight,
                         enginepower: this.transportmodel.enginepower,
-                        engineid: 1006,
+                        engineid: this.transportmodel.transportid,
                     }).then(response=>{
                         this.$router.push(`/transports/${response.data.id}`)
                     })

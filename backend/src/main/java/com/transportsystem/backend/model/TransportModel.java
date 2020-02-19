@@ -36,12 +36,6 @@ public class TransportModel {
     @Getter
     @Setter
     @Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
-	private String color;
-
-    @Column
-    @Getter
-    @Setter
-    @Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
 	private String producer;
 
     @Column
@@ -49,25 +43,26 @@ public class TransportModel {
     @Setter
 	private Integer maxweight;
 
+    @Column
     @Getter
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "engineid")
-    @JsonBackReference
-	private Engine engine;
+    @Setter
+    private Integer length;
 
     @Column
     @Getter
     @Setter
-	private String enginepower;
+    private Integer width;
+
+    @Column
+    @Getter
+    @Setter
+    private Integer height;
 
     @Getter
     @OneToMany(mappedBy = "transportmodel", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Transport> transports;
 
 
-    public void addEngine(Engine engine) {
-        this.engine = engine;
-        engine.getTransportmodels().add(this);
-    }
+
 
 }

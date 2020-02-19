@@ -2,6 +2,7 @@ package com.transportsystem.backend.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.transportsystem.backend.model.Engine;
+import com.transportsystem.backend.model.Transport;
 import com.transportsystem.backend.service.JsonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -65,14 +66,11 @@ public class EngineRESTController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/boundedtransportmodels/{id}")
-    public ModelAndView listBoundedTransportModels(@PathVariable("id") int id)
+    @GetMapping("/boundedtransports/{id}")
+    public List<Transport> listBoundedTransports(@PathVariable("id") int id)
     {
         Engine engine = engineService.getEngineById(id);
-        List<TransportModel> transportModels = engine.getTransportmodels();
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("transportmodels/transportmodels");
-        modelAndView.addObject("transportmodels", transportModels);
-        return modelAndView;
+        List<Transport> transports = engine.getTransports();
+        return transports;
     }
 }

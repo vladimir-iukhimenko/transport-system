@@ -1,6 +1,7 @@
 package com.transportsystem.backend.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.transportsystem.backend.service.EngineService;
 import com.transportsystem.backend.service.JsonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,7 @@ public class TransportRESTController {
 
     private TransportService transportService;
     private TransportModelService transportModelService;
+    private EngineService engineService;
     private JsonService jsonService;
 
     @Autowired
@@ -28,6 +30,11 @@ public class TransportRESTController {
 
     @Autowired
     public void setTransportModelService(TransportModelService transportModelService) {this.transportModelService = transportModelService;}
+
+    @Autowired
+    public void setEngineService(EngineService engineService) {
+        this.engineService = engineService;
+    }
 
     @Autowired
     public void setJsonService(JsonService jsonService) {this.jsonService = jsonService;}
@@ -48,6 +55,7 @@ public class TransportRESTController {
     @ResponseStatus(code = HttpStatus.CREATED)
     public Transport createTransport(@RequestBody String data) throws JsonProcessingException {
         Transport transport = jsonService.getObjectMapper().readValue(data,Transport.class);
+        transport.addEngine(engineService.getEngineById(jsonService.getValueFromJson(data,"engineid").asInt()));
         Integer transportmodelid = jsonService.getValueFromJson(data,"transportmodelid").asInt();
         transport.addTransportmodel(transportModelService.getTransportModelById(transportmodelid));
         transportService.addTransport(transport);
@@ -58,6 +66,7 @@ public class TransportRESTController {
     @ResponseStatus(code = HttpStatus.OK)
     public Transport updateTransport(@RequestBody String data) throws JsonProcessingException {
         Transport transport = jsonService.getObjectMapper().readValue(data,Transport.class);
+        transport.addEngine(engineService.getEngineById(jsonService.getValueFromJson(data,"engineid").asInt()));
         Integer transportmodelid = jsonService.getValueFromJson(data,"transportmodelid").asInt();
         transport.addTransportmodel(transportModelService.getTransportModelById(transportmodelid));
         transportService.editTransport(transport);

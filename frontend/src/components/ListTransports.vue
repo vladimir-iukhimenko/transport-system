@@ -71,19 +71,21 @@
                         sortable: true
                     },
                     {
-                        key: 'color',
-                        label: 'Цвет',
-                        sortable: true
-                    },
-                    {
                         key: 'maxweight',
                         label: 'Максимальный вес',
                         sortable: true
                     },
                     {
-                        key: 'enginepower',
-                        label: 'Мощность',
-                        sortable: true
+                        key: 'length',
+                        label: 'Длина'
+                    },
+                    {
+                        key: 'width',
+                        label: 'Ширина'
+                    },
+                    {
+                        key: 'height',
+                        label: 'Высота'
                     },
                     {
                         key: 'show_details',
@@ -102,6 +104,14 @@
                     {
                         key: 'producedyear',
                         label: 'Год выпуска',
+                    },
+                    {
+                        key: 'color',
+                        label: 'Цвет',
+                    },
+                    {
+                        key: 'enginepower',
+                        label: 'Мощность',
                     },
                     {
                         key: 'startupdate',

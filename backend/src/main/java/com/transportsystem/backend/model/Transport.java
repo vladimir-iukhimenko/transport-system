@@ -43,6 +43,23 @@ public class Transport {
     @NotBlank(message = "VIN is required!")
 	private String vin;
 
+    @Column
+    @Getter
+    @Setter
+    @Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
+    private String color;
+
+    @Getter
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "engineid")
+    @JsonBackReference
+    private Engine engine;
+
+    @Column
+    @Getter
+    @Setter
+    private Integer enginepower;
+
     @Getter
     @ManyToOne(optional = false)
     @JoinColumn(name = "transportmodelid")
@@ -86,5 +103,10 @@ public class Transport {
     public void addTransportmodel(TransportModel transportModel) {
         this.transportmodel = transportModel;
         transportModel.getTransports().add(this);
+    }
+
+    public void addEngine(Engine engine) {
+        this.engine = engine;
+        engine.getTransports().add(this);
     }
 }

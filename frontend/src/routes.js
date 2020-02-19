@@ -53,6 +53,10 @@ const router = new Router({
         {
             path: "/transportdocs",
             component: () => import("./views/TransportDocs")
+        },
+        {
+            path: "/transportorders",
+            component: () => import("./views/TransportOrders")
         }
     ]
 });

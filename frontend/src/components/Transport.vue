@@ -35,21 +35,51 @@
                     </b-form-input>
                 </b-form-group>
                 <b-form-group id="input-group-4"
-                              label="Ввод в эксплуатацию"
+                              label="Цвет"
                               label-for="input-4">
                     <b-form-input id="input-4"
+                                  v-model="transport.color"
+                                  type="text"
+                                  required>
+                    </b-form-input>
+                </b-form-group>
+                <b-form-group id="input-group-5"
+                              label="Цвет"
+                              label-for="input-5">
+                    <b-form-input id="input-5"
+                                  v-model="transport.enginepower"
+                                  type="text"
+                                  required>
+                    </b-form-input>
+                </b-form-group>
+                <b-form-group id="input-group-6"
+                              label="Ввод в эксплуатацию"
+                              label-for="input-6">
+                    <b-form-input id="input-6"
                                   v-model="transport.startupdate"
                                   type="date"
                                   required>
                     </b-form-input>
                 </b-form-group>
-                <b-form-group id="input-group-5"
+                <b-form-group id="input-group-7"
                               label="Дата вывода из эксплуатации"
-                              label-for="input-5">
-                    <b-form-input id="input-5"
+                              label-for="input-7">
+                    <b-form-input id="input-7"
                                   v-model="transport.writeoffdate"
                                   type="date">
                     </b-form-input>
+                </b-form-group>
+                <b-form-group id="input-group-8"
+                              label="Двигатель"
+                              label-for="input-8">
+                    <b-form-select id="input-6"
+                                   v-model="transport.transportid"
+                                   :options="engines"
+                                   value-field="id"
+                                   text-field="name"
+                                   required
+                                   placeholder="">
+                    </b-form-select>
                 </b-form-group>
                 <b-button variant="primary" type="submit" v-if="transport.id">Редактировать</b-button>
                 <b-button variant="primary" type="submit" v-else>Добавить</b-button>
@@ -66,6 +96,8 @@
             return{
                 transport: [],
                 errors: [],
+                engines: RestAPIService.readAll("engines")
+                    .then(response=>{this.engines = response.data}),
             };
         },
         computed: {
@@ -94,6 +126,8 @@
                         producedyear: this.transport.producedyear,
                         startupdate: this.transport.startupdate,
                         writeoffdate: this.transport.writeoffdate,
+                        color: this.transport.color,
+                        enginepower: this.transport.enginepower
                     }).then(()=> {
                         this.$router.push(`/transports`);
                     });
@@ -106,6 +140,8 @@
                         producedyear: this.transport.producedyear,
                         startupdate: this.transport.startupdate,
                         writeoffdate: this.transport.writeoffdate,
+                        color: this.transport.color,
+                        enginepower: this.transport.enginepower
                     }).then(()=> {
                         this.$router.push(`/transports`);
                     });

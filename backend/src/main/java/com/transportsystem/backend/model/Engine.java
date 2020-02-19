@@ -42,6 +42,6 @@ public class Engine {
     @Setter
     @OneToMany(mappedBy = "engine", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonManagedReference
-    private List<TransportModel> transportmodels;
+    private List<Transport> transports;
 
 }

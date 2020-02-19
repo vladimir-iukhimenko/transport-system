@@ -2,7 +2,6 @@ package com.transportsystem.backend.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.transportsystem.backend.model.TransportModel;
-import com.transportsystem.backend.service.EngineService;
 import com.transportsystem.backend.service.JsonService;
 import com.transportsystem.backend.service.TransportModelService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,17 +15,11 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class TransportModelRESTController {
     private TransportModelService transportModelService;
-    private EngineService engineService;
     private JsonService jsonService;
 
     @Autowired
     public void setTransportModelService(TransportModelService transportModelService) {
         this.transportModelService = transportModelService;
-    }
-
-    @Autowired
-    public void setEngineService(EngineService engineService) {
-        this.engineService = engineService;
     }
 
     @Autowired
@@ -48,7 +41,6 @@ public class TransportModelRESTController {
     @ResponseStatus(code = HttpStatus.CREATED)
     public TransportModel createTransportModel(@RequestBody String data) throws JsonProcessingException {
         TransportModel transportModel = jsonService.getObjectMapper().readValue(data,TransportModel.class);
-        transportModel.addEngine(engineService.getEngineById(jsonService.getValueFromJson(data,"engineid").asInt()));
         transportModelService.addTransportModel(transportModel);
         return transportModel;
     }
@@ -57,7 +49,6 @@ public class TransportModelRESTController {
     @ResponseStatus(code = HttpStatus.OK)
     public TransportModel updateTransportModel(@RequestBody String data) throws JsonProcessingException {
         TransportModel transportModel = jsonService.getObjectMapper().readValue(data,TransportModel.class);
-        transportModel.addEngine(engineService.getEngineById(jsonService.getValueFromJson(data,"engineid").asInt()));
         transportModelService.editTransportModel(transportModel);
         return transportModel;
     }
