@@ -30,7 +30,7 @@
             </b-card-header>
             <b-collapse id="accordion-3" accordion="my-accordion" role="tabpanel">
                 <b-card-body>
-                    <p><router-link to="/">Номенклатуры грузов</router-link></p>
+                    <p><router-link to="/nomenclatures">Номенклатуры грузов</router-link></p>
                 </b-card-body>
             </b-collapse>
         </b-card>
@@ -40,7 +40,7 @@
             </b-card-header>
             <b-collapse id="accordion-4" accordion="my-accordion" role="tabpanel">
                 <b-card-body>
-                    <p><router-link to="/">Список сотрудников</router-link></p>
+                    <p><router-link to="/employees">Список сотрудников</router-link></p>
                     <p><router-link to="/">Документы сотрудников</router-link></p>
                 </b-card-body>
             </b-collapse>

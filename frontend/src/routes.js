@@ -48,7 +48,7 @@ const router = new Router({
         },
         {
             path: "/employees",
-            component: () => import("./components/ListEmployees")
+            component: () => import("./views/Employees")
         },
         {
             path: "/transportdocs",
@@ -57,6 +57,10 @@ const router = new Router({
         {
             path: "/transportorders",
             component: () => import("./views/TransportOrders")
+        },
+        {
+            path: "/nomenclatures",
+            component: () => import("./views/Nomenclatures")
         }
     ]
 });

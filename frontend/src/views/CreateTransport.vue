@@ -51,7 +51,6 @@
             </b-form-group>
             <b-button variant="primary" type="submit">Добавить</b-button>
         </b-form>
-        <p>{{transportmodel}}</p>
     </div>
 </template>
 

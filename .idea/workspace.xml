@@ -7,22 +7,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b4d8090-9e16-406b-9cbb-899dc8e5847d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/ListEmployees.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/ListItems.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/NavigationBar.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/SideMenu.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/views/CreateTransport.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/views/Engines.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/views/ListTransports.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/views/MainPage.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/views/TransportDocs.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/views/Employees.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/views/Nomenclatures.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/DocumentEmployee.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/DocumentEmployee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ListTransports.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ListTransports.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/MainApp.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/MainApp.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Transport.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Transport.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/embeddable/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/embeddable/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/Goods.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/Goods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/Nomenclature.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/Nomenclature.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/SideMenu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/SideMenu.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/CreateTransport.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/CreateTransport.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/TransportOrders.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/TransportOrders.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -624,7 +618,20 @@
       <workItem from="1581582156484" duration="22560000" />
       <workItem from="1581847440251" duration="14585000" />
       <workItem from="1581925499711" duration="17030000" />
-      <workItem from="1582020461714" duration="11431000" />
+      <workItem from="1582020461714" duration="12024000" />
+      <workItem from="1582047938194" duration="2517000" />
+      <workItem from="1582109268005" duration="8904000" />
+      <workItem from="1582127956470" duration="5548000" />
+      <workItem from="1582184650736" duration="12317000" />
+      <workItem from="1582219938736" duration="5722000" />
+      <workItem from="1582263347390" duration="4090000" />
+      <workItem from="1582272373669" duration="4486000" />
+      <workItem from="1582307473675" duration="5712000" />
+      <workItem from="1582479072129" duration="5535000" />
+      <workItem from="1582551026018" duration="13263000" />
+      <workItem from="1582651220391" duration="3796000" />
+      <workItem from="1582702235459" duration="8106000" />
+      <workItem from="1582733244724" duration="4750000" />
     </task>
     <servers />
   </component>
@@ -672,10 +679,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="400" y="100" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1536.824@0.0.1536.824" timestamp="1577649617662" />
-    <state x="325" y="337" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1578847858725">
+    <state x="325" y="337" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1582559747587">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="325" y="337" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1578847858725" />
+    <state x="325" y="337" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1582559747587" />
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1580297682379">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -778,11 +785,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1577978338040" />
-    <state x="529" y="271" key="com.intellij.ide.util.TipDialog" timestamp="1582020464839">
+    <state x="529" y="271" key="com.intellij.ide.util.TipDialog" timestamp="1582733281727">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="529" y="271" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1582020464839" />
-    <state x="654" y="341" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580968667253" />
+    <state x="529" y="271" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1582733281727" />
+    <state x="654" y="341" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582702235515" />
     <state x="530" y="164" key="com.intellij.javaee.view.ServerArtifactsDialog" timestamp="1576136156979">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

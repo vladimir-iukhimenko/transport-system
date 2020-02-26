@@ -1,5 +1,7 @@
 package com.transportsystem.backend.embeddable;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -48,12 +50,12 @@ public class Comment implements Serializable {
     @Override
     public String toString() {
         StringBuilder comment = new StringBuilder();
-        comments.values().forEach((value) -> comment.append(value).append(";"));
+        if (!comments.isEmpty()) comments.values().forEach((value) -> comment.append(value).append(";"));
         return comment.toString();
     }
 
     public static Comment fromString(String str) {
-        if (str==null) return new Comment();
+        if (str.equals("")) return new Comment();
         String[] splitted = str.split(";");
         Comment comments = new Comment();
         for(String comment: splitted) comments.pushComment(comment);

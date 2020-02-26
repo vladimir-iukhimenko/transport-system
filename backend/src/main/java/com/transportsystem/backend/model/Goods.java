@@ -2,7 +2,9 @@ package com.transportsystem.backend.model;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,6 +27,7 @@ public class Goods {
     @Getter
     @ManyToOne(optional = false,cascade = CascadeType.ALL)
     @JoinColumn(name = "nomenclatureid")
+    @JsonBackReference
 	private Nomenclature nomenclature;
 
     @Column
@@ -56,6 +59,7 @@ public class Goods {
     @Getter
     @ManyToOne(optional = true)
     @JoinColumn(name = "transportorderid")
+    @JsonIgnore
     private TransportOrder transportorder;
 
     //TODO: Replacing goods to other nomenclature has to deleting goods from previous nomenclature
