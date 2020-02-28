@@ -57,7 +57,7 @@ public class Nomenclature {
 
     @Getter
     @OneToMany(mappedBy = "nomenclature", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonManagedReference(value = "bounded-goods")
     private List<Goods> goods;
 
 }

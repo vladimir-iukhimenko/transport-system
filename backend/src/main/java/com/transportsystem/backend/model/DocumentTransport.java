@@ -4,6 +4,7 @@ package com.transportsystem.backend.model;
 import javax.persistence.*;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
@@ -22,6 +23,7 @@ public class DocumentTransport extends Document {
     @Setter
     @ManyToOne(optional = false)
     @JoinColumn(name = "transportid")
+    @JsonBackReference(value = "bounded-transportdocuments")
     private Transport transport;
 	
 	public void setExpiredate(String expiredate) {this.expiredate = LocalDate.parse(expiredate);}

@@ -25,9 +25,9 @@ public class Goods {
 	private Integer id;
 
     @Getter
-    @ManyToOne(optional = false,cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "nomenclatureid")
-    @JsonBackReference
+    @JsonBackReference(value = "bounded-goods")
 	private Nomenclature nomenclature;
 
     @Column
@@ -59,7 +59,7 @@ public class Goods {
     @Getter
     @ManyToOne(optional = true)
     @JoinColumn(name = "transportorderid")
-    @JsonIgnore
+    @JsonBackReference(value = "list-goods")
     private TransportOrder transportorder;
 
     //TODO: Replacing goods to other nomenclature has to deleting goods from previous nomenclature

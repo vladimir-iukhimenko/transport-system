@@ -52,7 +52,7 @@ public class Transport {
     @Getter
     @ManyToOne(optional = false)
     @JoinColumn(name = "engineid")
-    @JsonBackReference
+    @JsonBackReference(value = "transports")
     private Engine engine;
 
     @Column
@@ -63,12 +63,13 @@ public class Transport {
     @Getter
     @ManyToOne(optional = false)
     @JoinColumn(name = "transportmodelid")
-    @JsonBackReference
+    @JsonBackReference(value = "transports-transportmodels")
 	private TransportModel transportmodel;
 
 	@Getter
     @org.hibernate.annotations.LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "transport", cascade = CascadeType.ALL)
+    @JsonManagedReference(value = "bounded-transportdocuments")
     private List<DocumentTransport> transportdocuments;
 
     @Column
@@ -92,7 +93,7 @@ public class Transport {
     @Getter
     @org.hibernate.annotations.LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "transport")
-    @JsonIgnore
+    @JsonIdentityReference(alwaysAsId = true)
     private List<TransportOrder> transportorders;
 
     public void setStartupdate(String startupdate) {

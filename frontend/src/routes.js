@@ -37,16 +37,6 @@ const router = new Router({
             component: () => import("./views/Engines")
         },
         {
-            path: "/engines/:id",
-            name: "Engine Details",
-            component: () => import("./components/Engine")
-        },
-        {
-            path: "/engines/add",
-            name: "New Engine Addition",
-            component: () => import("./components/Engine")
-        },
-        {
             path: "/employees",
             component: () => import("./views/Employees")
         },
@@ -65,6 +55,10 @@ const router = new Router({
         {
             path: "/transportorders",
             component: () => import("./views/TransportOrders")
+        },
+        {
+            path: "/transportorders/create",
+            component: () => import("./views/CreateTransportOrder")
         },
         {
             path: "/nomenclatures",

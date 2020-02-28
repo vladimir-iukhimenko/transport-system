@@ -26,6 +26,12 @@
                     <b-col>Заказчик:</b-col>
                     <b-col>{{employeeResponsibleFromSelectedRow.surname + ' ' + employeeResponsibleFromSelectedRow.name}}</b-col>
                 </b-row>
+                <h6>Комментарии:</h6>
+                <b-list-group>
+                    <b-list-group-item v-for="comment in comments" :key="comment.commentid">
+                        {{comment}}
+                    </b-list-group-item>
+                </b-list-group>
             </b-card>
         </b-modal>
         <b-modal id="modal-form-2" hide-footer title="Товары">
@@ -48,6 +54,7 @@
                 selectedRow: [],
                 transportFromSelectedRow: [],
                 employeeResponsibleFromSelectedRow: [],
+                comments: [],
                 tableItems: RestAPIService.readAll("transportorders")
                     .then(response=>{this.tableItems = response.data}),
                 tableFields: [
@@ -91,6 +98,7 @@
                     .then(response=>{this.transportFromSelectedRow = response.data});
                 this.employeeResponsibleFromSelectedRow = RestAPIService.retrieve(responsibleEmployeeid,"employees")
                     .then(response=>{this.employeeResponsibleFromSelectedRow = response.data});
+                this.comments = this.selectedRow[0].comments.allComments;
             },
             openAdditionalInfo() {
                 this.$bvModal.show('modal-form-1');

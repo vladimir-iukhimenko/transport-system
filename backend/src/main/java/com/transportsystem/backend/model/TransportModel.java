@@ -60,6 +60,7 @@ public class TransportModel {
 
     @Getter
     @OneToMany(mappedBy = "transportmodel", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonManagedReference(value = "transports-transportmodels")
     private List<Transport> transports;
 
 

@@ -57,8 +57,8 @@ public class TransportOrderRESTController {
     @PostMapping("/transportorders/add")
     @ResponseStatus(code = HttpStatus.CREATED)
     public TransportOrder createTransportOrder(@RequestBody String data) throws JsonProcessingException {
-        Employee employeeresponsible = employeeService.getEmployeeById(jsonService.getValueFromJson(data,"employeeresponsibleid").asInt());
-        Employee employeecustomer = employeeService.getEmployeeById(jsonService.getValueFromJson(data,"employeecustomerid").asInt());
+        Employee employeeresponsible = employeeService.getEmployeeById(jsonService.getValueFromJson(data,"responsibleemployeeid").asInt());
+        Employee employeecustomer = employeeService.getEmployeeById(jsonService.getValueFromJson(data,"customeremployeeid").asInt());
         Transport transport = transportService.getTransportById(jsonService.getValueFromJson(data,"transportid").asInt());
         TransportOrder transportOrder = jsonService.getObjectMapper().readValue(data,TransportOrder.class);
         String comment = jsonService.getCommentFromJson(data);

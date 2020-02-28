@@ -15,7 +15,7 @@ public class DocumentEmployee extends Document{
 	@Getter
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "employeeid")
-	@JsonBackReference
+	@JsonBackReference(value = "bounded-employeedocuments")
 	private Employee employee;
 	
 	public void addEmployee(Employee employee) {

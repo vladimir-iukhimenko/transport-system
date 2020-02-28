@@ -39,7 +39,7 @@
             this.$bvModal.show('selection');
             RestAPIService.readAll("employees")
                 .then(response => {this.employees = response.data});
-            this.$root.$on('bv::modal::hide', () => {this.$router.push(`/employees`)})
+            this.$root.$on('bv::modal::hide', (modalId) => {if (modalId.componentId === "selection") this.$router.push(`/employees`)})
         }
     }
 </script>

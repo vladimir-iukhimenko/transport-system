@@ -20,7 +20,7 @@
             <b-collapse id="accordion-2" accordion="my-accordion" role="tabpanel">
                 <b-card-body>
                     <p><router-link to="/transportorders">Список транспортных заказов</router-link></p>
-                    <p><router-link to="/transports">Новый транспортный заказ</router-link></p>
+                    <p><router-link to="/transportorders/create">Новый транспортный заказ</router-link></p>
                 </b-card-body>
             </b-collapse>
         </b-card>
