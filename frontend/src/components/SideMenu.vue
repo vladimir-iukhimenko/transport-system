@@ -41,7 +41,7 @@
             <b-collapse id="accordion-4" accordion="my-accordion" role="tabpanel">
                 <b-card-body>
                     <p><router-link to="/employees">Список сотрудников</router-link></p>
-                    <p><router-link to="/">Документы сотрудников</router-link></p>
+                    <p><router-link to="/employees/select">Документы сотрудников</router-link></p>
                 </b-card-body>
             </b-collapse>
         </b-card>

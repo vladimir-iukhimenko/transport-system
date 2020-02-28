@@ -106,10 +106,17 @@ public class DocumentRESTController {
         return documentEmployee;
     }
 
-    @DeleteMapping("documents/delete/{id}")
+    @DeleteMapping("transportdocs/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteDocumentTransport(@PathVariable int id) {
         Document document = documentService.getDocumentTransportById(id);
+        documentService.delete(document);
+    }
+
+    @DeleteMapping("employeedocs/delete/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteDocumentEmployee(@PathVariable int id) {
+        Document document = documentService.getDocumentEmployeeById(id);
         documentService.delete(document);
     }
 }

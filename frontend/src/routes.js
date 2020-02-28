@@ -51,6 +51,14 @@ const router = new Router({
             component: () => import("./views/Employees")
         },
         {
+            path: "/employees/docs/:id",
+            component: () => import("./views/EmployeeDocs")
+        },
+        {
+            path: "/employees/select",
+            component: () => import("./components/EmployeeSelection")
+        },
+        {
             path: "/transportdocs",
             component: () => import("./views/TransportDocs")
         },

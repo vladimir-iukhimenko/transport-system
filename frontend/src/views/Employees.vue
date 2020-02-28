@@ -5,6 +5,8 @@
         </ListItems>
         <b-button @click="addEmployee">Добавить</b-button>
         <b-button @click="editEmployee">Редактировать</b-button>
+        <b-button @click="deleteEmployee">Удалить</b-button>
+        <b-button @click="showEmployeeDocs">Документы</b-button>
         <b-modal id="modal-form" no-close-on-backdrop hide-footer :title="title + ' запись о сотруднике'">
             <b-form @submit="validateAndSubmit">
                 <b-form-group id="input-group-1"
@@ -212,10 +214,24 @@
                 }
                 else this.$bvToast.toast('Выберите сотрудника!',{autoHideDelay:5000,title:'Транспортная система'});
             },
+            deleteEmployee() {
+                if (this.employee[0].length !== 0) {
+                    RestAPIService.delete(this.employee[0].id,"employees");
+                    this.$bvToast.toast('Выбранный сотрудник удален!',{autoHideDelay: 5000, title: 'Транспортная система'});
+                    this.refreshTableItems();
+                }
+                else this.$bvToast.toast('Выберите сотрудника!',{autoHideDelay:5000, title: 'Транспортная система'})
+            },
             addEmployee() {
                 this.employee = [[]];
                 this.title = 'Добавить';
                 this.$bvModal.show('modal-form');
+            },
+            showEmployeeDocs() {
+                if (this.employee[0].length !== 0) {
+                    this.$router.push(`/employees/docs/${this.employee[0].id}`);
+                }
+                else this.$bvToast.toast('Выберите сотрудника!', {autoHideDelay:5000, title: 'Транспортная система'})
             }
         },
         created() {

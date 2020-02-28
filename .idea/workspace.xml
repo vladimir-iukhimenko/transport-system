@@ -7,16 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b4d8090-9e16-406b-9cbb-899dc8e5847d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/views/Employees.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/views/Nomenclatures.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/EmployeeSelection.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/views/EmployeeDocs.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/embeddable/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/embeddable/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/Goods.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/Goods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/Nomenclature.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/Nomenclature.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/DocumentRESTController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/DocumentRESTController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/SideMenu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/SideMenu.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/CreateTransport.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/CreateTransport.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/TransportOrders.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/TransportOrders.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/Employees.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Employees.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -631,7 +628,9 @@
       <workItem from="1582551026018" duration="13263000" />
       <workItem from="1582651220391" duration="3796000" />
       <workItem from="1582702235459" duration="8106000" />
-      <workItem from="1582733244724" duration="4750000" />
+      <workItem from="1582733244724" duration="5669000" />
+      <workItem from="1582783134794" duration="18397000" />
+      <workItem from="1582867920530" duration="5680000" />
     </task>
     <servers />
   </component>
@@ -785,11 +784,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1577978338040" />
-    <state x="529" y="271" key="com.intellij.ide.util.TipDialog" timestamp="1582733281727">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="654" y="341" key="com.intellij.ide.util.TipDialog" timestamp="1582867935270">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="529" y="271" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1582733281727" />
-    <state x="654" y="341" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582702235515" />
+    <state x="654" y="341" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582867935270" />
     <state x="530" y="164" key="com.intellij.javaee.view.ServerArtifactsDialog" timestamp="1576136156979">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
