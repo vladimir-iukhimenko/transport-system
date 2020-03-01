@@ -4,7 +4,7 @@
         <div v-if="message" class="alert alert-success">
             {{message}}
         </div>
-        <ListItems :is-selectable="true" @selected="onSelectedRow" :table-items="tableItems" :table-fields="tableFields" header="Документы транспортных средств">
+        <ListItems :is-selectable="true" @selected="onSelectedRow" :table-items="tableItems" :table-fields="tableFields" header="Транспортные заказы">
         </ListItems>
         <div>
             <b-button-group v-if="selectedRow.length > 0">

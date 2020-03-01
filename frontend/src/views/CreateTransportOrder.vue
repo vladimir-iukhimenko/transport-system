@@ -19,6 +19,8 @@
                     <b-form-select-option v-for="transport in transports" :key="transport.id" :value="transport.id">{{transport.number}}</b-form-select-option>
                 </b-form-select>
             </b-form-group>
+            <b-button @click="$bvModal.show('select-goods')">Выбрать грузы</b-button>
+            <p>{{selectedGoods}}</p>
             <b-form-group id="input-group-3"
                           label="Место погрузки"
                           label-for="input-3">
@@ -87,6 +89,9 @@
             </b-form-group>
             <b-button variant="primary" type="submit">Добавить</b-button>
         </b-form>
+        <b-modal id="select-goods" title="Выберите грузы" hide-footer>
+            <b-form-checkbox-group v-model="selectedGoods" :options="goods" value-field="id" text-field="name"></b-form-checkbox-group>
+        </b-modal>
     </div>
 </template>
 
@@ -99,6 +104,8 @@
         data() {
             return {
                 transportorder: [],
+                selectedGoods: [],
+                goods: RestAPIService.readAll("goods").then(response => {this.goods = response.data}),
                 transports: RestAPIService.readAll("transports").then(response => {this.transports = response.data}),
                 employees: RestAPIService.readAll("employees").then(response => {this.employees = response.data}),
             }
@@ -117,7 +124,8 @@
                     telephonenumber: this.transportorder.telephonenumber,
                     customeremployeeid: this.transportorder.customeremployeeid,
                     declinereason: this.transportorder.declinereason,
-                    comment: this.transportorder.comment
+                    comment: this.transportorder.comment,
+                    goodsIds: this.selectedGoods
                 }).then(() => {
                     this.$router.push(`/transportorders`)
                     this.$bvToast.toast('Транспортный заказ размещен!',{autoHideDelay:5000,title:'Транспортная система'});

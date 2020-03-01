@@ -2,10 +2,7 @@ package com.transportsystem.backend.model;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.search.annotations.*;
@@ -57,9 +54,10 @@ public class Goods {
 	private Double weight;
 
     @Getter
+    @Setter
     @ManyToOne(optional = true)
     @JoinColumn(name = "transportorderid")
-    @JsonBackReference(value = "list-goods")
+    @JsonIdentityReference(alwaysAsId = true)
     private TransportOrder transportorder;
 
     //TODO: Replacing goods to other nomenclature has to deleting goods from previous nomenclature
@@ -70,7 +68,6 @@ public class Goods {
 
     public void addTransportorder(TransportOrder transportorder) {
         this.transportorder = transportorder;
-        transportorder.getGoods().add(this);
     }
 
 }

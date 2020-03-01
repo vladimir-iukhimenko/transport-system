@@ -4,12 +4,11 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.transportsystem.backend.converter.CommentConverter;
 import lombok.*;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.search.annotations.*;
 import org.hibernate.search.annotations.Index;
 import com.transportsystem.backend.embeddable.Comment;
@@ -36,8 +35,8 @@ public class TransportOrder {
     private String ordernumber;
 
     @Getter
-    @OneToMany(mappedBy = "transportorder", fetch = FetchType.EAGER)
-    @JsonManagedReference(value = "list-goods")
+    @org.hibernate.annotations.LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "transportorder")
 	private List<Goods> goods;
 
     @Column(nullable = false)
@@ -120,5 +119,4 @@ public class TransportOrder {
         this.employeecustomer = employee;
         employee.getTransportordercustomer().add(this);
     }
-
 }

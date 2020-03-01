@@ -28,5 +28,4 @@ public class JsonService {
         JsonNode objectNode = objectMapper.readTree(json);
         return objectNode.path(value);
     }
-
 }

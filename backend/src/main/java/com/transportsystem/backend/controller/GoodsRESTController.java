@@ -31,7 +31,7 @@ public class GoodsRESTController {
 
     @GetMapping("/goods")
     public List<Goods> readAllGoods() {
-        List<Goods> goods = goodsService.getAllGoods();
+        List<Goods> goods = goodsService.getAllGoodsWithoutTransportOrders();
         return goods;
     }
 

@@ -1,14 +1,13 @@
 package com.transportsystem.backend.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.transportsystem.backend.embeddable.Comment;
 import com.transportsystem.backend.model.Employee;
+import com.transportsystem.backend.model.Goods;
 import com.transportsystem.backend.model.Transport;
 import com.transportsystem.backend.model.TransportOrder;
-import com.transportsystem.backend.service.EmployeeService;
-import com.transportsystem.backend.service.JsonService;
-import com.transportsystem.backend.service.TransportOrderService;
-import com.transportsystem.backend.service.TransportService;
+import com.transportsystem.backend.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +22,7 @@ public class TransportOrderRESTController {
     private EmployeeService employeeService;
     private TransportService transportService;
     private JsonService jsonService;
+    private GoodsService goodsService;
 
     @Autowired
     public void setTransportOrderService(TransportOrderService transportOrderService) {
@@ -41,6 +41,9 @@ public class TransportOrderRESTController {
 
     @Autowired
     public void setJsonService(JsonService jsonService) {this.jsonService = jsonService;}
+
+    @Autowired
+    public void setGoodsService(GoodsService goodsService) {this.goodsService = goodsService;}
 
     @GetMapping("/transportorders")
     public List<TransportOrder> readAllTransportOrders() {
@@ -67,9 +70,15 @@ public class TransportOrderRESTController {
         transportOrder.addEmployeeresponsible(employeeresponsible);
         transportOrder.addEmployeecustomer(employeecustomer);
         transportOrder.addTransport(transport);
+        JsonNode arrNodes = jsonService.getValueFromJson(data, "goodsIds");
         // TODO: WHY THIS METHOD?
         transportOrder.addOrdernumber();
         transportOrderService.addTransportOrder(transportOrder);
+        for (JsonNode objNode: arrNodes) {
+            Goods goods = goodsService.getGoodsById(objNode.asInt());
+            goods.addTransportorder(transportOrder);
+            goodsService.edit(goods);
+        }
         return transportOrder;
     }
 

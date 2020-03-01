@@ -1,11 +1,13 @@
 package com.transportsystem.backend.service;
 
+import com.transportsystem.backend.model.TransportOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.transportsystem.backend.dao.GoodsDAO;
 import com.transportsystem.backend.model.Goods;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,4 +35,17 @@ public class GoodsService {
 
     @Transactional
     public List<Goods> getAllGoods() {return goodsDAO.getAllGoods();}
+
+    @Transactional
+    public List<Goods> getAllGoodsWithoutTransportOrders() {
+        List<Goods> allGoods = getAllGoods();
+        List<Goods> goodsWithoutTransportOrders = new ArrayList<>();
+        allGoods.forEach(goods -> {
+            if (goods.getTransportorder() == null)
+            {
+                goodsWithoutTransportOrders.add(goods);
+            }
+        });
+        return goodsWithoutTransportOrders;
+    }
 }

@@ -175,6 +175,7 @@
                     weight: this.goods.weight
                 }).then(()=>{
                     this.$bvModal.hide("goods");
+                    this.goods = [],
                     this.refreshTableItems();
                 })
             }
