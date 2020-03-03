@@ -7,16 +7,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b4d8090-9e16-406b-9cbb-899dc8e5847d" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_jsonwebtoken_jjwt_0_9_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/security/AuthRESTController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/dao/security/RoleDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/security/ERole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/security/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/security/payload/request/LoginRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/security/payload/request/SignupRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/security/payload/response/JwtResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/security/payload/response/MessageResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/security/jwt/AuthEntryPointJwt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/security/jwt/AuthTokenFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/security/jwt/JwtUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/service/security/RoleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/backend_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/backend_war_exploded.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/GoodsRESTController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/GoodsRESTController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/TransportOrderRESTController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/TransportOrderRESTController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/Goods.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/Goods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/TransportOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/TransportOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/service/GoodsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/service/GoodsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/service/JsonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/service/JsonService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/CreateTransportOrder.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/CreateTransportOrder.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/Nomenclatures.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Nomenclatures.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/TransportOrders.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/TransportOrders.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/BackendApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/BackendApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/RegistrationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/dao/security/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/security/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/security/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/service/security/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,9 +66,10 @@
         <option value="Interface" />
         <option value="jsf" />
         <option value="Jsp File" />
-        <option value="Class" />
         <option value="JavaScript File" />
         <option value="Vue Single File Component" />
+        <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -636,7 +650,10 @@
       <workItem from="1582867920530" duration="22351000" />
       <workItem from="1582910015152" duration="3841000" />
       <workItem from="1582973415746" duration="22066000" />
-      <workItem from="1583053759327" duration="6056000" />
+      <workItem from="1583053759327" duration="13519000" />
+      <workItem from="1583128759016" duration="6386000" />
+      <workItem from="1583135704020" duration="10974000" />
+      <workItem from="1583213502677" duration="11432000" />
     </task>
     <servers />
   </component>
@@ -676,6 +693,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="0" width="1089" height="824" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1577712464880" />
+    <state x="765" y="228" key="#com.intellij.ide.util.MemberChooser" timestamp="1583140605843">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="228" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1583140605843" />
     <state x="498" y="0" width="539" height="824" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1577651691971">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -684,10 +705,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="400" y="100" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1536.824@0.0.1536.824" timestamp="1577649617662" />
-    <state x="325" y="337" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1582559747587">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="406" y="425" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1583129805146">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="325" y="337" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1582559747587" />
+    <state x="406" y="425" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583129805146" />
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1582875870364">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -781,20 +803,20 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="299" y="66" key="Maven.ArtifactSearchDialog/0.0.1536.824@0.0.1536.824" timestamp="1577648428724" />
-    <state x="299" y="0" key="SettingsEditor" timestamp="1577648031099">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="456" y="212" key="SettingsEditor" timestamp="1583135567697">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="299" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1577648031099" />
-    <state x="452" y="323" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1576222487068" />
+    <state x="456" y="212" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1583135567697" />
     <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1577978338040">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1577978338040" />
-    <state x="529" y="271" key="com.intellij.ide.util.TipDialog" timestamp="1583053759674">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="654" y="341" key="com.intellij.ide.util.TipDialog" timestamp="1583213519182">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="529" y="271" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1583053759674" />
-    <state x="654" y="341" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582867935270" />
+    <state x="654" y="341" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583213519182" />
     <state x="530" y="164" key="com.intellij.javaee.view.ServerArtifactsDialog" timestamp="1576136156979">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

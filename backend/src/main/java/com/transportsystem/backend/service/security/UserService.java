@@ -1,7 +1,7 @@
-package com.transportsystem.backend.service;
+package com.transportsystem.backend.service.security;
 
-import com.transportsystem.backend.dao.UserDAO;
-import com.transportsystem.backend.security.User;
+import com.transportsystem.backend.dao.security.UserDAO;
+import com.transportsystem.backend.model.security.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -49,5 +49,8 @@ public class UserService implements UserDetailsService {
         if(user != null) {return user;}
         throw new UsernameNotFoundException("User " + username + " not found!");
     }
+
+    @Transactional
+    public Boolean isUserExists(String username) {return userDAO.isUserExists(username);}
 
 }

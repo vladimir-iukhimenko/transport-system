@@ -1,8 +1,8 @@
 package com.transportsystem.backend.controller;
-/**
-import com.transportsystem.backend.security.User;
+
+import com.transportsystem.backend.model.security.User;
 import com.transportsystem.backend.service.EmployeeService;
-import com.transportsystem.backend.service.UserService;
+import com.transportsystem.backend.service.security.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -38,4 +38,3 @@ public class RegistrationController {
         return "redirect:/login";
     }
 }
-**/

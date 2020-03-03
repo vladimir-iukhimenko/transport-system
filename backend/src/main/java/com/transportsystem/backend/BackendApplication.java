@@ -80,6 +80,7 @@ public class BackendApplication {
 	}
 
 	// Fix the CORS errors
+
 	@Bean
 	public FilterRegistrationBean simpleCorsFilter() {
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

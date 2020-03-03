@@ -1,6 +1,6 @@
-package com.transportsystem.backend.dao;
+package com.transportsystem.backend.dao.security;
 
-import com.transportsystem.backend.security.User;
+import com.transportsystem.backend.model.security.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,5 +45,10 @@ public class UserDAO {
     public User getUserByUsername(String username) {
         Session session = sessionFactory.getCurrentSession();
         return session.get(User.class,username);
+    }
+
+    public Boolean isUserExists(String username) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(User.class, username) != null;
     }
 }
