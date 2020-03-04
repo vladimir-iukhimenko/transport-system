@@ -12,6 +12,21 @@ const router = new Router({
             component: () => import("./views/MainPage")
         },
         {
+            path: "/login",
+            name: "Login",
+            component: () => import("./views/Login")
+        },
+        {
+            path: "/register",
+            name: "Register",
+            component: () => import("./views/Register")
+        },
+        {
+            path: "/profile",
+            name: "Profile",
+            component: () => import("./views/Profile")
+        },
+        {
             path: "/transports",
             name: "Transports",
             component: () => import("./views/ListTransports")
@@ -65,6 +80,18 @@ const router = new Router({
             component: () => import("./views/Nomenclatures")
         }
     ]
+});
+
+router.beforeEach((to, from, next) => {
+    const publicPages = ['/login', '/register'];
+    const authRequired = !publicPages.includes(to.path);
+    const loggedIn = localStorage.getItem('user');
+
+    if (authRequired && !loggedIn) {
+        next('/login');
+    } else {
+        next();
+    }
 });
 
 export default router;

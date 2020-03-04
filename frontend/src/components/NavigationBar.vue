@@ -15,10 +15,10 @@
                     </b-nav-item-dropdown>
                     <b-nav-item-dropdown right>
                         <template v-slot:button-content>
-                            <em>Пользователь</em>
+                            <em>{{user}}</em>
                         </template>
                         <b-dropdown-item>Профиль</b-dropdown-item>
-                        <b-dropdown-item>Выйти</b-dropdown-item>
+                        <b-dropdown-item v-on:click="logout">Выйти</b-dropdown-item>
                     </b-nav-item-dropdown>
                 </b-navbar-nav>
             </b-collapse>
@@ -28,8 +28,25 @@
 
 <script>
     export default {
-        name: "NavigationBar"
+        name: "NavigationBar",
+        data() {
+            return {
+
+            }
+        },
+        computed: {
+            user() {
+                return this.$store.state.auth.user.username;
+            },
+        },
+        methods: {
+            logout() {
+                this.$store.dispatch('auth/logout');
+                this.$router.push(`/login`);
+            }
+        }
     }
+
 </script>
 
 <style scoped>

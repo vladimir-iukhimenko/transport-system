@@ -71,7 +71,7 @@ public class AuthRESTController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
+    public ResponseEntity<?> registerUser(@RequestBody SignupRequest signUpRequest) {
         if (userService.isUserExists(signUpRequest.getUsername())) {
             return ResponseEntity
                     .badRequest()
