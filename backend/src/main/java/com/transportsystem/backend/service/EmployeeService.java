@@ -29,7 +29,10 @@ public class EmployeeService {
     public void edit(Employee employee) {employeeDAO.edit(employee);}
 
     @Transactional
-    public Employee getEmployeeById(Integer id) {return employeeDAO.getEmployeeById(id);}
+    public Employee getEmployeeById(Integer id) {
+        if (id == null) return null;
+        else return employeeDAO.getEmployeeById(id);
+    }
 
     @Transactional
     public List<Employee> getAllEmployees() {return employeeDAO.getAllEmployees();}

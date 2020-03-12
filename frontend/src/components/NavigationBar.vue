@@ -17,7 +17,7 @@
                         <template v-slot:button-content>
                             <em>{{user}}</em>
                         </template>
-                        <b-dropdown-item>Профиль</b-dropdown-item>
+                        <b-dropdown-item v-on:click="$router.push(`/profile`)">Профиль</b-dropdown-item>
                         <b-dropdown-item v-on:click="logout">Выйти</b-dropdown-item>
                     </b-nav-item-dropdown>
                 </b-navbar-nav>
@@ -27,17 +27,20 @@
 </template>
 
 <script>
+
     export default {
         name: "NavigationBar",
         data() {
             return {
-
+                user: '',
             }
         },
-        computed: {
-            user() {
-                return this.$store.state.auth.user.username;
-            },
+        created() {
+                if (this.$store.state.auth.user.employee) {
+                    this.user = String(this.$store.state.auth.user.employee.name + ' ' + this.$store.state.auth.user.employee.surname);
+                }
+                else this.user = this.$store.state.auth.user.username;
+
         },
         methods: {
             logout() {

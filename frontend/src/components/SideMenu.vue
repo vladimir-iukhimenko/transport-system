@@ -41,16 +41,29 @@
             <b-collapse id="accordion-4" accordion="my-accordion" role="tabpanel">
                 <b-card-body>
                     <p><router-link to="/employees">Список сотрудников</router-link></p>
-                    <p><router-link to="/employees/select">Документы сотрудников</router-link></p>
+                    <p><b-link @click="showEmployeeSelection = true">Документы сотрудников</b-link></p>
                 </b-card-body>
             </b-collapse>
         </b-card>
+        <EmployeeSelection :is-shown="showEmployeeSelection" @getSelectedEmployeeId="openEmployeeDocs"></EmployeeSelection>
     </div>
 </template>
 
 <script>
+    import EmployeeSelection from "./EmployeeSelection";
     export default {
-        name: "SideMenu"
+        name: "SideMenu",
+        components: {EmployeeSelection},
+        data() {
+            return {
+                showEmployeeSelection: false,
+            }
+        },
+        methods: {
+            openEmployeeDocs(id) {
+                this.$router.push(`/employees/docs/${id}`);
+            }
+        }
     }
 </script>
 

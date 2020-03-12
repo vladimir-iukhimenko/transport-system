@@ -1,5 +1,6 @@
 package com.transportsystem.backend.model.security.payload.response;
 
+import com.transportsystem.backend.model.Employee;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
@@ -21,10 +22,13 @@ public class JwtResponse {
     @NotNull
     private List<String> roles;
 
-    public JwtResponse(String token, Integer id, String username, List<String> roles) {
+    private Employee employee;
+
+    public JwtResponse(String token, Integer id, String username, List<String> roles, Employee employee) {
         this.token = token;
         this.id = id;
         this.username = username;
         this.roles = roles;
+        this.employee = employee;
     }
 }

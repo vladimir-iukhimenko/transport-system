@@ -67,7 +67,8 @@ public class AuthRESTController {
         return ResponseEntity.ok(new JwtResponse(jwt,
                 user.getId(),
                 user.getUsername(),
-                roles));
+                roles,
+                user.getEmployee()));
     }
 
     @PostMapping("/signup")
@@ -116,5 +117,11 @@ public class AuthRESTController {
         userService.addUser(user);
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+    }
+
+    @GetMapping("/users")
+    public List<User> readAllUsers() {
+        List<User> listUsers = userService.getAllUsers();
+        return listUsers;
     }
 }

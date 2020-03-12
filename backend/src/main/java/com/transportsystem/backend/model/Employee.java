@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.*;
+import com.transportsystem.backend.model.security.User;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.LazyCollectionOption;
@@ -70,6 +71,11 @@ public class Employee {
     @Column
     @Getter
 	private LocalDate dateofdismissal;
+
+    @Getter
+    @OneToOne(mappedBy = "employee")
+    @JsonIdentityReference(alwaysAsId = true)
+    private User user;
 
     @Getter
     @org.hibernate.annotations.LazyCollection(LazyCollectionOption.FALSE)

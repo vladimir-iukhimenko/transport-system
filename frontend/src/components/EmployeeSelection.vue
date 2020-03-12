@@ -1,8 +1,7 @@
 <template>
     <div>
-        <NavigationBar></NavigationBar>
-        <b-modal id="selection" no-close-on-backdrop hide-footer title="Выберите сотрудника">
-            <b-form @submit="openDocs">
+        <b-modal id="employeeSelection" no-close-on-backdrop hide-footer title="Выберите сотрудника">
+            <b-form @submit.prevent="pushEmployeeId">
                 <b-form-group id="input-group-1"
                               label="Сотрудник"
                               label-for="input-1">
@@ -18,28 +17,36 @@
 
 <script>
     import RestAPIService from "../service/RestAPIService";
-    import NavigationBar from "./NavigationBar";
 
     export default {
         name: "EmployeeSelection",
-        components: {NavigationBar},
+        components: {},
         data() {
             return {
                 employeeId: '',
                 employees: []
             };
         },
+        props: {
+            isShown: {
+                type: Boolean,
+                default: false,
+            }
+        },
         methods: {
-            openDocs(e) {
-                e.preventDefault();
-                this.$router.push(`/employees/docs/${this.employeeId}`);
+            pushEmployeeId() {
+                this.$emit("getSelectedEmployeeId",this.employeeId);
             }
         },
         mounted() {
-            this.$bvModal.show('selection');
             RestAPIService.readAll("employees")
                 .then(response => {this.employees = response.data});
-            this.$root.$on('bv::modal::hide', (modalId) => {if (modalId.componentId === "selection") this.$router.push(`/employees`)})
+            },
+        watch: {
+            isShown: function () {
+                if (this.isShown === true) this.$bvModal.show("employeeSelection");
+                else this.$bvModal.hide("employeeSelection");
+            }
         }
     }
 </script>

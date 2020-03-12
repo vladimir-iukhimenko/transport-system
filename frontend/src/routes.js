@@ -27,6 +27,11 @@ const router = new Router({
             component: () => import("./views/Profile")
         },
         {
+            path: "/admin",
+            name: "Admin",
+            component: () => import("./views/Admin")
+        },
+        {
             path: "/transports",
             name: "Transports",
             component: () => import("./views/ListTransports")

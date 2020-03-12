@@ -3,6 +3,7 @@ package com.transportsystem.backend.model.security;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.transportsystem.backend.model.Employee;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -10,10 +11,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = "username")})
@@ -46,12 +47,13 @@ public class User implements UserDetails {
     @Setter
     private boolean enabled;
 
-    @Column(name = "employeeid")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "employeeid", referencedColumnName = "id")
     @Getter
     @Setter
-    private Integer employeeid;
+    private Employee employee;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles",
                 joinColumns = @JoinColumn(name = "user_id"),
                 inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -65,7 +67,9 @@ public class User implements UserDetails {
     }
 
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+        return this.getRoles().stream()
+                .map(role -> new SimpleGrantedAuthority(role.getName().name()))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -83,7 +87,4 @@ public class User implements UserDetails {
         return true;
     }
 
-    public boolean isEnabled() {
-        return true;
-    }
 }
