@@ -1,58 +1,58 @@
 package com.transportsystem.backend.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.transportsystem.backend.service.JsonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import com.transportsystem.backend.service.SearchService;
 
 import java.util.List;
 
-@Controller
+@RestController
+@RequestMapping(path = "api/search",consumes = "application/json")
 public class SearchController {
     private SearchService searchService;
+    private JsonService jsonService;
 
     @Autowired
-    public void setSearchService(SearchService searchService) {this.searchService = searchService;}
+    public void setSearchService(SearchService searchService) { this.searchService = searchService; }
 
-    @RequestMapping(value = "/search", method = RequestMethod.GET)
-    public ModelAndView search(@RequestParam("query") String query, @RequestParam("context") String context)
+    @Autowired
+    public void setJsonService(JsonService jsonService) { this.jsonService = jsonService; }
+
+    @PostMapping
+    public List search(@RequestBody String data) throws JsonProcessingException
     {
-        ModelAndView modelAndView = new ModelAndView();
-        if(context.equals("employees")){
-            List listemployees = searchService.searchEmployee(query);
-            modelAndView.addObject("employees",listemployees);
+        String context = jsonService.getValueFromJson(data,"context").asText();
+        String query = jsonService.getValueFromJson(data, "query").asText();
+
+        if(context.equals("/employees")){
+            return searchService.searchEmployee(query);
         }
 
-        if(context.equals("transports")){
-            List listtransports = searchService.searchTransport(query);
-            modelAndView.addObject("transports",listtransports);
+        if(context.equals("/transports")){
+            return searchService.searchTransport(query);
         }
 
-        if(context.equals("transportmodels")){
-            List listtransportmodels = searchService.searchTransportModel(query);
-            modelAndView.addObject("transportmodels",listtransportmodels);
+        if(context.equals("/transportmodels")){
+            return searchService.searchTransportModel(query);
         }
 
-        if(context.equals("goods")){
-            List listgoods = searchService.searchGoods(query);
-            modelAndView.addObject("goods",listgoods);
+        if(context.equals("/goods")){
+            return searchService.searchGoods(query);
         }
 
-        if(context.equals("nomenclatures")){
-            List listnomenclatures = searchService.searchNomenclature(query);
-            modelAndView.addObject("nomenclatures",listnomenclatures);
+        if(context.equals("/nomenclatures")){
+            return searchService.searchNomenclature(query);
         }
 
-        if(context.equals("transportorders")){
-            List listtransportorders = searchService.searchTransportOrder(query);
-            modelAndView.addObject("transportorders",listtransportorders);
+        if(context.equals("/transportorders") || context.equals("/")){
+            return searchService.searchTransportOrder(query);
         }
 
-        modelAndView.setViewName(context + "/" + context);
-        return modelAndView;
+        return null;
     }
 
 }

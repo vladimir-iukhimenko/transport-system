@@ -44,7 +44,7 @@
                     </b-form-input>
                 </b-form-group>
                 <b-form-group id="input-group-5"
-                              label="Цвет"
+                              label="Мощность двигателя"
                               label-for="input-5">
                     <b-form-input id="input-5"
                                   v-model="transport.enginepower"

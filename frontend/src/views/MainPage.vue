@@ -1,6 +1,6 @@
 <template>
     <div>
-        <NavigationBar></NavigationBar>
+        <NavigationBar @search="searchItems"></NavigationBar>
         <b-container>
             <b-row>
                 <b-col>
@@ -36,6 +36,14 @@
                     label: 'Дата заказа'
                 },
             ],
+            }
+        },
+        methods: {
+            searchItems(object) {
+                RestAPIService.search({
+                    query: object.query,
+                    context: object.context,
+                }).then(response => {this.tableItems = response.data});
             }
         }
     }

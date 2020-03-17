@@ -7,22 +7,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b4d8090-9e16-406b-9cbb-899dc8e5847d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/security/AdminRESTController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/views/Admin.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/application_war.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/application_war_exploded.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/application.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/security/AuthRESTController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/security/AuthRESTController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/dao/security/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/dao/security/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/security/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/security/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/security/payload/response/JwtResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/security/payload/response/JwtResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/service/EmployeeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/service/security/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/service/security/RoleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/EmployeeSelection.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/EmployeeSelection.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/SearchController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/NavigationBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/NavigationBar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/SideMenu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/SideMenu.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/Profile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Profile.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/Register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Register.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/service/RestAPIService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/service/RestAPIService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/MainPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/MainPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/spring-context-5.2.0.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/spring-core-5.2.0.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/spring-expression-5.2.0.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/spring-jcl-5.2.0.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/spring-jdbc-5.2.0.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/spring-orm-5.2.0.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/spring-tx-5.2.0.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/spring-web-5.2.0.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/spring-webmvc-5.2.0.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/stax-ex-1.8.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/tomcat-dbcp-9.0.22.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/tomcat-juli-9.0.22.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/txw2-2.3.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/validation-api-2.0.1.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -661,7 +672,12 @@
       <workItem from="1583861733757" duration="6238000" />
       <workItem from="1583905100226" duration="17250000" />
       <workItem from="1583942692118" duration="9717000" />
-      <workItem from="1583992476856" duration="1622000" />
+      <workItem from="1583992476856" duration="7344000" />
+      <workItem from="1584040772240" duration="122000" />
+      <workItem from="1584083224694" duration="13534000" />
+      <workItem from="1584207917030" duration="25000" />
+      <workItem from="1584207999926" duration="849000" />
+      <workItem from="1584422600667" duration="647000" />
     </task>
     <servers />
   </component>
@@ -811,20 +827,20 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="299" y="66" key="Maven.ArtifactSearchDialog/0.0.1536.824@0.0.1536.824" timestamp="1577648428724" />
-    <state x="456" y="212" key="SettingsEditor" timestamp="1583135567697">
+    <state x="456" y="212" key="SettingsEditor" timestamp="1584015995246">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="299" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1577648031099" />
-    <state x="456" y="212" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1583135567697" />
+    <state x="456" y="212" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1584015995246" />
     <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1577978338040">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1577978338040" />
-    <state x="654" y="341" key="com.intellij.ide.util.TipDialog" timestamp="1583992476355">
+    <state x="654" y="341" key="com.intellij.ide.util.TipDialog" timestamp="1584422600591">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="529" y="271" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1583942692152" />
-    <state x="654" y="341" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583992476355" />
+    <state x="529" y="271" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1584208003861" />
+    <state x="654" y="341" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584422600591" />
     <state x="530" y="164" key="com.intellij.javaee.view.ServerArtifactsDialog" timestamp="1576136156979">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -833,10 +849,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="567" y="101" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1577978275988" />
-    <state x="372" y="149" key="new project wizard" timestamp="1577551954326">
+    <state x="372" y="64" key="new project wizard" timestamp="1584208258257">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="372" y="149" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1577551954326" />
+    <state x="372" y="64" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1584208258257" />
     <state x="493" y="190" width="672" height="677" key="run.anything.popup" timestamp="1578850741989">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

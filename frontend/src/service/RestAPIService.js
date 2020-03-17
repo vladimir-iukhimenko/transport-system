@@ -19,6 +19,9 @@ class RestAPIService{
     delete(id,path) {
         return axios.delete(`${TRANSPORT_API_URL}/${path}/delete/${id}`, {headers: authHeader()});
     }
+    search(object) {
+        return axios.post(`${TRANSPORT_API_URL}/search`, object, { headers: authHeader() });
+    }
 }
 
 export default new RestAPIService();
