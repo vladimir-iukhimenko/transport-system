@@ -83,6 +83,7 @@
                 </b-form-group>
                 <b-button variant="primary" type="submit" v-if="transport.id">Редактировать</b-button>
                 <b-button variant="primary" type="submit" v-else>Добавить</b-button>
+                <b-button @click="$router.back()">Отмена</b-button>
             </b-form>
         </div>
     </div>
