@@ -40,10 +40,7 @@ public class NomenclatureRESTController {
     @PostMapping(value = "nomenclatures/add", consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public Nomenclature createNomenclature(@RequestBody String data) throws JsonProcessingException {
-        Comment comments = new Comment();
-        comments.addComment(jsonService.getCommentFromJson(data));
         Nomenclature nomenclature = jsonService.getObjectMapper().readValue(data,Nomenclature.class);
-        nomenclature.setComments(comments);
         nomenclatureService.add(nomenclature);
         return nomenclature;
     }

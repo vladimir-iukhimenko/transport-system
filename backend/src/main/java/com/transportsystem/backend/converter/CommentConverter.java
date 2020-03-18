@@ -10,6 +10,8 @@ public class CommentConverter implements AttributeConverter<Comment, String> {
 
     @Override
     public String convertToDatabaseColumn(Comment comment) {
+
+        if (comment == null) return new Comment().toString();
         return comment.toString();
     }
 
