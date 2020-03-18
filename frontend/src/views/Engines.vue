@@ -3,8 +3,10 @@
         <NavigationBar></NavigationBar>
         <ListItems :is-selectable="true" :is-busy="isBusy" @selected="onSelectedRow" :table-items="tableItems" :table-fields="tableFields" :message="message" header="Двигатели">
         </ListItems>
-        <b-button @click="addEngine">Добавить</b-button>
-        <b-button @click="editEngine">Редактировать</b-button>
+        <div class="text-center">
+        <b-button class="buttons col-sm-2" @click="addEngine">Добавить</b-button>
+        <b-button class="buttons col-sm-2" @click="editEngine">Редактировать</b-button>
+        </div>
         <b-modal id="modal-form" no-close-on-backdrop hide-footer :title="title + ' двигатель'">
             <b-form @submit="validateAndSubmit">
                 <b-form-group id="input-group-1"
@@ -133,5 +135,10 @@
 </script>
 
 <style scoped>
+
+    .buttons {
+        margin: 25px;
+        padding: 5px;
+    }
 
 </style>

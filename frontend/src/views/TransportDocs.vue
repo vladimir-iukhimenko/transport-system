@@ -3,8 +3,10 @@
         <NavigationBar></NavigationBar>
         <ListItems :is-selectable="true" :is-busy="isBusy" @selected="onSelectedRow" :table-items="tableItems" :table-fields="tableFields" :message="message" header="Документы транспортных средств">
         </ListItems>
-        <b-button @click="addDoc">Добавить</b-button>
-        <b-button @click="editDoc">Редактировать</b-button>
+        <div class="text-center">
+            <b-button class="buttons col-sm-2" @click="addDoc">Добавить</b-button>
+            <b-button class="buttons col-sm-2" @click="editDoc">Редактировать</b-button>
+        </div>
         <b-modal id="modal-form" no-close-on-backdrop hide-footer :title="title + ' документ'">
             <b-form @submit="validateAndSubmit">
                 <b-form-group id="input-group-1"
@@ -198,5 +200,10 @@
 </script>
 
 <style scoped>
+
+    .buttons {
+        margin: 25px;
+        padding: 5px;
+    }
 
 </style>
