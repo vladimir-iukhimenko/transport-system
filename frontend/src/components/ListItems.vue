@@ -2,7 +2,13 @@
     <div class="container">
         <h2>{{header}}</h2>
         <div>
-            <b-table :selectable="isSelectable" select-mode="single" @row-selected="onRowSelected" striped hover :busy="tableItems.length===0" :items="tableItems" :fields="tableFields" responsive="sm">
+            <b-pagination
+                    v-model="currentPage"
+                    :total-rows="rows"
+                    :per-page="perPage"
+                    aria-controls="listTable">
+            </b-pagination>
+            <b-table id="listTable" :per-page="perPage" :current-page="currentPage" :selectable="isSelectable" select-mode="single" @row-selected="onRowSelected" striped hover :busy="tableItems.length===0" :items="tableItems" :fields="tableFields" responsive="sm">
                 <template v-slot:table-busy>
                     <div class="text-center text-danger my-2">
                         <b-spinner class="align-middle"></b-spinner>
@@ -38,6 +44,8 @@
         data() {
             return {
                 selected: [],
+                perPage: 5,
+                currentPage: 1,
             }
         },
         methods: {
@@ -46,6 +54,11 @@
                 this.selected = items;
             }
         },
+        computed: {
+            rows() {
+                return this.tableItems.length;
+            }
+        }
     }
 </script>
 
