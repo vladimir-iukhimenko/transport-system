@@ -1,10 +1,10 @@
 <template>
     <div>
         <NavigationBar></NavigationBar>
-        <div v-if="message" class="alert alert-success">
+        <div v-if="!isBusy && tableItems.length===0" class="alert alert-danger">
             {{message}}
         </div>
-        <ListItems :is-selectable="true" @selected="onSelectedRow" :table-items="tableItems" :table-fields="tableFields" header="Транспортные заказы">
+        <ListItems :is-selectable="true" :is-busy="isBusy" @selected="onSelectedRow" :table-items="tableItems" :table-fields="tableFields" header="Транспортные заказы">
         </ListItems>
         <div>
             <b-button-group v-if="selectedRow.length > 0">
@@ -55,8 +55,9 @@
                 transportFromSelectedRow: [],
                 employeeResponsibleFromSelectedRow: [],
                 comments: [],
-                tableItems: RestAPIService.readAll("transportorders")
-                    .then(response=>{this.tableItems = response.data}),
+                isBusy: false,
+                message: '',
+                tableItems: [],
                 tableFields: [
                     {
                         key: 'ordernumber',
@@ -89,7 +90,19 @@
                 ]
             }
         },
-        methods:{
+        methods: {
+            refreshTableItems() {
+                this.isBusy = !this.isBusy;
+                RestAPIService.readAll("transportorders")
+                    .then( response => {
+                        this.tableItems = response.data;
+                        this.isBusy = !this.isBusy;
+                        if (this.tableItems.length === 0) this.message = 'Транспортные заказы не найдены!';
+                    }).catch(err => {
+                    this.isBusy = !this.isBusy;
+                    this.message = err.message;
+                })
+            },
             onSelectedRow(row) {
                 this.selectedRow = row;
                 const transportid = typeof row[0].transport === "number" ? row[0].transport : row[0].transport.id;
@@ -106,7 +119,10 @@
             openGoods() {
                 this.$bvModal.show('modal-form-2')
             }
-        }
+        },
+        created() {
+            this.refreshTableItems();
+        },
     }
 </script>
 

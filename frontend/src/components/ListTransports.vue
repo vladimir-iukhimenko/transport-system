@@ -1,11 +1,11 @@
 <template>
     <div class="container">
         <h2>Парк транспортных средств</h2>
-        <div v-if="message" class="alert alert-success">
+        <div v-if="!isBusy && transportmodels.length===0" class="alert alert-danger">
             {{message}}
         </div>
         <div>
-            <b-table striped hover :busy="transportmodels.length===0" :items="transportmodels" :fields="transportmodel_fields" responsive="sm">
+            <b-table striped hover :busy="isBusy" :items="transportmodels" :fields="transportmodel_fields" responsive="sm">
                 <template v-slot:table-busy>
                     <div class="text-center text-danger my-2">
                         <b-spinner class="align-middle"></b-spinner>
@@ -111,19 +111,26 @@
                         label: 'Действия'
                     },
                 ],
-                transportmodels: null,
-                message: null,
+                transportmodels: [],
+                message: '',
+                isBusy: false,
             };
         },
         methods: {
             refreshTransports(){
+                this.isBusy = !this.isBusy;
                 let models = [];
                 RestAPIService.readAll("transportmodels")
-                    .then(response=>{
+                    .then( response=> {
                         response.data.forEach(function (item) {
                             models.push(new TransportModel(item));
                         });
-                    });
+                        this.isBusy = !this.isBusy;
+                        if (models.length === 0) this.message = 'Транспортные средства не найдены!';
+                    }).catch(err => {
+                    this.isBusy = !this.isBusy;
+                    this.message = err.message;
+                });
                 this.transportmodels = models;
             },
             getTransports(transportsId) {
@@ -138,7 +145,7 @@
             deleteTransportClicked(id){
                 RestAPIService.delete(id,"transports")
                     .then(()=> {
-                        this.message = `Транспортное средство удалено!`;
+                        this.$bvToast.toast('Транспортное средство удалено!',{autoHideDelay:5000,title:'Транспортная система'});
                         this.refreshTransports();
                     });
             },

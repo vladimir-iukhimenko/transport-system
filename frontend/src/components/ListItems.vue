@@ -8,7 +8,10 @@
                     :per-page="perPage"
                     aria-controls="listTable">
             </b-pagination>
-            <b-table id="listTable" :per-page="perPage" :current-page="currentPage" :selectable="isSelectable" select-mode="single" @row-selected="onRowSelected" striped hover :busy="tableItems.length===0" :items="tableItems" :fields="tableFields" responsive="sm">
+            <b-table id="listTable" :per-page="perPage" :current-page="currentPage"
+                     :selectable="isSelectable" select-mode="single" @row-selected="onRowSelected"
+                     striped hover
+                     :busy="isBusy" :items="tableItems" :fields="tableFields" responsive="sm">
                 <template v-slot:table-busy>
                     <div class="text-center text-danger my-2">
                         <b-spinner class="align-middle"></b-spinner>
@@ -16,6 +19,9 @@
                     </div>
                 </template>
             </b-table>
+            <div class="form-group">
+                <div v-if="!isBusy && tableItems.length===0" class="alert alert-danger" role="alert">{{message}}</div>
+            </div>
         </div>
     </div>
 </template>
@@ -39,7 +45,14 @@
             header: {
                 type: String,
                 required: false
-            }
+            },
+            isBusy: {
+                type: Boolean,
+                default: true
+            },
+            message: {
+                type: String
+            },
         },
         data() {
             return {

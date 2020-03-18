@@ -8,9 +8,13 @@
   <component name="ChangeListManager">
     <list default="true" id="8b4d8090-9e16-406b-9cbb-899dc8e5847d" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/security/AuthRESTController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/security/AuthRESTController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/security/jwt/AuthEntryPointJwt.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/security/jwt/AuthEntryPointJwt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ListItems.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ListItems.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ListTransports.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ListTransports.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/Employees.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Employees.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/Engines.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Engines.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/MainPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/MainPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/TransportDocs.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/TransportDocs.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/TransportOrders.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/TransportOrders.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -656,7 +660,7 @@
       <workItem from="1584207999926" duration="849000" />
       <workItem from="1584422600667" duration="24412000" />
       <workItem from="1584472905017" duration="1090000" />
-      <workItem from="1584509550887" duration="12806000" />
+      <workItem from="1584509550887" duration="22580000" />
     </task>
     <servers />
   </component>

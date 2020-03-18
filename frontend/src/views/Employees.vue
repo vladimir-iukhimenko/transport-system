@@ -1,7 +1,7 @@
 <template>
     <div>
         <NavigationBar></NavigationBar>
-        <ListItems :is-selectable="true" @selected="onSelectedRow" :table-items="tableItems" :table-fields="tableFields" header="Список сотрудников">
+        <ListItems :is-selectable="true" :is-busy="isBusy" @selected="onSelectedRow" :table-items="tableItems" :table-fields="tableFields" :message="message" header="Список сотрудников">
         </ListItems>
         <b-button @click="addEmployee">Добавить</b-button>
         <b-button @click="editEmployee">Редактировать</b-button>
@@ -114,6 +114,8 @@
                 employee: [[]],
                 title: '',
                 tableItems: [],
+                isBusy: false,
+                message: '',
                 tableFields: [
                     {
                         key: 'surname',
@@ -162,8 +164,16 @@
         },
         methods: {
             refreshTableItems() {
+                this.isBusy = !this.isBusy;
                 RestAPIService.readAll("employees")
-                    .then(response=>{this.tableItems = response.data})
+                    .then( response => {
+                        this.tableItems = response.data;
+                        this.isBusy = !this.isBusy;
+                        if (this.tableItems.length === 0) this.message = 'Сотрудники не найдены!';
+                    }).catch(err => {
+                        this.isBusy = !this.isBusy;
+                        this.message = err.message;
+                })
             },
             validateAndSubmit(e) {
                 e.preventDefault();
@@ -181,7 +191,6 @@
                     }).then(()=>{
                         this.$bvToast.toast('Информация о сотруднике добавлена!',{autoHideDelay:5000,title:'Транспортная система'});
                         this.$bvModal.hide('modal-form');
-                        this.refreshTableItems();
                     })
                 }
                 else {
@@ -199,10 +208,9 @@
                     }).then(()=>{
                         this.$bvToast.toast('Информация о сотруднике обновлена!',{autoHideDelay:5000,title:'Транспортная система'});
                         this.$bvModal.hide('modal-form');
-                        this.refreshTableItems();
                     })
                 }
-
+                this.refreshTableItems();
             },
             onSelectedRow(row) {
                 this.employee = row;

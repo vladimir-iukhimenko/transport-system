@@ -6,7 +6,7 @@
                 <b-col>
                     <SideMenu></SideMenu>
                 </b-col>
-                <b-col cols="8"><ListItems :table-items="tableItems" :table-fields="tableFields" header="Транспортные заказы"></ListItems></b-col>
+                <b-col cols="8"><ListItems :is-busy="isBusy" :table-items="tableItems" :table-fields="tableFields" :message="message" header="Транспортные заказы"></ListItems></b-col>
             </b-row>
         </b-container>
     </div>
@@ -24,8 +24,9 @@
         },
         data() {
             return {
-                tableItems: RestAPIService.readAll('transportorders')
-                    .then(response=>{this.tableItems = response.data}),
+                isBusy: false,
+                message: '',
+                tableItems: [],
                 tableFields:[
                 {
                     key: 'ordernumber',
@@ -39,12 +40,27 @@
             }
         },
         methods: {
+            refreshTableItems() {
+                this.isBusy = !this.isBusy;
+                RestAPIService.readAll("transportorders")
+                    .then( response => {
+                        this.tableItems = response.data;
+                        this.isBusy = !this.isBusy;
+                        if (this.tableItems.length === 0) this.message = 'Транспортные заказы не найдены!';
+                    }).catch(err => {
+                    this.isBusy = !this.isBusy;
+                    this.message = err.message;
+                })
+            },
             searchItems(object) {
                 RestAPIService.search({
                     query: object.query,
                     context: object.context,
                 }).then(response => {this.tableItems = response.data});
             }
+        },
+        created() {
+            this.refreshTableItems();
         }
     }
 </script>

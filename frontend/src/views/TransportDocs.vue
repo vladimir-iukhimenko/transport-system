@@ -1,10 +1,7 @@
 <template>
     <div>
         <NavigationBar></NavigationBar>
-        <div v-if="message" class="alert alert-success">
-            {{message}}
-        </div>
-        <ListItems :is-selectable="true" @selected="onSelectedRow" :table-items="tableItems" :table-fields="tableFields" header="Документы транспортных средств">
+        <ListItems :is-selectable="true" :is-busy="isBusy" @selected="onSelectedRow" :table-items="tableItems" :table-fields="tableFields" :message="message" header="Документы транспортных средств">
         </ListItems>
         <b-button @click="addDoc">Добавить</b-button>
         <b-button @click="editDoc">Редактировать</b-button>
@@ -97,12 +94,12 @@
         data() {
             return {
                 transportdoc: [[]],
-                message: null,
                 title:'',
+                isBusy: false,
+                message: '',
                 transports: RestAPIService.readAll('transports')
                     .then(response=>{this.transports = response.data}),
-                tableItems: RestAPIService.readAll('transportdocs')
-                    .then(response=>{this.tableItems = response.data}),
+                tableItems: [],
                 tableFields:[
                     {
                         key: 'documenttype',
@@ -134,6 +131,18 @@
             }
         },
         methods: {
+            refreshTableItems() {
+                this.isBusy = !this.isBusy;
+                RestAPIService.readAll("transportdocs")
+                    .then( response => {
+                        this.tableItems = response.data;
+                        this.isBusy = !this.isBusy;
+                        if (this.tableItems.length === 0) this.message = 'Документы транспортных средств не найдены!';
+                    }).catch(err => {
+                    this.isBusy = !this.isBusy;
+                    this.message = err.message;
+                })
+            },
             validateAndSubmit(e) {
                 e.preventDefault();
                 if (this.title === "Добавить") {
@@ -146,7 +155,7 @@
                         expiredate: this.transportdoc[0].expiredate,
                         transportid: this.transportdoc[0].transportid
                     }).then(()=>{
-                        this.message = 'Информация о документе добавлена!';
+                        this.$bvToast.toast('Информация о документе добавлена!',{autoHideDelay:5000,title:'Транспортная система'});
                         this.$bvModal.hide('modal-form')})
                 }
                 else {
@@ -160,11 +169,11 @@
                         expiredate: this.transportdoc[0].expiredate,
                         transportid: this.transportdoc[0].transportid
                     }).then(()=>{
-                        this.message = 'Информация о документе обновлена!';
+                        this.$bvToast.toast('Информация о документе обновлена!',{autoHideDelay:5000,title:'Транспортная система'});
                         this.$bvModal.hide('modal-form')
                     })
                 }
-
+                this.refreshTableItems();
             },
             onSelectedRow(row) {
                 this.transportdoc = row;
@@ -174,7 +183,7 @@
                     this.title = 'Редактировать';
                     this.$bvModal.show('modal-form');
                 }
-                else this.message = 'Выберите документ!';
+                else this.$bvToast.toast('Выберите документ!',{autoHideDelay:5000,title:'Транспортная система'});
             },
             addDoc() {
                 this.transportdoc = [[]];
@@ -182,6 +191,9 @@
                 this.$bvModal.show('modal-form');
             }
         },
+        created() {
+            this.refreshTableItems();
+        }
     }
 </script>
 

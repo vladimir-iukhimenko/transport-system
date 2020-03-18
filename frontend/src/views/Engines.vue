@@ -1,10 +1,7 @@
 <template>
     <div>
         <NavigationBar></NavigationBar>
-        <div v-if="message" class="alert alert-success">
-            {{message}}
-        </div>
-        <ListItems :is-selectable="true" @selected="onSelectedRow" :table-items="tableItems" :table-fields="tableFields" header="Двигатели">
+        <ListItems :is-selectable="true" :is-busy="isBusy" @selected="onSelectedRow" :table-items="tableItems" :table-fields="tableFields" :message="message" header="Двигатели">
         </ListItems>
         <b-button @click="addEngine">Добавить</b-button>
         <b-button @click="editEngine">Редактировать</b-button>
@@ -56,10 +53,10 @@
         data() {
             return {
                 engine: [[]],
-                message: null,
                 title: '',
-                tableItems: RestAPIService.readAll("engines")
-                    .then(response=>{this.tableItems = response.data}),
+                tableItems: [],
+                isBusy: false,
+                message: '',
                 tableFields: [
                     {
                         key: 'name',
@@ -77,6 +74,18 @@
             }
         },
         methods: {
+            refreshTableItems() {
+                this.isBusy = !this.isBusy;
+                RestAPIService.readAll("engines")
+                    .then( response => {
+                        this.tableItems = response.data;
+                        this.isBusy = !this.isBusy;
+                        if (this.tableItems.length === 0) this.message = 'Двигатели не найдены!';
+                    }).catch(err => {
+                    this.isBusy = !this.isBusy;
+                    this.message = err.message;
+                })
+            },
             validateAndSubmit(e) {
                 e.preventDefault();
                 if (this.title === "Добавить") {
@@ -85,8 +94,8 @@
                         volume: this.engine[0].volume,
                         fuel: this.engine[0].fuel
                     }).then(()=>{
-                        this.message = 'Информация о двигателе добавлена!';
-                        this.$bvModal.hide('modal-form')})
+                        this.$bvToast.toast('Информация о двигателе добавлена!', {autoHideDelay:5000, title: 'Транспортная система'});
+                        this.$bvModal.hide('modal-form')});
                 }
                 else {
                     RestAPIService.update("engines", {
@@ -95,11 +104,11 @@
                         volume: this.engine[0].volume,
                         fuel: this.engine[0].fuel,
                     }).then(()=>{
-                        this.message = 'Информация о двигателе обновлена!';
-                        this.$bvModal.hide('modal-form')
+                        this.$bvToast.toast('Информация о двигателе обновлена!', {autoHideDelay:5000, title: 'Транспортная система'});
+                        this.$bvModal.hide('modal-form');
                     })
                 }
-
+                this.refreshTableItems();
             },
             onSelectedRow(row) {
                 this.engine = row;
@@ -115,8 +124,11 @@
                 this.engine = [[]];
                 this.title = 'Добавить';
                 this.$bvModal.show('modal-form');
-            }
+            },
         },
+        created() {
+            this.refreshTableItems();
+        }
     }
 </script>
 
