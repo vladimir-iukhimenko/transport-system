@@ -48,7 +48,7 @@ public class EngineRESTController {
         return engine;
     }
 
-    @PutMapping(value = "/engines/edit/",consumes = "application/json")
+    @PutMapping(value = "/engines/edit",consumes = "application/json")
     @ResponseStatus(code = HttpStatus.OK)
     public Engine updateEngine(@RequestBody String data) throws JsonProcessingException {
         Engine engine = jsonService.getObjectMapper().readValue(data,Engine.class);

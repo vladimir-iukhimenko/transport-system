@@ -7,7 +7,7 @@
             <b-collapse id="accordion-1" visible accordion="my-accordion" role="tabpanel">
                 <b-card-body>
                     <p><router-link to="/transports">Список транспортных средств</router-link></p>
-                    <p><router-link to="/transports/add">Добавить транспортное средство</router-link></p>
+                    <p><router-link to="/transports/add">Добавить автомобиль</router-link></p>
                     <p><router-link to="/transportdocs">Документы транспортных средств</router-link></p>
                     <p><router-link to="/engines">Двигатели</router-link></p>
                 </b-card-body>
