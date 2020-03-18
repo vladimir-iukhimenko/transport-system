@@ -47,7 +47,7 @@ const router = new Router({
             component: () => import("./components/Transport")
         },
         {
-            path: "/transports/edit/:transportId:modelId",
+            path: "/transports/edit/:transportId",
             name: "Edit Transport",
             component: () => import("./components/Transport")
         },

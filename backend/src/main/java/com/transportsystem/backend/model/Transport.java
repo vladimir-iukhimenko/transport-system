@@ -52,7 +52,7 @@ public class Transport {
     @Getter
     @ManyToOne(optional = false)
     @JoinColumn(name = "engineid")
-    @JsonBackReference(value = "transports")
+    @JsonIdentityReference(alwaysAsId = true)
     private Engine engine;
 
     @Column
@@ -63,7 +63,7 @@ public class Transport {
     @Getter
     @ManyToOne(optional = false)
     @JoinColumn(name = "transportmodelid")
-    @JsonBackReference(value = "transports-transportmodels")
+    @JsonIdentityReference(alwaysAsId = true)
 	private TransportModel transportmodel;
 
 	@Getter

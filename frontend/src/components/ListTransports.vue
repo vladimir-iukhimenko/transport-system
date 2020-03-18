@@ -20,19 +20,12 @@
                 <template v-slot:row-details="row">
                     <b-card>
                         <b-table :ref=String(row.item.id)
-                                 selectable select-mode="single" striped
-                                 @row-clicked="onRowSelected($event,row.item.id)"
+                                 striped
                                  :items="row.item.transports"
                                  :fields="transport_fields">
-                        <template v-slot:cell(actions)="{rowSelected}">
-                            <template v-if="rowSelected">
-                                <b-button class="btn btn-warning" size="sm" v-on:click="editTransportClicked(transportSelected.id,transportModelIdSelected)">Редактировать</b-button>
-                                <b-button class="btn btn-danger" size="sm" v-on:click="deleteTransportClicked(transportSelected.id)">Удалить</b-button>
-                            </template>
-                            <template v-else>
-                                <b-button size="sm" disabled>Редактировать</b-button>
-                                <b-button size="sm" disabled>Удалить</b-button>
-                            </template>
+                        <template v-slot:cell(id)="data">
+                                <b-button class="btn btn-warning" size="sm" v-on:click="editTransportClicked(data.item.id)">Редактировать</b-button>
+                                <b-button class="btn btn-danger" size="sm" v-on:click="deleteTransportClicked(data.item.id)">Удалить</b-button>
                         </template>
                         </b-table>
                         <b-button size="sm" @click="row.toggleDetails">Скрыть</b-button>
@@ -40,21 +33,13 @@
                     </b-card>
                 </template>
             </b-table>
-            <p>
-                Selected Rows:<br>
-
-                {{transportSelected}}
-
-                Selected Element:<br>
-
-                {{transportModelIdSelected}}
-            </p>
         </div>
     </div>
 </template>
 
 <script>
     import RestAPIService from "../service/RestAPIService";
+    import TransportModel from "../models/transportmodel";
     export default {
         name: "ListTransports",
         data() {
@@ -122,22 +107,33 @@
                         label: 'Дата списания'
                     },
                     {
-                        key:'actions',
+                        key: 'id',
                         label: 'Действия'
                     },
                 ],
-                transportmodels: [],
+                transportmodels: null,
                 message: null,
-                transportSelected: null,
-                transportModelIdSelected: null,
             };
         },
         methods: {
             refreshTransports(){
+                let models = [];
                 RestAPIService.readAll("transportmodels")
                     .then(response=>{
-                        this.transportmodels = response.data;
+                        response.data.forEach(function (item) {
+                            models.push(new TransportModel(item));
+                        });
                     });
+                this.transportmodels = models;
+            },
+            getTransports(transportsId) {
+                let transports = [];
+                transportsId.forEach(function (item) {
+                    RestAPIService.retrieve(item,"transports").then(
+                        response => {transports.push(response.data);}
+                    )});
+                console.log(transports);
+                return transports;
             },
             deleteTransportClicked(id){
                 RestAPIService.delete(id,"transports")
@@ -146,19 +142,11 @@
                         this.refreshTransports();
                     });
             },
-            editTransportClicked(transportId,transportModelId){
-                this.$router.push({name: 'Edit Transport', params:{transportId:transportId, modelId:transportModelId}})
+            editTransportClicked(transportId){
+                this.$router.push({name: 'Edit Transport', params:{transportId:transportId}})
             },
             addTransportClicked(id){
                 this.$router.push(`/transports/${id}`)
-            },
-            onRowSelected(items,id) {
-                if (items === this.transportSelected) this.transportSelected = null;
-                else this.transportSelected = items;
-                if(id !== this.transportModelIdSelected && this.transportModelIdSelected !== '' && this.$refs[`${this.transportModelIdSelected}`] !== undefined) {
-                    this.$refs[`${this.transportModelIdSelected}`].clearSelected();
-                }
-                this.transportModelIdSelected = id;
             },
         },
         created() {

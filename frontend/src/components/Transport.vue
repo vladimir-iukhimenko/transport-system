@@ -14,16 +14,21 @@
                                   required
                                   placeholder="Государственный номер автомобиля">
                     </b-form-input>
+                    <b-form-text id="input-group-1">Обязательное поле</b-form-text>
                 </b-form-group>
                 <b-form-group id="input-group-2"
                               label="VIN-номер"
                               label-for="input-2">
                     <b-form-input id="input-2"
                                   v-model="transport.vin"
+                                  :state="transport.vin.length===16"
                                   type="text"
                                   required
                                   placeholder="16-значный номер">
                     </b-form-input>
+                    <b-form-invalid-feedback id="input-group-2">
+                        Номер должен содержать 16 символов!
+                    </b-form-invalid-feedback>
                 </b-form-group>
                 <b-form-group id="input-group-3"
                               label="Год выпуска"
@@ -33,6 +38,7 @@
                                   type="text"
                                   required>
                     </b-form-input>
+                    <b-form-text id="input-group-3">Обязательное поле</b-form-text>
                 </b-form-group>
                 <b-form-group id="input-group-4"
                               label="Цвет"
@@ -42,6 +48,7 @@
                                   type="text"
                                   required>
                     </b-form-input>
+                    <b-form-text id="input-group-4">Обязательное поле</b-form-text>
                 </b-form-group>
                 <b-form-group id="input-group-5"
                               label="Мощность двигателя"
@@ -51,6 +58,7 @@
                                   type="text"
                                   required>
                     </b-form-input>
+                    <b-form-text id="input-group-5">Обязательное поле</b-form-text>
                 </b-form-group>
                 <b-form-group id="input-group-6"
                               label="Ввод в эксплуатацию"
@@ -60,6 +68,7 @@
                                   type="date"
                                   required>
                     </b-form-input>
+                    <b-form-text id="input-group-6">Обязательное поле</b-form-text>
                 </b-form-group>
                 <b-form-group id="input-group-7"
                               label="Дата вывода из эксплуатации"
@@ -72,14 +81,15 @@
                 <b-form-group id="input-group-8"
                               label="Двигатель"
                               label-for="input-8">
-                    <b-form-select id="input-6"
-                                   v-model="transport.transportid"
+                    <b-form-select id="input-8"
+                                   v-model="transport.engineid"
                                    :options="engines"
                                    value-field="id"
                                    text-field="name"
                                    required
                                    placeholder="">
                     </b-form-select>
+                    <b-form-text id="input-group-8">Обязательное поле</b-form-text>
                 </b-form-group>
                 <b-button variant="primary" type="submit" v-if="transport.id">Редактировать</b-button>
                 <b-button variant="primary" type="submit" v-else>Добавить</b-button>
@@ -91,11 +101,12 @@
 
 <script>
     import RestAPIService from "../service/RestAPIService";
+    import Transport from "../models/transport";
     export default {
         name: "Transport",
-        data(){
-            return{
-                transport: [],
+        data() {
+            return {
+                transport: null,
                 errors: [],
                 engines: RestAPIService.readAll("engines")
                     .then(response=>{this.engines = response.data}),
@@ -112,38 +123,20 @@
         methods: {
             getTransportDetails() {
                 RestAPIService.retrieve(this.transportId, "transports").then(resource => {
-                    this.transport = resource.data;
+                    this.transport = new Transport(resource.data);
                 });
             },
             validateAndSubmit(e) {
                 e.preventDefault();
                 this.errors=[];
                 if (this.transport.id) {
-                    RestAPIService.update("transports",{
-                        id: this.transportId,
-                        number: this.transport.number,
-                        vin: this.transport.vin,
-                        transportmodelid: this.modelId,
-                        producedyear: this.transport.producedyear,
-                        startupdate: this.transport.startupdate,
-                        writeoffdate: this.transport.writeoffdate,
-                        color: this.transport.color,
-                        enginepower: this.transport.enginepower
-                    }).then(()=> {
+                    RestAPIService.update("transports", this.transport).then(()=> {
                         this.$router.push(`/transports`);
                     });
                 }
                 else {
-                    RestAPIService.create("transports",{
-                        number: this.transport.number,
-                        vin: this.transport.vin,
-                        transportmodelid: this.modelId,
-                        producedyear: this.transport.producedyear,
-                        startupdate: this.transport.startupdate,
-                        writeoffdate: this.transport.writeoffdate,
-                        color: this.transport.color,
-                        enginepower: this.transport.enginepower
-                    }).then(()=> {
+                    this.transport.transportmodelid = this.modelId;
+                    RestAPIService.create("transports", this.transport).then(()=> {
                         this.$router.push(`/transports`);
                     });
                 }
@@ -152,6 +145,9 @@
         created() {
             if(window.location.href.indexOf("edit")>-1) {this.getTransportDetails();}
 
+        },
+        mounted() {
+            this.transport = new Transport();
         }
     }
 </script>
