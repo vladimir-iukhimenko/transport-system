@@ -62,11 +62,19 @@
         methods: {
             handleLogin() {
                 this.loading = true;
-                this.$store.dispatch('auth/login', this.user).then(() => {
-                    this.$router.push(`/`)});
-                },
-            },
-        }
+                this.message = '';
+                this.$store.dispatch('auth/login', this.user).then(
+                    () => {
+                        this.$router.push(`/`);
+                    },
+                    error => {
+                        this.message = error.response.data.message.includes("credentials") ? "Неверный логин или пароль!" : error.response.data.message;
+                        this.loading = false;
+                    }
+                );
+            }
+        },
+    }
 
 </script>
 
