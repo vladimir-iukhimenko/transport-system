@@ -24,8 +24,8 @@
                                  :items="row.item.transports"
                                  :fields="transport_fields">
                         <template v-slot:cell(id)="data">
-                                <b-button class="btn btn-warning" size="sm" v-on:click="editTransportClicked(data.item.id)">Редактировать</b-button>
-                                <b-button class="btn btn-danger" size="sm" v-on:click="deleteTransportClicked(data.item.id)">Удалить</b-button>
+                                <b-button class="btn btn-warning" size="sm" v-on:click="editTransportClicked(data.item.id)"><b-icon-pencil></b-icon-pencil></b-button>
+                                <b-button class="btn btn-danger" size="sm" v-on:click="deleteTransportClicked(data.item.id)"><b-icon-x-circle-fill></b-icon-x-circle-fill></b-button>
                         </template>
                         </b-table>
                         <b-button size="sm" @click="row.toggleDetails">Скрыть</b-button>
