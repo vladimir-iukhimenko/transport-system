@@ -3,10 +3,12 @@
         <NavigationBar></NavigationBar>
         <ListItems :is-selectable="true" :is-busy="isBusy" @selected="onSelectedRow" :table-items="tableItems" :table-fields="tableFields" :message="message" header="Список сотрудников">
         </ListItems>
-        <b-button @click="addEmployee">Добавить</b-button>
-        <b-button @click="editEmployee">Редактировать</b-button>
-        <b-button @click="deleteEmployee">Удалить</b-button>
-        <b-button @click="showEmployeeDocs">Документы</b-button>
+        <div v-show="tableItems.length !== 0">
+        <b-button class="buttons col-sm-2" @click="addEmployee">Добавить</b-button>
+        <b-button class="buttons col-sm-2" @click="editEmployee">Редактировать</b-button>
+        <b-button class="buttons col-sm-2" @click="deleteEmployee">Удалить</b-button>
+        <b-button class="buttons col-sm-2" @click="showEmployeeDocs">Документы</b-button>
+        </div>
         <b-modal id="modal-form" no-close-on-backdrop hide-footer :title="title + ' запись о сотруднике'">
             <b-form @submit="validateAndSubmit">
                 <b-form-group id="input-group-1"
@@ -249,5 +251,9 @@
 </script>
 
 <style scoped>
+    .buttons {
+        margin: 25px;
+        padding: 5px;
+    }
 
 </style>
