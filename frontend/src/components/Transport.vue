@@ -95,7 +95,6 @@
                 <b-button variant="primary" class="buttons col-sm-2" @click.prevent="validateAndSubmit" type="submit" v-else>Добавить</b-button>
                 <b-button class="buttons col-sm-2" @click="$router.back()">Отмена</b-button>
             </b-form>
-            <p>{{transport}}</p>
         </div>
     </div>
 </template>

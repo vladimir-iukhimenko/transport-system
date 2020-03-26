@@ -5,18 +5,13 @@
             {{message}}
         </div>
         <div>
-            <b-table striped hover :busy="isBusy" :items="transportmodels" :fields="transportmodel_fields" responsive="sm">
+            <b-table striped selectable select-mode="multi" @row-selected="showDetails" hover :busy="isBusy" :items="transportmodels" :fields="transportmodel_fields" responsive="sm">
                 <template v-slot:table-busy>
                     <div class="text-center text-danger my-2">
                         <b-spinner class="align-middle"></b-spinner>
                         <strong>Загрузка...</strong>
                     </div>
                 </template>
-            <template v-slot:cell(show_details)="row">
-                <b-button size="sm" @click="row.toggleDetails" class="mr-2">
-                    {{ row.detailsShowing ? 'Скрыть' : 'Показать'}}
-                </b-button>
-            </template>
                 <template v-slot:row-details="row">
                     <b-card>
                         <b-table :ref=String(row.item.id)
@@ -72,10 +67,6 @@
                         key: 'height',
                         label: 'Высота'
                     },
-                    {
-                        key: 'show_details',
-                        label: 'Экземпляры авто'
-                    },
                 ],
                 transport_fields:[
                     {
@@ -114,6 +105,7 @@
                 transportmodels: [],
                 message: '',
                 isBusy: false,
+                selectedTransportModels: [],
             };
         },
         methods: {
@@ -150,10 +142,23 @@
                     });
             },
             editTransportClicked(transportId){
-                this.$router.push({name: 'Edit Transport', params:{transportId:transportId}})
+                this.$router.push(`/transports/edit/${transportId}`)
             },
             addTransportClicked(id){
                 this.$router.push(`/transports/${id}`)
+            },
+            showDetails(rows) {
+                this.selectedTransportModels = rows;
+                this.transportmodels.forEach(item => {
+                    if (rows.length === 0) item._showDetails = false;
+                    else for (let selectedItem of this.selectedTransportModels) {
+                        if (item.id === selectedItem.id) {
+                            item._showDetails = true;
+                            break;
+                        }
+                        item._showDetails = false;
+                    }
+                });
             },
         },
         created() {

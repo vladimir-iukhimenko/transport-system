@@ -9,6 +9,7 @@ export default class TransportModel {
             this.length = '';
             this.width = '';
             this.height = '';
+            this._showDetails = false;
         } else
         {   this.id = data.id;
             this.name = data.name;
@@ -18,6 +19,7 @@ export default class TransportModel {
             this.width = data.width;
             this.height = data.height;
             this.transports = this.getTransports(data.transports);
+            this._showDetails = false;
         }
     }
     getTransports(transportsId) {
