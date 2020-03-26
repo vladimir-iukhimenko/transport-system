@@ -259,6 +259,7 @@
                 }).then(() => {
                     this.$bvModal.hide("nomenclature");
                     this.nomenclature = [];
+                    this.message = '';
                     this.refreshTableItems();
                 })
             }

@@ -7,9 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b4d8090-9e16-406b-9cbb-899dc8e5847d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/models/engine.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/Engines.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Engines.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/Nomenclatures.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Nomenclatures.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -661,7 +660,7 @@
       <workItem from="1584725915280" duration="4916000" />
       <workItem from="1584808207767" duration="2522000" />
       <workItem from="1585161449613" duration="794000" />
-      <workItem from="1585209547804" duration="11914000" />
+      <workItem from="1585209547804" duration="12638000" />
     </task>
     <servers />
   </component>
