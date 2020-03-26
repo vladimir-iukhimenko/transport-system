@@ -13,7 +13,7 @@
                               label="Наименование"
                               label-for="input-1">
                     <b-form-input id="input-1"
-                                  v-model="engine[0].name"
+                                  v-model="engine.name"
                                   type="text"
                                   required
                                   placeholder="">
@@ -23,7 +23,7 @@
                               label="Объем"
                               label-for="input-2">
                     <b-form-input id="input-2"
-                                  v-model="engine[0].volume"
+                                  v-model="engine.volume"
                                   type="text"
                                   required
                                   placeholder="">
@@ -33,7 +33,7 @@
                               label="Топливо"
                               label-for="input-3">
                     <b-form-input id="input-3"
-                                  v-model="engine[0].fuel"
+                                  v-model="engine.fuel"
                                   type="text"
                                   required
                                   placeholder="">
@@ -49,12 +49,13 @@
     import NavigationBar from "../components/NavigationBar";
     import ListItems from "../components/ListItems";
     import RestAPIService from "../service/RestAPIService";
+    import Engine from "../models/engine";
     export default {
         name: "Engines",
         components: {ListItems, NavigationBar},
         data() {
             return {
-                engine: [[]],
+                engine: new Engine(),
                 title: '',
                 tableItems: [],
                 isBusy: false,
@@ -91,39 +92,31 @@
             validateAndSubmit(e) {
                 e.preventDefault();
                 if (this.title === "Добавить") {
-                    RestAPIService.create("engines",{
-                        name: this.engine[0].name,
-                        volume: this.engine[0].volume,
-                        fuel: this.engine[0].fuel
-                    }).then(()=>{
+                    RestAPIService.create("engines", this.engine).then(()=>{
                         this.$bvToast.toast('Информация о двигателе добавлена!', {autoHideDelay:5000, title: 'Транспортная система'});
                         this.$bvModal.hide('modal-form')});
+                        this.refreshTableItems();
                 }
                 else {
-                    RestAPIService.update("engines", {
-                        id: this.engine[0].id,
-                        name: this.engine[0].name,
-                        volume: this.engine[0].volume,
-                        fuel: this.engine[0].fuel,
-                    }).then(()=>{
+                    RestAPIService.update("engines", this.engine).then(()=>{
                         this.$bvToast.toast('Информация о двигателе обновлена!', {autoHideDelay:5000, title: 'Транспортная система'});
                         this.$bvModal.hide('modal-form');
+                        this.refreshTableItems();
                     })
                 }
-                this.refreshTableItems();
             },
             onSelectedRow(row) {
-                this.engine = row;
+                if (row !== undefined) this.engine = new Engine(row[0]);
             },
             editEngine() {
-                if (this.engine[0].length !== 0) {
+                if (this.engine.id) {
                     this.title = 'Редактировать';
                     this.$bvModal.show('modal-form');
                 }
                 else this.message = 'Выберите двигатель!';
             },
             addEngine() {
-                this.engine = [[]];
+                this.engine = new Engine();
                 this.title = 'Добавить';
                 this.$bvModal.show('modal-form');
             },
