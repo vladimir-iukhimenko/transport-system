@@ -11,7 +11,7 @@ export default class Transport {
             this.enginepower = '';
             this.engineid = ''
         } else
-            {this.id = data.transportId;
+            {this.id = data.id;
             this.number = data.number;
             this.vin = data.vin;
             this.transportmodelid = data.transportmodel;

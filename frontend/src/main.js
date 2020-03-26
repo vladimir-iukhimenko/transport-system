@@ -2,7 +2,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './routes';
 import store from './store';
-import ValidationProvider from 'vee-validate';
+import {ValidationProvider} from 'vee-validate';
 import {BootstrapVue, BootstrapVueIcons} from "bootstrap-vue";
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';

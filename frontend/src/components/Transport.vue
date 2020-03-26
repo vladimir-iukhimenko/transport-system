@@ -1,10 +1,10 @@
 <template>
     <div>
-        <h1 v-if="transport.id">
+        <h1 v-if="isEdit">
             Редактировать транспортное средство</h1>
         <h1 v-else>Добавить транспортное средство</h1>
         <div class="container">
-            <b-form @submit="validateAndSubmit">
+            <b-form>
                 <b-form-group id="input-group-1"
                         label="Номер а/м"
                         label-for="input-1">
@@ -91,10 +91,11 @@
                     </b-form-select>
                     <b-form-text id="input-group-8">Обязательное поле</b-form-text>
                 </b-form-group>
-                <b-button variant="primary" type="submit" v-if="transport.id">Редактировать</b-button>
-                <b-button variant="primary" type="submit" v-else>Добавить</b-button>
-                <b-button @click="$router.back()">Отмена</b-button>
+                <b-button variant="primary" class="buttons col-sm-2" @click.prevent="validateAndSubmit" v-if="isEdit">Редактировать</b-button>
+                <b-button variant="primary" class="buttons col-sm-2" @click.prevent="validateAndSubmit" type="submit" v-else>Добавить</b-button>
+                <b-button class="buttons col-sm-2" @click="$router.back()">Отмена</b-button>
             </b-form>
+            <p>{{transport}}</p>
         </div>
     </div>
 </template>
@@ -106,18 +107,17 @@
         name: "Transport",
         data() {
             return {
-                transport: null,
+                transport: new Transport(),
                 errors: [],
-                engines: RestAPIService.readAll("engines")
-                    .then(response=>{this.engines = response.data}),
+                engines: [],
             };
         },
         computed: {
             transportId() {
-                return this.$route.params.transportId;
-            },
-            modelId() {
                 return this.$route.params.modelId;
+            },
+            isEdit() {
+                return window.location.href.indexOf("edit")>-1;
             }
         },
         methods: {
@@ -126,16 +126,14 @@
                     this.transport = new Transport(resource.data);
                 });
             },
-            validateAndSubmit(e) {
-                e.preventDefault();
+            validateAndSubmit() {
                 this.errors=[];
-                if (this.transport.id) {
+                if (this.isEdit) {
                     RestAPIService.update("transports", this.transport).then(()=> {
                         this.$router.push(`/transports`);
                     });
                 }
                 else {
-                    this.transport.transportmodelid = this.modelId;
                     RestAPIService.create("transports", this.transport).then(()=> {
                         this.$router.push(`/transports`);
                     });
@@ -143,15 +141,20 @@
             }
         },
         created() {
-            if(window.location.href.indexOf("edit")>-1) {this.getTransportDetails();}
+            RestAPIService.readAll("engines")
+                .then(response=>{this.engines = response.data});
+            if(this.isEdit) {this.getTransportDetails();}
+            else this.transport.transportmodelid = this.transportId;
 
         },
-        mounted() {
-            this.transport = new Transport();
-        }
     }
 </script>
 
 <style scoped>
+
+    .buttons {
+        margin: 25px;
+        padding: 5px;
+    }
 
 </style>
