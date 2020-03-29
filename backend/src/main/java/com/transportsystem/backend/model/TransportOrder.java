@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.transportsystem.backend.converter.CommentConverter;
 import lombok.*;
@@ -37,6 +38,7 @@ public class TransportOrder {
     @Getter
     @org.hibernate.annotations.LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "transportorder")
+    @JsonIdentityReference(alwaysAsId = true)
 	private List<Goods> goods;
 
     @Column(nullable = false)
@@ -50,7 +52,8 @@ public class TransportOrder {
     @Getter
     @ManyToOne(optional = false)
     @JoinColumn(name = "transportid")
-	private Transport transport;
+    @JsonIdentityReference(alwaysAsId = true)
+    private Transport transport;
 
     @Column(nullable = false)
     @Getter
@@ -70,7 +73,8 @@ public class TransportOrder {
     @Getter
     @ManyToOne(optional = false)
     @JoinColumn(name = "responsibleemployeeid")
-	private Employee employeeresponsible;
+    @JsonIdentityReference(alwaysAsId = true)
+    private Employee employeeresponsible;
 
     @Column(nullable = false)
     @Getter
@@ -80,7 +84,8 @@ public class TransportOrder {
     @Getter
     @ManyToOne(optional = false)
     @JoinColumn(name = "customeremployeeid")
-	private Employee employeecustomer;
+    @JsonIdentityReference(alwaysAsId = true)
+    private Employee employeecustomer;
 
     @Getter
     @Setter

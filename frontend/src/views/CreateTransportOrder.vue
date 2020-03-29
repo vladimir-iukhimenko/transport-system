@@ -1,7 +1,7 @@
 <template>
     <div>
         <NavigationBar></NavigationBar>
-        <b-form @submit="validateAndSubmit">
+        <b-form @submit.prevent="validateAndSubmit">
             <b-form-group id="input-group-1"
                           label="Дата подачи транспортного средства"
                           label-for="input-1">
@@ -20,7 +20,6 @@
                 </b-form-select>
             </b-form-group>
             <b-button @click="$bvModal.show('select-goods')">Выбрать грузы</b-button>
-            <p>{{selectedGoods}}</p>
             <b-form-group id="input-group-3"
                           label="Место погрузки"
                           label-for="input-3">
@@ -51,7 +50,7 @@
             <b-form-group id="input-group-6"
                           label="Ответственный сотрудник"
                           label-for="input-6">
-                <b-form-select id="input-6" v-model="transportorder.responsibleemployeeid">
+                <b-form-select id="input-6" v-model="transportorder.employeeresponsibleid">
                     <b-form-select-option v-for="employee in employees" :key="employee.id" :value="employee.id">{{employee.surname + ' ' + employee.name + ' - ' + employee.department}}</b-form-select-option>
                 </b-form-select>
             </b-form-group>
@@ -67,7 +66,7 @@
             <b-form-group id="input-group-8"
                           label="Заказчик"
                           label-for="input-8">
-                <b-form-select id="input-8" v-model="transportorder.customeremployeeid">
+                <b-form-select id="input-8" v-model="transportorder.employeecustomerid">
                     <b-form-select-option v-for="employee in employees" :key="employee.id" :value="employee.id">{{employee.surname + ' ' + employee.name}}</b-form-select-option>
                 </b-form-select>
             </b-form-group>
@@ -90,7 +89,10 @@
             <b-button variant="primary" type="submit">Добавить</b-button>
         </b-form>
         <b-modal id="select-goods" title="Выберите грузы" hide-footer>
-            <b-form-checkbox-group v-model="selectedGoods" :options="goods" value-field="id" text-field="name"></b-form-checkbox-group>
+            <div v-if="goods.length === 0" class="alert alert-danger">
+                <p>Свободные грузы не найдены!</p>
+            </div>
+            <b-form-checkbox-group v-model="transportorder.goodsIds" :options="goods" value-field="id" text-field="name"></b-form-checkbox-group>
         </b-modal>
     </div>
 </template>
@@ -98,39 +100,30 @@
 <script>
     import NavigationBar from "../components/NavigationBar";
     import RestAPIService from "../service/RestAPIService";
+    import TransportOrder from "../models/transportorder";
     export default {
         name: "CreateTransportOrder",
         components: {NavigationBar},
         data() {
             return {
-                transportorder: [],
-                selectedGoods: [],
-                goods: RestAPIService.readAll("goods").then(response => {this.goods = response.data}),
-                transports: RestAPIService.readAll("transports").then(response => {this.transports = response.data}),
-                employees: RestAPIService.readAll("employees").then(response => {this.employees = response.data}),
+                transportorder: new TransportOrder(),
+                goods: null,
+                transports: null,
+                employees: null,
             }
         },
         methods: {
-            validateAndSubmit(e) {
-                e.preventDefault();
-                RestAPIService.create("transportorders",{
-                    orderdate: this.transportorder.orderdate,
-                    transportpresentingdate: this.transportorder.transportpresentingdate,
-                    transportid: this.transportorder.transportid,
-                    loadingplace: this.transportorder.loadingplace,
-                    unloadingplace: this.transportorder.unloadingplace,
-                    placemethod: this.transportorder.placemethod,
-                    responsibleemployeeid: this.transportorder.responsibleemployeeid,
-                    telephonenumber: this.transportorder.telephonenumber,
-                    customeremployeeid: this.transportorder.customeremployeeid,
-                    declinereason: this.transportorder.declinereason,
-                    comment: this.transportorder.comment,
-                    goodsIds: this.selectedGoods
-                }).then(() => {
+            validateAndSubmit() {
+                RestAPIService.create("transportorders",this.transportorder).then(() => {
                     this.$router.push(`/transportorders`)
                     this.$bvToast.toast('Транспортный заказ размещен!',{autoHideDelay:5000,title:'Транспортная система'});
                 })
-            }
+            },
+        },
+        created() {
+            this.goods = RestAPIService.readAll("goods").then(response => {this.goods = response.data});
+            this.transports = RestAPIService.readAll("transports").then(response => {this.transports = response.data});
+            this.employees = RestAPIService.readAll("employees").then(response => {this.employees = response.data});
         }
     }
 </script>
