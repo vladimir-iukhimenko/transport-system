@@ -6,8 +6,8 @@
         <div v-show="tableItems.length !== 0">
         <b-button class="buttons col-sm-2" @click="addEmployee">Добавить</b-button>
         <b-button class="buttons col-sm-2" @click="editEmployee">Редактировать</b-button>
-        <b-button class="buttons col-sm-2" @click="deleteEmployee">Удалить</b-button>
         <b-button class="buttons col-sm-2" @click="showEmployeeDocs">Документы</b-button>
+            <b-button class="buttons col-sm-2" @click="deleteEmployee">Удалить</b-button>
         </div>
         <b-modal id="modal-form" no-close-on-backdrop hide-footer :title="title + ' запись о сотруднике'">
             <b-form @submit="validateAndSubmit">
@@ -252,7 +252,7 @@
 
 <style scoped>
     .buttons {
-        margin: 25px;
+        margin: 45px;
         padding: 5px;
     }
 

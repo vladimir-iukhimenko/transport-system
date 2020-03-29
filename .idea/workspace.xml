@@ -6,15 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b4d8090-9e16-406b-9cbb-899dc8e5847d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/models/goods.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/models/transportorder.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/TransportOrderRESTController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/TransportOrderRESTController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/TransportOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/TransportOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/CreateTransportOrder.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/CreateTransportOrder.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/TransportOrders.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/TransportOrders.vue" afterDir="false" />
-    </list>
+    <list default="true" id="8b4d8090-9e16-406b-9cbb-899dc8e5847d" name="Default" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -667,7 +659,7 @@
       <workItem from="1585161449613" duration="794000" />
       <workItem from="1585209547804" duration="12816000" />
       <workItem from="1585303562733" duration="7815000" />
-      <workItem from="1585468693876" duration="11816000" />
+      <workItem from="1585468693876" duration="12083000" />
     </task>
     <servers />
   </component>
