@@ -23,7 +23,7 @@
                                   placeholder="">
                     </b-form-input>
                 </b-form-group>
-                <b-button variant="primary" type="submit">Регистрация</b-button>
+                <b-button variant="primary" type="submit">Зарегистрироваться</b-button>
             <div v-if="message" class="alert" :class="successful ? 'alert-success' : 'alert-danger'">{{message}}</div>
             </b-form>
         </b-card>
@@ -59,8 +59,9 @@
                 this.submitted = true;
                 this.$store.dispatch('auth/register', this.user).then(
                             data => {
-                                this.message = data.message;
                                 this.successful = true;
+                                this.message = data.message + " Переход на форму входа...";
+                                setInterval(this.redirect,3000);
                             },
                             error => {
                                 this.message =
@@ -70,7 +71,10 @@
                                 this.successful = false;
                             }
                         );
-                    }
+                    },
+            redirect() {
+                this.$router.push(`/login`).catch(err => {return err});
+            }
                 },
             }
 </script>
