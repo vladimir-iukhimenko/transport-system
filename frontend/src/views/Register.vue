@@ -61,7 +61,7 @@
                             data => {
                                 this.successful = true;
                                 this.message = data.message + " Переход на форму входа...";
-                                setInterval(this.redirect,3000);
+                                setTimeout(this.redirect,3000);
                             },
                             error => {
                                 this.message =
