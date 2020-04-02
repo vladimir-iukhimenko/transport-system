@@ -66,10 +66,12 @@ public class Employee {
 
     @Column
     @Getter
+    @Setter
     private LocalDate dateofreceipt;
 
     @Column
     @Getter
+    @Setter
 	private LocalDate dateofdismissal;
 
     @Getter
@@ -93,13 +95,4 @@ public class Employee {
     @OneToMany(mappedBy = "employeecustomer", cascade = CascadeType.ALL)
     @JsonIdentityReference(alwaysAsId = true)
     private List<TransportOrder> transportordercustomer;
-	
-	public void setDateofreceipt(String dateofreceipt) {this.dateofreceipt = LocalDate.parse(dateofreceipt);}
-    public void setDateofdismissal(String dateofdismissal) {
-        if (dateofdismissal.equals("")) {
-            this.dateofdismissal = null;
-            return;
-        }
-        this.dateofdismissal = LocalDate.parse(dateofdismissal);}
-
 }

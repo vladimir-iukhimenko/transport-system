@@ -193,6 +193,7 @@
                     }).then(()=>{
                         this.$bvToast.toast('Информация о сотруднике добавлена!',{autoHideDelay:5000,title:'Транспортная система'});
                         this.$bvModal.hide('modal-form');
+                        this.refreshTableItems();
                     })
                 }
                 else {
@@ -210,9 +211,9 @@
                     }).then(()=>{
                         this.$bvToast.toast('Информация о сотруднике обновлена!',{autoHideDelay:5000,title:'Транспортная система'});
                         this.$bvModal.hide('modal-form');
+                        this.refreshTableItems();
                     })
                 }
-                this.refreshTableItems();
             },
             onSelectedRow(row) {
                 this.employee = row;
@@ -226,9 +227,12 @@
             },
             deleteEmployee() {
                 if (this.employee[0].length !== 0) {
-                    RestAPIService.delete(this.employee[0].id,"employees");
-                    this.$bvToast.toast('Выбранный сотрудник удален!',{autoHideDelay: 5000, title: 'Транспортная система'});
-                    this.refreshTableItems();
+                    RestAPIService.delete(this.employee[0].id,"employees").then(
+                        () => {
+                            this.$bvToast.toast('Выбранный сотрудник удален!',{autoHideDelay: 5000, title: 'Транспортная система'});
+                            this.refreshTableItems();
+                        }
+                    );
                 }
                 else this.$bvToast.toast('Выберите сотрудника!',{autoHideDelay:5000, title: 'Транспортная система'})
             },
