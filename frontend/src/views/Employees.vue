@@ -3,11 +3,11 @@
         <NavigationBar></NavigationBar>
         <ListItems :is-selectable="true" :is-busy="isBusy" @selected="onSelectedRow" :table-items="tableItems" :table-fields="tableFields" :message="message" header="Список сотрудников">
         </ListItems>
-        <div v-show="tableItems.length !== 0">
-        <b-button class="buttons col-sm-2" @click="addEmployee">Добавить</b-button>
-        <b-button class="buttons col-sm-2" @click="editEmployee">Редактировать</b-button>
-        <b-button class="buttons col-sm-2" @click="showEmployeeDocs">Документы</b-button>
-            <b-button class="buttons col-sm-2" @click="deleteEmployee">Удалить</b-button>
+        <div>
+            <b-button class="buttons col-sm-2" @click="addEmployee">Добавить</b-button>
+            <b-button v-show="tableItems.length !== 0" class="buttons col-sm-2" @click="editEmployee">Редактировать</b-button>
+            <b-button v-show="tableItems.length !== 0" class="buttons col-sm-2" @click="showEmployeeDocs">Документы</b-button>
+            <b-button v-show="tableItems.length !== 0" class="buttons col-sm-2" @click="deleteEmployee">Удалить</b-button>
         </div>
         <b-modal id="modal-form" no-close-on-backdrop hide-footer :title="title + ' запись о сотруднике'">
             <b-form @submit="validateAndSubmit">
