@@ -23,7 +23,7 @@
                                   placeholder="">
                     </b-form-input>
                 </b-form-group>
-                <b-button variant="primary" type="submit">Зарегистрироваться</b-button>
+                <b-button :variant="!successful ? 'primary' : 'dark'" :disabled="successful" type="submit" >Зарегистрироваться</b-button>
             <div v-if="message" class="alert" :class="successful ? 'alert-success' : 'alert-danger'">{{message}}</div>
             </b-form>
         </b-card>
@@ -64,10 +64,7 @@
                                 setTimeout(this.redirect,3000);
                             },
                             error => {
-                                this.message =
-                                    (error.response && error.response.data) ||
-                                    error.message ||
-                                    error.toString();
+                                this.message = error.response.data.message;
                                 this.successful = false;
                             }
                         );

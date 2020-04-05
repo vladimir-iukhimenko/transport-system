@@ -76,7 +76,7 @@ public class AuthRESTController {
         if (userService.isUserExists(signUpRequest.getUsername())) {
             return ResponseEntity
                     .badRequest()
-                    .body(new MessageResponse("Error: Username is already taken!"));
+                    .body(new MessageResponse("Логин уже занят!"));
         }
 
         // Create new user's account
