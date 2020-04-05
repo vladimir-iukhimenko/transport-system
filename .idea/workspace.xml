@@ -8,28 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8b4d8090-9e16-406b-9cbb-899dc8e5847d" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/security/AuthRESTController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/security/AuthRESTController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/webapp/WEB-INF/view/documents/documents.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/webapp/WEB-INF/view/documents/editordocuments.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/webapp/WEB-INF/view/employees/editoremployees.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/webapp/WEB-INF/view/employees/employees.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/webapp/WEB-INF/view/engines/editorengines.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/webapp/WEB-INF/view/engines/engines.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/webapp/WEB-INF/view/goods/editorgoods.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/webapp/WEB-INF/view/goods/goods.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/webapp/WEB-INF/view/index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/webapp/WEB-INF/view/login.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/webapp/WEB-INF/view/nomenclatures/editornomenclatures.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/webapp/WEB-INF/view/nomenclatures/nomenclatures.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/webapp/WEB-INF/view/registration.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/webapp/WEB-INF/view/transportmodels/editortransportmodels.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/webapp/WEB-INF/view/transportmodels/transportmodels.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/webapp/WEB-INF/view/transportorders/editortransportorders.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/webapp/WEB-INF/view/transportorders/transportorders.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/webapp/WEB-INF/view/transports/editortransports.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/webapp/WEB-INF/view/transports/transports.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/Register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Register.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/EmployeeDocs.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/EmployeeDocs.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -687,7 +666,7 @@
       <workItem from="1585585561120" duration="2765000" />
       <workItem from="1585761132863" duration="650000" />
       <workItem from="1585820850529" duration="5728000" />
-      <workItem from="1586106368405" duration="4885000" />
+      <workItem from="1586106368405" duration="5747000" />
     </task>
     <servers />
   </component>

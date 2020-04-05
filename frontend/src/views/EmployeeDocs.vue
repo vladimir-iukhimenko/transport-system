@@ -1,10 +1,17 @@
 <template>
     <div>
         <NavigationBar></NavigationBar>
-        <ListItems :is-selectable="true" @selected="onSelectedRow" header="Документы" :table-fields="tableFields" :table-items="tableItems"></ListItems>
-        <b-button @click="addEmployeeDoc">Добавить</b-button>
-        <b-button @click="editEmployeeDoc">Редактировать</b-button>
-        <b-button @click="deleteEmployeeDoc">Удалить</b-button>
+        <ListItems :is-selectable="true"
+                   @selected="onSelectedRow"
+                   header="Документы"
+                   :table-fields="tableFields"
+                   :table-items="tableItems"
+                   :is-busy="false" message="Не найдены документы!"></ListItems>
+        <div class="text-center">
+        <b-button class="buttons col-sm-2" @click="addEmployeeDoc">Добавить</b-button>
+        <b-button class="buttons col-sm-2" v-show="tableItems.length!=0" @click="editEmployeeDoc">Редактировать</b-button>
+        <b-button class="buttons col-sm-2" v-show="tableItems.length!=0" @click="deleteEmployeeDoc">Удалить</b-button>
+        </div>
         <b-modal id="modal-form" no-close-on-backdrop hide-footer :title="title + ' документ'">
             <b-form @submit="validateAndSubmit">
                 <b-form-group id="input-group-1"
@@ -175,5 +182,10 @@
 </script>
 
 <style scoped>
+
+    .buttons {
+        margin: 25px;
+        padding: 5px;
+    }
 
 </style>
