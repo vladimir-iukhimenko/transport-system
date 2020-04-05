@@ -1,8 +1,8 @@
 <template>
     <div>
-        <h1 v-if="isEdit">
-            Редактировать транспортное средство</h1>
-        <h1 v-else>Добавить транспортное средство</h1>
+        <h3 v-if="isEdit">
+            Редактировать транспортное средство</h3>
+        <h3 v-else>Добавить транспортное средство</h3>
         <div class="container">
             <b-form>
                 <b-form-group id="input-group-1"
@@ -91,7 +91,7 @@
                     </b-form-select>
                     <b-form-text id="input-group-8">Обязательное поле</b-form-text>
                 </b-form-group>
-                <b-button variant="primary" class="buttons col-sm-2" @click.prevent="validateAndSubmit" v-if="isEdit">Редактировать</b-button>
+                <b-button variant="primary" class="buttons col-sm-2" @click.prevent="validateAndSubmit" v-if="isEdit">Сохранить</b-button>
                 <b-button variant="primary" class="buttons col-sm-2" @click.prevent="validateAndSubmit" type="submit" v-else>Добавить</b-button>
                 <b-button class="buttons col-sm-2" @click="$router.back()">Отмена</b-button>
             </b-form>
