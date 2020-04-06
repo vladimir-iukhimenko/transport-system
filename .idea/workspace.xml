@@ -7,8 +7,72 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b4d8090-9e16-406b-9cbb-899dc8e5847d" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/application_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/application_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/backend_war.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/backend_war.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/backend_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/backend_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_istack_istack_commons_runtime_3_0_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_fastinfoset_FastInfoset_1_2_15.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_validation_jakarta_validation_api_2_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_javax_activation_api_1_2_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_persistence_javax_persistence_api_2_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_javax_servlet_api_4_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_bind_jaxb_api_2_3_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jstl_jstl_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_10_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_jaxb_runtime_2_3_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_txw2_2_3_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_2_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_spec_javax_transaction_jboss_transaction_api_1_2_spec_1_1_1_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jvnet_staxex_stax_ex_1_8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_2_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_2_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_2_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_2_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_2_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_2_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_5_2_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_orm_5_2_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_5_2_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_5_2_0_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_5_2_0_RELEASE.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/EmployeeDocs.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/EmployeeDocs.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application.iml" beforeDir="false" afterPath="$PROJECT_DIR$/application.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/BackendApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/BackendApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/FastInfoset-1.2.15.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/antlr-2.7.7.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/byte-buddy-1.10.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/classmate-1.5.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/dom4j-2.1.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/hibernate-commons-annotations-5.1.0.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/hibernate-core-5.4.9.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/hibernate-search-engine-5.11.4.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/hibernate-search-orm-5.11.4.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/hibernate-validator-6.1.0.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/istack-commons-runtime-3.0.7.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/jakarta.validation-api-2.0.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/jandex-2.1.1.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/javassist-3.24.0-GA.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/javax.activation-api-1.2.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/javax.persistence-api-2.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/jaxb-api-2.3.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/jaxb-runtime-2.3.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/jboss-logging-3.3.2.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/jboss-transaction-api_1.2_spec-1.1.1.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/jstl-1.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/lucene-analyzers-common-5.5.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/lucene-core-5.5.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/lucene-facet-5.5.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/lucene-misc-5.5.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/lucene-queries-5.5.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/lucene-queryparser-5.5.5.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/mssql-jdbc-7.4.1.jre8.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/spring-aop-5.2.0.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT/WEB-INF/lib/spring-beans-5.2.0.RELEASE.jar" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +181,7 @@
       <recent name="C:\Users\DZCKJS0\IdeaProjects\Transport_System\src\main\webapp\WEB-INF\view\documents" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.BackendApplication">
+  <component name="RunManager" selected="Application.BackendApplication">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="ACTIVITY_CLASS" value="" />
@@ -235,9 +299,10 @@
       <method />
     </configuration>
     <configuration name="BackendApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.transportsystem.backend.BackendApplication" />
-      <module name="Transport_System" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <module name="backend" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.transportsystem.backend.*" />
@@ -666,7 +731,10 @@
       <workItem from="1585585561120" duration="2765000" />
       <workItem from="1585761132863" duration="650000" />
       <workItem from="1585820850529" duration="5728000" />
-      <workItem from="1586106368405" duration="5747000" />
+      <workItem from="1586106368405" duration="5940000" />
+      <workItem from="1586178203302" duration="5445000" />
+      <workItem from="1586185470634" duration="1364000" />
+      <workItem from="1586186863649" duration="10121000" />
     </task>
     <servers />
   </component>
@@ -686,14 +754,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="70" key="#Assign_Data_Sources/0.0.1536.824@0.0.1536.824" timestamp="1578509049323" />
-    <state x="174" y="62" key="#Project_Structure" timestamp="1577712394141">
+    <state x="438" y="49" key="#BackendApplication" timestamp="1586178974195">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="174" y="62" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1577712394141" />
+    <state x="438" y="49" key="#BackendApplication/0.0.1536.824@0.0.1536.824" timestamp="1586178974195" />
+    <state x="174" y="62" key="#Project_Structure" timestamp="1586178852850">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="174" y="62" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1586178852850" />
     <state x="223" y="0" width="1089" height="824" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577712464880">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="0" width="1089" height="824" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1577712464880" />
+    <state x="532" y="214" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1586191829188">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="532" y="214" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1586191829188" />
     <state x="765" y="228" key="#com.intellij.ide.util.MemberChooser" timestamp="1583140605843">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -723,22 +799,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="592" y="206" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1577555331925" />
-    <state width="1493" height="148" key="GridCell.Tab.0.bottom" timestamp="1583868056027">
+    <state width="1493" height="148" key="GridCell.Tab.0.bottom" timestamp="1586185433869">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="148" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1583868056027" />
-    <state width="1493" height="148" key="GridCell.Tab.0.center" timestamp="1583868056027">
+    <state width="1493" height="148" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586185433869" />
+    <state width="1493" height="148" key="GridCell.Tab.0.center" timestamp="1586185433869">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="148" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1583868056027" />
-    <state width="1493" height="148" key="GridCell.Tab.0.left" timestamp="1583868056027">
+    <state width="1493" height="148" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586185433869" />
+    <state width="1493" height="148" key="GridCell.Tab.0.left" timestamp="1586185433869">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="148" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1583868056027" />
-    <state width="1493" height="148" key="GridCell.Tab.0.right" timestamp="1583868056027">
+    <state width="1493" height="148" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586185433869" />
+    <state width="1493" height="148" key="GridCell.Tab.0.right" timestamp="1586185433869">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="148" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1583868056027" />
+    <state width="1493" height="148" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586185433869" />
     <state width="1493" height="148" key="GridCell.Tab.1.bottom" timestamp="1583868056027">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -784,10 +860,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1577978338040" />
-    <state x="529" y="271" key="com.intellij.ide.util.TipDialog" timestamp="1586106369503">
+    <state x="529" y="271" key="com.intellij.ide.util.TipDialog" timestamp="1586186863791">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="529" y="271" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1586106369503" />
+    <state x="529" y="271" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1586186863791" />
     <state x="654" y="341" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584705118300" />
     <state x="567" y="101" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1577978275988">
       <screen x="0" y="0" width="1536" height="824" />

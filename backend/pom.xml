@@ -9,11 +9,11 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.transportsystem</groupId>
-	<artifactId>backend</artifactId>
+	<artifactId>application</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
-	<name>backend</name>
-	<description>Transport system backend</description>
+	<packaging>jar</packaging>
+	<name>TransSystem</name>
+	<description>Transport system</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -127,5 +127,6 @@
 			</plugin>
 		</plugins>
 	</build>
+
 
 </project>
