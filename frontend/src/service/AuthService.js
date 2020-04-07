@@ -1,10 +1,10 @@
 import axios from "axios"
 
-const API_URL = "http://localhost:8081/api/auth/";
+const API_URL = "https://trans-system.herokuapp.com/api";
 
 class AuthService {
     login(user){
-        return axios.post(API_URL + 'signin',{
+        return axios.post(API_URL + '/auth/signin',{
             username: user.username,
             password: user.password
         })
@@ -21,7 +21,7 @@ class AuthService {
     }
 
     register(user) {
-        return axios.post(API_URL + 'signup',{
+        return axios.post(API_URL + '/auth/signup',{
             username: user.username,
             password: user.password
         });

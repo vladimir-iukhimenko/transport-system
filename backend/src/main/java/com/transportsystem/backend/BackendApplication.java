@@ -13,11 +13,11 @@ import org.springframework.core.Ordered;
 import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 import java.util.Collections;
 import java.util.Properties;
@@ -56,7 +56,6 @@ public class BackendApplication {
 		sessionFactory.setPackagesToScan(new String[] { "" });
 		sessionFactory.setDataSource(dataSource());
 		sessionFactory.setHibernateProperties(hibernateProperties());
-		//SessionFactory sessionFactory = localSessionFactoryBean.getObject();
 		return sessionFactory;
 	}
 
@@ -80,15 +79,12 @@ public class BackendApplication {
 		return transactionManager;
 	}
 
-	// Fix the CORS errors
-
 	@Bean
 	public FilterRegistrationBean simpleCorsFilter() {
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		CorsConfiguration config = new CorsConfiguration();
 		config.setAllowCredentials(true);
-		// *** URL below needs to match the Vue client URL and port ***
-		config.setAllowedOrigins(Collections.singletonList("http://localhost:8080"));
+		config.setAllowedOrigins(Collections.singletonList("*"));
 		config.setAllowedMethods(Collections.singletonList("*"));
 		config.setAllowedHeaders(Collections.singletonList("*"));
 		source.registerCorsConfiguration("/**", config);
@@ -96,6 +92,4 @@ public class BackendApplication {
 		bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
 		return bean;
 	}
-
-
 }
