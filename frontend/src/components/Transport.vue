@@ -108,7 +108,7 @@
             return {
                 transport: new Transport(),
                 errors: [],
-                engines: [],
+                engines: []
             };
         },
         computed: {

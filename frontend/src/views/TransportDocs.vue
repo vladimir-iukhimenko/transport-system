@@ -7,13 +7,14 @@
             <b-button class="buttons col-sm-2" @click="addDoc">Добавить</b-button>
             <b-button class="buttons col-sm-2" @click="editDoc">Редактировать</b-button>
         </div>
+        <p>{{transportdoc}}</p>
         <b-modal id="modal-form" no-close-on-backdrop hide-footer :title="title + ' документ'">
             <b-form @submit="validateAndSubmit">
                 <b-form-group id="input-group-1"
                               label="Тип документа"
                               label-for="input-1">
                     <b-form-input id="input-1"
-                                  v-model="transportdoc[0].documenttype"
+                                  v-model="transportdoc.documenttype"
                                   type="text"
                                   required
                                   placeholder="">
@@ -23,7 +24,7 @@
                               label="Серия"
                               label-for="input-2">
                     <b-form-input id="input-2"
-                                  v-model="transportdoc[0].series"
+                                  v-model="transportdoc.series"
                                   type="text"
                                   required
                                   placeholder="">
@@ -33,7 +34,7 @@
                               label="Номер"
                               label-for="input-3">
                     <b-form-input id="input-3"
-                                  v-model="transportdoc[0].number"
+                                  v-model="transportdoc.number"
                                   type="text"
                                   required
                                   placeholder="">
@@ -43,7 +44,7 @@
                               label="Выдано"
                               label-for="input-4">
                     <b-form-input id="input-4"
-                                  v-model="transportdoc[0].issuedby"
+                                  v-model="transportdoc.issuedby"
                                   type="text"
                                   required
                                   placeholder="">
@@ -53,7 +54,7 @@
                               label="Дата выдачи"
                               label-for="input-5">
                     <b-form-input id="input-5"
-                                  v-model="transportdoc[0].issueddate"
+                                  v-model="transportdoc.issueddate"
                                   type="date"
                                   required
                                   placeholder="">
@@ -63,7 +64,7 @@
                               label="Дата истечения срока действия"
                               label-for="input-6">
                     <b-form-input id="input-6"
-                                  v-model="transportdoc[0].expiredate"
+                                  v-model="transportdoc.expiredate"
                                   type="date"
                                   placeholder="">
                     </b-form-input>
@@ -72,7 +73,7 @@
                               label="Транспортное средство"
                               label-for="input-7">
                     <b-form-select id="input-7"
-                                  v-model="transportdoc[0].transportid"
+                                  v-model="transportdoc.transportid"
                                   :options="transports"
                                   value-field="id"
                                   text-field="number"
@@ -90,13 +91,14 @@
     import NavigationBar from "../components/NavigationBar";
     import ListItems from "../components/ListItems";
     import RestAPIService from "../service/RestAPIService";
+    import DocumentTransport from "../models/documenttransport";
     export default {
         name: "TransportDocs",
         components: {ListItems, NavigationBar},
         data() {
             return {
-                transportdoc: [[]],
-                title:'',
+                transportdoc: '',
+                title: '',
                 isBusy: false,
                 message: '',
                 transports: RestAPIService.readAll('transports')
@@ -125,7 +127,7 @@
                         label: 'Дата выпуска'
                     },
                     {
-                        key: 'transport.number',
+                        key: 'transportdetails.number',
                         label: 'ТС',
                         sortable: true
                     },
@@ -137,7 +139,7 @@
                 this.isBusy = !this.isBusy;
                 RestAPIService.readAll("transportdocs")
                     .then( response => {
-                        this.tableItems = response.data;
+                        for (let item of response.data) {this.tableItems.push(new DocumentTransport(item));}
                         this.isBusy = !this.isBusy;
                         if (this.tableItems.length === 0) this.message = 'Документы транспортных средств не найдены!';
                     }).catch(err => {
@@ -148,47 +150,32 @@
             validateAndSubmit(e) {
                 e.preventDefault();
                 if (this.title === "Добавить") {
-                    RestAPIService.create("transportdocs",{
-                        documenttype: this.transportdoc[0].documenttype,
-                        series: this.transportdoc[0].series,
-                        number: this.transportdoc[0].number,
-                        issuedby: this.transportdoc[0].issuedby,
-                        issueddate: this.transportdoc[0].issueddate,
-                        expiredate: this.transportdoc[0].expiredate,
-                        transportid: this.transportdoc[0].transportid
-                    }).then(()=>{
+                    RestAPIService.create("transportdocs",this.transportdoc).then(()=>{
                         this.$bvToast.toast('Информация о документе добавлена!',{autoHideDelay:5000,title:'Транспортная система'});
-                        this.$bvModal.hide('modal-form')})
-                }
-                else {
-                    RestAPIService.update("transportdocs", {
-                        id: this.transportdoc[0].id,
-                        documenttype: this.transportdoc[0].documenttype,
-                        series: this.transportdoc[0].series,
-                        number: this.transportdoc[0].number,
-                        issuedby: this.transportdoc[0].issuedby,
-                        issueddate: this.transportdoc[0].issueddate,
-                        expiredate: this.transportdoc[0].expiredate,
-                        transportid: this.transportdoc[0].transportid
-                    }).then(()=>{
-                        this.$bvToast.toast('Информация о документе обновлена!',{autoHideDelay:5000,title:'Транспортная система'});
-                        this.$bvModal.hide('modal-form')
+                        this.$bvModal.hide('modal-form');
+                        this.refreshTableItems();
                     })
                 }
-                this.refreshTableItems();
+                else {
+                    RestAPIService.update("transportdocs", this.transportdoc).then(()=>{
+                        this.$bvToast.toast('Информация о документе обновлена!',{autoHideDelay:5000,title:'Транспортная система'});
+                        this.$bvModal.hide('modal-form');
+                        this.refreshTableItems();
+                    })
+                }
             },
             onSelectedRow(row) {
-                this.transportdoc = row;
+                this.transportdoc = row[0] ? row[0] : row;
             },
             editDoc() {
-                if (this.transportdoc[0].length !== 0) {
+                if (this.transportdoc) {
                     this.title = 'Редактировать';
                     this.$bvModal.show('modal-form');
                 }
                 else this.$bvToast.toast('Выберите документ!',{autoHideDelay:5000,title:'Транспортная система'});
             },
             addDoc() {
-                this.transportdoc = [[]];
+                this.transportdoc = new DocumentTransport();
                 this.title = 'Добавить';
                 this.$bvModal.show('modal-form');
             }

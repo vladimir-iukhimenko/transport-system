@@ -1,6 +1,7 @@
 <template>
     <div>
         <NavigationBar></NavigationBar>
+        <h3>Добавить транспорт</h3>
         <b-form @submit="validateAndSubmit">
             <b-form-group id="input-group-1"
                           label="Название"
@@ -23,29 +24,38 @@
                 </b-form-input>
             </b-form-group>
             <b-form-group id="input-group-3"
-                          label="Цвет"
+                          label="Максимальный вес"
                           label-for="input-3">
                 <b-form-input id="input-3"
-                              v-model="transportmodel.color"
-                              type="text"
-                              required>
-                </b-form-input>
-            </b-form-group>
-            <b-form-group id="input-group-4"
-                          label="Максимальный вес"
-                          label-for="input-4">
-                <b-form-input id="input-4"
                               v-model="transportmodel.maxweight"
                               type="text"
                               required>
                 </b-form-input>
             </b-form-group>
+            <b-form-group id="input-group-4"
+                          label="Длина"
+                          label-for="input-4">
+                <b-form-input id="input-4"
+                              v-model="transportmodel.length"
+                              type="number"
+                              required>
+                </b-form-input>
+            </b-form-group>
             <b-form-group id="input-group-5"
-                          label="Мощность"
+                          label="Ширина"
                           label-for="input-5">
                 <b-form-input id="input-5"
-                              v-model="transportmodel.enginepower"
-                              type="text"
+                              v-model="transportmodel.width"
+                              type="number"
+                              required>
+                </b-form-input>
+            </b-form-group>
+            <b-form-group id="input-group-6"
+                          label="Высота"
+                          label-for="input-6">
+                <b-form-input id="input-6"
+                              v-model="transportmodel.height"
+                              type="number"
                               required>
                 </b-form-input>
             </b-form-group>
@@ -71,12 +81,12 @@
                     RestAPIService.create("transportmodels",{
                         name: this.transportmodel.name,
                         producer: this.transportmodel.producer,
-                        color: this.transportmodel.color,
                         maxweight: this.transportmodel.maxweight,
-                        enginepower: this.transportmodel.enginepower,
-                        engineid: this.transportmodel.transportid,
-                    }).then(response=>{
-                        this.$router.push(`/transports/${response.data.id}`)
+                        length: this.transportmodel.length,
+                        width: this.transportmodel.width,
+                        height: this.transportmodel.height
+                    }).then(response => {
+                        this.$router.push(`/transports/${response.data.id}`);
                     })
             }
         }
