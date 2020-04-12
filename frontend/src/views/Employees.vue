@@ -15,7 +15,7 @@
                               label="Фамилия"
                               label-for="input-1">
                     <b-form-input id="input-1"
-                                  v-model="employee[0].surname"
+                                  v-model="employee.surname"
                                   type="text"
                                   required
                                   placeholder="">
@@ -25,7 +25,7 @@
                               label="Имя"
                               label-for="input-2">
                     <b-form-input id="input-2"
-                                  v-model="employee[0].name"
+                                  v-model="employee.name"
                                   type="text"
                                   required
                                   placeholder="">
@@ -35,7 +35,7 @@
                               label="Отчество"
                               label-for="input-3">
                     <b-form-input id="input-3"
-                                  v-model="employee[0].patronymic"
+                                  v-model="employee.patronymic"
                                   type="text"
                                   required
                                   placeholder="">
@@ -45,7 +45,7 @@
                               label="Подразделение"
                               label-for="input-4">
                     <b-form-input id="input-4"
-                                  v-model="employee[0].department"
+                                  v-model="employee.department"
                                   type="text"
                                   required
                                   placeholder="">
@@ -55,7 +55,7 @@
                               label="Должность"
                               label-for="input-5">
                     <b-form-input id="input-5"
-                                  v-model="employee[0].position"
+                                  v-model="employee.position"
                                   type="text"
                                   required
                                   placeholder="">
@@ -65,7 +65,7 @@
                               label="Адрес"
                               label-for="input-6">
                     <b-form-input id="input-6"
-                                  v-model="employee[0].address"
+                                  v-model="employee.address"
                                   type="text"
                                   placeholder="">
                     </b-form-input>
@@ -74,7 +74,7 @@
                               label="Номер телефона"
                               label-for="input-7">
                     <b-form-input id="input-7"
-                                  v-model="employee[0].telephonenumber"
+                                  v-model="employee.telephonenumber"
                                   type="text"
                                   placeholder="">
                     </b-form-input>
@@ -83,7 +83,7 @@
                               label="Дата приёма"
                               label-for="input-8">
                     <b-form-input id="input-8"
-                                  v-model="employee[0].dateofreceipt"
+                                  v-model="employee.dateofreceipt"
                                   type="date"
                                   required
                                   placeholder="">
@@ -93,7 +93,7 @@
                               label="Дата увольнения"
                               label-for="input-9">
                     <b-form-input id="input-9"
-                                  v-model="employee[0].dateofdismissal"
+                                  v-model="employee.dateofdismissal"
                                   type="date"
                                   placeholder="">
                     </b-form-input>
@@ -108,12 +108,13 @@
     import NavigationBar from "../components/NavigationBar";
     import ListItems from "../components/ListItems";
     import RestAPIService from "../service/RestAPIService";
+    import Employee from "../models/employee";
     export default {
         name: "Employees",
         components: {ListItems, NavigationBar},
         data() {
             return {
-                employee: [[]],
+                employee: new Employee(),
                 title: '',
                 tableItems: [],
                 isBusy: false,
@@ -180,35 +181,14 @@
             validateAndSubmit(e) {
                 e.preventDefault();
                 if (this.title === "Добавить") {
-                    RestAPIService.create("employees",{
-                        surname: this.employee[0].surname,
-                        name: this.employee[0].name,
-                        patronymic: this.employee[0].patronymic,
-                        department: this.employee[0].department,
-                        position: this.employee[0].position,
-                        address: this.employee[0].address,
-                        telephonenumber: this.employee[0].telephonenumber,
-                        dateofreceipt: this.employee[0].dateofreceipt,
-                        dateofdismissal: this.employee[0].dateofdismissal
-                    }).then(()=>{
+                    RestAPIService.create("employees",this.employee).then(()=>{
                         this.$bvToast.toast('Информация о сотруднике добавлена!',{autoHideDelay:5000,title:'Транспортная система'});
                         this.$bvModal.hide('modal-form');
                         this.refreshTableItems();
                     })
                 }
                 else {
-                    RestAPIService.update("employees", {
-                        id: this.employee[0].id,
-                        surname: this.employee[0].surname,
-                        name: this.employee[0].name,
-                        patronymic: this.employee[0].patronymic,
-                        department: this.employee[0].department,
-                        position: this.employee[0].position,
-                        address: this.employee[0].address,
-                        telephonenumber: this.employee[0].telephonenumber,
-                        dateofreceipt: this.employee[0].dateofreceipt,
-                        dateofdismissal: this.employee[0].dateofdismissal
-                    }).then(()=>{
+                    RestAPIService.update("employees", this.employee).then(()=>{
                         this.$bvToast.toast('Информация о сотруднике обновлена!',{autoHideDelay:5000,title:'Транспортная система'});
                         this.$bvModal.hide('modal-form');
                         this.refreshTableItems();
@@ -216,34 +196,46 @@
                 }
             },
             onSelectedRow(row) {
-                this.employee = row;
+                this.employee = row[0] ? row[0] : row;
             },
             editEmployee() {
-                if (this.employee[0].length !== 0) {
+                if (this.employee.id) {
                     this.title = 'Редактировать';
                     this.$bvModal.show('modal-form');
                 }
                 else this.$bvToast.toast('Выберите сотрудника!',{autoHideDelay:5000,title:'Транспортная система'});
             },
             deleteEmployee() {
-                if (this.employee[0].length !== 0) {
-                    RestAPIService.delete(this.employee[0].id,"employees").then(
-                        () => {
-                            this.$bvToast.toast('Выбранный сотрудник удален!',{autoHideDelay: 5000, title: 'Транспортная система'});
-                            this.refreshTableItems();
-                        }
-                    );
+                if (this.employee.id) {
+                    this.$bvModal.msgBoxConfirm(
+                        `Вы действительно хотите удалить сотрудника
+                         ${this.employee.surname + ' ' + this.employee.name} ?`,{
+                            title: 'Подтверждение',
+                            okTitle: 'Да',
+                            okVariant: 'danger',
+                            cancelTitle: 'Нет',
+                        }).then(value => {
+                            if (value === true) {
+                                RestAPIService.delete(this.employee.id,"employees").then(
+                                    () => {
+                                        this.$bvToast.toast('Выбранный сотрудник удален!',{autoHideDelay: 5000, title: 'Транспортная система'});
+                                        this.refreshTableItems();
+                                    }
+                                );
+                            }
+                    })
+
                 }
                 else this.$bvToast.toast('Выберите сотрудника!',{autoHideDelay:5000, title: 'Транспортная система'})
             },
             addEmployee() {
-                this.employee = [[]];
+                this.employee = new Employee;
                 this.title = 'Добавить';
                 this.$bvModal.show('modal-form');
             },
             showEmployeeDocs() {
-                if (this.employee[0].length !== 0) {
-                    this.$router.push(`/employees/docs/${this.employee[0].id}`);
+                if (this.employee.id) {
+                    this.$router.push(`/employees/docs/${this.employee.id}`);
                 }
                 else this.$bvToast.toast('Выберите сотрудника!', {autoHideDelay:5000, title: 'Транспортная система'})
             }
