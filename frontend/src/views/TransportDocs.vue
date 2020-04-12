@@ -7,7 +7,6 @@
             <b-button class="buttons col-sm-2" @click="addDoc">Добавить</b-button>
             <b-button class="buttons col-sm-2" v-show="tableItems.length!=0" @click="editDoc">Редактировать</b-button>
         </div>
-        <p>{{transportdoc}}</p>
         <b-modal id="modal-form" no-close-on-backdrop hide-footer :title="title + ' документ'">
             <b-form @submit="validateAndSubmit">
                 <b-form-group id="input-group-1"

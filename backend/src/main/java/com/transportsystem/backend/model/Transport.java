@@ -69,7 +69,7 @@ public class Transport {
 	@Getter
     @org.hibernate.annotations.LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "transport", cascade = CascadeType.ALL)
-    @JsonManagedReference(value = "bounded-transportdocuments")
+    @JsonIdentityReference(alwaysAsId = true)
     private List<DocumentTransport> transportdocuments;
 
     @Column

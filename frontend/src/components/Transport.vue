@@ -4,7 +4,7 @@
             Редактировать транспортное средство</h3>
         <h3 v-else>Добавить транспортное средство</h3>
         <div class="container">
-            <b-form>
+            <b-form @submit.prevent="validateAndSubmit">
                 <b-form-group id="input-group-1"
                         label="Номер а/м"
                         label-for="input-1">
@@ -91,8 +91,8 @@
                     </b-form-select>
                     <b-form-text id="input-group-8">Обязательное поле</b-form-text>
                 </b-form-group>
-                <b-button variant="primary" class="buttons col-sm-2" @click.prevent="validateAndSubmit" v-if="isEdit">Сохранить</b-button>
-                <b-button variant="primary" class="buttons col-sm-2" @click.prevent="validateAndSubmit" type="submit" v-else>Добавить</b-button>
+                <b-button variant="primary" class="buttons col-sm-2" type="submit" v-if="isEdit">Сохранить</b-button>
+                <b-button variant="primary" class="buttons col-sm-2" type="submit" v-else>Добавить</b-button>
                 <b-button class="buttons col-sm-2" @click="$router.back()">Отмена</b-button>
             </b-form>
         </div>
@@ -128,13 +128,15 @@
             validateAndSubmit() {
                 this.errors=[];
                 if (this.isEdit) {
-                    RestAPIService.update("transports", this.transport).then(()=> {
-                        this.$router.push(`/transports`);
+                    this.$router.push(`/transports`);
+                    RestAPIService.update("transports", this.transport).then(response => {
+                        this.$bvToast.toast(`Информация о транспортном средстве ${response.data.number} обновлена!`, {autoHideDelay:5000, title: 'Транспортная система'})
                     });
                 }
                 else {
-                    RestAPIService.create("transports", this.transport).then(()=> {
-                        this.$router.push(`/transports`);
+                    this.$router.push(`/transports`);
+                    RestAPIService.create("transports", this.transport).then(response=> {
+                        this.$bvToast.toast(`Транспортное средство ${response.data.number} добавлено!`, {autoHideDelay:5000, title: 'Транспортная система'})
                     });
                 }
             }
@@ -142,7 +144,7 @@
         created() {
             RestAPIService.readAll("engines")
                 .then(response=>{this.engines = response.data});
-            if(this.isEdit) {this.getTransportDetails();}
+            if (this.isEdit) {this.getTransportDetails();}
             else this.transport.transportmodelid = this.transportId;
 
         },

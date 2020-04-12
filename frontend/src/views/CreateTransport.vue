@@ -67,25 +67,19 @@
 <script>
     import NavigationBar from "../components/NavigationBar";
     import RestAPIService from "../service/RestAPIService";
+    import TransportModel from "../models/transportmodel";
     export default {
         name: "CreateTransport",
         components: {NavigationBar},
         data() {
             return {
-                transportmodel: [],
+                transportmodel: new TransportModel(),
             }
         },
         methods: {
             validateAndSubmit(e){
                 e.preventDefault();
-                    RestAPIService.create("transportmodels",{
-                        name: this.transportmodel.name,
-                        producer: this.transportmodel.producer,
-                        maxweight: this.transportmodel.maxweight,
-                        length: this.transportmodel.length,
-                        width: this.transportmodel.width,
-                        height: this.transportmodel.height
-                    }).then(response => {
+                    RestAPIService.create("transportmodels", this.transportmodel).then(response => {
                         this.$router.push(`/transports/${response.data.id}`);
                     })
             }
