@@ -6,20 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b4d8090-9e16-406b-9cbb-899dc8e5847d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/models/documenttransport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/DocumentTransport.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/DocumentTransport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/SideMenu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/SideMenu.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Transport.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Transport.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/service/AuthService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/service/AuthService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/service/RestAPIService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/service/RestAPIService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/CreateTransport.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/CreateTransport.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/TransportDocs.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/TransportDocs.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/application-1.0-SNAPSHOT.war" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
-    </list>
+    <list default="true" id="8b4d8090-9e16-406b-9cbb-899dc8e5847d" name="Default" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -716,7 +703,7 @@
       <workItem from="1586417512257" duration="18041000" />
       <workItem from="1586452948771" duration="1417000" />
       <workItem from="1586510150300" duration="1260000" />
-      <workItem from="1586689921187" duration="11026000" />
+      <workItem from="1586689921187" duration="11320000" />
     </task>
     <servers />
   </component>

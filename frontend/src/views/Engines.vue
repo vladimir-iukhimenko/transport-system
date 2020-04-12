@@ -5,7 +5,7 @@
         </ListItems>
         <div class="text-center">
         <b-button class="buttons col-sm-2" @click="addEngine">Добавить</b-button>
-        <b-button class="buttons col-sm-2" @click="editEngine">Редактировать</b-button>
+        <b-button class="buttons col-sm-2" v-show="tableItems.length!=0" @click="editEngine">Редактировать</b-button>
         </div>
         <b-modal id="modal-form" no-close-on-backdrop hide-footer :title="title + ' двигатель'">
             <b-form @submit="validateAndSubmit">
