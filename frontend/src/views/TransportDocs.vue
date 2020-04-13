@@ -135,6 +135,7 @@
         },
         methods: {
             refreshTableItems() {
+                this.tableItems = [];
                 this.isBusy = !this.isBusy;
                 RestAPIService.readAll("transportdocs")
                     .then( response => {

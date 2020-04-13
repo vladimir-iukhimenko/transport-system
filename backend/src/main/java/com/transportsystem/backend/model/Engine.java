@@ -30,10 +30,11 @@ public class Engine {
     @Setter
 	private Double volume;
 
+    @Enumerated(EnumType.STRING)
     @Column
     @Getter
     @Setter
-	private String fuel;
+	private EFuel fuel;
 
     @Getter
     @Setter

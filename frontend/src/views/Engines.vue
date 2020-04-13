@@ -8,7 +8,7 @@
         <b-button class="buttons col-sm-2" v-show="tableItems.length!=0" @click="editEngine">Редактировать</b-button>
         </div>
         <b-modal id="modal-form" no-close-on-backdrop hide-footer :title="title + ' двигатель'">
-            <b-form @submit="validateAndSubmit">
+            <b-form @submit.prevent="validateAndSubmit">
                 <b-form-group id="input-group-1"
                               label="Наименование"
                               label-for="input-1">
@@ -30,14 +30,15 @@
                     </b-form-input>
                 </b-form-group>
                 <b-form-group id="input-group-3"
-                              label="Топливо"
+                              label="Тип двигателя"
                               label-for="input-3">
-                    <b-form-input id="input-3"
+                    <b-form-select id="input-3"
                                   v-model="engine.fuel"
+                                  :options="fuelOptions"
                                   type="text"
                                   required
                                   placeholder="">
-                    </b-form-input>
+                    </b-form-select>
                 </b-form-group>
                 <b-button class="float-right" variant="primary" type="submit">{{title}}</b-button>
             </b-form>
@@ -70,18 +71,41 @@
                         label: 'Объем двигателя'
                     },
                     {
-                        key: 'fuel',
-                        label: 'Топливо'
+                        key: 'fuelName',
+                        label: 'Тип двигателя'
+                    },
+                ],
+                fuelOptions: [
+                    {
+                        value: 'PETROL',
+                        text: 'Бензиновый'
+                    },
+                    {
+                        value: 'DIESEL',
+                        text: 'Дизельный'
+                    },
+                    {
+                        value: 'GAS',
+                        text: 'Газовый'
+                    },
+                    {
+                        value: 'ELECTRIC',
+                        text: 'Электрический'
+                    },
+                    {
+                        value: 'HYBRID',
+                        text: 'Гибридный'
                     },
                 ]
             }
         },
         methods: {
             refreshTableItems() {
+                this.tableItems = [];
                 this.isBusy = !this.isBusy;
                 RestAPIService.readAll("engines")
                     .then( response => {
-                        this.tableItems = response.data;
+                        for (let item of response.data) {this.tableItems.push(new Engine(item));}
                         this.isBusy = !this.isBusy;
                         if (this.tableItems.length === 0) this.message = 'Двигатели не найдены!';
                     }).catch(err => {
@@ -89,8 +113,7 @@
                     this.message = err.message;
                 })
             },
-            validateAndSubmit(e) {
-                e.preventDefault();
+            validateAndSubmit() {
                 if (this.title === "Добавить") {
                     RestAPIService.create("engines", this.engine).then(()=>{
                         this.$bvToast.toast('Информация о двигателе добавлена!', {autoHideDelay:5000, title: 'Транспортная система'});
@@ -106,7 +129,7 @@
                 }
             },
             onSelectedRow(row) {
-                if (row !== undefined) this.engine = new Engine(row[0]);
+                this.engine = row[0] ? row[0] : row;
             },
             editEngine() {
                 if (this.engine.id) {

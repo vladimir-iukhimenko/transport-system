@@ -116,7 +116,7 @@ public class AuthRESTController {
         user.setRoles(roles);
         userService.addUser(user);
 
-        return ResponseEntity.ok(new MessageResponse("Пользователь зарегистирирован!"));
+        return ResponseEntity.ok(new MessageResponse("Пользователь зарегистрирован!"));
     }
 
     @GetMapping("/users")
