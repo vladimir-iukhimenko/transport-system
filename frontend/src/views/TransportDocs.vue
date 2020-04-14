@@ -165,7 +165,7 @@
                 }
             },
             onSelectedRow(row) {
-                this.transportdoc = row[0] ? row[0] : row;
+                this.transportdoc = row[0] ? new DocumentTransport(row[0]) : row;
             },
             editDoc() {
                 if (this.transportdoc) {

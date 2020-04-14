@@ -13,34 +13,36 @@
                               label="Наименование"
                               label-for="input-1">
                     <b-form-input id="input-1"
-                                  v-model="engine.name"
+                                  v-model="$v.engine.name.$model"
+                                  :state="validateState('name')"
                                   type="text"
-                                  required
-                                  placeholder="">
+                                  aria-describedby="input-1-feedback">
                     </b-form-input>
+                    <b-form-invalid-feedback id="input-1-feedback">Обязательное поле</b-form-invalid-feedback>
                 </b-form-group>
                 <b-form-group id="input-group-2"
-                              label="Объем"
+                              label="Объем, куб.см."
                               label-for="input-2">
                     <b-form-input id="input-2"
-                                  v-model="engine.volume"
-                                  type="text"
-                                  required
-                                  placeholder="">
+                                  v-model="$v.engine.volume.$model"
+                                  :state="validateState('volume')"
+                                  type="number"
+                                  aria-describedby="input-2-feedback">
                     </b-form-input>
+                    <b-form-invalid-feedback id="input-2-feedback">Введите значение от 1 до 10000</b-form-invalid-feedback>
                 </b-form-group>
                 <b-form-group id="input-group-3"
                               label="Тип двигателя"
                               label-for="input-3">
                     <b-form-select id="input-3"
-                                  v-model="engine.fuel"
+                                  v-model="$v.engine.fuel.$model"
+                                  :state="validateState('fuel')"
                                   :options="fuelOptions"
-                                  type="text"
-                                  required
-                                  placeholder="">
+                                  aria-describedby="input-3-feedback">
                     </b-form-select>
+                    <b-form-invalid-feedback id="input-3-feedback">Обязательное поле</b-form-invalid-feedback>
                 </b-form-group>
-                <b-button class="float-right" variant="primary" type="submit">{{title}}</b-button>
+                <b-button class="float-right" variant="primary" type="submit" :disabled="$v.$anyError">{{title}}</b-button>
             </b-form>
         </b-modal>
     </div>
@@ -51,6 +53,7 @@
     import ListItems from "../components/ListItems";
     import RestAPIService from "../service/RestAPIService";
     import Engine from "../models/engine";
+    import {integer, maxValue, minValue, required} from "vuelidate/lib/validators";
     export default {
         name: "Engines",
         components: {ListItems, NavigationBar},
@@ -99,6 +102,18 @@
                 ]
             }
         },
+        validations: {
+            engine: {
+                name: {required},
+                volume: {
+                    required,
+                    integer,
+                    minValue: minValue(1),
+                    maxValue: maxValue(10000)
+                },
+                fuel: {required}
+            }
+        },
         methods: {
             refreshTableItems() {
                 this.tableItems = [];
@@ -114,6 +129,8 @@
                 })
             },
             validateAndSubmit() {
+                this.$v.engine.$touch();
+                if (this.$v.engine.$anyError) return;
                 if (this.title === "Добавить") {
                     RestAPIService.create("engines", this.engine).then(()=>{
                         this.$bvToast.toast('Информация о двигателе добавлена!', {autoHideDelay:5000, title: 'Транспортная система'});
@@ -128,25 +145,38 @@
                     })
                 }
             },
+            validateState(name) {
+                const { $dirty, $error} = this.$v.engine[name];
+                return $dirty ? !$error : null;
+            },
             onSelectedRow(row) {
-                this.engine = row[0] ? row[0] : row;
+                this.engine = row[0] ? new Engine(row[0]) : row;
             },
             editEngine() {
                 if (this.engine.id) {
                     this.title = 'Редактировать';
                     this.$bvModal.show('modal-form');
+                    setTimeout(()=>{this.prohibitNonNumeric()},0);
                 }
-                else this.message = 'Выберите двигатель!';
+                else this.$bvToast.toast('Выберите двигатель!', {autoHideDelay:5000, title: 'Транспортная система'});
             },
             addEngine() {
                 this.engine = new Engine();
                 this.title = 'Добавить';
                 this.$bvModal.show('modal-form');
+                setTimeout(()=>{this.prohibitNonNumeric()},0);
+            },
+            prohibitNonNumeric() {
+                document.querySelector("#input-2").addEventListener("keypress", (evt) => {
+                    if (isNaN(Number(evt.key))) {
+                        evt.preventDefault();
+                    }
+                });
             },
         },
         created() {
             this.refreshTableItems();
-        }
+        },
     }
 </script>
 

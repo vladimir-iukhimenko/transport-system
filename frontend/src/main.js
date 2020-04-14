@@ -2,7 +2,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './routes';
 import store from './store';
-import {ValidationProvider} from 'vee-validate';
+import {Vuelidate} from "vuelidate/src";
 import {BootstrapVue, BootstrapVueIcons} from "bootstrap-vue";
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
@@ -16,8 +16,8 @@ Vue.config.productionTip = false;
 
 Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons);
+Vue.use(Vuelidate);
 Vue.component('font-awesone-icon', FontAwesomeIcon);
-Vue.component('ValidationProvider', ValidationProvider);
 
 new Vue({
   router,
