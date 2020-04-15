@@ -7,11 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b4d8090-9e16-406b-9cbb-899dc8e5847d" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/src/models/validators/validators.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/Engines.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Engines.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/TransportDocs.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/TransportDocs.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Transport.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Transport.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,8 +76,8 @@
         <option value="Jsp File" />
         <option value="Vue Single File Component" />
         <option value="Class" />
-        <option value="JavaScript File" />
         <option value="Enum" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -714,7 +712,8 @@
       <workItem from="1586768710654" duration="9585000" />
       <workItem from="1586792640511" duration="11540000" />
       <workItem from="1586846419048" duration="21000" />
-      <workItem from="1586846481933" duration="6310000" />
+      <workItem from="1586846481933" duration="7348000" />
+      <workItem from="1586957582492" duration="12405000" />
     </task>
     <servers />
   </component>
@@ -832,10 +831,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="216" key="com.intellij.database.dbimport.ImportUtil.MyDialog/0.0.1536.824@0.0.1536.824" timestamp="1586792812435" />
-    <state x="529" y="271" key="com.intellij.ide.util.TipDialog" timestamp="1586846489090">
+    <state x="529" y="271" key="com.intellij.ide.util.TipDialog" timestamp="1586957584748">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="529" y="271" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1586846489090" />
+    <state x="529" y="271" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1586957584748" />
     <state x="654" y="341" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1584705118300" />
     <state x="462" y="17" width="611" height="789" key="find.popup" timestamp="1586242000931">
       <screen x="0" y="0" width="1536" height="824" />

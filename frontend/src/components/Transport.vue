@@ -9,23 +9,26 @@
                         label="Номер а/м"
                         label-for="input-1">
                     <b-form-input id="input-1"
-                                  v-model="transport.number"
+                                  v-model="$v.transport.number.$model"
+                                  :state="validateState('number')"
                                   type="text"
-                                  required
-                                  placeholder="Государственный номер автомобиля">
+                                  placeholder="A000AA777">
                     </b-form-input>
                     <b-form-text id="input-group-1">Обязательное поле</b-form-text>
+                    <b-form-invalid-feedback id="input-group-1">
+                        Введённое значение не соответствует формату
+                    </b-form-invalid-feedback>
                 </b-form-group>
                 <b-form-group id="input-group-2"
                               label="VIN-номер"
                               label-for="input-2">
                     <b-form-input id="input-2"
-                                  v-model="transport.vin"
-                                  :state="transport.vin.length===16"
+                                  v-model="$v.transport.vin.$model"
+                                  :state="validateState('vin')"
                                   type="text"
-                                  required
                                   placeholder="16-значный номер">
                     </b-form-input>
+                    <b-form-text id="input-group-2">Обязательное поле</b-form-text>
                     <b-form-invalid-feedback id="input-group-2">
                         Номер должен содержать 16 символов!
                     </b-form-invalid-feedback>
@@ -34,9 +37,9 @@
                               label="Год выпуска"
                               label-for="input-3">
                     <b-form-input id="input-3"
-                                  v-model="transport.producedyear"
-                                  type="text"
-                                  required>
+                                  v-model="$v.transport.producedyear.$model"
+                                  :state="validateState('producedyear')"
+                                  type="number">
                     </b-form-input>
                     <b-form-text id="input-group-3">Обязательное поле</b-form-text>
                 </b-form-group>
@@ -44,9 +47,9 @@
                               label="Цвет"
                               label-for="input-4">
                     <b-form-input id="input-4"
-                                  v-model="transport.color"
-                                  type="text"
-                                  required>
+                                  v-model="$v.transport.color.$model"
+                                  :state="validateState('color')"
+                                  type="text">
                     </b-form-input>
                     <b-form-text id="input-group-4">Обязательное поле</b-form-text>
                 </b-form-group>
@@ -54,9 +57,9 @@
                               label="Мощность двигателя"
                               label-for="input-5">
                     <b-form-input id="input-5"
-                                  v-model="transport.enginepower"
-                                  type="text"
-                                  required>
+                                  v-model="$v.transport.enginepower.$model"
+                                  :state="validateState('enginepower')"
+                                  type="number">
                     </b-form-input>
                     <b-form-text id="input-group-5">Обязательное поле</b-form-text>
                 </b-form-group>
@@ -64,9 +67,9 @@
                               label="Ввод в эксплуатацию"
                               label-for="input-6">
                     <b-form-input id="input-6"
-                                  v-model="transport.startupdate"
-                                  type="date"
-                                  required>
+                                  v-model="$v.transport.startupdate.$model"
+                                  :state="validateState('startupdate')"
+                                  type="date">
                     </b-form-input>
                     <b-form-text id="input-group-6">Обязательное поле</b-form-text>
                 </b-form-group>
@@ -82,12 +85,11 @@
                               label="Двигатель"
                               label-for="input-8">
                     <b-form-select id="input-8"
-                                   v-model="transport.engineid"
+                                   v-model="$v.transport.engineid.$model"
+                                   :state="validateState('engineid')"
                                    :options="engines"
                                    value-field="id"
-                                   text-field="name"
-                                   required
-                                   placeholder="">
+                                   text-field="name">
                     </b-form-select>
                     <b-form-text id="input-group-8">Обязательное поле</b-form-text>
                 </b-form-group>
@@ -102,6 +104,8 @@
 <script>
     import RestAPIService from "../service/RestAPIService";
     import Transport from "../models/transport";
+    import {required} from "vuelidate/lib/validators";
+    import {isCorrectAutonumber} from "../models/validators/validators";
     export default {
         name: "Transport",
         data() {
@@ -110,6 +114,20 @@
                 errors: [],
                 engines: []
             };
+        },
+        validations: {
+            transport: {
+                number: {
+                    required,
+                    isCorrectAutonumber
+                },
+                vin: {required},
+                producedyear: {required},
+                color: {required},
+                enginepower: {required},
+                startupdate: {required},
+                engineid: {required}
+            }
         },
         computed: {
             transportId() {
@@ -126,7 +144,8 @@
                 });
             },
             validateAndSubmit() {
-                this.errors=[];
+                this.$v.transport.$touch();
+                if (this.$v.transport.$anyError) return;
                 if (this.isEdit) {
                     this.$router.push(`/transports`);
                     RestAPIService.update("transports", this.transport).then(response => {
@@ -139,15 +158,25 @@
                         this.$bvToast.toast(`Транспортное средство ${response.data.number} добавлено!`, {autoHideDelay:5000, title: 'Транспортная система'})
                     });
                 }
-            }
+            },
+            validateState(name) {
+                const { $dirty, $error } = this.$v.transport[name];
+                return $dirty ? !$error : null;
+            },
         },
         created() {
             RestAPIService.readAll("engines")
                 .then(response=>{this.engines = response.data});
             if (this.isEdit) {this.getTransportDetails();}
             else this.transport.transportmodelid = this.transportId;
-
         },
+        mounted() {
+            document.querySelector("#input-1").addEventListener("keypress", (evt) => {
+                if ((evt.key).search('[0-9авекмнорстухАВЕКМНОРСТУХ]') === -1) {
+                    evt.preventDefault();
+                }
+            });
+        }
     }
 </script>
 
@@ -156,6 +185,10 @@
     .buttons {
         margin: 25px;
         padding: 5px;
+    }
+
+    #input-1 {
+        text-transform: uppercase;
     }
 
 </style>
