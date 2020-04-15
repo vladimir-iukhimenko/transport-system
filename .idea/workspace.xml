@@ -7,7 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b4d8090-9e16-406b-9cbb-899dc8e5847d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/models/validators/validators.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Transport.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Transport.vue" afterDir="false" />
     </list>
@@ -52,6 +51,23 @@
         <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="d615h0re5633ms: database" type="162271b6:PgImplModel$Database" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="PostgreSQL" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="d615h0re5633ms: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="PostgreSQL" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="d615h0re5633ms: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
+        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
     </expand>
     <select />
@@ -713,7 +729,7 @@
       <workItem from="1586792640511" duration="11540000" />
       <workItem from="1586846419048" duration="21000" />
       <workItem from="1586846481933" duration="7348000" />
-      <workItem from="1586957582492" duration="12405000" />
+      <workItem from="1586957582492" duration="14639000" />
     </task>
     <servers />
   </component>
@@ -831,6 +847,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="216" key="com.intellij.database.dbimport.ImportUtil.MyDialog/0.0.1536.824@0.0.1536.824" timestamp="1586792812435" />
+    <state x="478" y="53" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1586975219260">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="478" y="53" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1586975219260" />
     <state x="529" y="271" key="com.intellij.ide.util.TipDialog" timestamp="1586957584748">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

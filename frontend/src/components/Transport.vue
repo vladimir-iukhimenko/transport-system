@@ -25,12 +25,11 @@
                     <b-form-input id="input-2"
                                   v-model="$v.transport.vin.$model"
                                   :state="validateState('vin')"
-                                  type="text"
-                                  placeholder="16-значный номер">
+                                  type="text">
                     </b-form-input>
-                    <b-form-text id="input-group-2">Обязательное поле</b-form-text>
+                    <b-form-text id="input-group-2">Обязательное поле | 16-значный номер</b-form-text>
                     <b-form-invalid-feedback id="input-group-2">
-                        Номер должен содержать 16 символов!
+                        Введённое значение не соответствует формату
                     </b-form-invalid-feedback>
                 </b-form-group>
                 <b-form-group id="input-group-3"
@@ -104,7 +103,7 @@
 <script>
     import RestAPIService from "../service/RestAPIService";
     import Transport from "../models/transport";
-    import {required} from "vuelidate/lib/validators";
+    import {required, minLength, maxLength, integer, minValue} from "vuelidate/lib/validators";
     import {isCorrectAutonumber} from "../models/validators/validators";
     export default {
         name: "Transport",
@@ -121,10 +120,21 @@
                     required,
                     isCorrectAutonumber
                 },
-                vin: {required},
-                producedyear: {required},
+                vin: {
+                    required,
+                    minLength: minLength(16),
+                    maxLength: maxLength(16)
+                },
+                producedyear: {
+                    required,
+                    integer
+                },
                 color: {required},
-                enginepower: {required},
+                enginepower: {
+                    required,
+                    integer,
+                    minValue: minValue(1)
+                },
                 startupdate: {required},
                 engineid: {required}
             }
@@ -146,6 +156,8 @@
             validateAndSubmit() {
                 this.$v.transport.$touch();
                 if (this.$v.transport.$anyError) return;
+                this.transport.number = this.transport.number.toUpperCase();
+                this.transport.vin = this.transport.vin.toUpperCase();
                 if (this.isEdit) {
                     this.$router.push(`/transports`);
                     RestAPIService.update("transports", this.transport).then(response => {
@@ -154,7 +166,7 @@
                 }
                 else {
                     this.$router.push(`/transports`);
-                    RestAPIService.create("transports", this.transport).then(response=> {
+                    RestAPIService.create("transports", this.transport).then(response => {
                         this.$bvToast.toast(`Транспортное средство ${response.data.number} добавлено!`, {autoHideDelay:5000, title: 'Транспортная система'})
                     });
                 }
@@ -166,13 +178,18 @@
         },
         created() {
             RestAPIService.readAll("engines")
-                .then(response=>{this.engines = response.data});
+                .then(response => {this.engines = response.data});
             if (this.isEdit) {this.getTransportDetails();}
             else this.transport.transportmodelid = this.transportId;
         },
         mounted() {
             document.querySelector("#input-1").addEventListener("keypress", (evt) => {
                 if ((evt.key).search('[0-9авекмнорстухАВЕКМНОРСТУХ]') === -1) {
+                    evt.preventDefault();
+                }
+            });
+            document.querySelector("#input-2").addEventListener("keypress", (evt) => {
+                if ((evt.key).search('[0-9a-zA-Z]') === -1) {
                     evt.preventDefault();
                 }
             });
@@ -187,7 +204,7 @@
         padding: 5px;
     }
 
-    #input-1 {
+    #input-1,#input-2 {
         text-transform: uppercase;
     }
 
