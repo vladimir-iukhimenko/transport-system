@@ -79,9 +79,11 @@ public class AuthRESTController {
                     .body(new MessageResponse("Логин уже занят!"));
         }
 
-        // Create new user's account
-        User user = new User(signUpRequest.getUsername(),
-                passwordEncoder.encode(signUpRequest.getPassword()));
+        if (signUpRequest.getPassword().trim().length() < 6) {
+            return ResponseEntity.badRequest().body(new MessageResponse("Пароль не меньше 6 символов!"));
+        }
+
+        User user = new User(signUpRequest.getUsername(), passwordEncoder.encode(signUpRequest.getPassword()));
 
         Set<String> strRoles = signUpRequest.getRole();
         Set<Role> roles = new HashSet<>();

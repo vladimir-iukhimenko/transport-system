@@ -9,7 +9,6 @@
                     <b-form-input id="input-1"
                                   v-model="user.username"
                                   type="text"
-                                  required
                                   placeholder="">
                     </b-form-input>
                 </b-form-group>
@@ -19,7 +18,6 @@
                     <b-form-input id="input-2"
                                   v-model="user.password"
                                   type="password"
-                                  required
                                   placeholder="">
                     </b-form-input>
                 </b-form-group>
@@ -73,7 +71,7 @@
                         this.loading = false;
                     }
                 );
-            }
+            },
         },
     }
 

@@ -5,12 +5,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.transportsystem.backend.model.Employee;
 import lombok.*;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -30,14 +33,15 @@ public class User implements UserDetails {
     private Integer id;
 
     @Column(name = "username")
-    @NotNull
+    @NotBlank
+    @Pattern(regexp = "[a-zA-Z._]+", message = "Wrong username!")
     @Getter
     @Setter
     private String username;
 
     @Column(name = "password")
     @JsonIgnore
-    @NotNull
+    @NotBlank
     @Getter
     @Setter
     private String password;
