@@ -7,17 +7,19 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="application" />
-        <module name="backend" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="application" target="1.8" />
+      <module name="application (1) (com.transportsystem)" target="1.8" />
       <module name="backend" target="1.8" />
       <module name="Transport_System" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="application" options="-parameters" />
+      <module name="application (1) (com.transportsystem)" options="-parameters" />
       <module name="backend" options="-parameters" />
     </option>
   </component>

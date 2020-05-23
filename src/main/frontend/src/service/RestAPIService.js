@@ -1,7 +1,7 @@
 import axios from "axios";
 import authHeader from "./AuthHeader";
 
-const API_URL = "http://localhost:8080/api";
+const API_URL = 'https://trans-system.herokuapp.com/api'
 
 class RestAPIService{
     readAll(path) {

@@ -7,12 +7,137 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b4d8090-9e16-406b-9cbb-899dc8e5847d" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/security/AuthRESTController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/security/AuthRESTController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/security/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/security/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/models/validators/validators.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/models/validators/validators.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/Register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Register.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Transport_System.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/application.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/BackendApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/DocumentRESTController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/EmployeeRESTController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/EngineRESTController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/GoodsRESTController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/NomenclatureRESTController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/RegistrationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/SearchController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/TransportModelRESTController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/TransportOrderRESTController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/TransportRESTController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/security/AdminRESTController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/controller/security/AuthRESTController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/converter/CommentConverter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/dao/DocumentDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/dao/EmployeeDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/dao/EngineDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/dao/GoodsDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/dao/NomenclatureDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/dao/Searcher.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/dao/TransportDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/dao/TransportModelDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/dao/TransportOrderDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/dao/security/RoleDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/dao/security/UserDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/embeddable/Comment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/exceptionhandler/ExceptionRESTHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/exceptionhandler/ExceptionResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/generators/TransportOrderGenerator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/Document.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/DocumentEmployee.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/DocumentTransport.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/EFuel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/Employee.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/Engine.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/Goods.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/Nomenclature.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/Transport.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/TransportModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/TransportOrder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/security/ERole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/security/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/security/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/security/payload/request/LoginRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/security/payload/request/SignupRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/security/payload/response/JwtResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/model/security/payload/response/MessageResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/security/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/security/jwt/AuthEntryPointJwt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/security/jwt/AuthTokenFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/security/jwt/JwtUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/service/BuildSearchService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/service/DocumentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/service/EmployeeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/service/EngineService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/service/GoodsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/service/JsonService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/service/NomenclatureService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/service/SearchService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/service/TransportModelService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/service/TransportOrderService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/service/TransportService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/service/security/RoleService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/transportsystem/backend/service/security/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/java/com/transportsystem/backend/BackendApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/babel.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/assets/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/EmployeeSelection.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ListItems.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ListTransports.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/NavigationBar.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/SideMenu.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Transport.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/models/documenttransport.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/models/employee.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/models/engine.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/models/goods.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/models/transport.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/models/transportmodel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/models/transportorder.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/models/user.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/models/validators/validators.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/routes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/service/AuthHeader.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/service/AuthService.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/service/RestAPIService.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/store/auth.module.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/store/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/Admin.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/CreateTransport.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/CreateTransportOrder.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/EmployeeDocs.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/Employees.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/Engines.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/ListTransports.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/Login.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/MainPage.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/Nomenclatures.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/Profile.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/Register.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/TransportDocs.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/TransportOrders.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/vue.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transportsystem.sql" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,9 +210,6 @@
       <node key="55cf44ae-273e-4ab7-bc28-ae26f4f5f858" />
     </checked>
   </component>
-  <component name="FavoritesManager">
-    <favorites_list name="Transport_System" />
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -109,13 +231,6 @@
       </map>
     </option>
   </component>
-  <component name="IgnoredFileRootStore">
-    <option name="generatedRoots">
-      <set>
-        <option value="C:\Users\DZCKJS0\IdeaProjects\Transport_System\.idea" />
-      </set>
-    </option>
-  </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -123,18 +238,10 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
   <component name="ProjectId" id="1Us5TqamtIOH5E3t7opk7sspHHK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -144,6 +251,7 @@
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -167,7 +275,7 @@
       <recent name="C:\Users\DZCKJS0\IdeaProjects\Transport_System\src\main\webapp\WEB-INF\view\documents" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.BackendApplication">
+  <component name="RunManager" selected="npm.serve">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="ACTIVITY_CLASS" value="" />
@@ -365,7 +473,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
       <option name="filePath" />
       <option name="vmParameters" />
       <option name="alternativeJrePath" />
@@ -506,36 +614,30 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="serve" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="serve" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.BackendApplication" />
+      <item itemvalue="npm.serve" />
       <item itemvalue="Spring Boot.BackendApplication" />
       <item itemvalue="Tomcat Server.Unnamed" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.serve" />
         <item itemvalue="Application.BackendApplication" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <option name="contentProportion" value="0.12391775" />
-          <treeState>
-            <expand>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-            </expand>
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SpringBeansView">
     <option name="beanDetailsProportion" value="0.3" />
@@ -738,11 +840,16 @@
       <workItem from="1587311196195" duration="436000" />
       <workItem from="1587462204354" duration="56000" />
       <workItem from="1587462294823" duration="7871000" />
+      <workItem from="1589355702850" duration="3006000" />
+      <workItem from="1589439658907" duration="66000" />
+      <workItem from="1589454904811" duration="82000" />
+      <workItem from="1589716722472" duration="1853000" />
+      <workItem from="1590234887024" duration="10273000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -783,30 +890,39 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582875870364" />
+    <state x="657" y="207" width="596" height="618" key="#serve" timestamp="1589357788555">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="657" y="207" width="596" height="618" key="#serve/0.0.1920.1040@0.0.1920.1040" timestamp="1589357788555" />
     <state x="569" y="114" key="ExecutionTargetDialog" timestamp="1586255031309">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="569" y="114" key="ExecutionTargetDialog/0.0.1536.824@0.0.1536.824" timestamp="1586255031309" />
-    <state x="712" y="185" key="FileChooserDialogImpl" timestamp="1586792707273">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="890" y="233" width="424" height="479" key="FileChooserDialogImpl" timestamp="1589716863158">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="712" y="185" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1586792707273" />
-    <state width="1282" height="206" key="GridCell.Tab.0.bottom" timestamp="1586794032172">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="890" y="233" width="424" height="479" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1589716863158" />
+    <state width="1878" height="276" key="GridCell.Tab.0.bottom" timestamp="1590260282541">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1282" height="206" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586794032172" />
-    <state width="1282" height="206" key="GridCell.Tab.0.center" timestamp="1586794032172">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1878" height="276" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590260282541" />
+    <state width="1878" height="276" key="GridCell.Tab.0.center" timestamp="1590260282540">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1282" height="206" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586794032172" />
-    <state width="1282" height="206" key="GridCell.Tab.0.left" timestamp="1586794032172">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1878" height="276" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590260282540" />
+    <state width="1878" height="276" key="GridCell.Tab.0.left" timestamp="1590260282540">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1282" height="206" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586794032172" />
-    <state width="1282" height="206" key="GridCell.Tab.0.right" timestamp="1586794032172">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1878" height="276" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590260282540" />
+    <state width="1878" height="276" key="GridCell.Tab.0.right" timestamp="1590260282541">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1282" height="206" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586794032172" />
+    <state width="1878" height="276" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590260282541" />
     <state width="1493" height="148" key="GridCell.Tab.1.bottom" timestamp="1583868056027">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -843,10 +959,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="189" height="457" key="HiddenNamespacesPopup/0.0.1536.824@0.0.1536.824" timestamp="1586253548855" />
-    <state x="456" y="212" key="SettingsEditor" timestamp="1584015995246">
+    <state x="456" y="195" width="1024" height="840" key="SettingsEditor" timestamp="1590235059111">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="456" y="212" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1584015995246" />
+    <state x="456" y="195" width="1024" height="840" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1590235059111" />
     <state x="499" y="216" key="com.intellij.database.dbimport.ImportUtil.MyDialog" timestamp="1586792812435">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -876,6 +992,5 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1586109524664" />
-    <state x="539" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1580278226364" />
   </component>
 </project>
