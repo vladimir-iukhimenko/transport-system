@@ -4,8 +4,8 @@
         <ListItems :is-selectable="true" :is-busy="isBusy" @selected="onSelectedRow" :table-items="tableItems" :table-fields="tableFields" :message="message" header="Документы транспортных средств">
         </ListItems>
         <div class="text-center">
-            <b-button class="buttons col-sm-2" @click="addDoc">Добавить</b-button>
-            <b-button class="buttons col-sm-2" v-show="tableItems.length!=0" @click="editDoc">Редактировать</b-button>
+            <b-button id="addDocument" class="buttons col-sm-2" @click="addDoc">Добавить</b-button>
+            <b-button id="editDocument" class="buttons col-sm-2" v-show="tableItems.length!=0" @click="editDoc">Редактировать</b-button>
         </div>
         <b-modal id="modal-form" no-close-on-backdrop hide-footer :title="title + ' документ'">
             <b-form @submit="validateAndSubmit">
