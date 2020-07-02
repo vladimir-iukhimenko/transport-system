@@ -23,7 +23,7 @@
                                 <b-button class="btn btn-danger" size="sm" v-on:click="deleteTransportClicked(data.item.id)"><b-icon-x-circle-fill></b-icon-x-circle-fill></b-button>
                         </template>
                         </b-table>
-                        <b-button class="btn btn-success" size="sm" @click="addTransportClicked(row.item.id)">Добавить транспортное средство</b-button>
+                        <b-button id="addTransport" class="btn btn-success" size="sm" @click="addTransportClicked(row.item.id)">Добавить транспортное средство</b-button>
                     </b-card>
                 </template>
             </b-table>
