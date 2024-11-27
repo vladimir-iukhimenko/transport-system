@@ -1,9 +1,12 @@
 package com.transportsystem.backend;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
@@ -33,6 +36,7 @@ import java.util.Properties;
 		DataSourceTransactionManagerAutoConfiguration.class,
 		HibernateJpaAutoConfiguration.class,
 		})
+@EntityScan("com.transportsystem.backend.model")
 public class BackendApplication {
 	private Environment environment;
 
@@ -45,7 +49,7 @@ public class BackendApplication {
 		SpringApplication.run(BackendApplication.class, args);
 	}
 
-	@Bean
+	//@Bean
 	public DataSource dataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName(environment.getProperty("spring.datasource.driver-class-name"));
@@ -65,11 +69,24 @@ public class BackendApplication {
 		return sessionFactory;
 	}
 
+	@Bean
+	public HikariDataSource createHikariConfig() {
+		HikariConfig hikariConfig = new HikariConfig();
+		hikariConfig.setDriverClassName(environment.getProperty("spring.datasource.driver-class-name"));
+		hikariConfig.setJdbcUrl(environment.getProperty("spring.datasource.url"));
+		hikariConfig.setUsername(environment.getProperty("spring.datasource.username"));
+		hikariConfig.setPassword(environment.getProperty("spring.datasource.password"));
+		return new HikariDataSource(hikariConfig);
+	}
+
 	private Properties hibernateProperties() {
 		Properties properties = new Properties();
 		properties.put("hibernate.dialect", environment.getRequiredProperty("spring.jpa.properties.hibernate.dialect"));
+		properties.put("hibernate.naming.physical-strategy", environment.getRequiredProperty("spring.jpa.hibernate.naming.physical-strategy"));
+		properties.put("hibernate.naming.strategy", environment.getRequiredProperty("spring.jpa.hibernate.naming.physical-strategy"));
 		properties.put("hibernate.show_sql", environment.getRequiredProperty("spring.jpa.show-sql"));
-		properties.put("hibernate.id.new_generator_mappings", environment.getRequiredProperty("spring.jpa.properties.hibernate.id.new_generator_mappings"));
+		properties.put("hibernate.ddl-auto", environment.getRequiredProperty("spring.jpa.hibernate.ddl-auto"));
+		properties.put("hibernate.id.new_generator_mappings", environment.getRequiredProperty("spring.jpa.hibernate.use-new-id-generator-mappings"));
 		properties.put("hibernate.search.default.directory_provider", environment.getRequiredProperty("spring.jpa.properties.hibernate.search.default.directory_provider"));
 		properties.put("current_session_context_class", environment.getRequiredProperty("spring.jpa.properties.hibernate.current_session_context_class"));
 		properties.put("hibernate.search.default.indexBase", environment.getRequiredProperty("spring.jpa.properties.hibernate.search.default.indexBase"));
