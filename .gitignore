@@ -1,4 +1,4 @@
-.idea/
+.idea/**
 *.iml
 *.json
 *.xml
@@ -6,6 +6,7 @@
 target/
 /src/main/resources/static/
 /src/main/frontend/node_modules/
-/.idea/
+/.idea/**
 /src/main/frontend/.env.development.local
 /src/main/frontend/.env.production.local
+.aider*

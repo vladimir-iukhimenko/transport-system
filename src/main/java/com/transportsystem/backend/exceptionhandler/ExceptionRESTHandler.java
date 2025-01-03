@@ -1,6 +1,7 @@
 package com.transportsystem.backend.exceptionhandler;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.error.ErrorAttributeOptions;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpHeaders;
@@ -35,14 +36,13 @@ public class ExceptionRESTHandler implements ErrorController {
         return new ExceptionResponse(response.getStatus(), getErrorAttributes(webRequest));
     }
 
-    @Override
     public String getErrorPath() {
         return "/error";
     }
 
     private Map<String, Object> getErrorAttributes(WebRequest webRequest) {
         Map<String, Object> errorMap = new HashMap<>();
-        errorMap.putAll(errorAttributes.getErrorAttributes(webRequest, false));
+        errorMap.putAll(errorAttributes.getErrorAttributes(webRequest, ErrorAttributeOptions.defaults()));
         return errorMap;
     }
 }
