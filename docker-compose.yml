@@ -1,10 +1,31 @@
 version: '3'
 
 services:
-  postgres:
+  database:
     image: 'postgres:15-alpine'
-    container_name: 'java-postgres'
+    restart: always
+    container_name: 'postgres-db'
     ports:
       - "5433:5432"
     environment:
       POSTGRES_PASSWORD: postgres
+    networks:
+      - web-app
+    volumes:
+      - db-data:/var/lib/postgresql/data
+  web:
+    build:
+      dockerfile: Dockerfile
+    container_name: "transport-system"
+    ports:
+      - "8080:8080"
+    networks:
+      - web-app
+    environment:
+      DATASOURCE_URL: jdbc:postgresql://postgres-db:5432/postgres
+    depends_on:
+      - database
+networks:
+  web-app:
+volumes:
+  db-data:
