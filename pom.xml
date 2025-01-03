@@ -83,6 +83,11 @@
             <version>2.0.1.Final</version>
         </dependency>
 		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-search-orm</artifactId>
+			<version>5.11.4.Final</version>
+		</dependency>
+		<dependency>
             <groupId>org.apache.tomcat</groupId>
             <artifactId>tomcat-dbcp</artifactId>
             <version>9.0.22</version>
