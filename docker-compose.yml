@@ -13,18 +13,6 @@ services:
       - web-app
     volumes:
       - db-data:/var/lib/postgresql/data
-  web:
-    build:
-      dockerfile: Dockerfile
-    container_name: "transport-system"
-    ports:
-      - "8080:8080"
-    networks:
-      - web-app
-    environment:
-      DATASOURCE_URL: jdbc:postgresql://postgres-db:5432/postgres
-    depends_on:
-      - database
 networks:
   web-app:
 volumes:
