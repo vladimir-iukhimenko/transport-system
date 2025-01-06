@@ -10,3 +10,4 @@ target/
 /src/main/frontend/.env.development.local
 /src/main/frontend/.env.production.local
 .aider*
+.env
