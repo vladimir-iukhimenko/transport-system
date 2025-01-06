@@ -8,7 +8,7 @@
 #EXPOSE 10000
 #ENTRYPOINT ["java","-jar","/usr/local/lib/app.jar"]
 
-FROM openjdk:11-jdk-slim
+FROM eclipse-temurin:17-jdk-focal
 
 WORKDIR /app
 
