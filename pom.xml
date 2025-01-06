@@ -11,14 +11,13 @@
 	<groupId>com.transportsystem</groupId>
 	<artifactId>application</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
 	<name>TransSystem</name>
 	<description>Transport system</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
+		<java.version>17</java.version>
 		<node.version>v14.3.0</node.version>
 		<npm.version>6.14.4</npm.version>
 	</properties>
