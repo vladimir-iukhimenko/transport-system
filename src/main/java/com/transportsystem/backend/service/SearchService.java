@@ -3,7 +3,7 @@ package com.transportsystem.backend.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.transportsystem.backend.dao.Searcher;
+import com.transportsystem.backend.repository.Searcher;
 import com.transportsystem.backend.model.*;
 
 import java.util.List;

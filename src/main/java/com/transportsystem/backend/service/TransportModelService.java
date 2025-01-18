@@ -3,7 +3,7 @@ package com.transportsystem.backend.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.transportsystem.backend.dao.TransportModelDAO;
+import com.transportsystem.backend.repository.TransportModelRepository;
 import com.transportsystem.backend.model.TransportModel;
 
 import java.util.List;
@@ -13,30 +13,32 @@ import java.util.List;
  */
 @Service
 public class TransportModelService {
-    private TransportModelDAO transportModelDAO;
+    private TransportModelRepository transportModelRepository;
 
     @Autowired
-    public void setTransportModelDAO(TransportModelDAO transportModelDAO) {this.transportModelDAO = transportModelDAO;}
+    public void setTransportModelDAO(TransportModelRepository transportModelRepository) {this.transportModelRepository = transportModelRepository;}
 
     @Transactional
     public void addTransportModel(TransportModel transportModel)
     {
-        transportModelDAO.addTransportModel(transportModel);
+        transportModelRepository.save(transportModel);
     }
 
     @Transactional
-    public void deleteTransportModel(TransportModel transportModel) {transportModelDAO.addTransportModel(transportModel);}
+    public void deleteTransportModel(TransportModel transportModel) {
+        transportModelRepository.delete(transportModel);}
 
     @Transactional
-    public void editTransportModel(TransportModel transportModel) {transportModelDAO.editTransportModel(transportModel);}
+    public void editTransportModel(TransportModel transportModel) {
+        transportModelRepository.save(transportModel);}
 
     @Transactional
     public TransportModel getTransportModelById(int id)
     {
-        return transportModelDAO.getTransportModelById(id);
+        return transportModelRepository.findById(id).orElse(null);
     }
 
     @Transactional
-    public List<TransportModel> getAllTransportModels() { return transportModelDAO.getAllTransportModels();}
+    public List<TransportModel> getAllTransportModels() { return transportModelRepository.findAll();}
 
 }

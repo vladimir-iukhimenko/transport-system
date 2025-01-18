@@ -1,6 +1,6 @@
 package com.transportsystem.backend.service.security;
 
-import com.transportsystem.backend.dao.security.UserDAO;
+import com.transportsystem.backend.repository.security.UserRepository;
 import com.transportsystem.backend.model.security.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,45 +12,45 @@ import java.util.List;
 
 @Service
 public class UserService implements UserDetailsService {
-    private UserDAO userDAO;
+    private UserRepository userRepository;
 
     @Autowired
-    public void setUserDAO(UserDAO userDAO) {this.userDAO = userDAO;}
+    public void setUserDAO(UserRepository userRepository) {this.userRepository = userRepository;}
 
     @Transactional
     public void addUser(User user) {
-        userDAO.addUser(user);
+        userRepository.save(user);
     }
 
     @Transactional
     public void deleteUser(User user) {
-        userDAO.deleteUser(user);
+        userRepository.delete(user);
     }
 
     @Transactional
     public void editUser(User user) {
-        userDAO.editUser(user);
+        userRepository.save(user);
     }
 
     @Transactional
     public User getUserById(int id) {
-        return userDAO.getUserById(id);
+        return userRepository.findById(id).orElse(null);
     }
 
     @Transactional
     public List<User> getAllUsers() {
-        return userDAO.getAllUsers();
+        return userRepository.findAll();
     }
 
     @Override
     @Transactional
     public User loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userDAO.getUserByUsername(username);
+        User user = userRepository.findByUsername(username);
         if(user != null) {return user;}
         throw new UsernameNotFoundException("User " + username + " not found!");
     }
 
     @Transactional
-    public Boolean isUserExists(String username) {return userDAO.isUserExists(username);}
+    public Boolean isUserExists(String username) {return userRepository.existsByUsername(username);}
 
 }

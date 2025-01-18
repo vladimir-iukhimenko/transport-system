@@ -2,7 +2,7 @@ package com.transportsystem.backend.model.security.payload.response;
 
 import lombok.Data;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 @Data
 public class MessageResponse {

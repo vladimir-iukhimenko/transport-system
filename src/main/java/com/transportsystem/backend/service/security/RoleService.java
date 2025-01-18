@@ -1,6 +1,6 @@
 package com.transportsystem.backend.service.security;
 
-import com.transportsystem.backend.dao.security.RoleDAO;
+import com.transportsystem.backend.repository.security.RoleRepository;
 import com.transportsystem.backend.model.security.ERole;
 import com.transportsystem.backend.model.security.Role;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +12,13 @@ import java.util.Set;
 
 @Service
 public class RoleService {
-    private RoleDAO roleDAO;
+    private RoleRepository roleRepository;
 
     @Autowired
-    public void setRoleDAO(RoleDAO roleDAO) { this.roleDAO = roleDAO; }
+    public void setRoleDAO(RoleRepository roleRepository) { this.roleRepository = roleRepository; }
 
     @Transactional
-    public Role getRoleByName(ERole name) {return roleDAO.getRoleByName(name);}
+    public Role getRoleByName(ERole name) {return roleRepository.getRoleByName(name);}
 
     @Transactional
     public Set<Role> convertToRolesSet(Set<String> stringRoles) {

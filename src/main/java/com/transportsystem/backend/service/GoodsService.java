@@ -1,10 +1,9 @@
 package com.transportsystem.backend.service;
 
-import com.transportsystem.backend.model.TransportOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.transportsystem.backend.dao.GoodsDAO;
+import com.transportsystem.backend.repository.GoodsRepository;
 import com.transportsystem.backend.model.Goods;
 
 import java.util.ArrayList;
@@ -16,25 +15,28 @@ import java.util.List;
 @Service
 public class GoodsService {
 
-    private GoodsDAO goodsDAO;
+    private GoodsRepository goodsRepository;
 
     @Autowired
-    public void setGoodsDAO(GoodsDAO goodsDAO) {this.goodsDAO = goodsDAO;}
+    public void setGoodsDAO(GoodsRepository goodsRepository) {this.goodsRepository = goodsRepository;}
 
     @Transactional
-    public void add(Goods goods) {goodsDAO.add(goods);}
+    public void add(Goods goods) {
+        goodsRepository.save(goods);}
 
     @Transactional
-    public void delete(Goods goods) {goodsDAO.delete(goods);}
+    public void delete(Goods goods) {
+        goodsRepository.delete(goods);}
 
     @Transactional
-    public void edit(Goods goods) {goodsDAO.edit(goods);}
+    public void edit(Goods goods) {
+        goodsRepository.save(goods);}
 
     @Transactional
-    public Goods getGoodsById(Integer id) {return goodsDAO.getGoodsById(id);}
+    public Goods getGoodsById(Integer id) {return goodsRepository.findById(id).orElse(null);}
 
     @Transactional
-    public List<Goods> getAllGoods() {return goodsDAO.getAllGoods();}
+    public List<Goods> getAllGoods() {return goodsRepository.findAll();}
 
     @Transactional
     public List<Goods> getAllGoodsWithoutTransportOrders() {

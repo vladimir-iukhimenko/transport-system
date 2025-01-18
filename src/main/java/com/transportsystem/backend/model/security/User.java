@@ -5,20 +5,19 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.transportsystem.backend.model.Employee;
 import lombok.*;
-import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Getter
 @Entity
 @Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = "username")})
 @RequiredArgsConstructor
@@ -26,33 +25,28 @@ import java.util.stream.Collectors;
 public class User implements UserDetails {
     @Id
     @Column(name = "id")
-   // @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter
     private Integer id;
 
     @Column(name = "username")
     @NotBlank
     @Pattern(regexp = "[a-zA-Z._]+", message = "Wrong username!")
-    @Getter
     @Setter
     private String username;
 
     @Column(name = "password")
     @JsonIgnore
     @NotBlank
-    @Getter
     @Setter
     private String password;
 
     @Column(name = "enabled")
-    @Getter
     @Setter
     private boolean enabled;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "employeeid", referencedColumnName = "id")
-    @Getter
     @Setter
     private Employee employee;
 
@@ -60,7 +54,6 @@ public class User implements UserDetails {
     @JoinTable(name = "user_roles",
                 joinColumns = @JoinColumn(name = "user_id"),
                 inverseJoinColumns = @JoinColumn(name = "role_id"))
-    @Getter
     @Setter
     private Set<Role> roles = new HashSet<>();
 

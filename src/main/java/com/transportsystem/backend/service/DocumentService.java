@@ -1,9 +1,13 @@
 package com.transportsystem.backend.service;
 
+import com.transportsystem.backend.model.DocumentEmployee;
+import com.transportsystem.backend.model.DocumentTransport;
+import com.transportsystem.backend.repository.DocumentEmployeeRepository;
+import com.transportsystem.backend.repository.DocumentTransportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.transportsystem.backend.dao.DocumentDAO;
+import com.transportsystem.backend.repository.DocumentRepository;
 import com.transportsystem.backend.model.Document;
 
 import java.util.List;
@@ -13,48 +17,50 @@ import java.util.List;
  */
 @Service
 public class DocumentService {
-    private DocumentDAO documentDAO;
+    private DocumentRepository documentRepository;
+    private DocumentTransportRepository documentTransportRepository;
+    private DocumentEmployeeRepository documentEmployeeRepository;
 
     @Autowired
-    public void setDocumentDAO(DocumentDAO documentDAO) {
-        this.documentDAO = documentDAO;
+    public void setDocumentDAO(DocumentRepository documentRepository) {
+        this.documentRepository = documentRepository;
     }
 
     @Transactional
-    public List<Document> getAllTransportDocuments()
+    public List<DocumentTransport> getAllTransportDocuments()
     {
-        return documentDAO.getAllTransportDocuments();
+        return documentTransportRepository.findAll();
     }
 
     @Transactional
-    public List<Document> getAllEmployeeDocuments() {return documentDAO.getAllEmployeeDocuments();}
+    public List<DocumentEmployee> getAllEmployeeDocuments() {return documentEmployeeRepository.findAll();}
 
     @Transactional
     public void add(Document document)
     {
-        documentDAO.add(document);
+        documentRepository.save(document);
     }
 
     @Transactional
     public void delete(Document document)
     {
-        documentDAO.delete(document);
+        documentRepository.delete(document);
     }
 
     @Transactional
     public void edit(Document document)
     {
-        documentDAO.edit(document);
+        documentRepository.save(document);
     }
 
     @Transactional
     public Document getDocumentTransportById(Integer id)
     {
-        return documentDAO.getDocumentTransportById(id);
+        return documentTransportRepository.findById(id).orElse(null);
     }
 
     @Transactional
     public Document getDocumentEmployeeById(Integer id) {
-        return documentDAO.getDocumentEmployeeById(id);
+        return documentEmployeeRepository.findById(id).orElse(null);
     }
 }

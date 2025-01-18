@@ -2,11 +2,10 @@ package com.transportsystem.backend.model;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Map;
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 
 import com.fasterxml.jackson.annotation.*;
 import lombok.Getter;
