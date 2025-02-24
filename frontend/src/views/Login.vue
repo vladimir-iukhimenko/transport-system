@@ -28,7 +28,7 @@
                         <span v-show="loading" class="spinner-border spinner-border-sm"></span>
                         <span>Войти</span>
                     </button>
-                    <button class="btn btn-primary btn-block" @click="$router.push('/register')">Зарегистрироваться</button>
+                    <button test-id="sign_up_button" class="btn btn-primary btn-block" @click="$router.push('/register')">Зарегистрироваться</button>
                 </div>
                 <div class="form-group">
                     <div v-if="message" class="alert alert-danger" role="alert">{{message}}</div>
