@@ -7,6 +7,7 @@
                               label="Логин"
                               label-for="input-1">
                     <b-form-input id="input-1"
+                                  test-id="username"
                                   v-model="user.username"
                                   type="text"
                                   placeholder="">
@@ -16,13 +17,14 @@
                               label="Пароль"
                               label-for="input-2">
                     <b-form-input id="input-2"
+                                  test-id="password"
                                   v-model="user.password"
                                   type="password"
                                   placeholder="">
                     </b-form-input>
                 </b-form-group>
                 <div class="form-group">
-                    <button class="btn btn-primary btn-block" :disabled="loading">
+                    <button test-id="sign_in_button" class="btn btn-primary btn-block" :disabled="loading">
                         <span v-show="loading" class="spinner-border spinner-border-sm"></span>
                         <span>Войти</span>
                     </button>
