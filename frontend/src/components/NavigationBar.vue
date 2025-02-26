@@ -10,9 +10,9 @@
                         <b-button class="my-2 my-sm-0" size="sm" type="submit">Поиск</b-button>
                     </b-nav-form>
 
-                    <b-nav-item-dropdown right>
+                    <b-nav-item-dropdown test-id="username" right>
                         <template v-slot:button-content>
-                            <em>test-id="username" {{user}}</em>
+                            <em>{{user}}</em>
                         </template>
                         <b-dropdown-item v-on:click="$router.push(`/profile`)">Профиль</b-dropdown-item>
                         <b-dropdown-item v-on:click="logout">Выйти</b-dropdown-item>
