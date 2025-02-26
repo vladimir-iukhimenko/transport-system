@@ -3,7 +3,7 @@ package com.transportsystem.backend.model.security;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "roles")

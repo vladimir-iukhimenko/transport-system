@@ -3,7 +3,7 @@ package com.transportsystem.backend.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.transportsystem.backend.dao.TransportOrderDAO;
+import com.transportsystem.backend.repository.TransportOrderRepository;
 import com.transportsystem.backend.model.TransportOrder;
 
 import java.util.List;
@@ -13,27 +13,29 @@ import java.util.List;
  */
 @Service
 public class TransportOrderService {
-    private TransportOrderDAO transportOrderDAO;
+    private TransportOrderRepository transportOrderRepository;
 
     @Autowired
-    public void setTransportOrderDAO(TransportOrderDAO transportorderDAO) {
-        this.transportOrderDAO = transportorderDAO;
+    public void setTransportOrderDAO(TransportOrderRepository transportorderRepository) {
+        this.transportOrderRepository = transportorderRepository;
     }
 
     @Transactional
     public void addTransportOrder(TransportOrder transportOrder) {
-        transportOrderDAO.addTransportOrder(transportOrder);}
+        transportOrderRepository.save(transportOrder);}
 
     @Transactional
-    public void deleteTransportOrder(TransportOrder transportOrder) {transportOrderDAO.deleteTransportOrder(transportOrder);}
+    public void deleteTransportOrder(TransportOrder transportOrder) {
+        transportOrderRepository.delete(transportOrder);}
 
     @Transactional
-    public void editTransportOrder(TransportOrder transportOrder) {transportOrderDAO.editTransportOrder(transportOrder);}
+    public void editTransportOrder(TransportOrder transportOrder) {
+        transportOrderRepository.save(transportOrder);}
 
     @Transactional
-    public TransportOrder getTransportOrderById(int id) {return transportOrderDAO.getTransportOrderById(id);}
+    public TransportOrder getTransportOrderById(int id) {return transportOrderRepository.findById(id).orElse(null);}
 
     @Transactional
-    public List<TransportOrder> getAllTransportOrders() {return transportOrderDAO.getAllTransportOrders();}
+    public List<TransportOrder> getAllTransportOrders() {return transportOrderRepository.findAll();}
 
 }

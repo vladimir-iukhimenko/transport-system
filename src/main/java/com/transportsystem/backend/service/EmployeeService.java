@@ -3,7 +3,7 @@ package com.transportsystem.backend.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.transportsystem.backend.dao.EmployeeDAO;
+import com.transportsystem.backend.repository.EmployeeRepository;
 import com.transportsystem.backend.model.Employee;
 
 import java.util.List;
@@ -14,28 +14,30 @@ import java.util.List;
 
 @Service
 public class EmployeeService {
-    private EmployeeDAO employeeDAO;
+    private EmployeeRepository employeeRepository;
 
     @Autowired
-    public void setEmployeeDAO(EmployeeDAO employeeDAO) {this.employeeDAO = employeeDAO;}
+    public void setEmployeeDAO(EmployeeRepository employeeRepository) {this.employeeRepository = employeeRepository;}
 
     @Transactional
-    public void add(Employee employee) {employeeDAO.add(employee);}
+    public void add(Employee employee) {
+        employeeRepository.save(employee);}
 
     @Transactional
-    public void delete(Employee employee) {employeeDAO.delete(employee);}
+    public void delete(Employee employee) {
+        employeeRepository.delete(employee);}
 
     @Transactional
-    public void edit(Employee employee) {employeeDAO.edit(employee);}
+    public void edit(Employee employee) {
+        employeeRepository.save(employee);}
 
     @Transactional
     public Employee getEmployeeById(Integer id) {
-        if (id == null) return null;
-        else return employeeDAO.getEmployeeById(id);
+        return employeeRepository.findById(id).orElse(null);
     }
 
     @Transactional
-    public List<Employee> getAllEmployees() {return employeeDAO.getAllEmployees();}
+    public List<Employee> getAllEmployees() {return employeeRepository.findAll();}
 
 
 }

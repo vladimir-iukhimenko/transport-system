@@ -3,7 +3,7 @@ package com.transportsystem.backend.model.security.payload.response;
 import com.transportsystem.backend.model.Employee;
 import lombok.Data;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import java.util.List;
 
 @Data

@@ -2,8 +2,8 @@ package com.transportsystem.backend.converter;
 
 import com.transportsystem.backend.embeddable.Comment;
 
-import javax.persistence.AttributeConverter;
-import javax.persistence.Converter;
+import jakarta.persistence.AttributeConverter;
+import jakarta.persistence.Converter;
 
 @Converter(autoApply = true)
 public class CommentConverter implements AttributeConverter<Comment, String> {

@@ -37,14 +37,14 @@ public class DocumentRESTController {
     public void setJsonService(JsonService jsonService) {this.jsonService = jsonService;}
 
     @GetMapping("/transportdocs")
-    public List<Document> readAllDocumentTransports() {
-        List<Document> listDocumentTransports = documentService.getAllTransportDocuments();
+    public List<DocumentTransport> readAllDocumentTransports() {
+        List<DocumentTransport> listDocumentTransports = documentService.getAllTransportDocuments();
         return listDocumentTransports;
     }
 
     @GetMapping("/employeedocs")
-    public List<Document> readAllDocumentEmployees() {
-        List<Document> listDocumentEmployees = documentService.getAllEmployeeDocuments();
+    public List<DocumentEmployee> readAllDocumentEmployees() {
+        List<DocumentEmployee> listDocumentEmployees = documentService.getAllEmployeeDocuments();
         return listDocumentEmployees;
     }
 

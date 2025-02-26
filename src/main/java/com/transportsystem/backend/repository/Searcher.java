@@ -1,5 +1,6 @@
-package com.transportsystem.backend.dao;
+package com.transportsystem.backend.repository;
 
+import jakarta.persistence.EntityManagerFactory;
 import org.apache.lucene.search.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,14 +15,11 @@ import java.util.List;
 
 @Repository
 public class Searcher {
-    private SessionFactory sessionFactory;
-
     @Autowired
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
+    private EntityManagerFactory entityManagerFactory;
 
     public List search(String text, Class object, String... fields) {
+        var sessionFactory = entityManagerFactory.unwrap(SessionFactory.class);
         Session session = sessionFactory.getCurrentSession();
         FullTextSession fullTextSession = Search.getFullTextSession(session);
         QueryBuilder queryBuilder = fullTextSession.getSearchFactory().buildQueryBuilder().forEntity(object).get();
