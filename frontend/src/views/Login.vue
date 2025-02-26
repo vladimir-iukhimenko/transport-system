@@ -2,7 +2,7 @@
     <div>
         <b-card bg-variant="light">
             <b-form @submit.prevent="handleLogin">
-                <b-form-group label="Вход в систему" label-class="font-weight-bold pt-0" label-size="lg" class="mb-0"></b-form-group>
+                <b-form-group test-id="log_in_label" label="Вход в систему" label-class="font-weight-bold pt-0" label-size="lg" class="mb-0"></b-form-group>
                 <b-form-group id="input-group-1"
                               label="Логин"
                               label-for="input-1">
@@ -31,7 +31,7 @@
                     <button test-id="sign_up_button" class="btn btn-primary btn-block" @click="$router.push('/register')">Зарегистрироваться</button>
                 </div>
                 <div class="form-group">
-                    <div v-if="message" class="alert alert-danger" role="alert">{{message}}</div>
+                    <div v-if="message" test-id="error-message" class="alert alert-danger" role="alert">{{message}}</div>
                 </div>
             </b-form>
         </b-card>
