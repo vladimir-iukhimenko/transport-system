@@ -1,7 +1,7 @@
 <template>
     <div>
         <b-navbar toggleable="lg" type="dark" variant="info">
-            <b-navbar-brand to="/">Транспортная система</b-navbar-brand>
+            <b-navbar-brand test-id="home_link" to="/">Транспортная система</b-navbar-brand>
             <b-navbar-toggle target="nav-line"></b-navbar-toggle>
             <b-collapse id="nav-line" is-nav>
                 <b-navbar-nav class="ml-auto">
@@ -12,7 +12,7 @@
 
                     <b-nav-item-dropdown right>
                         <template v-slot:button-content>
-                            <em>{{user}}</em>
+                            <em>test-id="username" {{user}}</em>
                         </template>
                         <b-dropdown-item v-on:click="$router.push(`/profile`)">Профиль</b-dropdown-item>
                         <b-dropdown-item v-on:click="logout">Выйти</b-dropdown-item>
