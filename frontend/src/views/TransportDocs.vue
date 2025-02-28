@@ -13,6 +13,7 @@
                               label="Тип документа"
                               label-for="input-1">
                     <b-form-input id="input-1"
+                                  test-id="transportdoc.documenttype"
                                   v-model="transportdoc.documenttype"
                                   type="text"
                                   required
@@ -23,6 +24,7 @@
                               label="Серия"
                               label-for="input-2">
                     <b-form-input id="input-2"
+                                  test-id="transportdoc.series"
                                   v-model="transportdoc.series"
                                   type="text"
                                   required
@@ -33,6 +35,7 @@
                               label="Номер"
                               label-for="input-3">
                     <b-form-input id="input-3"
+                                  test-id="transportdoc.number"
                                   v-model="transportdoc.number"
                                   type="text"
                                   required
@@ -43,6 +46,7 @@
                               label="Выдано"
                               label-for="input-4">
                     <b-form-input id="input-4"
+                                  test-id="transportdoc.issuedby"
                                   v-model="transportdoc.issuedby"
                                   type="text"
                                   required
@@ -53,6 +57,7 @@
                               label="Дата выдачи"
                               label-for="input-5">
                     <b-form-input id="input-5"
+                                  test-id="transportdoc.issueddate"
                                   v-model="transportdoc.issueddate"
                                   type="date"
                                   required
@@ -63,6 +68,7 @@
                               label="Дата истечения срока действия"
                               label-for="input-6">
                     <b-form-input id="input-6"
+                                  test-id="transportdoc.expiredate"
                                   v-model="transportdoc.expiredate"
                                   type="date"
                                   placeholder="">
@@ -72,6 +78,7 @@
                               label="Транспортное средство"
                               label-for="input-7">
                     <b-form-select id="input-7"
+                                   test-id="transportdoc.transportid"
                                   v-model="transportdoc.transportid"
                                   :options="transports"
                                   value-field="id"
