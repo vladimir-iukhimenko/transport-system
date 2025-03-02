@@ -87,7 +87,7 @@
                                   placeholder="">
                     </b-form-select>
                 </b-form-group>
-                <b-button class="float-right" variant="primary" type="submit">{{title}}</b-button>
+                <b-button class="float-right" variant="primary" test-id="transportdoc.submit" type="submit">{{title}}</b-button>
             </b-form>
         </b-modal>
     </div>
