@@ -17,14 +17,9 @@ import java.util.List;
  */
 @Service
 public class DocumentService {
-    private DocumentRepository documentRepository;
-    private DocumentTransportRepository documentTransportRepository;
-    private DocumentEmployeeRepository documentEmployeeRepository;
-
-    @Autowired
-    public void setDocumentDAO(DocumentRepository documentRepository) {
-        this.documentRepository = documentRepository;
-    }
+    @Autowired private DocumentRepository documentRepository;
+    @Autowired private DocumentTransportRepository documentTransportRepository;
+    @Autowired private DocumentEmployeeRepository documentEmployeeRepository;
 
     @Transactional
     public List<DocumentTransport> getAllTransportDocuments()
