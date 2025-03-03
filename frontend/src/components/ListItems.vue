@@ -3,7 +3,7 @@
         <h2>{{header}}</h2>
         <div>
             <b-pagination
-                    v-show="rows>5"
+                    v-show="rows>10000"
                     v-model="currentPage"
                     :total-rows="rows"
                     :per-page="perPage"
