@@ -1,7 +1,7 @@
 <template>
     <div>
         <NavigationBar @search="searchItems"></NavigationBar>
-        <b-container>
+        <b-container test-id="main_page">
             <b-row>
                 <b-col>
                     <SideMenu></SideMenu>
